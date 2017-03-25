@@ -3,6 +3,7 @@ git push --mirror github
 git push --mirror https://github.com/anuships/SHIPS-Group.git
 git push --mirror https://anuships:2017ShipsCecs@github.com/anuships/SHIPS-Group.git
 
+*Please remember to push all files to github after your progress
 
 
 =============other information============
