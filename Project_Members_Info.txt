@@ -3,7 +3,7 @@ Project: Self-Help Integrated Psychotherapy System (SHIPS)
 Leaders
 Jayden Caelli	      u5564556@anu.edu.au  0400-214-981
 
-CommunicatorF
+Communicator
 Xin Lu (Alyson)	      u5659800@anu.edu.au  0451-971-016
 
 Other members:
