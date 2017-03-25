@@ -1,4 +1,9 @@
-git remote add github https://yourLogin@github.com/yourLogin/yourRepoName.git
+Use the following command to synchronize your done work to Github:
 git push --mirror github
 
-Test2
+
+
+=============other information============
+Our Github page is https://github.com/anuships/SHIPS-Group.git
+
+User name and password is noly available in slack for privacy
