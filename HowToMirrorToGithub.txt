@@ -1,4 +1,4 @@
-Use the any one of below command to synchronize your done work to Github:
+Use the any of command below to synchronize your work to Github:
 git push --mirror github
 git push --mirror https://github.com/anuships/SHIPS-Group.git
 git push --mirror https://anuships:2017ShipsCecs@github.com/anuships/SHIPS-Group.git
@@ -9,4 +9,4 @@ git push --mirror https://anuships:2017ShipsCecs@github.com/anuships/SHIPS-Group
 =============other information============
 Our Github page is https://github.com/anuships/SHIPS-Group.git
 
-User name and password is noly available in slack for privacy
+User name and password can be found only in slack due to privacy concerns
