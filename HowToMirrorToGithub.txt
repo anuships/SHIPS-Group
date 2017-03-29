@@ -1,7 +1,9 @@
-Use the any of command below to synchronize your work to Github:
-git push --mirror github
-git push --mirror https://github.com/anuships/SHIPS-Group.git
+Use below command to synchronize your work to Github:
 git push --mirror https://anuships:2017ShipsCecs@github.com/anuships/SHIPS-Group.git
+
+To mirror from github back to gitlab is similar
+git push --mirror git@gitlab.cecs.anu.edu.au:u5855756/SHIPS-Group.git
+
 
 *Please remember to push all files to github after your progress
 
