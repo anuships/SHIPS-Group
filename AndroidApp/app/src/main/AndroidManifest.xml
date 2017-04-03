@@ -23,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name">
@@ -33,6 +34,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".FutureProgram"
+            android:label="Future Program"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
