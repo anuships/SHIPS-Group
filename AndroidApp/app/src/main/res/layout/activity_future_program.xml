@@ -25,53 +25,11 @@
             android:layout_height="0dp"
             android:layout_weight="1">
 
-            <ScrollView
+            <ListView
                 android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_height="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <CheckBox
-                        android:text="Program 1: this is a test program description"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:id="@+id/prog1" />
-
-                    <CheckBox
-                        android:text="Program 2:"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_below="@id/prog1"
-                        android:id="@+id/prog2" />
-                    <CheckBox
-                        android:text="Program 3:"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_below="@id/prog2"
-                        android:id="@+id/prog3" />
-                    <CheckBox
-                        android:text="Program 4:"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_below="@id/prog3"
-                        android:id="@+id/prog4" />
-                    <CheckBox
-                        android:text="Program 5:"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_below="@id/prog4"
-                        android:id="@+id/prog5" />
-                    <CheckBox
-                        android:text="Program 6:"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_below="@id/prog5"
-                        android:id="@+id/prog6" />
-                </RelativeLayout>
-            </ScrollView>
-
+                android:id="@+id/programList"/>
 
             <Button
                 android:text="Add to My Program"
@@ -80,7 +38,8 @@
                 android:id="@+id/add_to_my_program_but"
                 android:background="@drawable/roundedbutton"
                 android:paddingBottom="0dp"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF"
+                android:onClick="addToMyProgram"/>
         </LinearLayout>
 
     <LinearLayout
