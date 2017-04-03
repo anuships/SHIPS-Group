@@ -15,10 +15,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends ArrayAdapter<Programs> {
+public class ProgramListAdapter extends ArrayAdapter<Programs> {
     ArrayList<Programs> programsItems = null;
     Context context;
-    public CustomAdapter(Context context, ArrayList<Programs> resource) {
+    public ProgramListAdapter(Context context, ArrayList<Programs> resource) {
         super(context,R.layout.row_programs,resource);
         // TODO Auto-generated constructor stub
         this.context = context;

@@ -1,5 +1,6 @@
 package com.example.ships.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,4 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void clickLogin(View view) {
+        startActivity(new Intent(this, FutureProgram.class));
+    }
 }

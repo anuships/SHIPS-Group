@@ -36,8 +36,7 @@
 
         <activity
             android:name=".FutureProgram"
-            android:label="Future Program"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="Future Program" >
         </activity>
     </application>
 
