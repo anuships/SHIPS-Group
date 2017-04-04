@@ -19,7 +19,7 @@ public class ProgramListAdapter extends ArrayAdapter<Programs> {
     ArrayList<Programs> programsItems = null;
     Context context;
     public ProgramListAdapter(Context context, ArrayList<Programs> resource) {
-        super(context,R.layout.row_programs,resource);
+        super(context,R.layout.programs_rows,resource);
         // TODO Auto-generated constructor stub
         this.context = context;
         this.programsItems = resource;
@@ -28,14 +28,17 @@ public class ProgramListAdapter extends ArrayAdapter<Programs> {
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        convertView = inflater.inflate(R.layout.row_programs, parent, false);
+        convertView = inflater.inflate(R.layout.programs_rows, parent, false);
         TextView name = (TextView) convertView.findViewById(R.id.ProgamTitle);
         CheckBox cb = (CheckBox) convertView.findViewById(R.id.checkProgram);
         name.setText(programsItems.get(position).getName());
-        if(programsItems.get(position).getValue() == 1)
+        if(programsItems.get(position).getValue() == 1) {
             cb.setChecked(true);
-        else
-            cb.setChecked(false);
+        }
+        else{
+            cb.setChecked(false);}
         return convertView;
     }
+
+
 }

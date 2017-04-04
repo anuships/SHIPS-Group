@@ -2,10 +2,14 @@ package com.example.ships.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FutureProgram extends AppCompatActivity {
     ListView lv;
@@ -24,10 +28,38 @@ public class FutureProgram extends AppCompatActivity {
         programsItems.add(new Programs("Program 3", 1));
         ProgramListAdapter adapter = new ProgramListAdapter(this, programsItems);
         lv.setAdapter(adapter);
+
+        try{
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // TODO Auto-generated method stub
+                Log.d("Function ", "ture");
+/*                Programs p = programsItems.get(position);
+                int checked = p.getValue();
+                if(checked == 1){
+                    p.setValue(0);
+                }else
+                    p.setValue(1);*/
+            }
+        });}catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
+
+    ArrayList<String> selectedPrograms = new ArrayList<String>();
     public void addToMyProgram(View view) {
         //get programs' name and all to user's list
+        lv = (ListView) findViewById(R.id.programList);
+        for(Programs p: programsItems){
+            if(p.getValue()==1){
+                Log.d("Selected Programs: ", p.getName());
+                //selectedPrograms.add(p.getName());
+            }
+        }
     }
 
     public void goBack(View view) {
@@ -36,5 +68,8 @@ public class FutureProgram extends AppCompatActivity {
 
     public void goToMangement(View view) {
         //go to management page
+    }
+
+    public void selectedProgram(View view) {
     }
 }
