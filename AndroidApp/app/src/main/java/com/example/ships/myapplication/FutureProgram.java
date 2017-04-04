@@ -2,10 +2,13 @@ package com.example.ships.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FutureProgram extends AppCompatActivity {
     ListView lv;
@@ -24,10 +27,20 @@ public class FutureProgram extends AppCompatActivity {
         programsItems.add(new Programs("Program 3", 1));
         ProgramListAdapter adapter = new ProgramListAdapter(this, programsItems);
         lv.setAdapter(adapter);
+
     }
 
+
+    ArrayList<String> selectedPrograms = new ArrayList<String>();
     public void addToMyProgram(View view) {
         //get programs' name and all to user's list
+        lv = (ListView) findViewById(R.id.programList);
+        for(Programs p: programsItems){
+            if(p.getValue()==1){
+                Log.d("Selected Programs: ", p.getName());
+                selectedPrograms.add(p.getName());
+            }
+        }
     }
 
     public void goBack(View view) {
@@ -36,5 +49,8 @@ public class FutureProgram extends AppCompatActivity {
 
     public void goToMangement(View view) {
         //go to management page
+    }
+
+    public void selectedProgram(View view) {
     }
 }
