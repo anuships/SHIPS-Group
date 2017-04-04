@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,6 +29,24 @@ public class FutureProgram extends AppCompatActivity {
         ProgramListAdapter adapter = new ProgramListAdapter(this, programsItems);
         lv.setAdapter(adapter);
 
+        try{
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // TODO Auto-generated method stub
+                Log.d("Function ", "ture");
+/*                Programs p = programsItems.get(position);
+                int checked = p.getValue();
+                if(checked == 1){
+                    p.setValue(0);
+                }else
+                    p.setValue(1);*/
+            }
+        });}catch (Exception e){
+            e.printStackTrace();git
+        }
     }
 
 
@@ -38,7 +57,7 @@ public class FutureProgram extends AppCompatActivity {
         for(Programs p: programsItems){
             if(p.getValue()==1){
                 Log.d("Selected Programs: ", p.getName());
-                selectedPrograms.add(p.getName());
+                //selectedPrograms.add(p.getName());
             }
         }
     }
