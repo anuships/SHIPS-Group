@@ -5,24 +5,28 @@ package com.example.ships.myapplication;
  */
 
 public class Programs {
-    String programName;
-    int value; /* 0 -&gt; checkbox disable, 1 -&gt; checkbox enable */
+    private String programName;
+    private boolean selected = false;
 
-    Programs(String programName, int value){
+    Programs(String programName, boolean selected){
         this.programName = programName;
-        this.value = value;
+        this.selected = selected;
     }
 
     public String getName(){
         return this.programName;
     }
 
-    public int getValue(){
-        return this.value;
+    public boolean getValue(){
+        return this.selected;
     }
 
-    public void setValue(int value){
-        this.value = value;
+    public void setSelected(boolean selected){
+        this.selected = selected;
+    }
+
+    public boolean isClick(){
+        return  selected;
     }
 
     public void setProgramName(String programName){

@@ -23,10 +23,11 @@ public class FutureProgram extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.programList);
 
         //add item to the list from database
-        programsItems.add(new Programs("Program 1", 0));
-        programsItems.add(new Programs("Program 2", 1));
-        programsItems.add(new Programs("Program 3", 1));
-        ProgramListAdapter adapter = new ProgramListAdapter(this, programsItems);
+        programsItems.add(new Programs("Program 1", false));
+        programsItems.add(new Programs("Program 2", true));
+        programsItems.add(new Programs("Program 3", true));
+        ProgramListAdapter adapter = new ProgramListAdapter(this,
+                R.layout.programs_rows, programsItems);
         lv.setAdapter(adapter);
 
         try{
@@ -55,7 +56,7 @@ public class FutureProgram extends AppCompatActivity {
         //get programs' name and all to user's list
         lv = (ListView) findViewById(R.id.programList);
         for(Programs p: programsItems){
-            if(p.getValue()==1){
+            if(p.isClick()){
                 Log.d("Selected Programs: ", p.getName());
                 //selectedPrograms.add(p.getName());
             }
@@ -74,13 +75,6 @@ public class FutureProgram extends AppCompatActivity {
     }
 
     public void click(View view) {
-        String s = view.getContext().toString();
 
-        int index = programsItems.indexOf(s);
-        Programs p = programsItems.get(index);
-        if(p.getValue() == 1) {
-            p.setValue(1);
-        }else
-            p.setValue(0);
     }
 }

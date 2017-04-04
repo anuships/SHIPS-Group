@@ -1,46 +1,79 @@
 package com.example.ships.myapplication;
 
+import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 
 /**
  * Created by Jyun on 2017/04/03.
  */
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import java.util.ArrayList;
 
 public class ProgramListAdapter extends ArrayAdapter<Programs> {
-    ArrayList<Programs> programsItems = null;
+    private ArrayList<Programs> programList;
     Context context;
-    ArrayList<String> selectedProgram = new ArrayList<String>();
 
-    public ProgramListAdapter(Context context, ArrayList<Programs> resource) {
-        super(context,R.layout.programs_rows,resource);
-        // TODO Auto-generated constructor stub
+    public ProgramListAdapter(Context context, int textViewResourceId,
+                           ArrayList<Programs> programList) {
+        super(context, textViewResourceId, programList);
         this.context = context;
-        this.programsItems = resource;
+        this.programList = programList;
     }
+
+    private class ViewHolder {
+        TextView programTitle;
+        CheckBox isChecked;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
-        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        convertView = inflater.inflate(R.layout.programs_rows, parent, false);
-        TextView name = (TextView) convertView.findViewById(R.id.ProgamTitle);
-        CheckBox cb = (CheckBox) convertView.findViewById(R.id.checkProgram);
-        name.setText(programsItems.get(position).getName());
-        if(programsItems.get(position).getValue() == 1) {
-            cb.setChecked(true);
+
+        ViewHolder holder = null;
+        Log.v("ConvertView", String.valueOf(position));
+
+        if (convertView == null) {
+            LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+            convertView = inflater.inflate(R.layout.programs_rows, null);
+
+            holder = new ViewHolder();
+            holder.programTitle = (TextView) convertView.findViewById(R.id.ProgamTitle);
+            holder.isChecked = (CheckBox) convertView.findViewById(R.id.checkProgram);
+            convertView.setTag(holder);
+
+            holder.isChecked.setOnClickListener( new View.OnClickListener() {
+                public void onClick(View v) {
+                    CheckBox cb = (CheckBox) v ;
+                    Programs program = (Programs) cb.getTag();
+                    program.setSelected(cb.isChecked());
+                }
+            });
         }
-        else{
-            cb.setChecked(false);}
+        else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        Programs program = programList.get(position);
+        holder.programTitle.setText(program.getName());
+        holder.isChecked.setText(program.getName());
+        holder.isChecked.setChecked(false);
+        holder.isChecked.setTag(program);
+
         return convertView;
     }
 
-
 }
+
+
