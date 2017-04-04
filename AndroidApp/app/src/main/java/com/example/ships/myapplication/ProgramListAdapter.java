@@ -18,6 +18,8 @@ import java.util.ArrayList;
 public class ProgramListAdapter extends ArrayAdapter<Programs> {
     ArrayList<Programs> programsItems = null;
     Context context;
+    ArrayList<String> selectedProgram = new ArrayList<String>();
+
     public ProgramListAdapter(Context context, ArrayList<Programs> resource) {
         super(context,R.layout.programs_rows,resource);
         // TODO Auto-generated constructor stub

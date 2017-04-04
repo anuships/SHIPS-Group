@@ -45,7 +45,7 @@ public class FutureProgram extends AppCompatActivity {
                     p.setValue(1);*/
             }
         });}catch (Exception e){
-            e.printStackTrace();git
+            e.printStackTrace();
         }
     }
 
@@ -71,5 +71,16 @@ public class FutureProgram extends AppCompatActivity {
     }
 
     public void selectedProgram(View view) {
+    }
+
+    public void click(View view) {
+        String s = view.getContext().toString();
+
+        int index = programsItems.indexOf(s);
+        Programs p = programsItems.get(index);
+        if(p.getValue() == 1) {
+            p.setValue(1);
+        }else
+            p.setValue(0);
     }
 }
