@@ -28,11 +28,13 @@
             android:label="Future Program" />
         <activity
             android:name=".TermsAndConditions"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Register"
-            android:exported="true"></activity>
-        <activity android:name=".RegisterSuccess"></activity>
+            android:exported="true" />
+        <activity android:name=".RegisterSuccess" />
+        <activity android:name=".ModuleSelection" />
+        <activity android:name=".ModuleSuggetion"></activity>
     </application>
 
 </manifest>
