@@ -33,7 +33,8 @@
             android:name=".Register"
             android:exported="true" />
         <activity android:name=".RegisterSuccess" />
-        <activity android:name=".ModuleSelection"></activity>
+        <activity android:name=".ModuleSelection" />
+        <activity android:name=".ModuleSuggetion" />
     </application>
 
 </manifest>
