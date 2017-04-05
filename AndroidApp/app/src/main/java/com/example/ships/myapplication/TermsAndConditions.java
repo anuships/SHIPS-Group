@@ -33,7 +33,7 @@ public class TermsAndConditions extends AppCompatActivity {
 
     public void back(View v)
     {
-
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     public void next(View v)
