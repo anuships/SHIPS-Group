@@ -23,8 +23,19 @@
         <item name="android:windowBackground">@color/myColor</item>
 
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="HiddenTitleTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="HiddenTitleTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+
+    <style name="ColorCheckBox">
+        <item name="colorAccent">	#D2691E</item>
+    </style>
 
 </resources>

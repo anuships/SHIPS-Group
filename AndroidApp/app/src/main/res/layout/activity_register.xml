@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ships.myapplication.Register">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="17dp"
+        android:textSize="30dp"
+        android:text="Registration"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="0dp"
+        android:paddingBottom="20dp"
+        android:id="@+id/linearLayout"
+        android:layout_marginBottom="29dp"
+        android:layout_marginStart="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginLeft="40dp">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/manage_but"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_toLeftOf="@+id/textView"
+            android:layout_toStartOf="@+id/textView"
+            android:background="@drawable/roundedbutton"
+            android:onClick="back"
+            android:paddingBottom="0dp"
+            android:text="Back"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/finish"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/roundedbutton"
+            android:onClick="finish"
+            android:paddingBottom="0dp"
+            android:text="Finish"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/emailText"
+            android:layout_width="434dp"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginLeft="15dp"
+            android:text="Email*" />
+
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:ems="10"
+            android:theme="@style/ColorCheckBox"
+            android:inputType="textEmailAddress"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/pwView"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password*" />
+
+        <EditText
+            android:id="@+id/pwInput"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:theme="@style/ColorCheckBox"
+            android:inputType="textPassword"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/pwConfirmView"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password" />
+
+        <EditText
+            android:id="@+id/pwConfirmInput"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:theme="@style/ColorCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/firstNameView"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="First Name*" />
+
+        <EditText
+            android:id="@+id/firstNameInput"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:theme="@style/ColorCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/lastNameView"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Last Name*" />
+
+        <EditText
+            android:id="@+id/lastNameInput"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:theme="@style/ColorCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/preferNameView"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Preferred User Name" />
+
+        <EditText
+            android:id="@+id/preferNameInput"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:theme="@style/ColorCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
