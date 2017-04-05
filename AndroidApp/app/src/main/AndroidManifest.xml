@@ -12,12 +12,12 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/HiddenTitleTheme" >
+        android:theme="@style/HiddenTitleTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/HiddenTitleTheme" >
-         <intent-filter>
+            android:theme="@style/HiddenTitleTheme">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -25,9 +25,13 @@
         </activity>
         <activity
             android:name=".FutureProgram"
-            android:label="Future Program" >
+            android:label="Future Program"></activity>
+        <activity
+            android:name=".EMDRActivity"
+            android:label="@string/title_activity_emdr"
+            android:theme="@style/HiddenTitleTheme"
+            android:exported="true">
         </activity>
-
     </application>
 
 </manifest>
