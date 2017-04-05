@@ -56,7 +56,7 @@
                 android:id="@+id/longTerm"
                 android:layout_weight="1"
                 android:background="@drawable/roundedbutton"
-                android:textColor="#FFFFFF""/>
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
 
 
