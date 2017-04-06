@@ -31,6 +31,5 @@ dependencies {
     compile 'org.achartengine:achartengine:1.2.0'
     testCompile 'junit:junit:4.12'
     compile files('lib/arduino-firmata (1).jar')
-    compile project(':usbSerialForAndroid')
     compile files('lib/usb-serial-for-android-v010.jar')
 }
