@@ -35,6 +35,10 @@
         <activity android:name=".RegisterSuccess" />
         <activity android:name=".ModuleSelection" />
         <activity android:name=".ModuleSuggestion" />
+        <activity
+            android:name=".GSRGraphActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
