@@ -34,7 +34,7 @@
             android:exported="true" />
         <activity android:name=".RegisterSuccess" />
         <activity android:name=".ModuleSelection" />
-        <activity android:name=".ModuleSuggetion" />
+        <activity android:name=".ModuleSuggestion" />
     </application>
 
 </manifest>

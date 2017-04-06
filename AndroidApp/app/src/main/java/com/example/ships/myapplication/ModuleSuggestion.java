@@ -3,7 +3,7 @@ package com.example.ships.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ModuleSuggetion extends AppCompatActivity {
+public class ModuleSuggestion extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -22,6 +22,6 @@ public class ModuleSelection extends AppCompatActivity {
     }
 
     public void selectModules(View view) {
-        startActivity(new Intent(this, ModuleSuggetion.class));
+        startActivity(new Intent(this, ModuleSuggestion.class));
     }
 }

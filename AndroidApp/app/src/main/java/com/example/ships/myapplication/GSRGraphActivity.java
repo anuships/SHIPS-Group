@@ -78,7 +78,6 @@ public class GSRGraphActivity extends AppCompatActivity {
                 while (appOn){
                     i++;
                     final int x = i;
-
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
