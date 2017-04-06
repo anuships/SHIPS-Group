@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/AndroidApp.iml" filepath="$PROJECT_DIR$/AndroidApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/usb-serial-for-android-master/usb-serial-for-android-master/usbSerialForAndroid/usbSerialForAndroid.iml" filepath="$PROJECT_DIR$/app/usb-serial-for-android-master/usb-serial-for-android-master/usbSerialForAndroid/usbSerialForAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/usb-serial-for-android-master/usb-serial-for-android-master/usbSerialForAndroid/usbSerialForAndroid.iml" filepath="$PROJECT_DIR$/app/usb-serial-for-android-master/usb-serial-for-android-master/usbSerialForAndroid/usbSerialForAndroid.iml" />
     </modules>
   </component>
 </project>
