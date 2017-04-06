@@ -7,9 +7,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="ColorCheckBox">
-        <item name="colorAccent">	#D2691E</item>
-    </style>
+
 
 
 </resources>
