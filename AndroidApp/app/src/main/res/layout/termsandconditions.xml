@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="I have read and agreed the terms and conditions"
         android:theme="@style/ColorCheckBox"
+        android:textSize="20dp"
         android:layout_marginBottom="65dp"
         android:onClick="onCheckboxClicked"
         android:layout_alignBottom="@+id/linearLayout"

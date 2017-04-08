@@ -38,7 +38,10 @@
         <activity
             android:name=".GSRGraphActivity"
             android:exported="true" />
-
+        <activity
+            android:name=".FAS"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
