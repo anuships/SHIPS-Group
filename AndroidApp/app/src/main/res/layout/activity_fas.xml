@@ -38,7 +38,6 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -305,7 +304,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="moderate anxiety"
-                android:id="@+id/q3_opt3"
+                android:id="@+id/q4opt3"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
@@ -807,7 +806,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="no anxiety"
-                android:id="@+id/q3_opt1"
+                android:id="@+id/q11_opt1"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true" />
@@ -2420,8 +2419,21 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
 
+            <Button
+                android:textSize="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Calculate"
+                android:id="@+id/submit"
+                android:onClick="calculateScore"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+
         </RadioGroup>
         </RadioGroup>
+
     </LinearLayout>
     </ScrollView>
 </RelativeLayout>
