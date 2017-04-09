@@ -2,10 +2,12 @@ package com.example.ships.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.regex.Matcher;
@@ -32,6 +34,12 @@ public class Register extends AppCompatActivity {
         EditText firstName = (EditText) findViewById(R.id.firstNameInput);
         EditText lastName = (EditText) findViewById(R.id.lastNameInput);
 
+        TextView emailtext = (TextView) findViewById(R.id.emailText);
+        TextView pwtext = (TextView) findViewById(R.id.pwView);
+        TextView comfirmpwtext = (TextView) findViewById(R.id.pwConfirmView);
+        TextView firstNametext = (TextView) findViewById(R.id.firstNameView);
+        TextView lastNametext = (TextView) findViewById(R.id.lastNameView);
+
         if (!isEmailValid(email.getText().toString()))
         {
             Context context = getApplicationContext();
@@ -39,6 +47,11 @@ public class Register extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            emailtext.setTextColor(Color.RED);
+            pwtext.setTextColor(Color.BLACK);
+            comfirmpwtext.setTextColor(Color.BLACK);
+            firstNametext.setTextColor(Color.BLACK);
+            lastNametext.setTextColor(Color.BLACK);
         }
         else if ((pw.getText().toString().length() == 0) || !pw.getText().toString().equals(comfirmpw.getText().toString()))
         {
@@ -47,6 +60,11 @@ public class Register extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            emailtext.setTextColor(Color.BLACK);
+            pwtext.setTextColor(Color.RED);
+            comfirmpwtext.setTextColor(Color.RED);
+            firstNametext.setTextColor(Color.BLACK);
+            lastNametext.setTextColor(Color.BLACK);
         }
         else if (firstName.length() == 0 || lastName.length() == 0 )
         {
@@ -55,6 +73,19 @@ public class Register extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            emailtext.setTextColor(Color.BLACK);
+            pwtext.setTextColor(Color.BLACK);
+            comfirmpwtext.setTextColor(Color.BLACK);
+            firstNametext.setTextColor(Color.BLACK);
+            lastNametext.setTextColor(Color.BLACK);
+            if (firstName.length() == 0)
+            {
+                firstNametext.setTextColor(Color.RED);
+            }
+            if (lastName.length() == 0)
+            {
+                lastNametext.setTextColor(Color.RED);
+            }
         }
         else
         {

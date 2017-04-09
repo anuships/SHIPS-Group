@@ -1,5 +1,6 @@
 package com.example.ships.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,6 @@ public class RegisterSuccess extends AppCompatActivity {
 
     public void getStart(View v)
     {
-
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }
