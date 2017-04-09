@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
@@ -25,28 +26,43 @@ public class EMDRActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        TranslateAnimation moveLeftToRight = new TranslateAnimation(0, 400, 0, 0);
-        moveLeftToRight.setDuration(1000);
+        AnimationSet ballMovementSet = new AnimationSet(true);
+
+        TranslateAnimation moveLeftToRight = new TranslateAnimation(-400, 800, 0, 0);
+        moveLeftToRight.setDuration(2000);
         moveLeftToRight.setFillAfter(true);
+        moveLeftToRight.setRepeatMode(Animation.REVERSE);
+        moveLeftToRight.setRepeatCount(10);
+        ballMovementSet.addAnimation(moveLeftToRight);
+
+//        TranslateAnimation moveRightToLeft = new TranslateAnimation(400, -800, 0, 0);
+//        moveRightToLeft.setDuration(2000);
+//        moveRightToLeft.setFillAfter(true);
+//        moveRightToLeft.setStartOffset(2000);
+//        moveRightToLeft.setRepeatCount(10);
+//        ballMovementSet.addAnimation(moveRightToLeft);
+
+ //       ballMovementSet.setRepeatCount(Animation.INFINITE);
+
+
+//        TranslateAnimation moveLeftToRight = new TranslateAnimation(0, 500, 0, 0);
+//        moveLeftToRight.setDuration(10000);
+//        moveLeftToRight.setFillAfter(true);
+//
+//        TranslateAnimation moveRightToLeft = new TranslateAnimation(500, -500, 0, 0);
+//        moveRightToLeft.setDuration(10000);
+//        moveRightToLeft.setFillAfter(true);
+//        moveRightToLeft.setRepeatCount(Animation.INFINITE);
+//
+//        TranslateAnimation moveLeftToRight2 = new TranslateAnimation(-500, 500, 0, 0);
+//        moveLeftToRight2.setDuration(10000);
+//        moveLeftToRight2.setFillAfter(true);
+
+//        TranslateAnimation ballMovement = new TranslateAnimation()
 
         Animation emdrMovement;
         LinearLayout layoutEMDRMovement = (LinearLayout) findViewById(R.id.emdrlayout);
-        layoutEMDRMovement.startAnimation(moveLeftToRight);
-
-
-//
-//        TextView testText = new TextView(this);
-//        testText.setText("Test");
-//        testText.startAnimation(moveLeftToRight);
-
-
-
-
-//        emdrMovement = AnimationUtils.loadAnimation(this, R.layout.animationemdr);
-//        emdrMovement.reset();
-//        emdrMovement.setFillAfter(true);
-//        emdrMovement.setAnimationListener((Animation.AnimationListener) this);
-//        layoutEMDRMovement.startAnimation(emdrMovement);
+        layoutEMDRMovement.startAnimation(ballMovementSet);
 
     }
 
