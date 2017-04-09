@@ -33,7 +33,7 @@ public class EMDRActivity extends AppCompatActivity {
 
         AnimationSet ballMovementSet = new AnimationSet(true);
 
-        TranslateAnimation moveLeftToRight = new TranslateAnimation(-(SCREEN_WIDTH/2), (SCREEN_WIDTH/2), 0, 0);
+        TranslateAnimation moveLeftToRight = new TranslateAnimation(-(SCREEN_WIDTH/2), (SCREEN_WIDTH/2), (SCREEN_HEIGHT/2), (SCREEN_HEIGHT/2));
         moveLeftToRight.setDuration(EMDR_DURATION);
         moveLeftToRight.setFillAfter(true);
         moveLeftToRight.setRepeatMode(Animation.REVERSE);
@@ -45,7 +45,7 @@ public class EMDRActivity extends AppCompatActivity {
         moveUpAndDown.setFillAfter(true);
         moveUpAndDown.setRepeatMode(Animation.REVERSE);
         moveUpAndDown.setRepeatCount(EMDR_REPEATS);
-        ballMovementSet.addAnimation(moveUpAndDown);
+        //ballMovementSet.addAnimation(moveUpAndDown);
 
 //        TranslateAnimation moveRightToLeft = new TranslateAnimation(400, -800, 0, 0);
 //        moveRightToLeft.setDuration(2000);
