@@ -21,7 +21,7 @@ public class EMDRActivity extends AppCompatActivity {
 
     private static final int EMDR_DURATION = 2000;
     private static final int SCREEN_WIDTH = 1000;
-    private static final int SCREEN_HEIGHT = 1000;
+    private static final int SCREEN_HEIGHT = 1800;
     private static final int EMDR_REPEATS = 10;
 
     @Override
@@ -39,6 +39,13 @@ public class EMDRActivity extends AppCompatActivity {
         moveLeftToRight.setRepeatMode(Animation.REVERSE);
         moveLeftToRight.setRepeatCount(EMDR_REPEATS);
         ballMovementSet.addAnimation(moveLeftToRight);
+
+        TranslateAnimation moveUpAndDown = new TranslateAnimation(0, 0, 0, SCREEN_HEIGHT);
+        moveUpAndDown.setDuration(3*EMDR_DURATION);
+        moveUpAndDown.setFillAfter(true);
+        moveUpAndDown.setRepeatMode(Animation.REVERSE);
+        moveUpAndDown.setRepeatCount(EMDR_REPEATS);
+        ballMovementSet.addAnimation(moveUpAndDown);
 
 //        TranslateAnimation moveRightToLeft = new TranslateAnimation(400, -800, 0, 0);
 //        moveRightToLeft.setDuration(2000);
