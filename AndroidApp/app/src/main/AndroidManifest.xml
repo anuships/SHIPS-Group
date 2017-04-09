@@ -25,16 +25,20 @@
         </activity>
         <activity
             android:name=".FutureProgram"
-            android:label="Future Program" />
+            android:label="Future Program"
+            android:exported="true"/>
         <activity
             android:name=".TermsAndConditions"
             android:exported="true" />
         <activity
             android:name=".Register"
             android:exported="true" />
-        <activity android:name=".RegisterSuccess" />
-        <activity android:name=".ModuleSelection" />
-        <activity android:name=".ModuleSuggestion" />
+        <activity android:name=".RegisterSuccess"
+            android:exported="true"/>
+        <activity android:name=".ModuleSelection"
+            android:exported="true"/>
+        <activity android:name=".ModuleSuggestion"
+            android:exported="true"/>
     </application>
 
 </manifest>

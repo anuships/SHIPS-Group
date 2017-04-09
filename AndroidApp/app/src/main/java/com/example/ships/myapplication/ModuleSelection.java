@@ -12,13 +12,6 @@ public class ModuleSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module_selection);
-
-        EditText t
-                = (EditText) findViewById(R.id.moduleSuggestionText);
-
-        //place suggestions from database
-        String s = "Text from database \nOR hardcode?";
-        t.setText(s);
     }
 
     public void selectModules(View view) {
