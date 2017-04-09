@@ -45,7 +45,7 @@ public class FutureProgram extends AppCompatActivity {
                     p.setValue(1);*/
             }
         });}catch (Exception e){
-            e.printStackTrace();git
+            e.printStackTrace();
         }
     }
 

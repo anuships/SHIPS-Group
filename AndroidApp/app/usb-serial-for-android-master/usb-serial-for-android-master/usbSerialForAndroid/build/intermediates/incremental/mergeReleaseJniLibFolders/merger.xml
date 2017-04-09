@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\Git\SHIPS-Group\AndroidApp\app\usb-serial-for-android-master\usb-serial-for-android-master\usbSerialForAndroid\src\main\jniLibs"/></dataSet><dataSet config="release"><source path="D:\Git\SHIPS-Group\AndroidApp\app\usb-serial-for-android-master\usb-serial-for-android-master\usbSerialForAndroid\src\release\jniLibs"/></dataSet></merger>

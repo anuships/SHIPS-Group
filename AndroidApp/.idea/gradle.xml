@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app/usb-serial-for-android-master/usb-serial-for-android-master/usbSerialForAndroid" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

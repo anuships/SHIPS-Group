@@ -28,9 +28,27 @@
             android:label="Future Program"></activity>
         <activity
             android:name=".EMDRActivity"
-            android:label="@string/title_activity_emdr"
             android:theme="@style/HiddenTitleTheme"
-            android:exported="true">
+            android:exported="true"/>
+        <activity
+            android:name=".TermsAndConditions"
+            android:exported="true" />
+        <activity
+            android:name=".Register"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterSuccess"
+            android:exported="true" />
+        <activity android:name=".ModuleSelection" />
+        <activity android:name=".ModuleSuggestion" />
+        <activity
+            android:name=".GSRGraphActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FAS"
+            android:exported="true"></activity>
+        <activity
+            android:name=".ShowFASResult">
         </activity>
     </application>
 
