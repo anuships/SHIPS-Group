@@ -19,6 +19,11 @@ import static com.example.ships.myapplication.R.layout.animationemdr;
 
 public class EMDRActivity extends AppCompatActivity {
 
+    private static final int EMDR_DURATION = 2000;
+    private static final int SCREEN_WIDTH = 1000;
+    private static final int SCREEN_HEIGHT = 1000;
+    private static final int EMDR_REPEATS = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +33,11 @@ public class EMDRActivity extends AppCompatActivity {
 
         AnimationSet ballMovementSet = new AnimationSet(true);
 
-        TranslateAnimation moveLeftToRight = new TranslateAnimation(-400, 800, 0, 0);
-        moveLeftToRight.setDuration(2000);
+        TranslateAnimation moveLeftToRight = new TranslateAnimation(-(SCREEN_WIDTH/2), (SCREEN_WIDTH/2), 0, 0);
+        moveLeftToRight.setDuration(EMDR_DURATION);
         moveLeftToRight.setFillAfter(true);
         moveLeftToRight.setRepeatMode(Animation.REVERSE);
-        moveLeftToRight.setRepeatCount(10);
+        moveLeftToRight.setRepeatCount(EMDR_REPEATS);
         ballMovementSet.addAnimation(moveLeftToRight);
 
 //        TranslateAnimation moveRightToLeft = new TranslateAnimation(400, -800, 0, 0);
@@ -60,7 +65,6 @@ public class EMDRActivity extends AppCompatActivity {
 
 //        TranslateAnimation ballMovement = new TranslateAnimation()
 
-        Animation emdrMovement;
         LinearLayout layoutEMDRMovement = (LinearLayout) findViewById(R.id.emdrlayout);
         layoutEMDRMovement.startAnimation(ballMovementSet);
 
