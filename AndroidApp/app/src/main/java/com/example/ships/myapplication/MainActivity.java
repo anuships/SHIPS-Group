@@ -2,13 +2,8 @@ package com.example.ships.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.*;
-import android.view.Window;
 import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickLogin(View view) {
-        startActivity(new Intent(this, FutureProgram.class));
+        startActivity(new Intent(this, XTermsModuelsList.class));
+    }
+    public void register(View view) {
+        startActivity(new Intent(this, TermsAndConditions.class));
     }
 }
