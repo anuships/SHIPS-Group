@@ -81,7 +81,7 @@ public class GSRGraphActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            series.add(x, x);
+                            series.add(x, 1);
                             graphView.repaint();
                         }
                     });
@@ -97,6 +97,6 @@ public class GSRGraphActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        appOn = false;
+
     }
 }

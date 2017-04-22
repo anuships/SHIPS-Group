@@ -15,4 +15,10 @@
     </string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_register">Register</string>
+
+    <!-- Strings related to relaxation audio -->
+    <string name="play"><![CDATA[>]]></string>
+    <string name="rewind"><![CDATA[<<]]></string>
+    <string name="forward"><![CDATA[>>]]></string>
+    <string name="pause">||</string>
 </resources>
