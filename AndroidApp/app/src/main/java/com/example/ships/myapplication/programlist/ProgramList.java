@@ -1,4 +1,4 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.programlist;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
+
+import com.example.ships.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

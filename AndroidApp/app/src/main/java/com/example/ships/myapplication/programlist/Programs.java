@@ -1,4 +1,4 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.programlist;
 
 /**
  * Created by Jyun on 2017/04/03.

@@ -1,8 +1,10 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.FAS;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.ships.myapplication.R;
 
 public class ShowFASResult extends AppCompatActivity {
     TextView tv;

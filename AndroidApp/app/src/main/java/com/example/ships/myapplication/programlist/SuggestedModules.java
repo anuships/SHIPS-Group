@@ -1,4 +1,4 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.programlist;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.programlist.ProgramList;
 
 public class SuggestedModules extends AppCompatActivity {

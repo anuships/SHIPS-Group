@@ -1,4 +1,4 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.therapeutictools;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.ships.myapplication.EMDR.EMDRActivity;
+import com.example.ships.myapplication.GSR.GSRGraphActivity;
+import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.relaxaudio.RelaxationAudioActivity;
 
 public class TherapeuticTools extends AppCompatActivity {
 

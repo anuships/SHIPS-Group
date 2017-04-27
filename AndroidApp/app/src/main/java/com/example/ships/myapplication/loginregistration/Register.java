@@ -1,4 +1,4 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.loginregistration;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.ships.myapplication.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

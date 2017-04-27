@@ -1,9 +1,13 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.programlist;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.ships.myapplication.FAS.FAS;
+import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.therapeutictools.TherapeuticTools;
 
 public class MyProgram extends AppCompatActivity {
 

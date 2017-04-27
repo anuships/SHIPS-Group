@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#AAE2FF"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.ships.myapplication.EMDRActivity"
+    tools:context="com.example.ships.myapplication.EMDR.EMDRActivity"
     tools:showIn="@layout/activity_emdr">
 
 </android.support.constraint.ConstraintLayout>

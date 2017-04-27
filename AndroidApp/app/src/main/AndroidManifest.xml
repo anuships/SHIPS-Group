@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/HiddenTitleTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".loginregistration.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/HiddenTitleTheme">
             <intent-filter>
@@ -24,36 +24,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FutureProgram"
+            android:name=".programlist.FutureProgram"
             android:label="Future Program"
             android:exported="true"/>
         <activity
-            android:name=".EMDRActivity"
+            android:name=".EMDR.EMDRActivity"
             android:exported="true"
             android:theme="@style/HiddenTitleTheme" />
         <activity
-            android:name=".TermsAndConditions"
+            android:name=".loginregistration.TermsAndConditions"
             android:exported="true" />
         <activity
-            android:name=".Register"
+            android:name=".loginregistration.Register"
             android:exported="true" />
-        <activity android:name=".RegisterSuccess"
+        <activity android:name=".loginregistration.RegisterSuccess"
             android:exported="true"/>
-        <activity android:name=".ModuleSelection"
+        <activity android:name=".programlist.ModuleSelection"
             android:exported="true"/>
-        <activity android:name=".ModuleSuggestion"
+        <activity android:name=".programlist.ModuleSuggestion"
             android:exported="true"/>
         <activity
-            android:name=".GSRGraphActivity"
+            android:name=".GSR.GSRGraphActivity"
             android:exported="true" />
         <activity
-            android:name=".FAS"
+            android:name=".FAS.FAS"
             android:exported="true" />
         <activity
-            android:name=".RelaxationAudioActivity"
+            android:name=".relaxaudio.RelaxationAudioActivity"
             android:exported="true"></activity>
-        <activity android:name=".ShowFASResult"></activity>
-
+        <activity android:name=".FAS.ShowFASResult"></activity>
+        <activity
+            android:name=".loginregistration.LoginActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

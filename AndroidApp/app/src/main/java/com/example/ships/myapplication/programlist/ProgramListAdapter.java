@@ -1,4 +1,4 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.programlist;
 
 import android.widget.ArrayAdapter;
 
@@ -13,13 +13,15 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.ships.myapplication.R;
+
 import java.util.ArrayList;
 
 public class ProgramListAdapter extends ArrayAdapter<Programs> {
     ArrayList<Programs> programsItems = null;
     Context context;
     public ProgramListAdapter(Context context, ArrayList<Programs> resource) {
-        super(context,R.layout.programs_rows,resource);
+        super(context, R.layout.programs_rows,resource);
         // TODO Auto-generated constructor stub
         this.context = context;
         this.programsItems = resource;
