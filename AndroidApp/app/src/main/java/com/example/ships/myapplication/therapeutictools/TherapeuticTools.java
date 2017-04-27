@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.ships.myapplication.EMDR.EMDRActivity;
+
 public class TherapeuticTools extends AppCompatActivity {
 
     @Override

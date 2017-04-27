@@ -6,10 +6,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.example.ships.myapplication.programlist.ProgramListAdapter;
+import com.example.ships.myapplication.programlist.Programs;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FutureProgram extends AppCompatActivity {
     ListView lv;
