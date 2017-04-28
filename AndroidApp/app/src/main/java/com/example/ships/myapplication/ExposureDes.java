@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class ExposureDes extends AppCompatActivity {
-
+//Kevin's protection test
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
