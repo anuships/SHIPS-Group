@@ -8,8 +8,8 @@
         android:color="#006AB3"/>
 
     <size
-        android:width="120dp"
-        android:height="120dp"/>
+        android:width="@dimen/emdr_circle_diameter"
+        android:height="@dimen/emdr_circle_diameter"/>
 </shape>
 <!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
 

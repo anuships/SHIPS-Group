@@ -8,12 +8,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ships.myapplication.loginregistration.LoginActivity"
+    tools:context="com.example.ships.myapplication.LoginActivity"
     >
 
     <TextView
         android:id="@+id/listTitle"
-        android:layout_width="fill_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:paddingTop="10dp"

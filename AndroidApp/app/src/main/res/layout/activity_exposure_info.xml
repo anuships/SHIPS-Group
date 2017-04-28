@@ -34,28 +34,13 @@
             android:textSize="20dp"/>
 
         <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/exposure_introduction"
-        android:textSize="15dp"/>
-
-        <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Description"
-            android:textStyle="bold"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/exposure_description"
+            android:layout_marginTop="30dp"
+            android:text="@string/exposure_introduction"
             android:textSize="15dp"/>
+
 
 
     </LinearLayout>
@@ -67,6 +52,7 @@
         android:text="Start"
         android:background="@drawable/roundedbutton"
         android:layout_marginBottom="17dp"
+        android:onClick="toDescription"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ships.myapplication.relaxaudio.RelaxationAudioActivity">
+    tools:context="com.example.ships.myapplication.RelaxationAudioActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -38,7 +38,8 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="60dp"
+                android:layout_width="0dp"
+                android:layout_weight=".15"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
@@ -51,7 +52,8 @@
 
             <SeekBar
                 android:id="@+id/seekBar"
-                android:layout_width="264dp"
+                android:layout_width="0dp"
+                android:layout_weight=".7"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -60,7 +62,8 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="60dp"
+                android:layout_width="0dp"
+                android:layout_weight=".15"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:background="#006BA3"

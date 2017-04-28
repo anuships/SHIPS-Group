@@ -33,9 +33,8 @@
     <style name="HiddenTitleTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-
     <style name="ColorCheckBox">
-        <item name="colorAccent">	#D2691E</item>
+        <item name="colorAccent">#D2691E</item>
     </style>
 
 

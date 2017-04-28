@@ -10,10 +10,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.ships.myapplication.loginregistration.MainActivity"
+    tools:context="com.example.ships.myapplication.MainActivity"
     tools:showIn="@layout/activity_main"
-    android:background="@drawable/gradient"
-    android:weightSum="100">
+    android:background="@drawable/gradient">
 
     <LinearLayout
         android:orientation="vertical"
@@ -26,14 +25,14 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 app:srcCompat="@drawable/ships_logo"
                 android:id="@+id/imageView"
                 android:elevation="2dp"
-                android:layout_height="250dp"
+                android:layout_height="300dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
-                tools:layout_height="250dp"
+                tools:layout_height="300dp"
                 android:layout_gravity="center"
                 android:background="#FFFFFF"
                 android:padding="3dp"
@@ -44,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="50dp"
                 android:layout_marginTop="10dp" />
         </LinearLayout>
 
@@ -80,6 +79,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
+                android:onClick="register"
                 android:textColor="#FFFFFF" />
 
             <Button
