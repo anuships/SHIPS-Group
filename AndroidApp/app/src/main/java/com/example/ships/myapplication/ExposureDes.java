@@ -7,7 +7,6 @@ import android.view.View;
 
 public class ExposureDes extends AppCompatActivity {
 
-//Test
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
