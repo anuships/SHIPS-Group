@@ -37,6 +37,7 @@
         android:text="Start"
         android:background="@drawable/roundedbutton"
         android:layout_marginBottom="17dp"
+        android:onClick="startTherapy"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

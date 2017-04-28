@@ -67,10 +67,11 @@
             android:exported="true" />
         <activity
             android:name=".ExposureInfo"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ExposureDes"
-            android:exported="true"></activity>
+            android:exported="true" />
+        <activity android:name=".ExposureTherapy"></activity>
     </application>
 
 </manifest>
