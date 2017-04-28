@@ -32,5 +32,4 @@ dependencies {
     compile 'com.jjoe64:graphview:4.2.1'
     compile 'org.achartengine:achartengine:1.2.0'
     testCompile 'junit:junit:4.12'
-    compile files('C:/Users/Nawespet/Documents/UNIWork/Year4/COMP4500/SHIPS-Group/AndroidApp/lib/usb-serial-for-android-v010.jar')
 }
