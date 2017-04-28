@@ -32,7 +32,10 @@
             android:exported="true"
             android:theme="@style/HiddenTitleTheme" />
         <activity
-            android:name=".loginregistration.TermsAndConditions"
+        android:name=".loginregistration.TermsAndConditions"
+        android:exported="true" />
+        <activity
+            android:name=".Exposure.ExposureInfo"
             android:exported="true" />
         <activity
             android:name=".loginregistration.Register"

@@ -1,4 +1,4 @@
-package com.example.ships.myapplication.FAS;
+package com.example.ships.myapplication.Exposure;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
