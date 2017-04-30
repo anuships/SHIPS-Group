@@ -1,6 +1,5 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.relaxationAudio;
 
-import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +9,8 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.ships.myapplication.R;
 
 import java.util.concurrent.TimeUnit;
 

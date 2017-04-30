@@ -1,4 +1,4 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.EMDR;
 
 import android.graphics.Point;
 import android.graphics.drawable.shapes.OvalShape;
@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.ships.myapplication.R;
 
 import static com.example.ships.myapplication.R.layout.activity_emdr;
 import static com.example.ships.myapplication.R.layout.animationemdr;

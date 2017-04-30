@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/HiddenTitleTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".homepageAndRegistration.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/HiddenTitleTheme">
             <intent-filter>
@@ -24,54 +24,54 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".XTermsModuelsList"
+            android:name=".modules.XTermsModuelsList"
             android:exported="true"
             android:label="Future Program" />
         <activity
-            android:name=".EMDRActivity"
+            android:name=".EMDR.EMDRActivity"
             android:exported="true"
             android:theme="@style/HiddenTitleTheme" />
         <activity
-            android:name=".TermsAndConditions"
+            android:name=".homepageAndRegistration.TermsAndConditions"
             android:exported="true" />
         <activity
-            android:name=".Register"
+            android:name=".homepageAndRegistration.Register"
             android:exported="true" />
         <activity
-            android:name=".RegisterSuccess"
+            android:name=".homepageAndRegistration.RegisterSuccess"
             android:exported="true" />
         <activity
-            android:name=".ProgramList"
+            android:name=".modules.ProgramList"
             android:exported="true" />
         <activity
-            android:name=".GSRGraphActivity"
+            android:name=".GSR.GSRGraphActivity"
             android:exported="true" />
         <activity
-            android:name=".FAS"
+            android:name=".FAS.FAS"
             android:exported="true" />
         <activity
-            android:name=".RelaxationAudioActivity"
+            android:name=".relaxationAudio.RelaxationAudioActivity"
             android:exported="true" />
-        <activity android:name=".ShowFASResult" />
+        <activity android:name=".FAS.ShowFASResult" />
         <activity
-            android:name=".SuggestedModules"
-            android:exported="true" />
-        <activity
-            android:name=".MyProgram"
+            android:name=".modules.ExpandableListDataPump$SuggestedModules"
             android:exported="true" />
         <activity
-            android:name=".TherapeuticTools"
+            android:name=".modules.MyProgram"
             android:exported="true" />
         <activity
-            android:name=".EMDRActivitySettings"
+            android:name=".modules.Programs$TherapeuticTools"
             android:exported="true" />
         <activity
-            android:name=".ExposureInfo"
+            android:name=".EMDR.EMDRActivitySettings"
             android:exported="true" />
         <activity
-            android:name=".ExposureDes"
+            android:name=".exposure.ExposureInfo"
             android:exported="true" />
-        <activity android:name=".ExposureTherapy"></activity>
+        <activity
+            android:name=".exposure.ExposureDes"
+            android:exported="true" />
+        <activity android:name=".exposure.ExposureTherapy"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.modules;
 
 /**
  * Created by Jyun on 2017/04/10.
@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
+import com.example.ships.myapplication.R;
 
 public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;

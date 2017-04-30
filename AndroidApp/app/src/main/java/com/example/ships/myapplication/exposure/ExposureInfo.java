@@ -1,9 +1,11 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.exposure;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.ships.myapplication.R;
 
 public class ExposureInfo extends AppCompatActivity {
 

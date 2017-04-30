@@ -1,4 +1,4 @@
-package com.example.ships.myapplication;
+package com.example.ships.myapplication.homepageAndRegistration;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
+
+import com.example.ships.myapplication.R;
 
 public class TermsAndConditions extends AppCompatActivity {
     boolean readAndAgree = false;
