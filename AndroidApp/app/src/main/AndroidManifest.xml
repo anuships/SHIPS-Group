@@ -77,7 +77,8 @@
         <activity android:name=".OtherInterfaces.ContactUs" />
         <activity android:name=".OtherInterfaces.ThereapyFactsheets" />
         <activity android:name=".OtherInterfaces.FAQs" />
-        <activity android:name=".OtherInterfaces.FindOutMore"></activity>
+        <activity android:name=".OtherInterfaces.FindOutMore" />
+        <activity android:name=".OtherInterfaces.FindPassword"></activity>
     </application>
 
 </manifest>
