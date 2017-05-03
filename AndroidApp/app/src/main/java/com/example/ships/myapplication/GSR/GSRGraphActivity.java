@@ -1,104 +1,240 @@
-package com.example.ships.myapplication.GSR;
+ package com.example.ships.myapplication.GSR;
 
-import android.graphics.Color;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbDeviceConnection;
+import android.hardware.usb.UsbManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import java.io.IOException;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.example.ships.myapplication.R;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.Viewport;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+import com.felhr.usbserial.UsbSerialInterface;
+import com.felhr.usbserial.UsbSerialDevice;
 
-import org.achartengine.ChartFactory;
-import org.achartengine.GraphicalView;
-import org.achartengine.chart.PointStyle;
-import org.achartengine.model.XYMultipleSeriesDataset;
-import org.achartengine.model.XYSeries;
-import org.achartengine.renderer.XYMultipleSeriesRenderer;
-import org.achartengine.renderer.XYSeriesRenderer;
-import org.shokai.firmata.ArduinoFirmata;
+
 public class GSRGraphActivity extends AppCompatActivity {
-    private static final Random RANDOM = new Random();
-    private int lastX = 0;
-    private GraphicalView graphView;
-    private XYMultipleSeriesDataset dataset;
-    private XYSeries series;
+    UsbDevice device = null;
+    IntentFilter filter;
+    UsbDeviceConnection connection;
+    UsbManager usbManager;
+    GSRLineGraph lineGraph;
+    UsbSerialDevice serialPort;
+    boolean serialUp = false;
+    boolean haveBaseGSR = false;
     boolean appOn = true;
+    boolean appHasFocus = true;
+    int point = 0;
+    TextView heartRateDisplay;
+    private static final String ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION";
+    UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.UsbReadCallback() {
+        //Defining a Callback which triggers whenever data is read.
+        @Override
+        public void onReceivedData(byte[] arg0) {
+            String data;
+            try{
+                data = new String(arg0, "UTF-8");
+                if (data.contains("=")){
+                    ArrayList<String>  dataPoints = new ArrayList<>();
+                    for (String dat : data.split("G")){
+                        String[] hSplit = dat.split("H");
+                        Collections.addAll(dataPoints, hSplit);
+                    }
+                    for (String s : dataPoints) {
+                        if (s.length() > 1 && s.contains("=")) {
+                            if (s.contains("B")) {
+                                data = s.substring(s.indexOf('=') + 1, s.length());
+                                double val = Double.parseDouble(data);
+                                lineGraph.addBaseLine(val);
+                                haveBaseGSR = true;
+                            }else if (s.contains("C")){
+                                data = s.substring(s.indexOf('=') + 1, s.length());
+                                double val = Double.parseDouble(data);
+                                point++;
+                                lineGraph.addPoint(point, val);
+                            }else if (s.contains("R")){
+                                data = s.substring(s.indexOf('=') + 1, s.length());
+                                double val = Double.parseDouble(data);
+                                if (heartRateDisplay != null) {
+                                    heartRateDisplay.setText(Double.toString(val));
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
+    public void checkForArduinoUSB(){
+        if (!serialUp) {
+            try {
+                if (usbManager == null) {
+                    usbManager = (UsbManager) getSystemService(GSRGraphActivity.USB_SERVICE);
+                }
+                HashMap usbDevices = usbManager.getDeviceList();
+                if (!usbDevices.isEmpty()) {
+                    for (Map.Entry<String, UsbDevice> entry : usbManager.getDeviceList().entrySet()) {
+                        device = entry.getValue();
+                        int deviceVID = device.getVendorId();
+                        if (deviceVID == 6790) {
+                            PendingIntent pi = PendingIntent.getBroadcast(this, 0,
+                                    new Intent(ACTION_USB_PERMISSION), 0);
+                            usbManager.requestPermission(device, pi);
+                            break;
+                        } else {
+                            connection = null;
+                            device = null;
+                        }
+                    }
+                }
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void clickStart(View view) {
+        checkForArduinoUSB();
+    }
+
+    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            try {
+                if (intent.getAction().equals(ACTION_USB_PERMISSION)) {
+                    boolean granted = intent.getExtras().getBoolean(UsbManager.EXTRA_PERMISSION_GRANTED);
+                    if (granted && !serialUp) {
+                        if (device != null){
+                            connection = usbManager.openDevice(device);
+                            serialPort = UsbSerialDevice.createUsbSerialDevice(device, connection);
+                            if (serialPort != null) {
+                                if (serialPort.open()) {
+                                    serialPort.setBaudRate(9600);
+                                    serialPort.setDataBits(UsbSerialInterface.DATA_BITS_8);
+                                    serialPort.setStopBits(UsbSerialInterface.STOP_BITS_1);
+                                    serialPort.setParity(UsbSerialInterface.PARITY_NONE);
+                                    serialPort.setFlowControl(UsbSerialInterface.FLOW_CONTROL_OFF);
+                                    serialPort.read(mCallback);
+                                    serialUp = true;
+                                } else {
+                                    System.out.println("SERIAL PORT NOT OPEN");
+                                }
+                            }else{
+                                System.out.println("SERIAL PORT NULL");
+                            }
+                        } else {
+                            System.out.println("DEVICE NULL");
+                        }
+                    } else {
+                        System.out.println("PERMISSION NOT GRANTED");
+                    }
+                } else if (intent.getAction().equals(UsbManager.ACTION_USB_DEVICE_ATTACHED)) {
+                          checkForArduinoUSB();
+                } else if (intent.getAction().equals(UsbManager.ACTION_USB_DEVICE_DETACHED)) {
+                    serialPort.close();
+                    serialUp = false;
+                }
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (usbManager == null){
+            usbManager = (UsbManager) getSystemService(GSRGraphActivity.USB_SERVICE);
+        }
+        lineGraph = new GSRLineGraph(this);
+        lineGraph.setXViewSize(30.0);
         setContentView(R.layout.activity_gsrgraph);
-        series = new XYSeries("London Temperature hourly");
-        int hour = 0;
-        for (int i = 0; i < 10; i++) {
-            series.add(hour++, i*6);
-        }
-
-        XYSeriesRenderer renderer = new XYSeriesRenderer();
-        renderer.setLineWidth(2);
-        renderer.setColor(Color.RED);
-        renderer.setDisplayBoundingPoints(true);
-        renderer.setPointStyle(PointStyle.CIRCLE);
-        renderer.setPointStrokeWidth(3);
-        XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer();
-        mRenderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00));
-        mRenderer.addSeriesRenderer(renderer);
-        mRenderer.setPanEnabled(false, false);
-        mRenderer.setYAxisMax(35);
-        mRenderer.setYAxisMin(0);
-        mRenderer.setShowGrid(true); // we show the grid
-        dataset = new XYMultipleSeriesDataset();
-        dataset.addSeries(series);
-        graphView = ChartFactory.getLineChartView(this, dataset, mRenderer);
-
+        heartRateDisplay = (TextView) findViewById(R.id.heartRateText);
         LinearLayout chartLyt = (LinearLayout) findViewById(R.id.chart);
-        chartLyt.addView(graphView,0);
-        ArduinoFirmata arduino = new ArduinoFirmata(this);
-        Toast.makeText(this,"HI", Toast.LENGTH_LONG).show();
-
-        try{
-            arduino.connect();
-            System.out.println("WORKED!");
-            Toast.makeText(this,"CONNECTED TO ARDUINO", Toast.LENGTH_LONG).show();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        chartLyt.addView(lineGraph.getGraphView(),0);
+        filter = new IntentFilter(ACTION_USB_PERMISSION);
+        registerReceiver(broadcastReceiver, filter);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int i = 0;
+                while (appOn) {
+                    if (appHasFocus) {
+                        String cur = "GC";
+                        String base = "GB";
+                        String heart = "HR";
+                        if (serialPort != null) {
+                            serialPort.write(cur.getBytes());
+                            try {
+                                Thread.sleep(800);
+                                if (!haveBaseGSR) {
+                                    serialPort.write(base.getBytes());
+                                    Thread.sleep(800);
+                                }
+                                serialPort.write(heart.getBytes());
+                                Thread.sleep(800);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
 
-                while (appOn){
-                    i++;
-                    final int x = i;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            series.add(x, x);
-                            graphView.repaint();
                         }
-                    });
-                    try {
-                        Thread.sleep(600);
-                    } catch (InterruptedException e) {
-                        // manage error ...
+                    }else{
+                        try{
+                            Thread.sleep(1000);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
         }).start();
+        appHasFocus = true;
     }
     @Override
     protected void onResume() {
         super.onResume();
-        appOn = false;
+        if (filter != null) {
+            try {
+                this.registerReceiver(broadcastReceiver, filter);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        appHasFocus = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try{
+            this.unregisterReceiver(broadcastReceiver);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        appHasFocus = false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            this.unregisterReceiver(broadcastReceiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        appHasFocus = false;
     }
 }
