@@ -41,4 +41,7 @@
     <string name="exposure_introduction">A very long description of systematic desensitization --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</string>
     <string name="exposure_description">A very detailed description -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</string>
     <string name="find_password">Please key in your registered E-mail address, and a temporary code will be emailed to you</string>
+    <string name="title_activity_user_profile">UserProfile</string>
+    <string name="change_password"><u>Change Password</u></string>
+    <string name="updated_user_information"><u>Update User Information</u></string>
 </resources>

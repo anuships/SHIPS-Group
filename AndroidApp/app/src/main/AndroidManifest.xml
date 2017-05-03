@@ -14,17 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/HiddenTitleTheme">
         <activity
-
             android:name=".homepageAndRegistration.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/HiddenTitleTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".modules.XTermsModuelsList"
             android:exported="true"
@@ -45,7 +43,6 @@
         <activity
             android:name=".modules.ProgramList"
             android:exported="true" />
-
         <activity
             android:name=".FAS.FAS"
             android:exported="true" />
@@ -69,17 +66,19 @@
             android:name=".exposure.ExposureInfo"
             android:exported="true" />
         <activity
-                    android:name=".GSR.GSRGraphActivity"
-                    android:exported="true">
-                    <intent-filter>
-                        <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-                    </intent-filter>
-                    <meta-data
-                        android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
-                        android:resource="@xml/device_filter" />
-                    <intent-filter>
-                        <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
-                    </intent-filter>
+            android:name=".GSR.GSRGraphActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".exposure.ExposureDes"
@@ -94,7 +93,8 @@
         <activity android:name=".OtherInterfaces.FindPassword" />
         <activity android:name=".OtherInterfaces.Records" />
         <activity android:name=".OtherInterfaces.SystematicDesensitation" />
-        <activity android:name=".OtherInterfaces.Treatments"></activity>
+        <activity android:name=".OtherInterfaces.Treatments" />
+        <activity android:name=".OtherInterfaces.UserProfile"></activity>
     </application>
 
 </manifest>
