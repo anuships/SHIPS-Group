@@ -105,7 +105,8 @@
                 android:paddingBottom="0dp"
                 android:textColor="#FFFFFF"
                 android:layout_gravity="center"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false"
+                android:onClick="goToFAQs"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -19,4 +19,8 @@ public class ContactUs extends AppCompatActivity {
     public void goToHomePage(View view) {
         startActivity(new Intent(this, MainActivity.class));
     }
+
+    public void goToFAQs(View view) {
+        startActivity(new Intent(this, FAQs.class));
+    }
 }

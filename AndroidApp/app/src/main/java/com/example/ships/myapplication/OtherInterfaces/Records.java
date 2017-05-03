@@ -15,5 +15,6 @@ public class Records extends AppCompatActivity {
     }
 
     public void goBack(View view) {
+        super.onBackPressed();
     }
 }

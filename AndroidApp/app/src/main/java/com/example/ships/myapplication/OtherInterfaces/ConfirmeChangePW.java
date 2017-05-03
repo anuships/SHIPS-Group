@@ -1,5 +1,6 @@
 package com.example.ships.myapplication.OtherInterfaces;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,4 +16,7 @@ public class ConfirmeChangePW extends AppCompatActivity {
     }
 
 
+    public void goToUserProfile(View view) {
+        startActivity(new Intent(this, UserProfile.class));
+    }
 }

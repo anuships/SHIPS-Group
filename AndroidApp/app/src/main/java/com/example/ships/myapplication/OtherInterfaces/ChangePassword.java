@@ -17,4 +17,7 @@ public class ChangePassword extends AppCompatActivity {
     public void cencel(View view) {
         super.onBackPressed();
     }
+
+    public void confirmChangePassword(View view) {
+    }
 }

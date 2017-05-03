@@ -34,6 +34,7 @@
                 android:paddingBottom="0dp"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="40dp"
+                android:onClick="goToUserProfile"
                 android:layout_gravity="center" />
         </LinearLayout>
 

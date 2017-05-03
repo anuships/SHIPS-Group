@@ -15,5 +15,6 @@ public class SystematicDesensitation extends AppCompatActivity {
     }
 
     public void goBack(View view) {
+        super.onBackPressed();
     }
 }
