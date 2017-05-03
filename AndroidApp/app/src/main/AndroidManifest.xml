@@ -80,7 +80,8 @@
         <activity android:name=".OtherInterfaces.FindOutMore" />
         <activity android:name=".OtherInterfaces.FindPassword" />
         <activity android:name=".OtherInterfaces.Records" />
-        <activity android:name=".OtherInterfaces.SystematicDesensitation"></activity>
+        <activity android:name=".OtherInterfaces.SystematicDesensitation" />
+        <activity android:name=".OtherInterfaces.Treatments"></activity>
     </application>
 
 </manifest>
