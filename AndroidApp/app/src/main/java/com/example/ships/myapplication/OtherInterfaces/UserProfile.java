@@ -22,8 +22,7 @@ public class UserProfile extends AppCompatActivity {
     }
 
     public void goToUpdateUserInformation(View view) {
-        //TBD
-        //startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, UpdateUserDetail.class));
     }
 
     public void goToSuggestedModule(View view) {

@@ -16,6 +16,7 @@ public class UpdateUserDetail extends AppCompatActivity {
     }
 
     public void cencel(View view) {
+        super.onBackPressed();
     }
 
     public void updateUserDetail(View view) {
