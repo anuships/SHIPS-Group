@@ -72,7 +72,8 @@
             android:name=".exposure.ExposureDes"
             android:exported="true" />
         <activity android:name=".exposure.ExposureTherapy" />
-        <activity android:name=".OtherInterfaces.ChangePassword"></activity>
+        <activity android:name=".OtherInterfaces.ChangePassword" />
+        <activity android:name=".OtherInterfaces.ConfirmeChangePW"></activity>
     </application>
 
 </manifest>
