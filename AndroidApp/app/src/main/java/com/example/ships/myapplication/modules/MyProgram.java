@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.example.ships.myapplication.FAS.FAS;
 import com.example.ships.myapplication.OtherInterfaces.Records;
+import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.R;
 
@@ -19,7 +20,7 @@ public class MyProgram extends AppCompatActivity {
     }
 
     public void goToFactSheet(View view) {
-        //startActivity(new Intent(this, classname.class));
+        startActivity(new Intent(this, ThereapyFactsheets.class));
     }
 
     public void goToSelfAssessment(View view) {

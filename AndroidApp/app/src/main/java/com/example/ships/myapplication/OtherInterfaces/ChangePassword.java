@@ -1,5 +1,6 @@
 package com.example.ships.myapplication.OtherInterfaces;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,5 +20,6 @@ public class ChangePassword extends AppCompatActivity {
     }
 
     public void confirmChangePassword(View view) {
+        startActivity(new Intent(this, ConfirmeChangePW.class));
     }
 }
