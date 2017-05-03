@@ -74,7 +74,8 @@
         <activity android:name=".exposure.ExposureTherapy" />
         <activity android:name=".OtherInterfaces.ChangePassword" />
         <activity android:name=".OtherInterfaces.ConfirmeChangePW" />
-        <activity android:name=".OtherInterfaces.ContactUs"></activity>
+        <activity android:name=".OtherInterfaces.ContactUs" />
+        <activity android:name=".OtherInterfaces.ThereapyFactsheets"></activity>
     </application>
 
 </manifest>
