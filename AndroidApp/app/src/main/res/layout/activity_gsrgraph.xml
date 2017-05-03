@@ -65,7 +65,7 @@
             android:id="@+id/button6"
             android:layout_width="match_parent"
             android:onClick="clickStart"
-            android:background="@drawable/roundedbutton"
+            android:background="@drawable/roundedbuttonstates"
             android:layout_height="50dp"
             android:layout_margin="7dp"
             android:textColor="#FFFFFF"
