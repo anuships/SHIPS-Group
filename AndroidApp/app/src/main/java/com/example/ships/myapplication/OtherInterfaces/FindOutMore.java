@@ -6,13 +6,17 @@ import android.view.View;
 
 import com.example.ships.myapplication.R;
 
-public class ConfirmeChangePW extends AppCompatActivity {
+public class FindOutMore extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirme_change_pw);
+        setContentView(R.layout.activity_program_and_service);
     }
 
+    public void goToHomePage(View view) {
+    }
 
+    public void goToFAQs(View view) {
+    }
 }
