@@ -79,7 +79,8 @@
         <activity android:name=".OtherInterfaces.FAQs" />
         <activity android:name=".OtherInterfaces.FindOutMore" />
         <activity android:name=".OtherInterfaces.FindPassword" />
-        <activity android:name=".OtherInterfaces.Records"></activity>
+        <activity android:name=".OtherInterfaces.Records" />
+        <activity android:name=".OtherInterfaces.SystematicDesensitation"></activity>
     </application>
 
 </manifest>
