@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.modules.ExpandableListDataPump;
 
@@ -18,6 +19,6 @@ public class RegisterSuccess extends AppCompatActivity {
 
     public void getStart(View v)
     {
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, UserProfile.class));
     }
 }
