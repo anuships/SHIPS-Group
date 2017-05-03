@@ -21,6 +21,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="17dp"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -28,10 +29,15 @@
         android:layout_marginTop="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="factsheet sample contents"/>
+            android:textSize="18dp"
+            android:text="factsheet sample contents \nplease change this content in future"/>
+        </ScrollView>
     </LinearLayout>
 
     <LinearLayout
