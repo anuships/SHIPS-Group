@@ -94,7 +94,8 @@
         <activity android:name=".OtherInterfaces.Records" />
         <activity android:name=".OtherInterfaces.SystematicDesensitation" />
         <activity android:name=".OtherInterfaces.Treatments" />
-        <activity android:name=".OtherInterfaces.UserProfile"></activity>
+        <activity android:name=".OtherInterfaces.UserProfile" />
+        <activity android:name=".OtherInterfaces.UpdateUserDetail"></activity>
     </application>
 
 </manifest>

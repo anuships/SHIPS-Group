@@ -18,6 +18,6 @@ public class RegisterSuccess extends AppCompatActivity {
 
     public void getStart(View v)
     {
-        startActivity(new Intent(this, ExpandableListDataPump.SuggestedModules.class));
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }

@@ -6,8 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.example.ships.myapplication.OtherInterfaces.ContactUs;
+import com.example.ships.myapplication.OtherInterfaces.FindOutMore;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.modules.XTermsModuelsList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,9 +26,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickLogin(View view) {
-        startActivity(new Intent(this, XTermsModuelsList.class));
+        startActivity(new Intent(this, LoginActivity.class));
     }
     public void register(View view) {
         startActivity(new Intent(this, TermsAndConditions.class));
+    }
+
+    public void goToFindOutMore(View view) {
+        startActivity(new Intent(this, FindOutMore.class));
+    }
+
+    public void goToContactUs(View view) {
+        startActivity(new Intent(this, ContactUs.class));
     }
 }

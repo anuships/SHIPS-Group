@@ -3,6 +3,7 @@ package com.example.ships.myapplication.homepageAndRegistration;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -29,7 +30,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ships.myapplication.OtherInterfaces.FindPassword;
+import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.modules.ExpandableListDataPump;
+import com.example.ships.myapplication.modules.MyProgram;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -279,6 +284,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
+    }
+
+    public void goToUserProfile(View view) {
+        startActivity(new Intent(this, UserProfile.class));
+    }
+
+    public void goToForgetPassword(View view) {
+        startActivity(new Intent(this, FindPassword.class));
     }
 
 

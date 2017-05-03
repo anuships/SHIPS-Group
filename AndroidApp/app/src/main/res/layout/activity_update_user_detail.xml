@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ships.myapplication.OtherInterfaces.UpdateUserDetail">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update User Detail"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/address"
+                android:layout_marginLeft="15dp"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address" />
+
+            <EditText
+                android:id="@+id/addressInput"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:theme="@style/ColorCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/birthday"
+                android:layout_marginLeft="15dp"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Birthday" />
+
+            <EditText
+                android:id="@+id/birthdayInput"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:theme="@style/ColorCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/others"
+                android:layout_marginLeft="15dp"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="(TBD)" />
+
+            <EditText
+                android:id="@+id/othersInput"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:theme="@style/ColorCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="Cancel"
+                android:id="@+id/cancel"
+                android:background="@drawable/roundedbutton"
+                android:paddingBottom="0dp"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:onClick="cencel"
+                android:layout_marginRight="20dp"/>
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="Update"
+                android:id="@+id/update"
+                android:background="@drawable/roundedbutton"
+                android:textColor="#FFFFFF"
+                android:onClick="updateUserDetail"
+                android:layout_gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
