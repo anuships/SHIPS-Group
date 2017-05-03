@@ -46,5 +46,4 @@
         <item name="colorPrimary">@color/orangeButton</item>
         <item name="colorControlActivated">@color/orangeButton</item>
     </style>
-
 </resources>

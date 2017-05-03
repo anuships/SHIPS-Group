@@ -36,7 +36,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Introduction of the programs and services we offer."
-                    android:layout_gravity="fill"
                     android:textSize="18dp" />
 
             </LinearLayout>
