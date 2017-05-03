@@ -7,18 +7,15 @@ import android.view.View;
 
 import com.example.ships.myapplication.R;
 
-public class UpdateUserDetail extends AppCompatActivity {
+public class Updated extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_user_detail);
+        setContentView(R.layout.activity_updated);
     }
 
-    public void cencel(View view) {
-    }
-
-    public void updateUserDetail(View view) {
-        startActivity(new Intent(this, Updated.class));
+    public void goToUserProfile(View view) {
+        startActivity(new Intent(this, UserProfile.class));
     }
 }
