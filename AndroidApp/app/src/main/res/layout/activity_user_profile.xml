@@ -90,7 +90,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/change_password"
                     android:onClick="goToChangePassword"
-                    android:textColor="#000000" />
+                     />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                     android:layout_alignParentRight="true"
                     android:text="@string/updated_user_information"
                     android:onClick="goToUpdateUserInformation"
-                    android:textColor="#000000" />
+                    />
             </RelativeLayout>
 
         </LinearLayout>
