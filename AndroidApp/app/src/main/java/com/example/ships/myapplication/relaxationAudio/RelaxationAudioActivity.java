@@ -39,7 +39,7 @@ public class RelaxationAudioActivity extends AppCompatActivity {
         tx1 = (TextView) findViewById(R.id.textView);
         tx2 = (TextView) findViewById(R.id.textView2);
         tx3 = (TextView) findViewById(R.id.textView3);
-        tx3.setText("Introduction.mp3");
+        //tx3.setText("Introduction.mp3");
         mediaPlayer = MediaPlayer.create(this, R.raw.introduction);
         seekbar = (SeekBar) findViewById(R.id.seekBar);
         seekbar.setClickable(false);
@@ -134,4 +134,12 @@ public class RelaxationAudioActivity extends AppCompatActivity {
             myHandler.postDelayed(this, 100);
         }
     };
+
+    public void selectTrack(View v) {
+        Button b5;
+        b5 = (Button) v;
+        String track = b5.getText().toString();
+        tx3.setText(track);
+    }
+
 }
