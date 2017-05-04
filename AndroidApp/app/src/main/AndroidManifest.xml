@@ -38,6 +38,9 @@
             android:name=".homepageAndRegistration.Register"
             android:exported="true" />
         <activity
+            android:name=".homepageAndRegistration.LoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".homepageAndRegistration.RegisterSuccess"
             android:exported="true" />
         <activity
