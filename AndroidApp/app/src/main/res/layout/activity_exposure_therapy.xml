@@ -27,7 +27,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="500dp"
         android:baselineAligned="false">
-
         <Button
             android:id="@+id/button1"
             android:layout_width="80dp"
