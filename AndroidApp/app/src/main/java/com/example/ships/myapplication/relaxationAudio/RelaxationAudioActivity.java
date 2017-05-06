@@ -26,6 +26,22 @@ public class RelaxationAudioActivity extends AppCompatActivity {
     private SeekBar seekbar;
     private TextView tx1, tx2, tx3;
     public static int oneTimeOnly = 0;
+    int [] audioList = {
+            R.raw.introduction,
+            R.raw.graduatedprogessivemusclerelaxation,
+            R.raw.passiveprogressiverelaxation,
+            R.raw.rotationofawareness,
+            R.raw.breathawarenessmeditation,
+            R.raw.wordfocusmeditation,
+            R.raw.alternativenostrilbreathingmeditation,
+            R.raw.mindfulawareness,
+            R.raw.mindfulnessmeditation,
+            R.raw.breathingtechniques,
+            R.raw.quickreleasetechnique,
+            R.raw.standingrelaxation,
+            R.raw.selfhypnosis
+    };
+    int audioIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +55,7 @@ public class RelaxationAudioActivity extends AppCompatActivity {
         tx1 = (TextView) findViewById(R.id.textView);
         tx2 = (TextView) findViewById(R.id.textView2);
         tx3 = (TextView) findViewById(R.id.textView3);
-        //tx3.setText("Introduction.mp3");
-        mediaPlayer = MediaPlayer.create(this, R.raw.introduction);
+        mediaPlayer = MediaPlayer.create(this, audioList[audioIndex]);
         seekbar = (SeekBar) findViewById(R.id.seekBar);
         seekbar.setClickable(false);
         b2.setEnabled(false);
@@ -54,7 +69,7 @@ public class RelaxationAudioActivity extends AppCompatActivity {
                     startTime = startTime + forwardTime;
                     mediaPlayer.seekTo((int) startTime);
                     Toast.makeText(getApplicationContext(),"Fast forward",Toast.LENGTH_SHORT).show();
-                }else{
+                } else{
                     Toast.makeText(getApplicationContext(),"End of audio",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -136,10 +151,16 @@ public class RelaxationAudioActivity extends AppCompatActivity {
     };
 
     public void selectTrack(View v) {
+        mediaPlayer.stop();
+        mediaPlayer.reset();
+        b2.setEnabled(false);
+        b3.setEnabled(true);
         Button b5;
         b5 = (Button) v;
         String track = b5.getText().toString();
         tx3.setText(track);
+        audioIndex = Integer.parseInt(v.getTag().toString());
+        mediaPlayer = MediaPlayer.create(RelaxationAudioActivity.this, audioList[audioIndex]);
     }
 
 }
