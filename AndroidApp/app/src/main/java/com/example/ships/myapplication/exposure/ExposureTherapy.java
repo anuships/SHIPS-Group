@@ -31,7 +31,7 @@ public class ExposureTherapy extends AppCompatActivity {
     boolean showImage = true;
     String level = "1";
     Dialog dialog;
-    MediaPlayer mp;
+    MediaPlayer mp = new MediaPlayer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,21 +49,22 @@ public class ExposureTherapy extends AppCompatActivity {
                     String[] strarr = line.split(":");
                     fileContent.put(strarr[0],strarr[1]);
                 }
-                isr.close();
                 Button b3 = (Button) findViewById(R.id.button3);
                 level = fileContent.get("ExposureLevel").toString();
                 String bText = "Level" + level;
                 b3.setText(bText);
+                isr.close();
+                fis.close();
             }
             else {
                 filename = "exposure.txt";
                 try {
                     FileOutputStream output = openFileOutput(filename, MODE_PRIVATE);
-                    output.write("ExposureLevel:".getBytes());
-                    output.write('1');
+                    output.write("ExposureLevel:1".getBytes());
                     Button b3 = (Button) findViewById(R.id.button3);
                     String bText = "Level" + level;
                     b3.setText(bText);
+                    output.close();
                 }
                 catch (Exception e)
                 {
@@ -95,7 +96,9 @@ public class ExposureTherapy extends AppCompatActivity {
             Button b = (Button) findViewById(R.id.button2);
             b.setText("Restart");
             v2.setImageResource(0);
-            mp.stop();
+            if (mp.isPlaying()) {
+                mp.stop();
+            }
             showImage = false;
         }
         else{
@@ -156,8 +159,9 @@ public class ExposureTherapy extends AppCompatActivity {
         String filename = "exposure.txt";
         try {
             FileOutputStream output = openFileOutput(filename, MODE_PRIVATE);
-            output.write("ExposureLevel:".getBytes());
-            output.write(level.getBytes());
+            String fileStr = "ExposureLevel:" + level;
+            output.write(fileStr.getBytes());
+            output.close();
         }
         catch (Exception e)
         {
@@ -175,8 +179,10 @@ public class ExposureTherapy extends AppCompatActivity {
             mp.start();
             mp.setLooping(true);
         }
-        else{
-            mp.stop();
+        else {
+            if (mp.isPlaying()) {
+                mp.stop();
+            }
         }
     }
 
