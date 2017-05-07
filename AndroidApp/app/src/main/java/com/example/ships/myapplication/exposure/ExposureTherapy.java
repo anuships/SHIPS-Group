@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,7 @@ public class ExposureTherapy extends AppCompatActivity {
     boolean showImage = true;
     String level = "1";
     Dialog dialog;
+    MediaPlayer mp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +78,11 @@ public class ExposureTherapy extends AppCompatActivity {
         InputStream imageIS = this.getResources().openRawResource(getResources().getIdentifier(resName,"raw",this.getPackageName()));
         Bitmap myImage = BitmapFactory.decodeStream(imageIS);
         v.setImageBitmap(myImage);
-
+        if (level.equals("5")){
+            mp = MediaPlayer.create(this, R.raw.s1);
+            mp.start();
+            mp.setLooping(true);
+        }
     }
 
     public void back(View v){
@@ -89,6 +95,7 @@ public class ExposureTherapy extends AppCompatActivity {
             Button b = (Button) findViewById(R.id.button2);
             b.setText("Restart");
             v2.setImageResource(0);
+            mp.stop();
             showImage = false;
         }
         else{
@@ -100,6 +107,11 @@ public class ExposureTherapy extends AppCompatActivity {
             showImage = true;
             Button b = (Button) findViewById(R.id.button2);
             b.setText("Stop");
+            if (level.equals("5")){
+                    mp = MediaPlayer.create(this, R.raw.s1);
+                    mp.start();
+                    mp.setLooping(true);
+            }
         }
     }
     public void goToRelaxationTraning(View v){
@@ -158,6 +170,14 @@ public class ExposureTherapy extends AppCompatActivity {
         Bitmap myImage = BitmapFactory.decodeStream(imageIS);
         v4.setImageBitmap(myImage);
         showImage = true;
+        if (level.equals("5")){
+            mp = MediaPlayer.create(this, R.raw.s1);
+            mp.start();
+            mp.setLooping(true);
+        }
+        else{
+            mp.stop();
+        }
     }
 
 
