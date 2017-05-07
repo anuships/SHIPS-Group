@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\master\year2\sem1\FYP\SHIPS-Group\AndroidApp\app\lib\usbSerialForAndroid\src\main\jniLibs"/></dataSet><dataSet config="release"><source path="E:\master\year2\sem1\FYP\SHIPS-Group\AndroidApp\app\lib\usbSerialForAndroid\src\release\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\yktin\Dropbox\MCOMP\Sem 3\COMP8715 Computing Project\PC\SHIPS-Group\AndroidApp\app\lib\usbSerialForAndroid\src\main\jniLibs"/></dataSet><dataSet config="release"><source path="C:\Users\yktin\Dropbox\MCOMP\Sem 3\COMP8715 Computing Project\PC\SHIPS-Group\AndroidApp\app\lib\usbSerialForAndroid\src\release\jniLibs"/></dataSet></merger>
