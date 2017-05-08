@@ -9,7 +9,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
@@ -27,17 +30,37 @@
         android:text="@string/exposure_description"
         android:textSize="15dp"/>
 
-
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="500dp">
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
+        android:text="Back"
         android:background="@drawable/roundedbutton"
         android:layout_marginBottom="17dp"
-        android:onClick="startTherapy"
+        android:layout_marginLeft="100dp"
+        android:onClick="back"
+        android:textColor="#FFFFFF"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@+id/button5"
+            android:layout_marginBottom="17dp"
+            android:layout_toEndOf="@+id/button5"
+            android:layout_toRightOf="@+id/button5"
+            android:background="@drawable/roundedbutton"
+            android:onClick="startTherapy"
+            android:text="Start"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 </RelativeLayout>
