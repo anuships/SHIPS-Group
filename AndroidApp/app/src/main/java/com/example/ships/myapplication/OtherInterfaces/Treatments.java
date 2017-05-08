@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.exposure.ExposureInfo;
+import com.example.ships.myapplication.modules.MyProgram;
 
 public class Treatments extends AppCompatActivity {
 
@@ -22,6 +23,6 @@ public class Treatments extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        super.onBackPressed();
+        startActivity(new Intent(this, MyProgram.class));
     }
 }

@@ -82,12 +82,15 @@
 
     <Button
         android:id="@+id/emdrstartbutton"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="sendMessage"
-        android:text="Start EMDR" />
+        android:text="Start EMDR"
+        android:background="@drawable/roundedbutton"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"/>
 
     <!--<LinearLayout-->
         <!--android:layout_width="wrap_content"-->
