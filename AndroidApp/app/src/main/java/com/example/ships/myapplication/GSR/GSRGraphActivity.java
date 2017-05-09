@@ -179,13 +179,11 @@ public class GSRGraphActivity extends AppCompatActivity {
                         if (serialPort != null) {
                             serialPort.write(cur.getBytes());
                             try {
-                                Thread.sleep(800);
                                 if (!haveBaseGSR) {
                                     serialPort.write(base.getBytes());
-                                    Thread.sleep(800);
                                 }
                                 serialPort.write(heart.getBytes());
-                                Thread.sleep(800);
+                                Thread.sleep(400);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
