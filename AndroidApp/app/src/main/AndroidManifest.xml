@@ -15,7 +15,7 @@
         android:theme="@style/HiddenTitleTheme">
         <activity
             android:name=".homepageAndRegistration.MainActivity"
-            android:label="@string/title_activity_main"
+            android:label="SHIPS"
             android:theme="@style/HiddenTitleTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

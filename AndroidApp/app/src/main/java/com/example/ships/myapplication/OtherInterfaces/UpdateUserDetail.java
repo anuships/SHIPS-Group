@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.exposure.ExposureInfo;
 
 public class UpdateUserDetail extends AppCompatActivity {
 
@@ -16,7 +17,7 @@ public class UpdateUserDetail extends AppCompatActivity {
     }
 
     public void cencel(View view) {
-        super.onBackPressed();
+        startActivity(new Intent(this, UserProfile.class));
     }
 
     public void updateUserDetail(View view) {

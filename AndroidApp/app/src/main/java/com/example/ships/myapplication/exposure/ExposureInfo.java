@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.R;
 
 public class ExposureInfo extends AppCompatActivity {
@@ -17,5 +18,6 @@ public class ExposureInfo extends AppCompatActivity {
     public void toDescription(View v){
         startActivity(new Intent(this, ExposureDes.class));
     }
+    public void back(View v){startActivity(new Intent(this, Treatments.class));}
 
 }

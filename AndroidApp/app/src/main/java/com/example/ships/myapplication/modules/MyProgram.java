@@ -9,6 +9,7 @@ import com.example.ships.myapplication.FAS.FAS;
 import com.example.ships.myapplication.OtherInterfaces.Records;
 import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
+import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
 
 public class MyProgram extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class MyProgram extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        super.onBackPressed();
+        startActivity(new Intent(this, UserProfile.class));
     }
 
     public void goToRecords(View view) {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.homepageAndRegistration.MainActivity;
 import com.example.ships.myapplication.modules.ExpandableListDataPump;
 import com.example.ships.myapplication.modules.MyProgram;
 
@@ -35,5 +36,9 @@ public class UserProfile extends AppCompatActivity {
 
     public void goToRecords(View view) {
         startActivity(new Intent(this, Records.class));
+    }
+
+    public void logout(View view) {
+        startActivity(new Intent(this, MainActivity.class));
     }
 }
