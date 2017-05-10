@@ -130,7 +130,7 @@ public class EMDRActivity extends AppCompatActivity {
                 emdrView.setVisibility(View.VISIBLE);
 
 
-                LinearLayout layoutEMDRMovement = (LinearLayout) findViewById(R.id.emdrlayout);
+                LinearLayout layoutEMDRMovement = (LinearLayout) findViewById(R.id.emdr_circle_layout);
                 layoutEMDRMovement.startAnimation(ballMovementSet);
 //        for (int i = 0; i < 10; i++) {
 //            emdrView.playSoundEffect(SoundEffectConstants.CLICK);

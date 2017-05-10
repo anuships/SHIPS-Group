@@ -13,20 +13,28 @@ android:paddingTop="@dimen/activity_vertical_margin"
     android:soundEffectsEnabled="true"
 tools:context="com.example.ships.myapplication.homepageAndRegistration.LoginActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        android:layout_centerVertical="false"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/emdrcircle"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/emdr_circle_layout">
 
-        android:id="@+id/emdrcircle" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_centerVertical="false"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/emdrcircle"
 
-    <!--<Button-->
-        <!--android:id="@+id/start_emdr_button"-->
-        <!--android:text="Start activity"-->
-        <!--android:layout_height="100dp"-->
-        <!--android:layout_width="100dp" />-->
+            android:id="@+id/emdrcircle" />
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/start_emdr_settings_button"
+        android:text="Settings"
+        android:layout_height="100dp"
+        android:layout_width="100dp" />
 
 </LinearLayout>
