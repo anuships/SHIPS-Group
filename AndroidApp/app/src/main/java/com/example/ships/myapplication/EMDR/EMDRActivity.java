@@ -1,5 +1,6 @@
 package com.example.ships.myapplication.EMDR;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
@@ -138,7 +139,22 @@ public class EMDRActivity extends AppCompatActivity {
                 layoutEMDRMovement.playSoundEffect(SoundEffectConstants.CLICK);
 //        emdrView.playSoundEffect(SoundEffectConstants.CLICK);
 
+
+        Button start_emdr_settings_button = (Button) findViewById(R.id.start_emdr_settings_button);
+        start_emdr_settings_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                sendMessage(view);
+            }
+        });
+
+
+
             }
 
+
+    public void sendMessage(View view) {
+        Intent EMDRSettingsintent = new Intent(this, EMDRActivitySettings.class);
+        startActivity(EMDRSettingsintent);
+    }
 
     }
