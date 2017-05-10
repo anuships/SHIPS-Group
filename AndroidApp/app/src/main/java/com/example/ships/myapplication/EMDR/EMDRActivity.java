@@ -143,18 +143,12 @@ public class EMDRActivity extends AppCompatActivity {
         Button start_emdr_settings_button = (Button) findViewById(R.id.start_emdr_settings_button);
         start_emdr_settings_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                sendMessage(view);
+                finish();
             }
         });
 
 
 
             }
-
-
-    public void sendMessage(View view) {
-        Intent EMDRSettingsintent = new Intent(this, EMDRActivitySettings.class);
-        startActivity(EMDRSettingsintent);
-    }
 
     }
