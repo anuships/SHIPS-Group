@@ -16,7 +16,8 @@ tools:context="com.example.ships.myapplication.homepageAndRegistration.LoginActi
         android:layout_height="wrap_content"
         android:id="@+id/emdr_circle_layout"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:soundEffectsEnabled="true">
 
         <ImageView
             android:id="@+id/emdrcircle"
