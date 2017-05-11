@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.ships.myapplication.EMDR.EMDRActivity;
+import com.example.ships.myapplication.EMDR.EMDRActivitySettings;
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.relaxationAudio.RelaxationAudioActivity;
@@ -48,7 +49,7 @@ public class Programs {
         }
 
         public void goToEMDR(View view) {
-            startActivity(new Intent(this, EMDRActivity.class));
+            startActivity(new Intent(this, EMDRActivitySettings.class));
         }
 
         public void goToRelaxationTraning(View view) {
