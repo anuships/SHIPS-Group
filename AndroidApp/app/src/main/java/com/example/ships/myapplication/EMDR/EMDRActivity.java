@@ -53,10 +53,69 @@ public class EMDRActivity extends AppCompatActivity {
 //            audioManager.playSoundEffect(SoundEffectConstants.CLICK);
 //
 //        }
+
+
+
+
+
+
+
         final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.ticksound);
 
-//        final Handler handler = new Handler();
-//        final int delay = EMDR_DURATION; //milliseconds
+
+
+        final Handler handler = new Handler();
+        final int delay = EMDR_DURATION; //milliseconds
+
+        final Runnable loopingRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (mediaPlayer != null) {
+                    if (mediaPlayer.isPlaying()) {
+                        mediaPlayer.stop();
+                    }
+                        mediaPlayer.start();
+                }
+            }
+        };
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            int n = 0;
+
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                if (n < 10) {
+                    handler.postDelayed(loopingRunnable, delay);
+                    n++;
+                }
+            }
+        });
+
+        mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
+                return true;
+            }
+        });
+
+//        @Override
+//        protected void onDestroy(){
+//            super.onDestroy();
+//            handler.removeCallbacks(loopingRunnable);
+//
+//            if (mediaPlayer != null) {
+//                if (mediaPlayer.isPlaying()) {
+//                    mediaPlayer.stop();
+//                }
+//
+//                mediaPlayer.release();
+//                mediaPlayer = null;
+//            }
+//
+//        }
+
+
 //        handler.postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
@@ -77,7 +136,7 @@ public class EMDRActivity extends AppCompatActivity {
 //        }
 
 //        mediaPlayer.setLooping(true);
-//        mediaPlayer.start();
+        mediaPlayer.start();
 
                 Display display = getWindowManager().getDefaultDisplay();
                 Point size = new Point();
@@ -133,6 +192,10 @@ public class EMDRActivity extends AppCompatActivity {
             }
         });
 
+
             }
+
+
+
 
     }
