@@ -49,23 +49,6 @@ public class EMDRActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//                AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-//        for (int i = 0; i < 10; i++) {
-//            audioManager.playSoundEffect(SoundEffectConstants.CLICK);
-//
-//        }
-
-
-
-
-        if (mediaPlayer != null) {
-            if (mediaPlayer.isPlaying()) {
-                mediaPlayer.stop();
-            }
-            mediaPlayer.release();
-            mediaPlayer = null;
-        }
-
 
         mediaPlayer = MediaPlayer.create(this, R.raw.ticksound);
 
@@ -96,15 +79,6 @@ public class EMDRActivity extends AppCompatActivity {
                     handler.postDelayed(loopingRunnable, delay);
                     n++;
                 }
-//                } else {
-//                    if (mediaPlayer != null) {
-//                        if (mediaPlayer.isPlaying()) {
-//                            mediaPlayer.stop();
-//                        }
-//                        mediaPlayer.release();
-//                        mediaPlayer = null;
-//                    }
-//                }
             }
         });
 
@@ -115,44 +89,6 @@ public class EMDRActivity extends AppCompatActivity {
             }
         });
 
-
-//        @Override
-//        protected void onDestroy(){
-//            super.onDestroy();
-//            handler.removeCallbacks(loopingRunnable);
-//
-//            if (mediaPlayer != null) {
-//                if (mediaPlayer.isPlaying()) {
-//                    mediaPlayer.stop();
-//                }
-//
-//                mediaPlayer.release();
-//                mediaPlayer = null;
-//            }
-//
-//        }
-
-
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                mediaPlayer.start();
-//                mediaPlayer.release();
-//                handler.postDelayed(this, delay);
-//            }
-//        }, delay);
-
-//        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.ticksound);
-//        for (int i = 0; i < EMDR_REPEATS; i++) {
-//            mediaPlayer.start();
-//            try {
-//                mediaPlayer.prepare();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
-//        mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
                 Display display = getWindowManager().getDefaultDisplay();
@@ -191,15 +127,6 @@ public class EMDRActivity extends AppCompatActivity {
 
                 LinearLayout layoutEMDRMovement = (LinearLayout) findViewById(R.id.emdr_circle_layout);
                 layoutEMDRMovement.startAnimation(ballMovementSet);
-//        for (int i = 0; i < 10; i++) {
-//            emdrView.playSoundEffect(SoundEffectConstants.CLICK);
-//        }
-//                layoutEMDRMovement.playSoundEffect(SoundEffectConstants.CLICK);
-////        emdrView.playSoundEffect(SoundEffectConstants.CLICK);
-//
-//        View viewEMDRMovement = findViewById(R.id.emdr_circle_layout);
-//        viewEMDRMovement.playSoundEffect(SoundEffectConstants.CLICK);
-
 
 
         Button start_emdr_settings_button = (Button) findViewById(R.id.start_emdr_settings_button);
@@ -211,19 +138,6 @@ public class EMDRActivity extends AppCompatActivity {
 
 
             }
-
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        if (mediaPlayer != null) {
-//            mediaPlayer.pause();
-//            if (isFinishing()) {
-//                mediaPlayer.stop();
-//                mediaPlayer.release();
-//            }
-//        }
-//
-//    }
 
         @Override
         protected void onDestroy(){
@@ -238,6 +152,5 @@ public class EMDRActivity extends AppCompatActivity {
             }
 
         }
-
-
+    
     }
