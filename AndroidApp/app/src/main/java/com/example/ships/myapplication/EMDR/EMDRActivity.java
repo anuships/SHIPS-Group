@@ -52,10 +52,8 @@ public class EMDRActivity extends AppCompatActivity {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.ticksound);
 
-
-
         final Handler handler = new Handler();
-        final int delay = EMDR_DURATION; //milliseconds
+        final int delay = EMDR_DURATION - 200; //milliseconds
 
         final Runnable loopingRunnable = new Runnable() {
             @Override
@@ -152,5 +150,5 @@ public class EMDRActivity extends AppCompatActivity {
             }
 
         }
-    
+
     }
