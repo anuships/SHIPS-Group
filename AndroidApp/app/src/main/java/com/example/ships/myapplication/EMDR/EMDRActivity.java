@@ -39,6 +39,7 @@ public class EMDRActivity extends AppCompatActivity {
     private static int SCREEN_WIDTH  = 500;
     private static int SCREEN_HEIGHT = 900;
     private static final int EMDR_REPEATS = 10;
+    private MediaPlayer mediaPlayer;
 
 
     @Override
@@ -57,10 +58,16 @@ public class EMDRActivity extends AppCompatActivity {
 
 
 
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.stop();
+            }
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
 
 
-
-        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.ticksound);
+        mediaPlayer = MediaPlayer.create(this, R.raw.ticksound);
 
 
 
@@ -85,10 +92,19 @@ public class EMDRActivity extends AppCompatActivity {
 
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                if (n < 10) {
+                if (n < EMDR_REPEATS) {
                     handler.postDelayed(loopingRunnable, delay);
                     n++;
                 }
+//                } else {
+//                    if (mediaPlayer != null) {
+//                        if (mediaPlayer.isPlaying()) {
+//                            mediaPlayer.stop();
+//                        }
+//                        mediaPlayer.release();
+//                        mediaPlayer = null;
+//                    }
+//                }
             }
         });
 
@@ -98,6 +114,7 @@ public class EMDRActivity extends AppCompatActivity {
                 return true;
             }
         });
+
 
 //        @Override
 //        protected void onDestroy(){
@@ -195,7 +212,32 @@ public class EMDRActivity extends AppCompatActivity {
 
             }
 
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        if (mediaPlayer != null) {
+//            mediaPlayer.pause();
+//            if (isFinishing()) {
+//                mediaPlayer.stop();
+//                mediaPlayer.release();
+//            }
+//        }
+//
+//    }
 
+        @Override
+        protected void onDestroy(){
+            super.onDestroy();
+            if (mediaPlayer != null) {
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                }
+
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
+
+        }
 
 
     }
