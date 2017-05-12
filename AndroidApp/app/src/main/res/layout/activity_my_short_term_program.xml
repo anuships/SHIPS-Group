@@ -45,28 +45,16 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"/>
 
+
                 <Button
-                    android:text="Therapeutic Tools"
+                    android:text="EMDR"
                     android:layout_width="220dp"
                     android:layout_height="40dp"
-                    android:id="@+id/therapeutic_tools"
+                    android:id="@+id/emdr"
                     android:background="@drawable/roundedbutton"
                     android:paddingBottom="0dp"
                     android:textColor="#FFFFFF"
-                    android:onClick="goToTherapeuticTools"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"/>
-
-                <Button
-
-                    android:text="Treatment"
-                    android:layout_width="220dp"
-                    android:layout_height="40dp"
-                    android:id="@+id/treatment"
-                    android:background="@drawable/roundedbutton"
-                    android:paddingBottom="0dp"
-                    android:textColor="#FFFFFF"
-                    android:onClick="goToTreatment"
+                    android:onClick="goToEMDR"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"/>
             </LinearLayout>

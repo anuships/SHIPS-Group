@@ -46,27 +46,26 @@
                     android:layout_marginBottom="20dp"/>
 
                 <Button
-                    android:text="Therapeutic Tools"
+                    android:text="Relaxation Training"
                     android:layout_width="220dp"
                     android:layout_height="40dp"
-                    android:id="@+id/therapeutic_tools"
+                    android:id="@+id/relaxation_traning"
                     android:background="@drawable/roundedbutton"
                     android:paddingBottom="0dp"
                     android:textColor="#FFFFFF"
-                    android:onClick="goToTherapeuticTools"
+                    android:onClick="goToRelaxationTraning"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"/>
 
                 <Button
-
-                    android:text="Treatment"
+                    android:text="Systematic Desensitisation"
                     android:layout_width="220dp"
                     android:layout_height="40dp"
                     android:id="@+id/treatment"
                     android:background="@drawable/roundedbutton"
                     android:paddingBottom="0dp"
                     android:textColor="#FFFFFF"
-                    android:onClick="goToTreatment"
+                    android:onClick="goToSystematicDesensitisation"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"/>
             </LinearLayout>
