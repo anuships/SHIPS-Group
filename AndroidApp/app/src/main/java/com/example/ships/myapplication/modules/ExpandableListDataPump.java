@@ -37,7 +37,7 @@ public class ExpandableListDataPump {
         }
 
         public void viewProgram(View view) {
-            Button button = (Button) view;
+/*            Button button = (Button) view;
             String selection = button.getText().toString();
             Log.d("selected as", selection);
             switch (selection){
@@ -50,12 +50,21 @@ public class ExpandableListDataPump {
                 case "Short Term":
                     //save result as short_term;
                     Log.d("User selected ", selection);
-            }
-            startActivity(new Intent(this, ProgramList.class));
+            }*/
+
+            startActivity(new Intent(this, AllProgramList.class));
         }
 
         public void goBack(View view) {
             startActivity(new Intent(this, UserProfile.class));
+        }
+
+        public void viewLongTermProgram(View view) {
+            startActivity(new Intent(this, LongTermProgramList.class));
+        }
+
+        public void viewShortTermProgram(View view) {
+            startActivity(new Intent(this, ShortTermProgramList.class));
         }
     }
 }

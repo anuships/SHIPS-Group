@@ -44,7 +44,7 @@
             android:name=".homepageAndRegistration.RegisterSuccess"
             android:exported="true" />
         <activity
-            android:name=".modules.ProgramList"
+            android:name=".modules.AllProgramList"
             android:exported="true" />
         <activity
             android:name=".FAS.FAS"
