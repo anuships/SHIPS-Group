@@ -1,5 +1,6 @@
 package com.example.ships.myapplication.OtherInterfaces;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,6 @@ public class SystematicDesensitation extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        super.onBackPressed();
+        startActivity(new Intent(this, SystematicDesensitation.class));
     }
 }
