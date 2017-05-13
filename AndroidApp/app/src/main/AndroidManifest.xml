@@ -47,6 +47,12 @@
             android:name=".modules.AllProgramList"
             android:exported="true" />
         <activity
+            android:name=".modules.LongTermProgramList"
+            android:exported="true" />
+        <activity
+            android:name=".modules.ShortTermProgramList"
+            android:exported="true" />
+        <activity
             android:name=".FAS.FAS"
             android:exported="true" />
         <activity
@@ -58,6 +64,12 @@
             android:exported="true" />
         <activity
             android:name=".modules.MyProgram"
+            android:exported="true" />
+        <activity
+            android:name=".modules.MyLongTermProgram"
+            android:exported="true" />
+        <activity
+            android:name=".modules.MyShortTermProgram"
             android:exported="true" />
         <activity
             android:name=".modules.Programs$TherapeuticTools"
