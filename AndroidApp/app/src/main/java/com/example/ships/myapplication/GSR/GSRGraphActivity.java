@@ -33,7 +33,7 @@ public class GSRGraphActivity extends AppCompatActivity {
     UsbSerialDevice serialPort;
     boolean serialUp = false;
     boolean haveBaseGSR = false;
-    boolean appOn = true;
+    boolean appOn = true; 
     boolean appHasFocus = true;
     int point = 0;
     TextView heartRateDisplay;
@@ -183,7 +183,7 @@ public class GSRGraphActivity extends AppCompatActivity {
                                     serialPort.write(base.getBytes());
                                 }
                                 serialPort.write(heart.getBytes());
-                                Thread.sleep(400);
+                                Thread.sleep(300);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
