@@ -24,15 +24,14 @@
             android:layout_weight="1"
             android:layout_gravity="center">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
 
                 <Button
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
                     android:text="Long Term"
                     android:layout_width="200dp"
                     android:layout_height="40dp"
@@ -40,25 +39,11 @@
                     android:background="@drawable/roundedbutton"
                     android:paddingBottom="0dp"
                     android:textColor="#FFFFFF"
-                    android:onClick="viewProgram"
+                    android:onClick="viewLongTermProgram"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"/>
+
                 <Button
-                    android:layout_below="@id/long_term"
-                    android:layout_alignLeft="@id/long_term"
-                    android:text="Mid Term"
-                    android:layout_width="200dp"
-                    android:layout_height="40dp"
-                    android:id="@+id/mid_term"
-                    android:background="@drawable/roundedbutton"
-                    android:paddingBottom="0dp"
-                    android:textColor="#FFFFFF"
-                    android:onClick="viewProgram"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"/>
-                <Button
-                    android:layout_below="@id/mid_term"
-                    android:layout_alignLeft="@id/mid_term"
                     android:text="Short Term"
                     android:layout_width="200dp"
                     android:layout_height="40dp"
@@ -66,9 +51,21 @@
                     android:background="@drawable/roundedbutton"
                     android:paddingBottom="0dp"
                     android:textColor="#FFFFFF"
+                    android:onClick="viewShortTermProgram"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"/>
+
+                <Button
+                    android:text="All Programs"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/mid_term"
+                    android:background="@drawable/roundedbutton"
+                    android:paddingBottom="0dp"
+                    android:textColor="#FFFFFF"
                     android:onClick="viewProgram"
-                    android:layout_gravity="center"/>
-            </RelativeLayout>
+                    android:layout_gravity="center" />
+            </LinearLayout>
         </LinearLayout>
 
         <Button

@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <merger version="3"><dataSet config="main"><source path="C:\Users\Nawespet\Documents\UNIWork\Year4\COMP4500\SHIPS-Group\AndroidApp\app\lib\usbSerialForAndroid\src\main\assets"/><source path="C:\Users\Nawespet\Documents\UNIWork\Year4\COMP4500\SHIPS-Group\AndroidApp\app\lib\usbSerialForAndroid\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="C:\Users\Nawespet\Documents\UNIWork\Year4\COMP4500\SHIPS-Group\AndroidApp\app\lib\usbSerialForAndroid\src\release\assets"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main"><source path="E:\master\year2\sem1\FYP\SHIPS-Group\AndroidApp\app\lib\usbSerialForAndroid\src\main\assets"/><source path="E:\master\year2\sem1\FYP\SHIPS-Group\AndroidApp\app\lib\usbSerialForAndroid\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="E:\master\year2\sem1\FYP\SHIPS-Group\AndroidApp\app\lib\usbSerialForAndroid\src\release\assets"/></dataSet></merger>
+>>>>>>> b76b83f1acd6d678ccde12b27fb5b48c3a5d0591
