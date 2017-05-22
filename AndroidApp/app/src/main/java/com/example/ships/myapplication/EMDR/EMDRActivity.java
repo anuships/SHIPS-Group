@@ -1,5 +1,7 @@
 package com.example.ships.myapplication.EMDR;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -142,15 +144,25 @@ public class EMDRActivity extends AppCompatActivity {
 
 
 
-        AnimatorSet animSet = new AnimatorSet();
+        final AnimatorSet animSet = new AnimatorSet();
 
-        animSet.play(horizontal_Centre_To_Right).after(500);
+        //animSet.play(horizontal_Centre_To_Right).after(500);
         animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right);
         animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre);
         animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left);
         animSet.setDuration(1000);
         //animSet.setInterpolator(new AccelerateDecelerateInterpolator());
+
+        animSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                animSet.start();
+            }
+        });
+
         animSet.start();
+
 
 
                 LinearLayout layoutEMDRMovement = (LinearLayout) findViewById(R.id.emdr_circle_layout);
