@@ -143,6 +143,27 @@ public class EMDRActivity extends AppCompatActivity {
         horizontal_Centre_To_Left.setInterpolator(new DecelerateInterpolator());
         horizontal_Left_To_Centre.setInterpolator(new AccelerateInterpolator());
 
+
+
+        ObjectAnimator horizontal_Centre_To_Right2 = ObjectAnimator.ofFloat(emdrCircleView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, (SCREEN_WIDTH - emdrCircleDiameter));
+        ObjectAnimator horizontal_Right_To_Centre2 = ObjectAnimator.ofFloat(emdrCircleView, "x", (SCREEN_WIDTH - emdrCircleDiameter), (SCREEN_WIDTH - emdrCircleDiameter)/2);
+        ObjectAnimator horizontal_Centre_To_Left2 = ObjectAnimator.ofFloat(emdrCircleView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, 0);
+        ObjectAnimator horizontal_Left_To_Centre2 = ObjectAnimator.ofFloat(emdrCircleView, "x", 0, (SCREEN_WIDTH - emdrCircleDiameter)/2);
+
+        horizontal_Centre_To_Right2.setInterpolator(new DecelerateInterpolator());
+        horizontal_Right_To_Centre2.setInterpolator(new AccelerateInterpolator());
+        horizontal_Centre_To_Left2.setInterpolator(new DecelerateInterpolator());
+        horizontal_Left_To_Centre2.setInterpolator(new AccelerateInterpolator());
+
+
+
+
+
+
+
+
+
+
         ObjectAnimator vertical_Top_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", 0, (SCREEN_HEIGHT - emdrCircleDiameter)/2);
         ObjectAnimator vertical_Centre_To_Bottom = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, (SCREEN_HEIGHT - emdrCircleDiameter));
         ObjectAnimator vertical_Bottom_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter), (SCREEN_HEIGHT - emdrCircleDiameter)/2);
@@ -156,12 +177,24 @@ public class EMDRActivity extends AppCompatActivity {
 
         ObjectAnimator vertical_Top_To_Centre1 = ObjectAnimator.ofFloat(emdrCircleView, "y", 0, (SCREEN_HEIGHT - emdrCircleDiameter)/4);
         ObjectAnimator vertical_Top_To_Centre2 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/4, (SCREEN_HEIGHT - emdrCircleDiameter)/2);
+        vertical_Top_To_Centre1.setInterpolator(new AccelerateInterpolator());
+        vertical_Top_To_Centre2.setInterpolator(new AccelerateInterpolator());
 
-        ObjectAnimator vertical_Centre_To_Bottom1 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, 3*(SCREEN_HEIGHT - emdrCircleDiameter));
-        ObjectAnimator vertical_Centre_To_Bottom2 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, (SCREEN_HEIGHT - emdrCircleDiameter));
 
-        //ObjectAnimator vertical_Bottom_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter), (SCREEN_HEIGHT - emdrCircleDiameter)/2);
-        //ObjectAnimator vertical_Centre_To_Top = ObjectAnimator.ofFloat(emdrCircleDiameter, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, 0);
+        ObjectAnimator vertical_Centre_To_Bottom1 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, (3/4)*(SCREEN_HEIGHT - emdrCircleDiameter));
+        ObjectAnimator vertical_Centre_To_Bottom2 = ObjectAnimator.ofFloat(emdrCircleView, "y", (3/4)*(SCREEN_HEIGHT - emdrCircleDiameter), (SCREEN_HEIGHT - emdrCircleDiameter));
+        vertical_Centre_To_Bottom1.setInterpolator(new DecelerateInterpolator());
+        vertical_Centre_To_Bottom2.setInterpolator(new DecelerateInterpolator());
+
+        ObjectAnimator vertical_Bottom_To_Centre1 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter), 3/4*(SCREEN_HEIGHT - emdrCircleDiameter));
+        ObjectAnimator vertical_Bottom_To_Centre2 = ObjectAnimator.ofFloat(emdrCircleView, "y", 3/4*(SCREEN_HEIGHT - emdrCircleDiameter), (SCREEN_HEIGHT - emdrCircleDiameter)/2);
+        vertical_Bottom_To_Centre1.setInterpolator(new AccelerateInterpolator());
+        vertical_Bottom_To_Centre2.setInterpolator(new AccelerateInterpolator());
+
+        ObjectAnimator vertical_Centre_To_Top1 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, (SCREEN_HEIGHT - emdrCircleDiameter)/4);
+        ObjectAnimator vertical_Centre_To_Top2 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/4, 0);
+        vertical_Centre_To_Top1.setInterpolator(new DecelerateInterpolator());
+        vertical_Centre_To_Top2.setInterpolator(new DecelerateInterpolator());
 
 
 
@@ -173,11 +206,52 @@ public class EMDRActivity extends AppCompatActivity {
 
 
 //circular movement
-        animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
-        animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
-        animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre);
-        animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
-        animSet.setDuration(EMDR_DURATION/2);
+//        animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
+//        animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
+//        animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre);
+//        animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
+
+        //figure-of-eight movement
+//        animSet.play(vertical_Top_To_Centre1).with(horizontal_Centre_To_Right);
+//        animSet.play(vertical_Top_To_Centre2).after(vertical_Top_To_Centre1).with(horizontal_Right_To_Centre);
+//        animSet.play(vertical_Centre_To_Bottom1).after(vertical_Top_To_Centre2).with(horizontal_Centre_To_Left);
+//        animSet.play(vertical_Centre_To_Bottom2).after(vertical_Centre_To_Bottom1).with(horizontal_Left_To_Centre);
+//
+//        animSet.play(vertical_Bottom_To_Centre1).after(vertical_Centre_To_Bottom2).with(horizontal_Centre_To_Right);
+//        animSet.play(vertical_Bottom_To_Centre2).after(vertical_Bottom_To_Centre1).with(horizontal_Right_To_Centre);
+//        animSet.play(vertical_Centre_To_Top1).after(vertical_Bottom_To_Centre2).with(horizontal_Centre_To_Left);
+//        animSet.play(vertical_Centre_To_Top2).after(vertical_Centre_To_Top1).with(horizontal_Left_To_Centre);
+
+//        animSet.play(vertical_Top_To_Centre1).before(vertical_Top_To_Centre2);
+//        animSet.play(vertical_Centre_To_Bottom1).after(vertical_Top_To_Centre2).before(vertical_Centre_To_Bottom2);
+//        animSet.play(vertical_Bottom_To_Centre1).after(vertical_Centre_To_Bottom2).before(vertical_Bottom_To_Centre2);
+//        animSet.play(vertical_Centre_To_Top1).after(vertical_Bottom_To_Centre2).before(vertical_Centre_To_Top2);
+
+        vertical_Top_To_Centre.setDuration(EMDR_DURATION);
+        vertical_Centre_To_Bottom.setDuration(EMDR_DURATION);
+        vertical_Bottom_To_Centre.setDuration(EMDR_DURATION);
+        vertical_Centre_To_Top.setDuration(EMDR_DURATION);
+
+        horizontal_Centre_To_Right.setDuration(EMDR_DURATION/2);
+        horizontal_Right_To_Centre.setDuration(EMDR_DURATION/2);
+        horizontal_Centre_To_Left.setDuration(EMDR_DURATION/2);
+        horizontal_Left_To_Centre.setDuration(EMDR_DURATION/2);
+
+
+        horizontal_Centre_To_Right2.setDuration(EMDR_DURATION/2);
+        horizontal_Right_To_Centre2.setDuration(EMDR_DURATION/2);
+        horizontal_Centre_To_Left2.setDuration(EMDR_DURATION/2);
+        horizontal_Left_To_Centre2.setDuration(EMDR_DURATION/2);
+
+
+        animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
+        animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
+//        animSet.playSequentially(horizontal_Centre_To_Right, horizontal_Right_To_Centre, horizontal_Centre_To_Left, horizontal_Left_To_Centre);
+        animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
+        animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
+
+
+//        animSet.setDuration(EMDR_DURATION/2);
         //animSet.setInterpolator(new AccelerateDecelerateInterpolator());
 
         animSet.addListener(new AnimatorListenerAdapter() {
