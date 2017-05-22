@@ -29,17 +29,17 @@ public class RelaxationAudioActivity extends AppCompatActivity {
     int [] audioList = {
             R.raw.introduction,
             R.raw.graduatedprogessivemusclerelaxation,
-            R.raw.passiveprogressiverelaxation,
-            R.raw.rotationofawareness,
-            R.raw.breathawarenessmeditation,
-            R.raw.wordfocusmeditation,
-            R.raw.alternativenostrilbreathingmeditation,
-            R.raw.mindfulawareness,
-            R.raw.mindfulnessmeditation,
-            R.raw.breathingtechniques,
-            R.raw.quickreleasetechnique,
-            R.raw.standingrelaxation,
-            R.raw.selfhypnosis
+//            R.raw.passiveprogressiverelaxation,
+//            R.raw.rotationofawareness,
+//            R.raw.breathawarenessmeditation,
+//            R.raw.wordfocusmeditation,
+//            R.raw.alternativenostrilbreathingmeditation,
+//            R.raw.mindfulawareness,
+//            R.raw.mindfulnessmeditation,
+//            R.raw.breathingtechniques,
+//            R.raw.quickreleasetechnique,
+//            R.raw.standingrelaxation,
+//            R.raw.selfhypnosis
     };
     int audioIndex = 0;
 
