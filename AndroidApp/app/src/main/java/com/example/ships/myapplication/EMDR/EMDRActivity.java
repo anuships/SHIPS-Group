@@ -138,10 +138,10 @@ public class EMDRActivity extends AppCompatActivity {
 
 
 
-        ObjectAnimator vertical_Top_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", 0, (SCREEN_HEIGHT - emdrCircleDiameter)/2);
-        ObjectAnimator vertical_Centre_To_Bottom = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, (SCREEN_HEIGHT - emdrCircleDiameter));
-        ObjectAnimator vertical_Bottom_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter), (SCREEN_HEIGHT - emdrCircleDiameter)/2);
-        ObjectAnimator vertical_Centre_To_Top = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, 0);
+        ObjectAnimator vertical_Top_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", 0, (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2);
+        ObjectAnimator vertical_Centre_To_Bottom = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2, (SCREEN_HEIGHT - 2*emdrCircleDiameter));
+        ObjectAnimator vertical_Bottom_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - 2*emdrCircleDiameter), (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2);
+        ObjectAnimator vertical_Centre_To_Top = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2, 0);
 
         vertical_Top_To_Centre.setInterpolator(new AccelerateInterpolator());
         vertical_Centre_To_Bottom.setInterpolator(new DecelerateInterpolator());
