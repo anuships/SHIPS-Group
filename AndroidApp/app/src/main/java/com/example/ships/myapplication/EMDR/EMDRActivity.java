@@ -112,12 +112,12 @@ public class EMDRActivity extends AppCompatActivity {
                 moveLeftToRight.setRepeatCount(EMDR_REPEATS);
                 ballMovementSet.addAnimation(moveLeftToRight);
 
-                TranslateAnimation moveUpAndDown = new TranslateAnimation(0, 0, 0, SCREEN_HEIGHT);
-                moveUpAndDown.setDuration(3*EMDR_DURATION);
+                TranslateAnimation moveUpAndDown = new TranslateAnimation(0, 0, -((SCREEN_HEIGHT - 2*emdrCircleDiameter)/2), ((SCREEN_HEIGHT - 2*emdrCircleDiameter)/2));
+                moveUpAndDown.setDuration(2*EMDR_DURATION);
                 moveUpAndDown.setFillAfter(true);
                 moveUpAndDown.setRepeatMode(Animation.REVERSE);
-                moveUpAndDown.setRepeatCount(EMDR_REPEATS);
-                //ballMovementSet.addAnimation(moveUpAndDown);
+                moveUpAndDown.setRepeatCount(EMDR_REPEATS/2);
+                ballMovementSet.addAnimation(moveUpAndDown);
 
                 View emdrView = findViewById(R.id.emdrlayout);
                 emdrView.setVisibility(View.VISIBLE);
