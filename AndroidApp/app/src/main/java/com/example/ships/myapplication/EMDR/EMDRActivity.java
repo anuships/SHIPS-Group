@@ -132,6 +132,7 @@ public class EMDRActivity extends AppCompatActivity {
         float scale = getResources().getDisplayMetrics().density;
         View emdrCircleView = findViewById(R.id.emdr_circle_layout);
 
+        //horizontal movement (simple harmonic)
         ObjectAnimator horizontal_Centre_To_Right = ObjectAnimator.ofFloat(emdrCircleView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, (SCREEN_WIDTH - emdrCircleDiameter));
         ObjectAnimator horizontal_Right_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "x", (SCREEN_WIDTH - emdrCircleDiameter), (SCREEN_WIDTH - emdrCircleDiameter)/2);
         ObjectAnimator horizontal_Centre_To_Left = ObjectAnimator.ofFloat(emdrCircleView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, 0);
@@ -142,15 +143,41 @@ public class EMDRActivity extends AppCompatActivity {
         horizontal_Centre_To_Left.setInterpolator(new DecelerateInterpolator());
         horizontal_Left_To_Centre.setInterpolator(new AccelerateInterpolator());
 
+        ObjectAnimator vertical_Top_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", 0, (SCREEN_HEIGHT - emdrCircleDiameter)/2);
+        ObjectAnimator vertical_Centre_To_Bottom = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, (SCREEN_HEIGHT - emdrCircleDiameter));
+        ObjectAnimator vertical_Bottom_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter), (SCREEN_HEIGHT - emdrCircleDiameter)/2);
+        ObjectAnimator vertical_Centre_To_Top = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, 0);
+
+        vertical_Top_To_Centre.setInterpolator(new AccelerateInterpolator());
+        vertical_Centre_To_Bottom.setInterpolator(new DecelerateInterpolator());
+        vertical_Bottom_To_Centre.setInterpolator(new AccelerateInterpolator());
+        vertical_Centre_To_Top.setInterpolator(new DecelerateInterpolator());
+
+
+        ObjectAnimator vertical_Top_To_Centre1 = ObjectAnimator.ofFloat(emdrCircleView, "y", 0, (SCREEN_HEIGHT - emdrCircleDiameter)/4);
+        ObjectAnimator vertical_Top_To_Centre2 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/4, (SCREEN_HEIGHT - emdrCircleDiameter)/2);
+
+        ObjectAnimator vertical_Centre_To_Bottom1 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, 3*(SCREEN_HEIGHT - emdrCircleDiameter));
+        ObjectAnimator vertical_Centre_To_Bottom2 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, (SCREEN_HEIGHT - emdrCircleDiameter));
+
+        //ObjectAnimator vertical_Bottom_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter), (SCREEN_HEIGHT - emdrCircleDiameter)/2);
+        //ObjectAnimator vertical_Centre_To_Top = ObjectAnimator.ofFloat(emdrCircleDiameter, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, 0);
+
 
 
         final AnimatorSet animSet = new AnimatorSet();
 
-        //animSet.play(horizontal_Centre_To_Right).after(500);
-        animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right);
-        animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre);
-        animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left);
-        animSet.setDuration(1000);
+//pure vertical movemement
+ //       animSet.play(vertical_Top_To_Centre).before(vertical_Centre_To_Bottom);
+ //       animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
+
+
+//circular movement
+        animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
+        animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
+        animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre);
+        animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
+        animSet.setDuration(EMDR_DURATION/2);
         //animSet.setInterpolator(new AccelerateDecelerateInterpolator());
 
         animSet.addListener(new AnimatorListenerAdapter() {
