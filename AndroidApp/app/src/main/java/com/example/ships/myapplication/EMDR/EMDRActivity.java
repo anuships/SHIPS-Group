@@ -1,5 +1,7 @@
 package com.example.ships.myapplication.EMDR;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
@@ -15,9 +17,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.SoundEffectConstants;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -110,21 +115,48 @@ public class EMDRActivity extends AppCompatActivity {
                 moveLeftToRight.setFillAfter(true);
                 moveLeftToRight.setRepeatMode(Animation.REVERSE);
                 moveLeftToRight.setRepeatCount(EMDR_REPEATS);
-                ballMovementSet.addAnimation(moveLeftToRight);
+                //ballMovementSet.addAnimation(moveLeftToRight);
 
                 TranslateAnimation moveUpAndDown = new TranslateAnimation(0, 0, -((SCREEN_HEIGHT - 2*emdrCircleDiameter)/2), ((SCREEN_HEIGHT - 2*emdrCircleDiameter)/2));
                 moveUpAndDown.setDuration(2*EMDR_DURATION);
                 moveUpAndDown.setFillAfter(true);
                 moveUpAndDown.setRepeatMode(Animation.REVERSE);
                 moveUpAndDown.setRepeatCount(EMDR_REPEATS/2);
-                ballMovementSet.addAnimation(moveUpAndDown);
+                //ballMovementSet.addAnimation(moveUpAndDown);
 
                 View emdrView = findViewById(R.id.emdrlayout);
                 emdrView.setVisibility(View.VISIBLE);
 
+        float scale = getResources().getDisplayMetrics().density;
+        View emdrCircleView = findViewById(R.id.emdr_circle_layout);
+
+        ObjectAnimator horizontal_Centre_To_Right = ObjectAnimator.ofFloat(emdrCircleView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, (SCREEN_WIDTH - emdrCircleDiameter));
+        ObjectAnimator horizontal_Right_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "x", (SCREEN_WIDTH - emdrCircleDiameter), (SCREEN_WIDTH - emdrCircleDiameter)/2);
+        ObjectAnimator horizontal_Centre_To_Left = ObjectAnimator.ofFloat(emdrCircleView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, 0);
+        ObjectAnimator horizontal_Left_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "x", 0, (SCREEN_WIDTH - emdrCircleDiameter)/2);
+
+        horizontal_Centre_To_Right.setInterpolator(new DecelerateInterpolator());
+        horizontal_Right_To_Centre.setInterpolator(new AccelerateInterpolator());
+        horizontal_Centre_To_Left.setInterpolator(new DecelerateInterpolator());
+        horizontal_Left_To_Centre.setInterpolator(new AccelerateInterpolator());
+
+
+
+        AnimatorSet animSet = new AnimatorSet();
+
+        animSet.play(horizontal_Centre_To_Right).after(500);
+        animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right);
+        animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre);
+        animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left);
+        animSet.setDuration(1000);
+        //animSet.setInterpolator(new AccelerateDecelerateInterpolator());
+        animSet.start();
+
 
                 LinearLayout layoutEMDRMovement = (LinearLayout) findViewById(R.id.emdr_circle_layout);
-                layoutEMDRMovement.startAnimation(ballMovementSet);
+                //layoutEMDRMovement.startAnimation(ballMovementSet);
+
+
 
 
         Button start_emdr_settings_button = (Button) findViewById(R.id.start_emdr_settings_button);
