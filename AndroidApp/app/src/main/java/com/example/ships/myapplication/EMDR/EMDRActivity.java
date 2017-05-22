@@ -107,25 +107,6 @@ public class EMDRActivity extends AppCompatActivity {
 
                 float emdrCircleDiameter = getResources().getDimension(R.dimen.emdr_circle_diameter);
 
-                AnimationSet ballMovementSet = new AnimationSet(true);
-
-//                TranslateAnimation moveLeftToRight = new TranslateAnimation(-((SCREEN_WIDTH - emdrCircleDiameter)/2), ((SCREEN_WIDTH - emdrCircleDiameter)/2),
-//                        ((SCREEN_HEIGHT - emdrCircleDiameter)/2), ((SCREEN_HEIGHT - emdrCircleDiameter)/2));
-                TranslateAnimation moveLeftToRight = new TranslateAnimation(-((SCREEN_WIDTH - emdrCircleDiameter)/2), ((SCREEN_WIDTH - emdrCircleDiameter)/2),
-                        (0), (0));
-                moveLeftToRight.setDuration(EMDR_DURATION);
-                moveLeftToRight.setFillAfter(true);
-                moveLeftToRight.setRepeatMode(Animation.REVERSE);
-                moveLeftToRight.setRepeatCount(EMDR_REPEATS);
-                //ballMovementSet.addAnimation(moveLeftToRight);
-
-                TranslateAnimation moveUpAndDown = new TranslateAnimation(0, 0, -((SCREEN_HEIGHT - 2*emdrCircleDiameter)/2), ((SCREEN_HEIGHT - 2*emdrCircleDiameter)/2));
-                moveUpAndDown.setDuration(2*EMDR_DURATION);
-                moveUpAndDown.setFillAfter(true);
-                moveUpAndDown.setRepeatMode(Animation.REVERSE);
-                moveUpAndDown.setRepeatCount(EMDR_REPEATS/2);
-                //ballMovementSet.addAnimation(moveUpAndDown);
-
                 View emdrView = findViewById(R.id.emdrlayout);
                 emdrView.setVisibility(View.VISIBLE);
 
@@ -157,13 +138,6 @@ public class EMDRActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
         ObjectAnimator vertical_Top_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", 0, (SCREEN_HEIGHT - emdrCircleDiameter)/2);
         ObjectAnimator vertical_Centre_To_Bottom = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, (SCREEN_HEIGHT - emdrCircleDiameter));
         ObjectAnimator vertical_Bottom_To_Centre = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter), (SCREEN_HEIGHT - emdrCircleDiameter)/2);
@@ -173,28 +147,6 @@ public class EMDRActivity extends AppCompatActivity {
         vertical_Centre_To_Bottom.setInterpolator(new DecelerateInterpolator());
         vertical_Bottom_To_Centre.setInterpolator(new AccelerateInterpolator());
         vertical_Centre_To_Top.setInterpolator(new DecelerateInterpolator());
-
-
-        ObjectAnimator vertical_Top_To_Centre1 = ObjectAnimator.ofFloat(emdrCircleView, "y", 0, (SCREEN_HEIGHT - emdrCircleDiameter)/4);
-        ObjectAnimator vertical_Top_To_Centre2 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/4, (SCREEN_HEIGHT - emdrCircleDiameter)/2);
-        vertical_Top_To_Centre1.setInterpolator(new AccelerateInterpolator());
-        vertical_Top_To_Centre2.setInterpolator(new AccelerateInterpolator());
-
-
-        ObjectAnimator vertical_Centre_To_Bottom1 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, (3/4)*(SCREEN_HEIGHT - emdrCircleDiameter));
-        ObjectAnimator vertical_Centre_To_Bottom2 = ObjectAnimator.ofFloat(emdrCircleView, "y", (3/4)*(SCREEN_HEIGHT - emdrCircleDiameter), (SCREEN_HEIGHT - emdrCircleDiameter));
-        vertical_Centre_To_Bottom1.setInterpolator(new DecelerateInterpolator());
-        vertical_Centre_To_Bottom2.setInterpolator(new DecelerateInterpolator());
-
-        ObjectAnimator vertical_Bottom_To_Centre1 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter), 3/4*(SCREEN_HEIGHT - emdrCircleDiameter));
-        ObjectAnimator vertical_Bottom_To_Centre2 = ObjectAnimator.ofFloat(emdrCircleView, "y", 3/4*(SCREEN_HEIGHT - emdrCircleDiameter), (SCREEN_HEIGHT - emdrCircleDiameter)/2);
-        vertical_Bottom_To_Centre1.setInterpolator(new AccelerateInterpolator());
-        vertical_Bottom_To_Centre2.setInterpolator(new AccelerateInterpolator());
-
-        ObjectAnimator vertical_Centre_To_Top1 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/2, (SCREEN_HEIGHT - emdrCircleDiameter)/4);
-        ObjectAnimator vertical_Centre_To_Top2 = ObjectAnimator.ofFloat(emdrCircleView, "y", (SCREEN_HEIGHT - emdrCircleDiameter)/4, 0);
-        vertical_Centre_To_Top1.setInterpolator(new DecelerateInterpolator());
-        vertical_Centre_To_Top2.setInterpolator(new DecelerateInterpolator());
 
 
 
@@ -212,20 +164,6 @@ public class EMDRActivity extends AppCompatActivity {
 //        animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
 
         //figure-of-eight movement
-//        animSet.play(vertical_Top_To_Centre1).with(horizontal_Centre_To_Right);
-//        animSet.play(vertical_Top_To_Centre2).after(vertical_Top_To_Centre1).with(horizontal_Right_To_Centre);
-//        animSet.play(vertical_Centre_To_Bottom1).after(vertical_Top_To_Centre2).with(horizontal_Centre_To_Left);
-//        animSet.play(vertical_Centre_To_Bottom2).after(vertical_Centre_To_Bottom1).with(horizontal_Left_To_Centre);
-//
-//        animSet.play(vertical_Bottom_To_Centre1).after(vertical_Centre_To_Bottom2).with(horizontal_Centre_To_Right);
-//        animSet.play(vertical_Bottom_To_Centre2).after(vertical_Bottom_To_Centre1).with(horizontal_Right_To_Centre);
-//        animSet.play(vertical_Centre_To_Top1).after(vertical_Bottom_To_Centre2).with(horizontal_Centre_To_Left);
-//        animSet.play(vertical_Centre_To_Top2).after(vertical_Centre_To_Top1).with(horizontal_Left_To_Centre);
-
-//        animSet.play(vertical_Top_To_Centre1).before(vertical_Top_To_Centre2);
-//        animSet.play(vertical_Centre_To_Bottom1).after(vertical_Top_To_Centre2).before(vertical_Centre_To_Bottom2);
-//        animSet.play(vertical_Bottom_To_Centre1).after(vertical_Centre_To_Bottom2).before(vertical_Bottom_To_Centre2);
-//        animSet.play(vertical_Centre_To_Top1).after(vertical_Bottom_To_Centre2).before(vertical_Centre_To_Top2);
 
         vertical_Top_To_Centre.setDuration(EMDR_DURATION);
         vertical_Centre_To_Bottom.setDuration(EMDR_DURATION);
@@ -246,13 +184,10 @@ public class EMDRActivity extends AppCompatActivity {
 
         animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
         animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
-//        animSet.playSequentially(horizontal_Centre_To_Right, horizontal_Right_To_Centre, horizontal_Centre_To_Left, horizontal_Left_To_Centre);
         animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
         animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
 
 
-//        animSet.setDuration(EMDR_DURATION/2);
-        //animSet.setInterpolator(new AccelerateDecelerateInterpolator());
 
         animSet.addListener(new AnimatorListenerAdapter() {
             @Override
