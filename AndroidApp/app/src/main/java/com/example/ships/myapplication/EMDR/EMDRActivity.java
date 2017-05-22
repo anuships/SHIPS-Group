@@ -38,7 +38,7 @@ public class EMDRActivity extends AppCompatActivity {
 //    private static final int SCREEN_HEIGHT = 1800;
     private static int SCREEN_WIDTH  = 500;
     private static int SCREEN_HEIGHT = 900;
-    private static final int EMDR_REPEATS = 10;
+    private static final int EMDR_REPEATS = 20;
     private MediaPlayer mediaPlayer;
 
 
@@ -53,7 +53,7 @@ public class EMDRActivity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.ticksound);
 
         final Handler handler = new Handler();
-        final int delay = EMDR_DURATION - 200; //milliseconds
+        final int delay = EMDR_DURATION - 150; //milliseconds
 
         final Runnable loopingRunnable = new Runnable() {
             @Override
@@ -73,7 +73,7 @@ public class EMDRActivity extends AppCompatActivity {
 
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                if (n < EMDR_REPEATS) {
+                if (n <= EMDR_REPEATS) {
                     handler.postDelayed(loopingRunnable, delay);
                     n++;
                 }
