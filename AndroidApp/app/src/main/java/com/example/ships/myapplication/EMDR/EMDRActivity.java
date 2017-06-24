@@ -47,7 +47,7 @@ public class EMDRActivity extends AppCompatActivity {
     private static int SCREEN_HEIGHT = 900;
     private static final int EMDR_REPEATS = 20;
     private MediaPlayer mediaPlayer;
-    public EMDRMovementTypes emdrMovementType = EMDRMovementTypes.FIGURE_OF_EIGHT;
+    public EMDRMovementTypes emdrMovementType = EMDRMovementTypes.SIMPLE_HORIZONTAL;
 
 
     @Override
@@ -186,7 +186,8 @@ public class EMDRActivity extends AppCompatActivity {
                    animSet.play(vertical_Top_To_Centre).before(vertical_Centre_To_Bottom);
                    animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
         } else if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_HORIZONTAL)) {
-
+            animSet.play(horizontal_Centre_To_Right).before(horizontal_Right_To_Centre);
+            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).before(horizontal_Left_To_Centre);
         } else if (emdrMovementType.equals(EMDRMovementTypes.CIRCULAR)) {
             animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
             animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
