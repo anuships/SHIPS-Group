@@ -47,6 +47,7 @@ public class EMDRActivity extends AppCompatActivity {
     private static int SCREEN_HEIGHT = 900;
     private static final int EMDR_REPEATS = 20;
     private MediaPlayer mediaPlayer;
+    public EMDRMovementTypes emdrMovementType = EMDRMovementTypes.FIGURE_OF_EIGHT;
 
 
     @Override
@@ -181,11 +182,32 @@ public class EMDRActivity extends AppCompatActivity {
         horizontal_Centre_To_Left2.setDuration(EMDR_DURATION/2);
         horizontal_Left_To_Centre2.setDuration(EMDR_DURATION/2);
 
+        if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_VERTICAL)) {
+                   animSet.play(vertical_Top_To_Centre).before(vertical_Centre_To_Bottom);
+                   animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
+        } else if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_HORIZONTAL)) {
 
-        animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
-        animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
-        animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
-        animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
+        } else if (emdrMovementType.equals(EMDRMovementTypes.CIRCULAR)) {
+            animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
+            animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
+            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre);
+            animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
+
+        } else if (emdrMovementType.equals(EMDRMovementTypes.FIGURE_OF_EIGHT)) {
+            animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
+            animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
+            animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
+            animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
+        }
+
+
+
+
+
+//        animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
+//        animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
+//        animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
+//        animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
 
 
 
