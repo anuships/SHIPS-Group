@@ -47,6 +47,7 @@ public class EMDRActivity extends AppCompatActivity {
     private static int SCREEN_HEIGHT = 900;
     private static final int EMDR_REPEATS = 20;
     private MediaPlayer mediaPlayer;
+    public EMDRMovementTypes emdrMovementType = EMDRMovementTypes.CIRCULAR;
 
 
     @Override
@@ -165,27 +166,67 @@ public class EMDRActivity extends AppCompatActivity {
 
         //figure-of-eight movement
 
-        vertical_Top_To_Centre.setDuration(EMDR_DURATION);
-        vertical_Centre_To_Bottom.setDuration(EMDR_DURATION);
-        vertical_Bottom_To_Centre.setDuration(EMDR_DURATION);
-        vertical_Centre_To_Top.setDuration(EMDR_DURATION);
+//        vertical_Top_To_Centre.setDuration(EMDR_DURATION);
+//        vertical_Centre_To_Bottom.setDuration(EMDR_DURATION);
+//        vertical_Bottom_To_Centre.setDuration(EMDR_DURATION);
+//        vertical_Centre_To_Top.setDuration(EMDR_DURATION);
+//
+//        horizontal_Centre_To_Right.setDuration(EMDR_DURATION/2);
+//        horizontal_Right_To_Centre.setDuration(EMDR_DURATION/2);
+//        horizontal_Centre_To_Left.setDuration(EMDR_DURATION/2);
+//        horizontal_Left_To_Centre.setDuration(EMDR_DURATION/2);
+//
+//
+//        horizontal_Centre_To_Right2.setDuration(EMDR_DURATION/2);
+//        horizontal_Right_To_Centre2.setDuration(EMDR_DURATION/2);
+//        horizontal_Centre_To_Left2.setDuration(EMDR_DURATION/2);
+//        horizontal_Left_To_Centre2.setDuration(EMDR_DURATION/2);
 
-        horizontal_Centre_To_Right.setDuration(EMDR_DURATION/2);
-        horizontal_Right_To_Centre.setDuration(EMDR_DURATION/2);
-        horizontal_Centre_To_Left.setDuration(EMDR_DURATION/2);
-        horizontal_Left_To_Centre.setDuration(EMDR_DURATION/2);
+        if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_VERTICAL)) {
+                   animSet.play(vertical_Top_To_Centre).before(vertical_Centre_To_Bottom);
+                   animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
+        } else if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_HORIZONTAL)) {
+            animSet.play(horizontal_Centre_To_Right).before(horizontal_Right_To_Centre);
+            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).before(horizontal_Left_To_Centre);
+        } else if (emdrMovementType.equals(EMDRMovementTypes.CIRCULAR)) {
+            animSet.setDuration(EMDR_DURATION);
+            animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
+            animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
+            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre);
+            animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
+
+        } else if (emdrMovementType.equals(EMDRMovementTypes.FIGURE_OF_EIGHT)) {
+
+            vertical_Top_To_Centre.setDuration(EMDR_DURATION);
+            vertical_Centre_To_Bottom.setDuration(EMDR_DURATION);
+            vertical_Bottom_To_Centre.setDuration(EMDR_DURATION);
+            vertical_Centre_To_Top.setDuration(EMDR_DURATION);
+
+            horizontal_Centre_To_Right.setDuration(EMDR_DURATION/2);
+            horizontal_Right_To_Centre.setDuration(EMDR_DURATION/2);
+            horizontal_Centre_To_Left.setDuration(EMDR_DURATION/2);
+            horizontal_Left_To_Centre.setDuration(EMDR_DURATION/2);
 
 
-        horizontal_Centre_To_Right2.setDuration(EMDR_DURATION/2);
-        horizontal_Right_To_Centre2.setDuration(EMDR_DURATION/2);
-        horizontal_Centre_To_Left2.setDuration(EMDR_DURATION/2);
-        horizontal_Left_To_Centre2.setDuration(EMDR_DURATION/2);
+            horizontal_Centre_To_Right2.setDuration(EMDR_DURATION/2);
+            horizontal_Right_To_Centre2.setDuration(EMDR_DURATION/2);
+            horizontal_Centre_To_Left2.setDuration(EMDR_DURATION/2);
+            horizontal_Left_To_Centre2.setDuration(EMDR_DURATION/2);
+
+            animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
+            animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
+            animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
+            animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
+        }
 
 
-        animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
-        animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
-        animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
-        animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
+
+
+
+//        animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
+//        animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
+//        animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
+//        animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
 
 
 

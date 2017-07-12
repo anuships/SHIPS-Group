@@ -80,6 +80,13 @@
 
     </LinearLayout>
 
+    <Spinner
+        android:id="@+id/emdr_movement_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movement Type">
+    </Spinner>
+
     <Button
         android:id="@+id/emdrstartbutton"
         android:layout_width="120dp"
