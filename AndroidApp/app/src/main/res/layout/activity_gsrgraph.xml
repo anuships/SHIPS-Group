@@ -22,15 +22,16 @@
             android:id="@+id/chart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:layout_gravity="center"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical"
+            android:background="@drawable/gsr_gradient"></LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="50dp"
+            android:layout_margin="30dp"
             android:orientation="horizontal">
 
             <TextView

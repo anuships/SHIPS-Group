@@ -23,40 +23,49 @@ class GSRLineGraph {
     GSRLineGraph(Activity activity){
         series = new XYSeries("GSR Reading");
         XYSeriesRenderer renderer = new XYSeriesRenderer();
-        renderer.setLineWidth(2);
-        renderer.setColor(Color.RED);
+        renderer.setLineWidth(10);
+        renderer.setColor(Color.BLACK);
         renderer.setDisplayBoundingPoints(true);
         renderer.setPointStyle(PointStyle.CIRCLE);
         renderer.setPointStrokeWidth(3);
         mRenderer = new XYMultipleSeriesRenderer();
-        mRenderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00));
+        mRenderer.setLegendHeight(1);
+        mRenderer.setZoomButtonsVisible(false);
+        mRenderer.setMargins(new int[] {0, 0, 0, 0});
+
+        mRenderer.setGridColor(0);
+       // mRenderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00));
         mRenderer.addSeriesRenderer(renderer);
         mRenderer.setPanEnabled(false, false);
         mRenderer.setYAxisMax(500);
         mRenderer.setYAxisMin(0);
-        mRenderer.setShowGrid(true); // we show the grid
+        mRenderer.setShowGrid(false);
+        mRenderer.setShowAxes(false);
         dataset = new XYMultipleSeriesDataset();
         dataset.addSeries(series);
         graphView = ChartFactory.getLineChartView(activity, dataset, mRenderer);
 
     }
     void addBaseLine(double y){
-        XYSeries baseLine = new XYSeries("baseLine");
-        baseLine.add(0.0, y);
-        baseLine.add(20.0, y);
-        for (int i = 0; i < 2000;i++){
-            baseLine.add((double) i, y);
-        }
-        dataset.addSeries(baseLine);
-        XYSeriesRenderer renderer = new XYSeriesRenderer();
-        renderer.setLineWidth(2);
-        renderer.setColor(Color.BLUE);
-        renderer.setDisplayBoundingPoints(true);
+        mRenderer.setYAxisMax(y + 100);
+        mRenderer.setYAxisMin(y - 100);
+
+        //XYSeries baseLine = new XYSeries("baseLine");
+        //baseLine.add(0.0, y);
+        //baseLine.add(20.0, y);
+        //for (int i = 0; i < 2000;i++){
+          //  baseLine.add((double) i, y);
+        //}
+        //dataset.addSeries(baseLine);
+        //XYSeriesRenderer renderer = new XYSeriesRenderer();
+        //renderer.setLineWidth(2);
+        //renderer.setColor(Color.BLUE);
+        //renderer.setDisplayBoundingPoints(true);
        // renderer.setPointStyle(PointStyle.CIRCLE);
-        renderer.setPointStrokeWidth(3);
-        baseLine.add(200.0, y);
-        mRenderer.addSeriesRenderer(renderer);
-        this.rePaint();
+        //renderer.setPointStrokeWidth(3);
+       // baseLine.add(200.0, y);
+        //mRenderer.addSeriesRenderer(renderer);
+        //this.rePaint();
     }
     void addPoint(double x, double y){
         series.add(x, y);
