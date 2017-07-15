@@ -14,10 +14,7 @@ import com.example.ships.myapplication.R;
 public class EMDRActivitySettings extends AppCompatActivity {
 
     String emdrMovementType = null;
-
-//    Spinner emdr_movement_type_spinner = (Spinner) findViewById(R.id.emdr_movement_spinner);
-//    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.emdr_movements_array, android.R.layout.simple_spinner_dropdown_item);
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
