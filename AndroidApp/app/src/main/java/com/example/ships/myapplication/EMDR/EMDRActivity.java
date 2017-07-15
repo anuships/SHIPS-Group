@@ -214,11 +214,11 @@ public class EMDRActivity extends AppCompatActivity {
             animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).before(horizontal_Left_To_Centre);
             animSet.setDuration(EMDR_DURATION/2);
         } else if (emdrMovementType.equals(EMDRMovementTypes.CIRCULAR)) {
-            animSet.setDuration(EMDR_DURATION);
             animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
             animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
             animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre);
             animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
+            animSet.setDuration(EMDR_DURATION/2);
 
         } else if (emdrMovementType.equals(EMDRMovementTypes.FIGURE_OF_EIGHT)) {
 
