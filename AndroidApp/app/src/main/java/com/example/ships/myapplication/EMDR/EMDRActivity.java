@@ -40,14 +40,14 @@ import static com.example.ships.myapplication.R.layout.animationemdr;
 
 public class EMDRActivity extends AppCompatActivity {
 
-    private static final int EMDR_DURATION = 2000;
+    private static final int EMDR_DURATION = 2500;
 //    private static final int SCREEN_WIDTH = 1000;
 //    private static final int SCREEN_HEIGHT = 1800;
     private static int SCREEN_WIDTH  = 500;
     private static int SCREEN_HEIGHT = 900;
     private static final int EMDR_REPEATS = 20;
     private MediaPlayer mediaPlayer;
-    public EMDRMovementTypes emdrMovementType = EMDRMovementTypes.CIRCULAR;
+    public EMDRMovementTypes emdrMovementType = null;
 
 
     @Override
@@ -57,8 +57,23 @@ public class EMDRActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Intent intent = getIntent();
+        String emdr_movement_type = intent.getStringExtra("emdr_Movement_Type");
+
+        //String emdr_movement_type = "Horizontal";
+
+        if (emdr_movement_type.equals("Horizontal")) {
+            emdrMovementType = EMDRMovementTypes.SIMPLE_HORIZONTAL;
+        } else if (emdr_movement_type.equals("Vertical")) {
+            emdrMovementType = EMDRMovementTypes.SIMPLE_VERTICAL;
+        } else if (emdr_movement_type.equals("Circular")) {
+            emdrMovementType = EMDRMovementTypes.CIRCULAR;
+        } else if (emdr_movement_type.equals("Figure of eight")) {
+            emdrMovementType = EMDRMovementTypes.FIGURE_OF_EIGHT;
+        }
 
         mediaPlayer = MediaPlayer.create(this, R.raw.ticksound);
+        //mediaPlayer.setVolume(0.f, 1.f);
 
         final Handler handler = new Handler();
         final int delay = EMDR_DURATION - 150; //milliseconds
@@ -81,8 +96,14 @@ public class EMDRActivity extends AppCompatActivity {
 
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                if (n <= EMDR_REPEATS) {
+                //if (n <= EMDR_REPEATS) {
+                if (n >= 0 && n%2==1) {
                     handler.postDelayed(loopingRunnable, delay);
+                    mediaPlayer.setVolume(0.f, 1.f);
+                    n++;
+                } else if (n >=0 && n%2==0) {
+                    handler.postDelayed(loopingRunnable, delay);
+                    mediaPlayer.setVolume(1.f, 0.f);
                     n++;
                 }
             }
@@ -182,12 +203,16 @@ public class EMDRActivity extends AppCompatActivity {
 //        horizontal_Centre_To_Left2.setDuration(EMDR_DURATION/2);
 //        horizontal_Left_To_Centre2.setDuration(EMDR_DURATION/2);
 
+        System.out.println(emdr_movement_type);
+
         if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_VERTICAL)) {
                    animSet.play(vertical_Top_To_Centre).before(vertical_Centre_To_Bottom);
                    animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
+            animSet.setDuration(EMDR_DURATION/2);
         } else if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_HORIZONTAL)) {
             animSet.play(horizontal_Centre_To_Right).before(horizontal_Right_To_Centre);
             animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).before(horizontal_Left_To_Centre);
+            animSet.setDuration(EMDR_DURATION/2);
         } else if (emdrMovementType.equals(EMDRMovementTypes.CIRCULAR)) {
             animSet.setDuration(EMDR_DURATION);
             animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
