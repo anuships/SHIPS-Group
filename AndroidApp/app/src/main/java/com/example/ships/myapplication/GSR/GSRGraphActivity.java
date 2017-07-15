@@ -35,7 +35,10 @@ public class GSRGraphActivity extends AppCompatActivity {
     boolean haveBaseGSR = false;
     boolean appOn = true; 
     boolean appHasFocus = true;
+    int count = 0;
     int point = 0;
+    double gsrVal;
+    double hVal;
     TextView heartRateDisplay;
     private static final String ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION";
     UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.UsbReadCallback() {
@@ -60,9 +63,8 @@ public class GSRGraphActivity extends AppCompatActivity {
                                 haveBaseGSR = true;
                             }else if (s.contains("C")){
                                 data = s.substring(s.indexOf('=') + 1, s.length());
-                                double val = Double.parseDouble(data);
-                                point++;
-                                lineGraph.addPoint(point, val);
+                                gsrVal  = Double.parseDouble(data);
+
                             }else if (s.contains("R")){
                                 data = s.substring(s.indexOf('=') + 1, s.length());
                                 double val = Double.parseDouble(data);
@@ -177,17 +179,20 @@ public class GSRGraphActivity extends AppCompatActivity {
                         String base = "GB";
                         String heart = "HR";
                         if (serialPort != null) {
-                            serialPort.write(cur.getBytes());
-                            try {
+                                serialPort.write(cur.getBytes());
+
+                                try {
                                 if (!haveBaseGSR) {
                                     serialPort.write(base.getBytes());
+                                }else{
+                                    point++;
+                                    lineGraph.addPoint(point, gsrVal);
                                 }
                                 serialPort.write(heart.getBytes());
-                                Thread.sleep(300);
+                                Thread.sleep(200);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-
                         }
                     }else{
                         try{
