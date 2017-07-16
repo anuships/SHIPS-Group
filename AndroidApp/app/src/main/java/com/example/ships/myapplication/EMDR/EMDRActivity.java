@@ -40,14 +40,12 @@ import static com.example.ships.myapplication.R.layout.animationemdr;
 
 public class EMDRActivity extends AppCompatActivity {
 
-    private static final int EMDR_DURATION = 2000;
-//    private static final int SCREEN_WIDTH = 1000;
-//    private static final int SCREEN_HEIGHT = 1800;
+    private static final int EMDR_DURATION = 2500;
     private static int SCREEN_WIDTH  = 500;
     private static int SCREEN_HEIGHT = 900;
     private static final int EMDR_REPEATS = 20;
     private MediaPlayer mediaPlayer;
-    public EMDRMovementTypes emdrMovementType = EMDRMovementTypes.CIRCULAR;
+    public EMDRMovementTypes emdrMovementType = null;
 
 
     @Override
@@ -57,6 +55,18 @@ public class EMDRActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Intent intent = getIntent();
+        String emdr_movement_type = intent.getStringExtra("emdr_Movement_Type");
+
+        if (emdr_movement_type.equals("Horizontal")) {
+            emdrMovementType = EMDRMovementTypes.SIMPLE_HORIZONTAL;
+        } else if (emdr_movement_type.equals("Vertical")) {
+            emdrMovementType = EMDRMovementTypes.SIMPLE_VERTICAL;
+        } else if (emdr_movement_type.equals("Circular")) {
+            emdrMovementType = EMDRMovementTypes.CIRCULAR;
+        } else if (emdr_movement_type.equals("Figure of eight")) {
+            emdrMovementType = EMDRMovementTypes.FIGURE_OF_EIGHT;
+        }
 
         mediaPlayer = MediaPlayer.create(this, R.raw.ticksound);
 
@@ -81,8 +91,14 @@ public class EMDRActivity extends AppCompatActivity {
 
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                if (n <= EMDR_REPEATS) {
+                //if (n <= EMDR_REPEATS) {
+                if (n >= 0 && n%2==1) {
                     handler.postDelayed(loopingRunnable, delay);
+                    mediaPlayer.setVolume(0.f, 1.f);
+                    n++;
+                } else if (n >=0 && n%2==0) {
+                    handler.postDelayed(loopingRunnable, delay);
+                    mediaPlayer.setVolume(1.f, 0.f);
                     n++;
                 }
             }
@@ -111,7 +127,6 @@ public class EMDRActivity extends AppCompatActivity {
                 View emdrView = findViewById(R.id.emdrlayout);
                 emdrView.setVisibility(View.VISIBLE);
 
-        float scale = getResources().getDisplayMetrics().density;
         View emdrCircleView = findViewById(R.id.emdr_circle_layout);
 
         //horizontal movement (simple harmonic)
@@ -153,47 +168,23 @@ public class EMDRActivity extends AppCompatActivity {
 
         final AnimatorSet animSet = new AnimatorSet();
 
-//pure vertical movemement
- //       animSet.play(vertical_Top_To_Centre).before(vertical_Centre_To_Bottom);
- //       animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
 
-
-//circular movement
-//        animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
-//        animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
-//        animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre);
-//        animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
-
-        //figure-of-eight movement
-
-//        vertical_Top_To_Centre.setDuration(EMDR_DURATION);
-//        vertical_Centre_To_Bottom.setDuration(EMDR_DURATION);
-//        vertical_Bottom_To_Centre.setDuration(EMDR_DURATION);
-//        vertical_Centre_To_Top.setDuration(EMDR_DURATION);
-//
-//        horizontal_Centre_To_Right.setDuration(EMDR_DURATION/2);
-//        horizontal_Right_To_Centre.setDuration(EMDR_DURATION/2);
-//        horizontal_Centre_To_Left.setDuration(EMDR_DURATION/2);
-//        horizontal_Left_To_Centre.setDuration(EMDR_DURATION/2);
-//
-//
-//        horizontal_Centre_To_Right2.setDuration(EMDR_DURATION/2);
-//        horizontal_Right_To_Centre2.setDuration(EMDR_DURATION/2);
-//        horizontal_Centre_To_Left2.setDuration(EMDR_DURATION/2);
-//        horizontal_Left_To_Centre2.setDuration(EMDR_DURATION/2);
+        System.out.println(emdr_movement_type);
 
         if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_VERTICAL)) {
                    animSet.play(vertical_Top_To_Centre).before(vertical_Centre_To_Bottom);
                    animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
+            animSet.setDuration(EMDR_DURATION/2);
         } else if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_HORIZONTAL)) {
             animSet.play(horizontal_Centre_To_Right).before(horizontal_Right_To_Centre);
             animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).before(horizontal_Left_To_Centre);
+            animSet.setDuration(EMDR_DURATION/2);
         } else if (emdrMovementType.equals(EMDRMovementTypes.CIRCULAR)) {
-            animSet.setDuration(EMDR_DURATION);
             animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
             animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
             animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre);
             animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
+            animSet.setDuration(EMDR_DURATION/2);
 
         } else if (emdrMovementType.equals(EMDRMovementTypes.FIGURE_OF_EIGHT)) {
 
@@ -219,17 +210,6 @@ public class EMDRActivity extends AppCompatActivity {
             animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
         }
 
-
-
-
-
-//        animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
-//        animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
-//        animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
-//        animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
-
-
-
         animSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -240,22 +220,12 @@ public class EMDRActivity extends AppCompatActivity {
 
         animSet.start();
 
-
-
-                LinearLayout layoutEMDRMovement = (LinearLayout) findViewById(R.id.emdr_circle_layout);
-                //layoutEMDRMovement.startAnimation(ballMovementSet);
-
-
-
-
         Button start_emdr_settings_button = (Button) findViewById(R.id.start_emdr_settings_button);
         start_emdr_settings_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 finish();
             }
         });
-
-
             }
 
         @Override

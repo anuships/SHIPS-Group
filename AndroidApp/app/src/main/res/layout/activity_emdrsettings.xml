@@ -80,11 +80,19 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Settings_Title"
+        android:text="EMDR Settings"
+        android:layout_centerHorizontal="true"/>
+
     <Spinner
         android:id="@+id/emdr_movement_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Movement Type">
+        android:text="Movement Type"
+        android:layout_below="@id/Settings_Title">
     </Spinner>
 
     <Button
