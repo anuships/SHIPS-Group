@@ -2,6 +2,7 @@ package com.example.ships.myapplication.EMDR;
 
 /**
  * Created by lalit on 24/06/17.
+ * Types of emdr (eye movement) animation
  */
 
 public enum EMDRMovementTypes {
