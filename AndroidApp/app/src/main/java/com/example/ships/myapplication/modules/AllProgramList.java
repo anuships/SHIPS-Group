@@ -3,12 +3,16 @@ package com.example.ships.myapplication.modules;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ships.myapplication.R;
@@ -69,6 +73,7 @@ public class AllProgramList extends AppCompatActivity {
 
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle,
                 expandableListDetail);
+
         expandableListView.setAdapter(expandableListAdapter);
 /*        expandableListView.setOnGroupExpandListener(
                 new ExpandableListView.OnGroupExpandListener() {
@@ -109,14 +114,24 @@ public class AllProgramList extends AppCompatActivity {
         });*/
 
 
-        
+
     }
 
     public void onClick(View v) {
+        System.out.println(v.toString());
+
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.add_to_my_program, popup.getMenu());
         popup.show();
+    }
+    public void onClickInside(View v) {
+        AppCompatButton but = (AppCompatButton) v;
+        System.out.println(but.toString());
+        ExpandableListView ex = (ExpandableListView) but.getParent().getParent().getParent();
+        TextView title = (TextView) ex.findViewById(R.id.listTitle);
+        System.out.println(title.getText().toString());
+
     }
 
     public void goBack(View view) {

@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="myColor">#AAE2FF</color>
     <color name="orangeButton">#D2691E</color>
+    <color name="redError">#FF6666</color>
 </resources>

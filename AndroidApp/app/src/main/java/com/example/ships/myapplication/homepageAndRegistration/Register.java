@@ -2,6 +2,8 @@ package com.example.ships.myapplication.homepageAndRegistration;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -91,7 +93,53 @@ public class Register extends AppCompatActivity {
         }
         else
         {
-            startActivity(new Intent(this,RegisterSuccess.class));
+            //
+            SQLiteDatabase mySqlDB = openOrCreateDatabase("shipsdb", MODE_PRIVATE, null);
+            mySqlDB.execSQL("CREATE TABLE IF NOT EXISTS users(UID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME VARCHAR, " +
+                            "EMAIL VARCHAR, PASSWORD VARCHAR, SALT VARCHAR, FIRST_NAME VARCHAR, LAST_NAME VARCHAR);");
+            System.out.println(mySqlDB.getPath());
+            email = (EditText) findViewById(R.id.emailInput);
+            pw = (EditText) findViewById(R.id.pwInput);
+            comfirmpw = (EditText) findViewById(R.id.pwConfirmInput);
+            firstName = (EditText) findViewById(R.id.firstNameInput);
+            lastName = (EditText) findViewById(R.id.lastNameInput);
+            String salt;
+            String hashedPassword;
+            try {
+                String q = "SELECT uid FROM users WHERE email = ?";
+                Cursor results = mySqlDB.rawQuery(q, new String[]{email.getText().toString()});
+                if (results.getCount() > 0){
+
+                    Context context = getApplicationContext();
+                    CharSequence text = "Error: Email already used";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    emailtext.setTextColor(Color.RED);
+                    pwtext.setTextColor(Color.BLACK);
+                    comfirmpwtext.setTextColor(Color.BLACK);
+                    firstNametext.setTextColor(Color.BLACK);
+                    lastNametext.setTextColor(Color.BLACK);
+                    return;
+                }
+
+                salt = new String(PasswordEncrypter.generateSalt());
+                System.out.println("SALT: " + salt);
+
+                hashedPassword = new String(PasswordEncrypter.encryptPassword(pw.getText().toString(),salt.getBytes()));
+                System.out.println("PASS HASH:" + hashedPassword);
+
+                mySqlDB.execSQL("INSERT INTO users (USERNAME, EMAIL, PASSWORD, SALT, FIRST_NAME, LAST_NAME) " +
+                        "VALUES(' ','"+email.getText().toString()+"','"+hashedPassword+"','"+salt+"','"+firstName.getText().toString()+"','"+lastName.getText().toString()+"' );");
+                Cursor resultSet = mySqlDB.rawQuery("Select * from users",null);
+                resultSet.moveToFirst();
+                System.out.println(resultSet.getString(0)+ resultSet.getString(1)+ resultSet.getString(2)+resultSet.getString(3));
+                startActivity(new Intent(this,RegisterSuccess.class));
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+//            startActivity(new Intent(this,RegisterSuccess.class));
         }
     }
 

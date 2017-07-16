@@ -5,6 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -36,10 +38,12 @@ import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.modules.ExpandableListDataPump;
 import com.example.ships.myapplication.modules.MyProgram;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
+import static android.database.sqlite.SQLiteDatabase.OPEN_READWRITE;
 
 /**
  * A login screen that offers login via email/password.
@@ -51,21 +55,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
     private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private TextView errorView;
     private View mProgressView;
     private View mLoginFormView;
 
@@ -76,7 +71,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
-
+        errorView = (TextView) findViewById(R.id.errorTxt);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -276,7 +271,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
     }
-
+    private void startNewTask(String firstName, String lastName, int uid){
+        Intent in = new Intent(this, UserProfile.class);
+        Bundle b = new Bundle();
+        b.putString("firstName", firstName);
+        b.putInt("uid", uid);
+        b.putString("lastName", lastName);
+        b.putString("email", mEmailView.getText().toString());
+        in.putExtras(b);
+        startActivity(in);
+    }
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
@@ -313,7 +317,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         private final String mEmail;
         private final String mPassword;
-
+        private int uid;
+        private String firstName;
+        private String lastName;
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
@@ -322,24 +328,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
-
+            SQLiteDatabase mySqlDB;
             try {
-                // Simulate network access.
+                mySqlDB = SQLiteDatabase.openDatabase(getDatabasePath("shipsdb").getAbsolutePath(), null,OPEN_READWRITE);
                 Thread.sleep(2000);
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 return false;
             }
+            String q = "SELECT uid, first_name, last_name, password, salt FROM users WHERE email = ?";
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
+            Cursor results = mySqlDB.rawQuery(q, new String[]{mEmail});
+            results.moveToFirst();
+            try {
+                String enteredHash = new String(PasswordEncrypter.encryptPassword(mPassword, results.getString(4).getBytes()));
+                uid = results.getInt(0);
+                firstName = results.getString(1);
+                lastName = results.getString(2);
+                return (enteredHash.equals(results.getString(3)));
+            }catch(Exception e){
+                e.printStackTrace();
+                return false;
             }
-
-            // TODO: register the new account here.
-            return true;
         }
 
         @Override
@@ -348,9 +357,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                finish();
+                startNewTask(firstName, lastName, uid);
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                errorView.setText("Incorrect Username or Password");
                 mPasswordView.requestFocus();
             }
         }

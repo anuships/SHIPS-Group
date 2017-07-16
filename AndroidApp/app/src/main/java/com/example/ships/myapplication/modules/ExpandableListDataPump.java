@@ -52,7 +52,7 @@ public class ExpandableListDataPump {
                     Log.d("User selected ", selection);
             }*/
 
-            startActivity(new Intent(this, AllProgramList.class));
+            startActivity(new Intent(this, MyProgram.class));
         }
 
         public void goBack(View view) {
