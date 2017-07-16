@@ -20,9 +20,6 @@ public class EMDRActivitySettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emdrsettings);
 
-//        emdr_movement_type_spinner.setAdapter(adapter);
-
-
         Spinner emdr_movement_type_spinner = (Spinner) findViewById(R.id.emdr_movement_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.emdr_movements_array, android.R.layout.simple_spinner_dropdown_item);
         emdr_movement_type_spinner.setAdapter(adapter);
