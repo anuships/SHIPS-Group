@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Settings_Title"
-        android:text="EMDR Settings"
+        android:text="@string/emdr_settings_title"
         android:layout_centerHorizontal="true"/>
 
     <LinearLayout
@@ -36,13 +36,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emdr_movement_spinner_textview"
-            android:text="EMDR Movement Type"/>
+            android:text="@string/emdr_movement_type_selection"/>
 
         <Spinner
             android:id="@+id/emdr_movement_spinner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Movement Type">
+            android:layout_height="wrap_content">
             <!--android:layout_below="@id/Settings_Title">-->
         </Spinner>
 
@@ -57,7 +56,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="sendMessage"
-        android:text="Start EMDR"
+        android:text="@string/emdr_start_button"
         android:background="@drawable/roundedbutton"
         android:textColor="#FFFFFF"
         android:layout_gravity="center"/>

@@ -35,7 +35,7 @@ tools:context="com.example.ships.myapplication.homepageAndRegistration.LoginActi
 
     <Button
         android:id="@+id/start_emdr_settings_button"
-        android:text="Settings"
+        android:text="@string/emdr_settings_button"
         android:background="@drawable/roundedbutton"
         android:textColor="#FFFFFF"
         android:layout_height="wrap_content"
