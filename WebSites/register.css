@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+#content{
+	width:400px;
+	height:auto;
+	margin-left:auto; margin-right:auto;
+}
+
+tr>td {
+  padding-bottom: 1em;
+}
+
+
+body{
+	width:600px;
+	height:800px;
+	margin:auto;
+	background:#0CF;
+	margin:0 auto;
+}
+
+#req:before{
+    content:"*";
+    color:red;   
+}
+
+
+
+button{
+	display:block;
+	height: auto;
+	width: 80px;
+	border-radius: 10%;
+	color:white;
+	background:#09F;
+	border: 1px solid white;
+	margin:auto;
+}
