@@ -2,13 +2,13 @@
 /* CSS Document */
 
 #content{
-	width:400px;
+	width:370px;
 	height:auto;
 	margin-left:auto; margin-right:auto;
 }
 
 tr>td {
-  padding-bottom: 1em;
+  padding-top: 1em;
 }
 
 
@@ -20,20 +20,24 @@ body{
 	margin:0 auto;
 }
 
-#req:before{
-    content:"*";
-    color:red;   
-}
-
-
 
 button{
 	display:block;
 	height: auto;
 	width: 80px;
 	border-radius: 10%;
+	font-size:20px;
 	color:white;
 	background:#09F;
 	border: 1px solid white;
 	margin:auto;
+}
+
+#req{
+	color:red;
+}
+
+#hints{
+	margin-right:20px;
+	color:red;
 }

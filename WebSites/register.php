@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<div id="header"></div>
 <div id="content">
     <h1 align="center">Registration</h1>
     <div id="register_form">
@@ -14,30 +15,38 @@
       <tr>
         <td align="right"><b>Email:</b></td>
         <td><input type="email" name="email" id="req" size="20" maxlength="30" /></td>
+        <td id="req">*</td>
       </tr>  
       <tr>
         <td align="right"><b> password:</b></td>
         <td><input type="password" name="password" id="req" size="20" maxlength="30"></td>
+        <td id="req">*</td>
       </tr>
       <tr>
         <td align="right"><b> Confirm Password:</b></td>
         <td><input type="password" name="confirm_password" id="req" size="20" maxlength="30"></td>
+        <td id="req">*</td>
       </tr>
       <tr>
         <td align="right"><b> First Name:</b></td>
-        <td><input type="text" name="name" size="20" id="req" maxlength="30"></td>
+        <td><input type="text" name="fname" size="20" id="req" maxlength="30"></td>
+        <td id="req">*</td>
       </tr>
       <tr>
         <td align="right"><b> Last Name:</b></td>
-        <td><input type="text" name="name" size="20" id="req" maxlength="30"></td>
+        <td><input type="text" name="lname" size="20" id="req" maxlength="30"></td>
+        <td id="req">*</td>
       </tr>
       <tr>
         <td align="right"><b> Preferred User Name:</b></td>
         <td><input type="text" name="name" size="20" maxlength="30"></td>
       </tr>
       </table>
-    <button>submit</button>
+      
+      <p align="right" id="hints">* are required fileds </p>
+      <button>submit</button>
     </div>
 </div>
+<div id="footer"></div>
 </body>
 </html>
