@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="general.css">
 <link rel="stylesheet" type="text/css" href="register.css">
 <title>SHIPS-ANU Register</title>
 </head>
@@ -10,7 +11,7 @@
 <div id="header"></div>
 <div id="content">
     <h1 align="center">Registration</h1>
-    <div id="register_form">
+   
     <table border="0">
       <tr>
         <td align="right"><b>Email:</b></td>
@@ -44,8 +45,14 @@
       </table>
       
       <p align="right" id="hints">* are required fileds </p>
-      <button>submit</button>
-    </div>
+       <table id="buttons">
+         <tr>
+            <td><button>Back</button></td>
+            <td><button>Finish</button></td>
+         </tr>
+    	</table>
+      
+    
 </div>
 <div id="footer"></div>
 </body>
