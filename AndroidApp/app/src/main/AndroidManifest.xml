@@ -45,7 +45,7 @@
             android:name=".homepageAndRegistration.RegisterSuccess"
             android:exported="true" />
         <activity
-            android:name=".modules.AllProgramList"
+            android:name=".modules.UserProgramList"
             android:exported="true" />
         <activity
             android:name=".modules.LongTermProgramList"
@@ -64,7 +64,7 @@
             android:name=".modules.ExpandableListDataPump$SuggestedModules"
             android:exported="true" />
         <activity
-            android:name=".modules.MyProgram"
+            android:name=".modules.AllPrograms"
             android:exported="true" />
         <activity
             android:name=".modules.MyLongTermProgram"

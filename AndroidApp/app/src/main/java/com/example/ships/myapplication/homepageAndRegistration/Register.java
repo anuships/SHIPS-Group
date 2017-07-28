@@ -16,8 +16,12 @@ import com.example.ships.myapplication.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import java.util.UUID;
 public class Register extends AppCompatActivity {
+    private static String firstNameB;
+    private static String lastNameB;
+    private static String emailB;
+    private static String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,10 +98,7 @@ public class Register extends AppCompatActivity {
         else
         {
             //
-            SQLiteDatabase mySqlDB = openOrCreateDatabase("shipsdb", MODE_PRIVATE, null);
-            mySqlDB.execSQL("CREATE TABLE IF NOT EXISTS users(UID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME VARCHAR, " +
-                            "EMAIL VARCHAR, PASSWORD VARCHAR, SALT VARCHAR, FIRST_NAME VARCHAR, LAST_NAME VARCHAR);");
-            System.out.println(mySqlDB.getPath());
+            SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
             email = (EditText) findViewById(R.id.emailInput);
             pw = (EditText) findViewById(R.id.pwInput);
             comfirmpw = (EditText) findViewById(R.id.pwConfirmInput);
@@ -109,7 +110,6 @@ public class Register extends AppCompatActivity {
                 String q = "SELECT uid FROM users WHERE email = ?";
                 Cursor results = mySqlDB.rawQuery(q, new String[]{email.getText().toString()});
                 if (results.getCount() > 0){
-
                     Context context = getApplicationContext();
                     CharSequence text = "Error: Email already used";
                     int duration = Toast.LENGTH_SHORT;
@@ -124,25 +124,36 @@ public class Register extends AppCompatActivity {
                 }
 
                 salt = new String(PasswordEncrypter.generateSalt());
-                System.out.println("SALT: " + salt);
-
                 hashedPassword = new String(PasswordEncrypter.encryptPassword(pw.getText().toString(),salt.getBytes()));
-                System.out.println("PASS HASH:" + hashedPassword);
+                UUID tempID = UUID.randomUUID();
+                uid = String.valueOf(tempID);
+                System.out.println(uid);
+                String insertQuery = "INSERT INTO users (UID, USERNAME, EMAIL, PASSWORD, SALT, FIRST_NAME, LAST_NAME) VALUES(?,' ',?,?,?,?,?)";
+                mySqlDB.execSQL(insertQuery, new String[]{uid, email.getText().toString(),hashedPassword, salt,firstName.getText().toString(),lastName.getText().toString()});
 
-                mySqlDB.execSQL("INSERT INTO users (USERNAME, EMAIL, PASSWORD, SALT, FIRST_NAME, LAST_NAME) " +
-                        "VALUES(' ','"+email.getText().toString()+"','"+hashedPassword+"','"+salt+"','"+firstName.getText().toString()+"','"+lastName.getText().toString()+"' );");
-                Cursor resultSet = mySqlDB.rawQuery("Select * from users",null);
+                Cursor resultSet = mySqlDB.rawQuery("Select * from users where email=?",new String[]{email.getText().toString()});
                 resultSet.moveToFirst();
-                System.out.println(resultSet.getString(0)+ resultSet.getString(1)+ resultSet.getString(2)+resultSet.getString(3));
-                startActivity(new Intent(this,RegisterSuccess.class));
 
+                emailB = email.getText().toString();
+                lastNameB = lastName.getText().toString();
+                firstNameB = firstName.getText().toString();
+                Intent in = new Intent(this, RegisterSuccess.class);
+                in.putExtras(createBundle());
+                startActivity(in);
             }catch(Exception e){
                 e.printStackTrace();
             }
 //            startActivity(new Intent(this,RegisterSuccess.class));
         }
     }
-
+    private Bundle createBundle(){
+        Bundle b = new Bundle();
+        b.putString("firstName", firstNameB);
+        b.putString("uid", uid);
+        b.putString("lastName", lastNameB);
+        b.putString("email", emailB);
+        return b;
+    }
     public boolean isEmailValid(String email)
     {
         String regExpn =
@@ -163,5 +174,4 @@ public class Register extends AppCompatActivity {
         else
             return false;
     }
-
 }

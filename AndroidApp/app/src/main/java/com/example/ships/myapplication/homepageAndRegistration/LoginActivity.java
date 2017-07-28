@@ -35,29 +35,15 @@ import android.widget.TextView;
 import com.example.ships.myapplication.OtherInterfaces.FindPassword;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.modules.ExpandableListDataPump;
-import com.example.ships.myapplication.modules.MyProgram;
 
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
-import static android.database.sqlite.SQLiteDatabase.OPEN_READWRITE;
 
-/**
- * A login screen that offers login via email/password.
- */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
-
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
     private static final int REQUEST_READ_CONTACTS = 0;
-
     private UserLoginTask mAuthTask = null;
-
-    // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private TextView errorView;
@@ -68,7 +54,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
         errorView = (TextView) findViewById(R.id.errorTxt);
@@ -91,7 +76,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
-
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
@@ -100,7 +84,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (!mayRequestContacts()) {
             return;
         }
-
         getLoaderManager().initLoader(0, null, this);
     }
 
@@ -187,7 +170,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
+
+            mAuthTask = new UserLoginTask(email, password, mySqlDB);
             mAuthTask.execute((Void) null);
         }
     }
@@ -271,11 +256,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
     }
-    private void startNewTask(String firstName, String lastName, int uid){
+    private void startNewTask(String firstName, String lastName, String uid){
         Intent in = new Intent(this, UserProfile.class);
         Bundle b = new Bundle();
         b.putString("firstName", firstName);
-        b.putInt("uid", uid);
+        b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", mEmailView.getText().toString());
         in.putExtras(b);
@@ -317,31 +302,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         private final String mEmail;
         private final String mPassword;
-        private int uid;
+        private SQLiteDatabase mySqlDB;
+        private String uid;
         private String firstName;
         private String lastName;
-        UserLoginTask(String email, String password) {
+        UserLoginTask(String email, String password, SQLiteDatabase sql) {
             mEmail = email;
             mPassword = password;
+            mySqlDB = sql;
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-            SQLiteDatabase mySqlDB;
-            try {
-                mySqlDB = SQLiteDatabase.openDatabase(getDatabasePath("shipsdb").getAbsolutePath(), null,OPEN_READWRITE);
-                Thread.sleep(2000);
-            } catch (Exception e) {
-                return false;
-            }
+
             String q = "SELECT uid, first_name, last_name, password, salt FROM users WHERE email = ?";
 
             Cursor results = mySqlDB.rawQuery(q, new String[]{mEmail});
             results.moveToFirst();
             try {
                 String enteredHash = new String(PasswordEncrypter.encryptPassword(mPassword, results.getString(4).getBytes()));
-                uid = results.getInt(0);
+                uid = results.getString(0);
+                System.out.println(uid);
                 firstName = results.getString(1);
                 lastName = results.getString(2);
                 return (enteredHash.equals(results.getString(3)));

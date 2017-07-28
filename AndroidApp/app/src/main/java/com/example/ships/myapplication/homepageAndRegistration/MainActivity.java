@@ -8,9 +8,7 @@ import android.view.WindowManager;
 
 import com.example.ships.myapplication.OtherInterfaces.ContactUs;
 import com.example.ships.myapplication.OtherInterfaces.FindOutMore;
-import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.modules.MyProgram;
 
 public class MainActivity extends AppCompatActivity {
 

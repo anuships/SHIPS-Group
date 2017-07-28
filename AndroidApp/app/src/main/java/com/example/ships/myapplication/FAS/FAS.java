@@ -9,9 +9,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.modules.MyProgram;
+import com.example.ships.myapplication.modules.AllPrograms;
 
 import java.util.ArrayList;
 
@@ -126,7 +125,7 @@ public class FAS extends AppCompatActivity {
 
     public void back(View v)
     {
-        startActivity(new Intent(this, MyProgram.class));
+        startActivity(new Intent(this, AllPrograms.class));
     }
 
     public static int getScore() {

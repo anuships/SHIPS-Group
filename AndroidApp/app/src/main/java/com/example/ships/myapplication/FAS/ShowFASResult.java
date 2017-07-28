@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.ships.myapplication.modules.MyProgram;
+import com.example.ships.myapplication.modules.AllPrograms;
 import com.example.ships.myapplication.R;
 
 public class ShowFASResult extends AppCompatActivity {
@@ -21,6 +21,6 @@ public class ShowFASResult extends AppCompatActivity {
 
     public void goBack(View v)
     {
-        startActivity(new Intent(this, MyProgram.class));
+        startActivity(new Intent(this, AllPrograms.class));
     }
 }
