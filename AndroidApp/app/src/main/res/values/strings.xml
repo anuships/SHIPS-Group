@@ -48,7 +48,7 @@
     <string name="emdr_movement_type_selection">EMDR Movement Type</string>
     <string name="emdr_start_button">START EMDR</string>
     <string name="emdr_settings_button">SETTINGS</string>
-    
+
     <string-array name="emdr_movements_array">
         <item>Horizontal</item>
         <item>Vertical</item>
