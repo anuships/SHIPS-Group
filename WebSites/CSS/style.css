@@ -1,0 +1,103 @@
+.image {
+	width: 100%;
+}
+#loginButton {
+	position: absolute;
+	height: 160px;
+	width: 160px;
+	padding-left: 800px;
+	top: 10px;
+}
+.buttonLogin {
+	height: 8em;
+	width: 8em;
+	background-image: url("SHIPS_logo.png");
+	background-size: cover;
+	font-family: Arial;
+	font-weight: bold;
+	text-align: bottom;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.table {
+	width: 500px;
+}
+/* background */
+body {
+	background-image: url(background2.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+/* SHIPS Title */
+h1 {
+	position: absolute;
+	top: 42px;
+	padding-left: 12px;
+	font-weight: bold;
+	font-family: "Brush Script MT", cursive;
+	font-size: 50px;
+	text-shadow: #D3D3D3 0 0 10px, #FFFFFF 5px 5px 5px;
+	color: white;
+}
+
+/* meun bar */
+#menu {
+	width: 1000px;
+	height: 45px;
+	font-size: 10px;
+	font-family: Britannic Bold;
+	font-weight: bold;
+	text-align: center;
+	background-color: black;
+	border-radius: 6px;
+}
+#menu ul {
+	height: auto;
+	padding: 8px 0px;
+	color: #999;
+	margin: 0px;
+}
+#menu li {
+	font-size:14px;
+	display: inline;
+	color: #89a8b3;
+	padding: 18px;
+}
+#menu a {
+	text-decoration: none;
+	color: #89a8b3;
+	font-family: Britannic Bold;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 30px;
+	padding: 8px 8px 8px 8px;
+}
+#home {
+	width: 30px;
+}
+#find {
+	margin-left: 10%;
+	font-size: 120%;
+	margin-top: 100px;
+}
+#comments {
+	margin: 20px 40% 10px 20%;
+}
+#sectionheading {
+	color: black;
+	font-weight: bold;
+	font-size: 240%;
+	font-family: Britannic Bold;
+	font-weight: bold;
+}
+p {
+	font-size: 100%;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+#login {
+	color: black;
+	font-weight: bold;
+	font-size: 120%;
+	font-family: Britannic Bold;
+	font-weight: bold;
+	margin: 20px 40% 10px 20%;
+}
