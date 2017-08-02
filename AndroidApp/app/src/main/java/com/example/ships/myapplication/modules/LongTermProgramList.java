@@ -78,6 +78,8 @@ public class LongTermProgramList extends AppCompatActivity {
                 "You have to apply techniques learned from the provided therapeutic tools " +
                 "and try to relax your self. There are 5 levels of scenarios provided in " +
                 "this version.");
+        dataDump.setData("Factsheet", "The factsheet contains many information about" +
+                " airplanes to help you understand more about the flight security");
 
 
         expandableListDetail = dataDump.getData();
