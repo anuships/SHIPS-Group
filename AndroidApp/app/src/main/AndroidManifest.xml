@@ -116,7 +116,9 @@
         <activity android:name=".OtherInterfaces.Treatments" />
         <activity android:name=".OtherInterfaces.UserProfile" />
         <activity android:name=".OtherInterfaces.UpdateUserDetail" />
-        <activity android:name=".OtherInterfaces.Updated"></activity>
+        <activity android:name=".OtherInterfaces.Updated" />
+        <activity android:name=".cognitiveTherapy.FactsheetSelect"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
