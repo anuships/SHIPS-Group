@@ -82,6 +82,10 @@
             android:name=".exposure.ExposureInfo"
             android:exported="true" />
         <activity
+            android:name=".modules.ModuleDesc"
+            android:exported="true" />
+
+        <activity
             android:name=".GSR.GSRGraphActivity"
             android:exported="true">
             <intent-filter>

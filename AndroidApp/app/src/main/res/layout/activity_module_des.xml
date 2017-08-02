@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ships.myapplication.exposure.ExposureDes">
+    tools:context="com.example.ships.myapplication.modules.ModuleDesc">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,11 +23,11 @@
         android:textSize="20dp"/>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/moduleDesText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="@string/exposure_description"
+
         android:textSize="15dp"/>
 
     </LinearLayout>

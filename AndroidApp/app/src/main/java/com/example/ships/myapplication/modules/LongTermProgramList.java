@@ -85,7 +85,8 @@ public class LongTermProgramList extends AppCompatActivity {
 
         readIntent();
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle,
-                expandableListDetail);
+                expandableListDetail, getIntent());
+
         expandableListView.setAdapter(expandableListAdapter);
     }
 

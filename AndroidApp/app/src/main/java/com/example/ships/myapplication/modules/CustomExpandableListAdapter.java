@@ -7,7 +7,9 @@ package com.example.ships.myapplication.modules;
 import java.util.HashMap;
 import java.util.List;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -20,16 +22,20 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 
 public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
+    private Intent intent;
     private List<String> expandableListTitle;
     private HashMap<String, String> expandableListDetail;
     int position;
     public CustomExpandableListAdapter(Context context, List<String> expandableListTitle,
-                                       HashMap<String, String> expandableListDetail) {
+                                       HashMap<String, String> expandableListDetail, Intent intent) {
         this.context = context;
+        this.intent = intent;
         this.expandableListTitle = expandableListTitle;
         this.expandableListDetail = expandableListDetail;
     }
@@ -40,7 +46,6 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     public Object getChildTitle(int listPosition, int expandedListPosition){
-
         return this.expandableListTitle.get(listPosition);
     }
 
@@ -76,7 +81,6 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         expandedListTextView.setText(expandedListText);
         TextView innerTitleViw = (TextView) convertView
                 .findViewById(R.id.innerTitle);
-        System.out.println(expandedTitle);
         innerTitleViw.setText(expandedTitle);
         ch.secButton = (Button) convertView.findViewById(R.id.liBut);
         ch.secButton.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +88,30 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
             public void onClick(View v) {
                 LinearLayout ll = (LinearLayout) v.getParent();
                 TextView inner = (TextView) ll.findViewById(R.id.innerTitle);
+                TextView desc = (TextView) ll.findViewById(R.id.expandedListItem);
+
                 System.out.println(inner.getText().toString());
+                Bundle b = intent.getExtras();
+                try{
+                    int tid = Integer.parseInt(inner.getText().toString().substring(0,inner.getText().toString().indexOf(':')).trim());
+                    int indx = Integer.parseInt(inner.getText().toString().substring(inner.getText().toString().indexOf(':')+1,inner.getText().toString().indexOf(' ')).trim());
+                    String title = inner.getText().toString().substring(inner.getText().toString().indexOf(' '));
+                    Intent in = new Intent(context, ModuleDesc.class);
+                    b.putInt("tid", tid);
+                    b.putInt("indx", indx);
+                    b.putString("title", title.trim());
+                    b.putString("desc", desc.getText().toString());
+                    in.putExtras(b);
+                    context.startActivity(in);
+                }catch(Exception e){
+                    e.printStackTrace();
+                    String title = inner.getText().toString().trim();
+                    Intent in = new Intent(context, ModuleDesc.class);
+                    b.putString("title", title);
+                    b.putString("desc", desc.getText().toString());
+                    in.putExtras(b);
+                    context.startActivity(in);
+                }
             }
         });
         return convertView;

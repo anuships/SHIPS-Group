@@ -18,6 +18,6 @@ public class ExposureInfo extends AppCompatActivity {
     public void toDescription(View v){
         startActivity(new Intent(this, ExposureDes.class));
     }
-    public void back(View v){startActivity(new Intent(this, Treatments.class));}
+    public void back(View v){super.onBackPressed();}
 
 }
