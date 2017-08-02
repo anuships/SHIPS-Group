@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.modules.AllPrograms;
+import com.example.ships.myapplication.modules.MyLongTermProgram;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,10 +66,10 @@ public class FactsheetSelect extends AppCompatActivity {
 
         return new AdapterForDetail(this, whatIfList);
     }
-git
+
     public void back(View v)
     {
-        startActivity(new Intent(this, ThereapyFactsheets.class));
+        startActivity(new Intent(this, MyLongTermProgram.class));
     }
     public void askMore(View v)
     {
