@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:layout_margin="20dp"
+    android:layout_margin="10dp"
     tools:context="com.example.ships.myapplication.EMDR.EMDRActivitySettings">
 
     <LinearLayout
@@ -23,7 +23,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/Settings_Title"
         android:text="@string/emdr_settings_title"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:layout_marginBottom="10dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
