@@ -60,26 +60,7 @@ public class UserProgramList extends AppCompatActivity {
         setContentView(R.layout.activity_program_list);
         expandableListView = (ExpandableListView) findViewById(R.id.programList);
         readIntent();
-        // DELETE //
         SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
-        mySqlDB.execSQL("UPDATE modules SET desc = \"Self Assessment is a tool that helps you to understand more about yourself on fear of flying.\" WHERE NAME = \"FAS\";");
-
-        mySqlDB.execSQL("UPDATE modules SET desc = \"EMDR is a kind of therapeutic tool that helps you " +
-                "to distract from the plane by focusing on a moving ball\" WHERE NAME = \"EMDR\";");
-
-        mySqlDB.execSQL("UPDATE modules SET desc = \"Biofeedback is kind of the therapeutic tool" +
-                "that helps you to understand whether you become more relax or anxious."  +
-                "At the beginning, some data will be collected from your body and then "+
-                "generate a baseline in BLUE. After that a RED real time monitoring line " +
-                "reflects your current feeling. If the red line goes up means you feel relax."+
-                "If the red line goes down that means you feel anxious.\" WHERE NAME = \"Biofeedback\";");
-
-        mySqlDB.execSQL("UPDATE modules SET desc =\"Systematic Desensitisation is kind" +
-                "of therapy that allows you to go through some airline like scenarios." +
-                "You have to apply techniques learned from the provided therapeutic tools" +
-                "and try to relax your self. There are 5 levels of scenarios provided in" +
-                "this version.\" WHERE NAME = \"Systematic Desensitisation\";");
-
         Cursor resTID = mySqlDB.rawQuery("SELECT TID FROM treatmentplan WHERE UID=? ;", new String[]{uid});
         resTID.moveToFirst();
         System.out.println(resTID.getCount());
@@ -120,7 +101,7 @@ public class UserProgramList extends AppCompatActivity {
         Collections.sort(expandableListTitle);
         System.out.println(expandableListTitle);
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle,
-                expandableListDetail);
+                expandableListDetail, getIntent());
 
         expandableListView.setAdapter(expandableListAdapter);
 /*        expandableListView.setOnGroupExpandListener(

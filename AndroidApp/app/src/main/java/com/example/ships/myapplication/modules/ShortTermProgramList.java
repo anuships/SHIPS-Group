@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
@@ -73,7 +74,7 @@ public class ShortTermProgramList extends AppCompatActivity {
 
 
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle,
-                expandableListDetail);
+                expandableListDetail, getIntent());
         expandableListView.setAdapter(expandableListAdapter);
     }
 
@@ -92,7 +93,7 @@ public class ShortTermProgramList extends AppCompatActivity {
     }
 
     public void addToMyProgram(MenuItem item) {
-        startActivity(new Intent(this, MyShortTermProgram.class));
+
     }
     public void addAll(View view) {
         SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();

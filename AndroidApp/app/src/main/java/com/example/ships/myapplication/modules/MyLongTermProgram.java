@@ -9,7 +9,7 @@ import com.example.ships.myapplication.FAS.FAS;
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.OtherInterfaces.Records;
 import com.example.ships.myapplication.OtherInterfaces.SystematicDesensitation;
-import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
+import com.example.ships.myapplication.cognitiveTherapy.FactsheetSelect;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
@@ -24,7 +24,7 @@ public class MyLongTermProgram extends AppCompatActivity {
     }
 
     public void goToFactSheet(View view) {
-        startActivity(new Intent(this, ThereapyFactsheets.class));
+        startActivity(new Intent(this, FactsheetSelect.class));
     }
 
     public void goToSelfAssessment(View view) {
@@ -59,4 +59,5 @@ public class MyLongTermProgram extends AppCompatActivity {
     public void goToSystematicDesensitisation(View view) {
         startActivity(new Intent(this, SystematicDesensitation.class));
     }
+
 }
