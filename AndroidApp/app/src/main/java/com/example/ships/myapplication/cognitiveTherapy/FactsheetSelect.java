@@ -65,7 +65,7 @@ public class FactsheetSelect extends AppCompatActivity {
 
         return new AdapterForDetail(this, whatIfList);
     }
-git
+
     public void back(View v)
     {
         startActivity(new Intent(this, ThereapyFactsheets.class));
@@ -75,6 +75,6 @@ git
         startActivity(new Intent(this, ThereapyFactsheets.class));
     }
 
-
+//testing
 }
 
