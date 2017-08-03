@@ -12,7 +12,8 @@
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_margin="20dp">
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
@@ -44,6 +45,7 @@
         android:background="@drawable/roundedbutton"
         android:layout_marginBottom="17dp"
         android:layout_marginLeft="100dp"
+        android:layout_marginRight="20dp"
         android:onClick="back"
         android:textColor="#FFFFFF"
         android:layout_alignParentBottom="true"
