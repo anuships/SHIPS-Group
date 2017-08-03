@@ -55,23 +55,8 @@ public class ExpandableListDataPump {
             readIntent();
         }
 
-        public void viewProgram(View view) {
-/*            Button button = (Button) view;
-            String selection = button.getText().toString();
-            Log.d("selected as", selection);
-            switch (selection){
-                case "Long Term":
-                    //save result as long_term;
-                    Log.d("User selected ", selection);
-                case "Mid Term":
-                    //save result as mid_term;
-                    Log.d("User selected ", selection);
-                case "Short Term":
-                    //save result as short_term;
-                    Log.d("User selected ", selection);
-            }*/
-
-            startActivity(new Intent(this, AllPrograms.class));
+        public void viewAllProgram(View view) {
+            startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
         }
 
         public void goBack(View view) {

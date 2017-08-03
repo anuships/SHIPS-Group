@@ -43,7 +43,7 @@
                 android:onClick="back"
                 android:textColor="#FFFFFF"
                 android:text="Back"
-                android:layout_margin="20dp"/>
+                android:layout_marginRight="20dp"/>
 
             <Button
                 android:id="@+id/button20"

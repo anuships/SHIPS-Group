@@ -66,7 +66,7 @@ public class XTermsModuelsList extends AppCompatActivity {
         //go to management page
 
         //demo test
-        startActivity(new Intent(this, UserProgramList.class));
+        startActivity(new Intent(this, MyProgramList.class));
     }
 
 

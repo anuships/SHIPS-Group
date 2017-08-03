@@ -45,7 +45,7 @@
             android:name=".homepageAndRegistration.RegisterSuccess"
             android:exported="true" />
         <activity
-            android:name=".modules.UserProgramList"
+            android:name=".modules.MyProgramList"
             android:exported="true" />
         <activity
             android:name=".modules.LongTermProgramList"

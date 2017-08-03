@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class UserProgramList extends AppCompatActivity {
+public class MyProgramList extends AppCompatActivity {
 //refer to https://goo.gl/MrPdIi
 
 //testing comment to prevent force push op
@@ -76,23 +76,25 @@ public class UserProgramList extends AppCompatActivity {
             resTID.moveToNext();
         }
 
-     //   dataDump.setData("Self Assessment", "Self Assessment is a tool that helps you to " +
-         //       "understand more about yourself on fear of flying.");
-       // dataDump.setData("EMDR", "EMDR is a kind of therapeutic tool that helps you " +
-         //       "to distract from the plane by focusing on a moving ball");
-       // dataDump.setData("Relaxation Audio Training", "Relaxation audio is kind of therapeutic tool" +
-        //        "that helps you to learn techniques to relax yourself.");
-        //dataDump.setData("Biofeedback", "Biofeedback is kind of the therapeutic tool " +
-          //      "that helps you to understand whether you become more relax or anxious. " +
-            //    "At the beginning, some data will be collected from your body and then " +
-              //  "generate a baseline in BLUE. After that a RED real time monitoring line " +
-                //"reflects your current feeling. If the red line goes up means you feel relax. " +
-                //"If the red line goes down that means you feel anxious.");
-        //dataDump.setData("Systematic Desensitisation", "Systematic Desensitisation is kind " +
-          //      "of therapy that allows you to go through some airline like scenarios. " +
-            //    "You have to apply techniques learned from the provided therapeutic tools " +
-              //  "and try to relax your self. There are 5 levels of scenarios provided in " +
-                //"this version.");
+        /*
+        dataDump.setData("Self Assessment", "Self Assessment is a tool that helps you to " +
+                "understand more about yourself on fear of flying.");
+        dataDump.setData("EMDR", "EMDR is a kind of therapeutic tool that helps you " +
+                "to distract from the plane by focusing on a moving ball");
+        dataDump.setData("Relaxation Audio Training", "Relaxation audio is kind of therapeutic tool" +
+                "that helps you to learn techniques to relax yourself.");
+        dataDump.setData("Biofeedback", "Biofeedback is kind of the therapeutic tool " +
+                "that helps you to understand whether you become more relax or anxious. " +
+                "At the beginning, some data will be collected from your body and then " +
+                "generate a baseline in BLUE. After that a RED real time monitoring line " +
+                "reflects your current feeling. If the red line goes up means you feel relax. " +
+                "If the red line goes down that means you feel anxious.");
+        dataDump.setData("Systematic Desensitisation", "Systematic Desensitisation is kind " +
+                "of therapy that allows you to go through some airline like scenarios. " +
+                "You have to apply techniques learned from the provided therapeutic tools " +
+                "and try to relax your self. There are 5 levels of scenarios provided in " +
+                "this version.");
+         */
 
 
         expandableListDetail = dataDump.getData();
@@ -141,9 +143,6 @@ public class UserProgramList extends AppCompatActivity {
                 return false;
             }
         });*/
-
-
-
     }
 
     public void onClick(View v) {

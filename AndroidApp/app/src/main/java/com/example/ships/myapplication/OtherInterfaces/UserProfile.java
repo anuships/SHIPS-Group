@@ -1,16 +1,14 @@
 package com.example.ships.myapplication.OtherInterfaces;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.example.ships.myapplication.homepageAndRegistration.MainActivity;
-import com.example.ships.myapplication.modules.UserProgramList;
+import com.example.ships.myapplication.modules.MyProgramList;
 import com.example.ships.myapplication.modules.ExpandableListDataPump;
 
 public class UserProfile extends AppCompatActivity {
@@ -58,12 +56,11 @@ public class UserProfile extends AppCompatActivity {
     public void goToSuggestedModule(View view) {
         Intent in = new Intent(this, ExpandableListDataPump.SuggestedModules.class);
         in.putExtras(createBundle());
-
         startActivity(in);
     }
 
     public void goToMyProgram(View view) {
-        Intent in = new Intent(this, UserProgramList.class);
+        Intent in = new Intent(this, MyProgramList.class);
         in.putExtras(createBundle());
         startActivity(in);
 
