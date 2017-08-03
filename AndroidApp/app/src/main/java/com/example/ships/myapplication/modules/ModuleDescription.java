@@ -9,20 +9,18 @@ import android.widget.TextView;
 import com.example.ships.myapplication.EMDR.EMDRActivitySettings;
 import com.example.ships.myapplication.FAS.FAS;
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
-import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.exposure.ExposureInfo;
-import com.example.ships.myapplication.exposure.ExposureTherapy;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.example.ships.myapplication.relaxationAudio.RelaxationAudioActivity;
 
-public class ModuleDesc extends AppCompatActivity {
+public class ModuleDescription extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_module_des);
+        setContentView(R.layout.activity_module_description);
         TextView desc = (TextView) findViewById(R.id.moduleDesText);
         desc.setText(getIntent().getExtras().getString("desc"));
     }

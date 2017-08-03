@@ -82,7 +82,7 @@
             android:name=".exposure.ExposureInfo"
             android:exported="true" />
         <activity
-            android:name=".modules.ModuleDesc"
+            android:name=".modules.ModuleDescription"
             android:exported="true" />
 
         <activity
