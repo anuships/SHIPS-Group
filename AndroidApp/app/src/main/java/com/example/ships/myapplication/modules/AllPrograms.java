@@ -9,7 +9,6 @@ import com.example.ships.myapplication.FAS.FAS;
 import com.example.ships.myapplication.OtherInterfaces.Records;
 import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
-import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
 
 public class AllPrograms extends AppCompatActivity {
@@ -38,7 +37,7 @@ public class AllPrograms extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_my_program);
+        setContentView(R.layout.activity_all_program);
     }
 
     public void goToFactSheet(View view) {
