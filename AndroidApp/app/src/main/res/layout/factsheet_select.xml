@@ -3,12 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:layout_margin="20dp">
     <TextView
         android:id="@+id/textView33"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30dp"
+        android:textStyle="bold"
         android:layout_weight="0"
         android:text="What-if scenario" />
     <ListView
@@ -28,24 +30,31 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <Button
-            android:id="@+id/button18"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:background="@drawable/roundedbutton"
-            android:layout_gravity="center_horizontal"
-            android:onClick="back"
-            android:textColor="#FFFFFF"
-            android:text="Back" />
-
-        <Button
-            android:id="@+id/button20"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/roundedbutton"
-            android:layout_gravity="center_horizontal"
-            android:onClick="askMore"
-            android:text="More scenarios"
-            android:textColor="#FFFFFF" />
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button18"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:background="@drawable/roundedbutton"
+                android:layout_gravity="center_horizontal"
+                android:onClick="back"
+                android:textColor="#FFFFFF"
+                android:text="Back"
+                android:layout_margin="20dp"/>
+
+            <Button
+                android:id="@+id/button20"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:background="@drawable/roundedbutton"
+                android:layout_gravity="center_horizontal"
+                android:onClick="askMore"
+                android:text="More scenarios"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
