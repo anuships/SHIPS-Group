@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:text="Therapy Factsheets"
             android:textSize="30dp"
+            android:textStyle="bold"
             android:layout_marginLeft="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="17dp"/>
