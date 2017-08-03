@@ -57,7 +57,7 @@ public class UserProgramList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_program_list);
+        setContentView(R.layout.activity_all_program_list);
         expandableListView = (ExpandableListView) findViewById(R.id.programList);
         readIntent();
         SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();

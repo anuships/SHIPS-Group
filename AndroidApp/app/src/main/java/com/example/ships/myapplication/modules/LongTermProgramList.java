@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Date;
-import java.util.SortedSet;
 
 public class LongTermProgramList extends AppCompatActivity {
 //refer to https://goo.gl/MrPdIi
@@ -60,7 +59,7 @@ public class LongTermProgramList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_program_list);
+        setContentView(R.layout.activity_all_program_list);
         expandableListView = (ExpandableListView) findViewById(R.id.programList);
         //generate program title and program detail to the list
         dataDump.setData("Self Assessment", "Self Assessment is a tool that helps you to " +
