@@ -48,6 +48,8 @@ public class LongTermProgramList extends AppCompatActivity {
         return b;
     }
 
+
+
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
@@ -153,7 +155,6 @@ public class LongTermProgramList extends AppCompatActivity {
     public void addToMyProgram(MenuItem item) {
         startActivity(new Intent(this, MyLongTermProgram.class));
     }
-
 
     public void goToMangement(View view) {
         startActivity(new Intent(this, MyLongTermProgram.class));

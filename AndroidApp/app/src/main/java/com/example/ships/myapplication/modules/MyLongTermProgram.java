@@ -8,11 +8,12 @@ import android.view.View;
 import com.example.ships.myapplication.FAS.FAS;
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.OtherInterfaces.Records;
-import com.example.ships.myapplication.OtherInterfaces.SystematicDesensitation;
 import com.example.ships.myapplication.cognitiveTherapy.FactsheetSelect;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.exposure.ExposureDes;
+import com.example.ships.myapplication.exposure.ExposureInfo;
 import com.example.ships.myapplication.relaxationAudio.RelaxationAudioActivity;
 
 public class MyLongTermProgram extends AppCompatActivity {
@@ -28,12 +29,19 @@ public class MyLongTermProgram extends AppCompatActivity {
         email = b.getString("email");
         uid = b.getString("uid");
     }
+
     private Bundle createBundle(){
         Bundle b = new Bundle();
         b.putString("firstName", firstName);
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
+        return b;
+    }
+
+    private Bundle termInfo(){
+        Bundle b = new Bundle();
+        b.putString("typeOfTerm","long");
         return b;
     }
 
@@ -79,7 +87,9 @@ public class MyLongTermProgram extends AppCompatActivity {
     }
 
     public void goToSystematicDesensitisation(View view) {
-        startActivity(new Intent(this, SystematicDesensitation.class));
+        Intent in = new Intent(this, ExposureInfo.class);
+        in.putExtras(termInfo());
+        startActivity(in);
     }
 
 }

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.ships.myapplication.EMDR.EMDRActivitySettings;
 import com.example.ships.myapplication.FAS.FAS;
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
+import com.example.ships.myapplication.OtherInterfaces.SystematicDesensitation;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.exposure.ExposureInfo;
@@ -38,12 +39,12 @@ public class ModuleDescription extends AppCompatActivity {
         }else if (title.equals(DBManager.FAS)){
             in = new Intent(this, FAS.class);
         }else if (title.equals(DBManager.SYSDESEN)){
-            in = new Intent(this, ExposureInfo.class);
+            in = new Intent(this, SystematicDesensitation.class);
         }else{
             in = new Intent(this, RelaxationAudioActivity.class);
         }
         in.putExtras(getIntent().getExtras());
         startActivity(in);
     }
-    public void back(View v){startActivity(new Intent(this, Treatments.class));}
+    public void back(View v){super.onBackPressed();}
 }

@@ -17,6 +17,7 @@ public class UserProfile extends AppCompatActivity {
     private static String email;
     private static String uid;
 
+
     private void readIntent(){
         Bundle b = getIntent().getExtras();
         firstName = b.getString("firstName");
@@ -32,6 +33,7 @@ public class UserProfile extends AppCompatActivity {
         b.putString("email", email);
         return b;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -53,8 +53,10 @@ public class ShortTermProgramList extends AppCompatActivity {
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
+        b.putString("typeOfTerm","long");
         return b;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

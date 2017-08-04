@@ -31,8 +31,15 @@ public class AllPrograms extends AppCompatActivity {
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
+        b.putString("typeOfTerm","all");//treatment term
         return b;
     }
+
+/*    private Bundle termInfo(){
+        Bundle b = new Bundle();
+        b.putString("typeOfTerm","all");
+        return b;
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +57,7 @@ public class AllPrograms extends AppCompatActivity {
     }
 
     public void goToTherapeuticTools(View view) {
-        startActivity(new Intent(this, Programs.TherapeuticTools.class));
+        startActivity(new Intent(this, Programs.TherapeuticTools.class).putExtras(createBundle()));
     }
 
     public void goToTreatment(View view) {
@@ -66,6 +73,4 @@ public class AllPrograms extends AppCompatActivity {
     public void goToRecords(View view) {
         startActivity(new Intent(this, Records.class));
     }
-
-
 }
