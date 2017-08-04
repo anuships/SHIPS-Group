@@ -57,7 +57,7 @@ public class AllPrograms extends AppCompatActivity {
     }
 
     public void goToTherapeuticTools(View view) {
-        startActivity(new Intent(this, Programs.TherapeuticTools.class).putExtras(createBundle()));
+        startActivity(new Intent(this, TherapeuticTools.class).putExtras(createBundle()));
     }
 
     public void goToTreatment(View view) {

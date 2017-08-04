@@ -1,13 +1,18 @@
-package com.example.ships.myapplication.OtherInterfaces;
+package com.example.ships.myapplication.modules;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
 
-public class Updated extends AppCompatActivity {
+/**
+ * Created by Jyun on 2017/08/05.
+ */
+
+public class SuggestedModules extends AppCompatActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -33,14 +38,34 @@ public class Updated extends AppCompatActivity {
         return b;
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_updated);
+        setContentView(R.layout.activity_suggested_modules);
+        readIntent();
     }
 
-    public void goToUserProfile(View view) {
-        startActivity(new Intent(this, UserProfile.class));
+    public void viewAllProgram(View view) {
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
+    }
+
+    public void goBack(View view) {
+        Intent in = new Intent(this, UserProfile.class);
+        in.putExtras(createBundle());
+        startActivity(in);
+    }
+
+    public void viewLongTermProgram(View view) {
+        Intent in = new Intent(this, LongTermProgramList.class);
+        in.putExtras(createBundle());
+        startActivity(in);
+    }
+
+    public void viewShortTermProgram(View view) {
+        Intent in = new Intent(this, ShortTermProgramList.class);
+        in.putExtras(createBundle());
+        startActivity(in);
     }
 }

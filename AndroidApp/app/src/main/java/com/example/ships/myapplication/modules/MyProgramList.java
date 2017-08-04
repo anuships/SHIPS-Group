@@ -27,17 +27,11 @@ public class MyProgramList extends AppCompatActivity {
 
 //testing comment to prevent force push op
 
-    ExpandableListView expandableListView;
-    ExpandableListAdapter expandableListAdapter;
-    List<String> expandableListTitle;
-    HashMap<String, String> expandableListDetail;
-    ExpandableListDataPump dataDump = new ExpandableListDataPump();
-    String programTitle;
-    String programDetail;
     private static String firstName;
     private static String lastName;
     private static String email;
     private static String uid;
+    private static String typeOfTerm;
 
     private void readIntent(){
         Bundle b = getIntent().getExtras();
@@ -45,18 +39,31 @@ public class MyProgramList extends AppCompatActivity {
         lastName = b.getString("lastName");
         email = b.getString("email");
         uid = b.getString("uid");
+        typeOfTerm = b.getString("typeOfTerm");
     }
+
     private Bundle createBundle(){
         Bundle b = new Bundle();
         b.putString("firstName", firstName);
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
+        b.putString("typeOfTerm",typeOfTerm);//treatment term
         return b;
     }
+
+    ExpandableListView expandableListView;
+    ExpandableListAdapter expandableListAdapter;
+    List<String> expandableListTitle;
+    HashMap<String, String> expandableListDetail;
+    ExpandableListDataPump dataDump = new ExpandableListDataPump();
+    String programTitle;
+    String programDetail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        readIntent();
         setContentView(R.layout.activity_all_program_list);
         expandableListView = (ExpandableListView) findViewById(R.id.programList);
         readIntent();

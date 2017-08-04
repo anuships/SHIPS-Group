@@ -40,28 +40,4 @@ public class Programs {
         this.programName = programName;
     }
 
-    public static class TherapeuticTools extends AppCompatActivity {
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_therapeutic_tools);
-        }
-
-        public void goToEMDR(View view) {
-            startActivity(new Intent(this, EMDRActivitySettings.class));
-        }
-
-        public void goToRelaxationTraning(View view) {
-            startActivity(new Intent(this, RelaxationAudioActivity.class));
-        }
-
-        public void goToBiofeedback(View view) {
-            startActivity(new Intent(this, GSRGraphActivity.class));
-        }
-
-        public void goBack(View view) {
-            super.onBackPressed();
-        }
-    }
 }

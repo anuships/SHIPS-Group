@@ -21,6 +21,7 @@ public class MyLongTermProgram extends AppCompatActivity {
     private static String lastName;
     private static String email;
     private static String uid;
+    private static String typeOfTerm;
 
     private void readIntent(){
         Bundle b = getIntent().getExtras();
@@ -28,6 +29,7 @@ public class MyLongTermProgram extends AppCompatActivity {
         lastName = b.getString("lastName");
         email = b.getString("email");
         uid = b.getString("uid");
+        typeOfTerm = b.getString("typeOfTerm");
     }
 
     private Bundle createBundle(){
@@ -36,18 +38,15 @@ public class MyLongTermProgram extends AppCompatActivity {
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
+        b.putString("typeOfTerm",typeOfTerm);//treatment term
         return b;
     }
 
-    private Bundle termInfo(){
-        Bundle b = new Bundle();
-        b.putString("typeOfTerm","long");
-        return b;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        readIntent();
         setContentView(R.layout.activity_my_long_term_program);
     }
 
@@ -60,7 +59,7 @@ public class MyLongTermProgram extends AppCompatActivity {
     }
 
     public void goToTherapeuticTools(View view) {
-        startActivity(new Intent(this, Programs.TherapeuticTools.class));
+        startActivity(new Intent(this, TherapeuticTools.class));
     }
 
     public void goToTreatment(View view) {
@@ -88,7 +87,7 @@ public class MyLongTermProgram extends AppCompatActivity {
 
     public void goToSystematicDesensitisation(View view) {
         Intent in = new Intent(this, ExposureInfo.class);
-        in.putExtras(termInfo());
+        in.putExtras(createBundle());
         startActivity(in);
     }
 

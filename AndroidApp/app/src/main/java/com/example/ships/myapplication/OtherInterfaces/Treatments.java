@@ -39,6 +39,7 @@ public class Treatments extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        readIntent();
         setContentView(R.layout.activity_treatments);
     }
 

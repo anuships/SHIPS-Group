@@ -1,13 +1,21 @@
-package com.example.ships.myapplication.OtherInterfaces;
+package com.example.ships.myapplication.modules;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.ships.myapplication.EMDR.EMDRActivitySettings;
+import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.relaxationAudio.RelaxationAudioActivity;
 
-public class Updated extends AppCompatActivity {
+/**
+ * Created by Jyun on 2017/08/05.
+ */
+
+public class TherapeuticTools extends AppCompatActivity {
+
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -37,10 +45,22 @@ public class Updated extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_updated);
+        setContentView(R.layout.activity_therapeutic_tools);
     }
 
-    public void goToUserProfile(View view) {
-        startActivity(new Intent(this, UserProfile.class));
+    public void goToEMDR(View view) {
+        startActivity(new Intent(this, EMDRActivitySettings.class));
+    }
+
+    public void goToRelaxationTraning(View view) {
+        startActivity(new Intent(this, RelaxationAudioActivity.class));
+    }
+
+    public void goToBiofeedback(View view) {
+        startActivity(new Intent(this, GSRGraphActivity.class));
+    }
+
+    public void goBack(View view) {
+        super.onBackPressed();
     }
 }
