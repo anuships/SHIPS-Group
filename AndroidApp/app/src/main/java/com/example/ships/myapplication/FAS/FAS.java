@@ -42,6 +42,22 @@ public class FAS extends AppCompatActivity {
     }
 
     static int score = 0;
+
+    public static int getAFscore() {
+        return AFscore;
+    }
+
+    public static int getIFscore() {
+        return IFscore;
+    }
+
+    public static int getGFscore() {
+        return GFscore;
+    }
+
+    static int AFscore = 0;
+    static int IFscore = 0;
+    static int GFscore = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +67,9 @@ public class FAS extends AppCompatActivity {
     public void calculateScore(View v)
     {
         score = 0;
+        AFscore = 0;
+        IFscore = 0;
+        GFscore = 0;
         ArrayList<RadioGroup> choice = new ArrayList<>();
         RadioGroup r1 = (RadioGroup) findViewById(R.id.quest1);
         RadioGroup r2 = (RadioGroup) findViewById(R.id.quest2);
@@ -141,6 +160,12 @@ public class FAS extends AppCompatActivity {
                 } else if (buttonChoice.equals("overwhelming anxiety")) {
                     buttonScore = 5;
                 }
+                if (r.equals(r1) || r.equals(r2) || r.equals(r3) || r.equals(r4) || r.equals(r5) || r.equals(r12) || r.equals(r13))
+                    GFscore += buttonScore;
+                if (r.equals(r6) || r.equals(r7) || r.equals(r8) || r.equals(r9) || r.equals(r10) || r.equals(r11) || r.equals(r14) || r.equals(r15) || r.equals(r16) || r.equals(r17) || r.equals(r18) || r.equals(r20))
+                    AFscore += buttonScore;
+                if (r.equals(r22) || r.equals(r23) || r.equals(r24) || r.equals(r25) || r.equals(r27) || r.equals(r28) || r.equals(r29) || r.equals(r30) || r.equals(r31) || r.equals(r32))
+                    IFscore += buttonScore;
                 score += buttonScore;
             }
         }

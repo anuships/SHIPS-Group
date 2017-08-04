@@ -276,18 +276,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:textSize="30dp"
-                android:id="@+id/q4" />
-
-            <RadioButton
-                android:id="@+id/q4_opt2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:text="slight anxiety"
-                android:textSize="25dp"
-                android:theme="@style/ColorRadioButton" />
+                android:id="@+id/q4" ></TextView>
 
             <RadioButton
                 android:textSize="25dp"
@@ -299,6 +288,17 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true" />
+
+            <RadioButton
+                android:id="@+id/q4_opt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="slight anxiety"
+                android:textSize="25dp"
+                android:theme="@style/ColorRadioButton" />
 
             <RadioButton
                 android:id="@+id/q4opt3"
