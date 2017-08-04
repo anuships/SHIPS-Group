@@ -6,12 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.ships.myapplication.EMDR.EMDRActivity;
+import com.example.ships.myapplication.EMDR.EMDRActivitySettings;
 import com.example.ships.myapplication.FAS.FAS;
 import com.example.ships.myapplication.OtherInterfaces.Records;
 import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.cognitiveTherapy.FactsheetSelect;
 
 public class MyShortTermProgram extends AppCompatActivity {
     private static String firstName;
@@ -47,7 +49,7 @@ public class MyShortTermProgram extends AppCompatActivity {
     }
 
     public void goToFactSheet(View view) {
-        startActivity(new Intent(this, ThereapyFactsheets.class).putExtras(createBundle()));
+        startActivity(new Intent(this, FactsheetSelect.class).putExtras(createBundle()));
     }
 
     public void goToSelfAssessment(View view) {
@@ -57,7 +59,6 @@ public class MyShortTermProgram extends AppCompatActivity {
 
     public void goBack(View view) {
         Intent in = new Intent(this, UserProfile.class).putExtras(createBundle());
-        in.putExtras(createBundle());
         startActivity(in);
     }
 
@@ -67,6 +68,6 @@ public class MyShortTermProgram extends AppCompatActivity {
 
 
     public void goToEMDR(View view) {
-        startActivity(new Intent(this, EMDRActivity.class).putExtras(createBundle()));
+        startActivity(new Intent(this, EMDRActivitySettings.class).putExtras(createBundle()));
     }
 }

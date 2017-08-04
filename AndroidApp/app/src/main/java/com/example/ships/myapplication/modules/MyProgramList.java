@@ -166,8 +166,8 @@ public class MyProgramList extends AppCompatActivity {
         ExpandableListView ex = (ExpandableListView) but.getParent().getParent().getParent();
         TextView title = (TextView) ex.findViewById(R.id.listTitle);
         System.out.println(title.getText().toString());
-
     }
+
     public void delFromProgram(MenuItem item){
 
     }

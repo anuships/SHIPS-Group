@@ -43,6 +43,7 @@ public class SystematicDesensitation extends AppCompatActivity {
     }
 
     public void goBack(View view) {
+        //possible error here for Kevin's debugLog 2017/08/05 bugs.9&10
         startActivity(new Intent(this, ExposureInfo.class).putExtras(createBundle()));
     }
 }

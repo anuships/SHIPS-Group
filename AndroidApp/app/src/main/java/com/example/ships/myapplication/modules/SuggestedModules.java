@@ -38,21 +38,11 @@ public class SuggestedModules extends AppCompatActivity {
         return b;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
         setContentView(R.layout.activity_suggested_modules);
-    }
-
-    public void viewAllProgram(View view) {
-        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
-    }
-
-    public void goBack(View view) {
-        Intent in = new Intent(this, UserProfile.class).putExtras(createBundle());
-        startActivity(in);
     }
 
     public void viewLongTermProgram(View view) {
@@ -62,6 +52,15 @@ public class SuggestedModules extends AppCompatActivity {
 
     public void viewShortTermProgram(View view) {
         Intent in = new Intent(this, ShortTermProgramList.class).putExtras(createBundle());
+        startActivity(in);
+    }
+
+    public void viewAllProgram(View view) {
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
+    }
+
+    public void goBack(View view) {
+        Intent in = new Intent(this, UserProfile.class).putExtras(createBundle());
         startActivity(in);
     }
 }

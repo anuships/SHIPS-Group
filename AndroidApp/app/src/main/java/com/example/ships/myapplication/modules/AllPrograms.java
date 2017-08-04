@@ -11,6 +11,7 @@ import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.cognitiveTherapy.FactsheetSelect;
 
 public class AllPrograms extends AppCompatActivity {
     private static String firstName;
@@ -49,7 +50,7 @@ public class AllPrograms extends AppCompatActivity {
     }
 
     public void goToFactSheet(View view) {
-        startActivity(new Intent(this, ThereapyFactsheets.class).putExtras(createBundle()));
+        startActivity(new Intent(this, FactsheetSelect.class).putExtras(createBundle()));
     }
 
     public void goToSelfAssessment(View view) {
