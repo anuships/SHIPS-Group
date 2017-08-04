@@ -51,42 +51,42 @@ public class MyLongTermProgram extends AppCompatActivity {
     }
 
     public void goToFactSheet(View view) {
-        startActivity(new Intent(this, FactsheetSelect.class));
+        startActivity(new Intent(this, FactsheetSelect.class).putExtras(createBundle()));
     }
 
     public void goToSelfAssessment(View view) {
-        startActivity(new Intent(this, FAS.class));
+        startActivity(new Intent(this, FAS.class).putExtras(createBundle()));
     }
 
     public void goToTherapeuticTools(View view) {
-        startActivity(new Intent(this, TherapeuticTools.class));
+        startActivity(new Intent(this, TherapeuticTools.class).putExtras(createBundle()));
     }
 
     public void goToTreatment(View view) {
-        startActivity(new Intent(this, Treatments.class));
+        startActivity(new Intent(this, Treatments.class).putExtras(createBundle()));
     }
 
     public void goBack(View view) {
-        Intent in = new Intent(this, UserProfile.class);
+        Intent in = new Intent(this, UserProfile.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
     }
 
     public void goToRecords(View view) {
-        startActivity(new Intent(this, Records.class));
+        startActivity(new Intent(this, Records.class).putExtras(createBundle()));
     }
 
 
     public void goToRelaxationTraning(View view) {
-        startActivity(new Intent(this, RelaxationAudioActivity.class));
+        startActivity(new Intent(this, RelaxationAudioActivity.class).putExtras(createBundle()));
     }
 
     public void goToBiofeedback(View view) {
-        startActivity(new Intent(this, GSRGraphActivity.class));
+        startActivity(new Intent(this, GSRGraphActivity.class).putExtras(createBundle()));
     }
 
     public void goToSystematicDesensitisation(View view) {
-        Intent in = new Intent(this, ExposureInfo.class);
+        Intent in = new Intent(this, ExposureInfo.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
     }

@@ -41,6 +41,6 @@ public class UpdateUserDetail extends AppCompatActivity {
     }
 
     public void updateUserDetail(View view) {
-        startActivity(new Intent(this, Updated.class));
+        startActivity(new Intent(this, Updated.class).putExtras(createBundle()));
     }
 }

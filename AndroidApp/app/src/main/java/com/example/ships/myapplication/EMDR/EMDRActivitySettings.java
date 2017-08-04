@@ -84,7 +84,7 @@ public class EMDRActivitySettings extends AppCompatActivity {
     }
 
     public void sendMessage(View view) {
-        Intent EMDRintent = new Intent(this, EMDRActivity.class);
+        Intent EMDRintent = new Intent(this, EMDRActivity.class).putExtras(createBundle());
         //tell emdr activity which movement type to run
         EMDRintent.putExtra("emdr_Movement_Type", emdrMovementType);
         startActivity(EMDRintent);

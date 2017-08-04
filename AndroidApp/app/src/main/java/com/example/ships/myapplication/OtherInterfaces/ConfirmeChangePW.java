@@ -42,6 +42,6 @@ public class ConfirmeChangePW extends AppCompatActivity {
 
 
     public void goToUserProfile(View view) {
-        startActivity(new Intent(this, UserProfile.class));
+        startActivity(new Intent(this, UserProfile.class).putExtras(createBundle()));
     }
 }

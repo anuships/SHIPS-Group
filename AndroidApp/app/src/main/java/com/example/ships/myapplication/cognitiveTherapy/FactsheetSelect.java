@@ -96,11 +96,11 @@ public class FactsheetSelect extends AppCompatActivity {
 
     public void back(View v)
     {
-        startActivity(new Intent(this, MyLongTermProgram.class));
+        startActivity(new Intent(this, MyLongTermProgram.class).putExtras(createBundle()));
     }
     public void askMore(View v)
     {
-        startActivity(new Intent(this, ThereapyFactsheets.class));
+        startActivity(new Intent(this, ThereapyFactsheets.class).putExtras(createBundle()));
     }
 
 //testing

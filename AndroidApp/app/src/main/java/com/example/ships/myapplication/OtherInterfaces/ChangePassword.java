@@ -45,6 +45,6 @@ public class ChangePassword extends AppCompatActivity {
     }
 
     public void confirmChangePassword(View view) {
-        startActivity(new Intent(this, ConfirmeChangePW.class));
+        startActivity(new Intent(this, ConfirmeChangePW.class).putExtras(createBundle()));
     }
 }

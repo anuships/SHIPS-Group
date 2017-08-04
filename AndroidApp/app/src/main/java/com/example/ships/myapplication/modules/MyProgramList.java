@@ -177,10 +177,10 @@ public class MyProgramList extends AppCompatActivity {
     }
 
     public void addToMyProgram(MenuItem item) {
-        startActivity(new Intent(this, AllPrograms.class));
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
 
     public void goToMangement(View view) {
-        startActivity(new Intent(this, AllPrograms.class));
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
 }

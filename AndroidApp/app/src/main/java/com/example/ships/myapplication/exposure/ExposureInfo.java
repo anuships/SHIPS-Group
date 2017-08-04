@@ -57,13 +57,13 @@ public class ExposureInfo extends AppCompatActivity {
             } else if(typeOfTerm.equals("all")) {
                 Toast.makeText(this, typeOfTerm,
                         Toast.LENGTH_LONG).show();
-                startActivity(new Intent(this, SystematicDesensitation.class)
+                startActivity(new Intent(this, SystematicDesensitation.class).putExtras(createBundle())
                         .putExtras(createBundle()));
             }
         }catch (Exception e){
             Toast.makeText(this, "Sorry the APP may have some errors",
                     Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this, UserProfile.class));
+            startActivity(new Intent(this, UserProfile.class).putExtras(createBundle()));
         }
     }
 

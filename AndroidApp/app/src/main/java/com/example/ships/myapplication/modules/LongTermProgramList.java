@@ -104,7 +104,7 @@ public class LongTermProgramList extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        Intent in = new Intent(this, SuggestedModules.class);
+        Intent in = new Intent(this, SuggestedModules.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
 
@@ -156,10 +156,10 @@ public class LongTermProgramList extends AppCompatActivity {
         }
     }
     public void addToMyProgram(MenuItem item) {
-        startActivity(new Intent(this, MyLongTermProgram.class));
+        startActivity(new Intent(this, MyLongTermProgram.class).putExtras(createBundle()));
     }
 
     public void goToMangement(View view) {
-        startActivity(new Intent(this, MyLongTermProgram.class));
+        startActivity(new Intent(this, MyLongTermProgram.class).putExtras(createBundle()));
     }
 }

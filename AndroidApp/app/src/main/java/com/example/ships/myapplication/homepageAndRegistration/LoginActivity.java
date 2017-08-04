@@ -257,7 +257,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
     private void startNewTask(String firstName, String lastName, String uid){
-        Intent in = new Intent(this, UserProfile.class);
+        Intent in = new Intent(this, UserProfile.class).putExtras(createBundle());
         Bundle b = new Bundle();
         b.putString("firstName", firstName);
         b.putString("uid", uid);
@@ -276,11 +276,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     public void goToUserProfile(View view) {
-        startActivity(new Intent(this, UserProfile.class));
+        startActivity(new Intent(this, UserProfile.class).putExtras(createBundle()));
     }
 
     public void goToForgetPassword(View view) {
-        startActivity(new Intent(this, FindPassword.class));
+        startActivity(new Intent(this, FindPassword.class).putExtras(createBundle()));
     }
 
 

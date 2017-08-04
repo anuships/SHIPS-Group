@@ -47,6 +47,6 @@ public class ShowFASResult extends AppCompatActivity {
 
     public void goBack(View v)
     {
-        startActivity(new Intent(this, AllPrograms.class));
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
 }

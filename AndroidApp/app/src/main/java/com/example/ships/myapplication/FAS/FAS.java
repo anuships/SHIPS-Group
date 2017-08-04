@@ -145,13 +145,13 @@ public class FAS extends AppCompatActivity {
             }
         }
         if(showResult) {
-            startActivity(new Intent(this, ShowFASResult.class));
+            startActivity(new Intent(this, ShowFASResult.class).putExtras(createBundle()));
         }
     }
 
     public void back(View v)
     {
-        startActivity(new Intent(this, AllPrograms.class));
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
 
     public static int getScore() {

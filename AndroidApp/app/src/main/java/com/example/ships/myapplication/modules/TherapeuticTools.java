@@ -49,15 +49,15 @@ public class TherapeuticTools extends AppCompatActivity {
     }
 
     public void goToEMDR(View view) {
-        startActivity(new Intent(this, EMDRActivitySettings.class));
+        startActivity(new Intent(this, EMDRActivitySettings.class).putExtras(createBundle()));
     }
 
     public void goToRelaxationTraning(View view) {
-        startActivity(new Intent(this, RelaxationAudioActivity.class));
+        startActivity(new Intent(this, RelaxationAudioActivity.class).putExtras(createBundle()));
     }
 
     public void goToBiofeedback(View view) {
-        startActivity(new Intent(this, GSRGraphActivity.class));
+        startActivity(new Intent(this, GSRGraphActivity.class).putExtras(createBundle()));
     }
 
     public void goBack(View view) {

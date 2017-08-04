@@ -55,18 +55,18 @@ public class ModuleDescription extends AppCompatActivity {
         String title = getIntent().getExtras().getString("title");
         System.out.println(title);
         if (getIntent().getExtras().getString("title").equals(DBManager.BIOFEEDBACK)){
-            in = new Intent(this, GSRGraphActivity.class);
+            in = new Intent(this, GSRGraphActivity.class).putExtras(createBundle());
 
         }else if (title.equals(DBManager.EMDR)){
-            in = new Intent(this, EMDRActivitySettings.class);
+            in = new Intent(this, EMDRActivitySettings.class).putExtras(createBundle());
         }else if (title.equals(DBManager.FACTSHEET)){
-            in = new Intent(this, EMDRActivitySettings.class);
+            in = new Intent(this, EMDRActivitySettings.class).putExtras(createBundle());
         }else if (title.equals(DBManager.FAS)){
-            in = new Intent(this, FAS.class);
+            in = new Intent(this, FAS.class).putExtras(createBundle());
         }else if (title.equals(DBManager.SYSDESEN)){
-            in = new Intent(this, SystematicDesensitation.class);
+            in = new Intent(this, SystematicDesensitation.class).putExtras(createBundle());
         }else{
-            in = new Intent(this, RelaxationAudioActivity.class);
+            in = new Intent(this, RelaxationAudioActivity.class).putExtras(createBundle());
         }
         in.putExtras(getIntent().getExtras());
         startActivity(in);

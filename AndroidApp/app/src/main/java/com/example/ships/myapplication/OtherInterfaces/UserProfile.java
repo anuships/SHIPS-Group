@@ -10,13 +10,14 @@ import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.MainActivity;
 import com.example.ships.myapplication.modules.MyProgramList;
 import com.example.ships.myapplication.modules.ExpandableListDataPump;
+import com.example.ships.myapplication.modules.SuggestedModules;
 
 public class UserProfile extends AppCompatActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
     private static String uid;
-
+    private static String typeOfTerm;
 
     private void readIntent(){
         Bundle b = getIntent().getExtras();
@@ -24,16 +25,18 @@ public class UserProfile extends AppCompatActivity {
         lastName = b.getString("lastName");
         email = b.getString("email");
         uid = b.getString("uid");
+        typeOfTerm = b.getString("typeOfTerm");
     }
+
     private Bundle createBundle(){
         Bundle b = new Bundle();
         b.putString("firstName", firstName);
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
+        b.putString("typeOfTerm",typeOfTerm);//treatment term
         return b;
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,33 +49,33 @@ public class UserProfile extends AppCompatActivity {
     }
 
     public void goToChangePassword(View view) {
-        Intent in = new Intent(this, ChangePassword.class);
+        Intent in = new Intent(this, ChangePassword.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
     }
 
     public void goToUpdateUserInformation(View view) {
-        startActivity(new Intent(this, UpdateUserDetail.class));
+        startActivity(new Intent(this, UpdateUserDetail.class).putExtras(createBundle()));
     }
 
     public void goToSuggestedModule(View view) {
-        Intent in = new Intent(this, ExpandableListDataPump.SuggestedModules.class);
+        Intent in = new Intent(this, SuggestedModules.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
     }
 
     public void goToMyProgram(View view) {
-        Intent in = new Intent(this, MyProgramList.class);
+        Intent in = new Intent(this, MyProgramList.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
 
     }
 
     public void goToRecords(View view) {
-        startActivity(new Intent(this, Records.class));
+        startActivity(new Intent(this, Records.class).putExtras(createBundle()));
     }
 
     public void logout(View view) {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class).putExtras(createBundle()));
     }
 }

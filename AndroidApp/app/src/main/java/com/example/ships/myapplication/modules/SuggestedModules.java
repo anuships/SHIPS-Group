@@ -52,19 +52,19 @@ public class SuggestedModules extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        Intent in = new Intent(this, UserProfile.class);
+        Intent in = new Intent(this, UserProfile.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
     }
 
     public void viewLongTermProgram(View view) {
-        Intent in = new Intent(this, LongTermProgramList.class);
+        Intent in = new Intent(this, LongTermProgramList.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
     }
 
     public void viewShortTermProgram(View view) {
-        Intent in = new Intent(this, ShortTermProgramList.class);
+        Intent in = new Intent(this, ShortTermProgramList.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
     }

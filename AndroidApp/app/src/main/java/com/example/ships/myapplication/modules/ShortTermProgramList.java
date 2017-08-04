@@ -92,7 +92,7 @@ public class ShortTermProgramList extends AppCompatActivity {
 
     public void goBack(View view) {
         //go back to the previous page
-        Intent in = new Intent(this, SuggestedModules.class);
+        Intent in = new Intent(this, SuggestedModules.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
     }
@@ -146,6 +146,6 @@ public class ShortTermProgramList extends AppCompatActivity {
         }
     }
     public void goToMangement(View view) {
-        startActivity(new Intent(this, MyShortTermProgram.class));
+        startActivity(new Intent(this, MyShortTermProgram.class).putExtras(createBundle()));
     }
 }

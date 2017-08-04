@@ -113,7 +113,7 @@ public class ExposureTherapy extends AppCompatActivity {
     }
 
     public void back(View v){
-        startActivity(new Intent(this, ExposureDes.class));
+        startActivity(new Intent(this, ExposureDes.class).putExtras(createBundle()));
     }
 
     public void stop(View v){
@@ -144,7 +144,7 @@ public class ExposureTherapy extends AppCompatActivity {
         }
     }
     public void goToRelaxationTraning(View v){
-        startActivity(new Intent(this, GSRGraphActivity.class));
+        startActivity(new Intent(this, GSRGraphActivity.class).putExtras(createBundle()));
     }
 
     public void selectLevel(View v){

@@ -80,7 +80,7 @@ public class XTermsModuelsList extends AppCompatActivity {
                 //selectedPrograms.add(p.getName());
             }
         }*/
-        startActivity(new Intent(this, AllPrograms.class));
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
 
     public void goBack(View view) {
@@ -92,7 +92,7 @@ public class XTermsModuelsList extends AppCompatActivity {
         //go to management page
 
         //demo test
-        startActivity(new Intent(this, MyProgramList.class));
+        startActivity(new Intent(this, MyProgramList.class).putExtras(createBundle()));
     }
 
 
