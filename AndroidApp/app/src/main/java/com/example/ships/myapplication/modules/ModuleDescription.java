@@ -12,6 +12,8 @@ import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.OtherInterfaces.SystematicDesensitation;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.cognitiveTherapy.FactSheetContent;
+import com.example.ships.myapplication.cognitiveTherapy.FactsheetSelect;
 import com.example.ships.myapplication.exposure.ExposureInfo;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.example.ships.myapplication.relaxationAudio.RelaxationAudioActivity;
@@ -56,15 +58,14 @@ public class ModuleDescription extends AppCompatActivity {
         System.out.println(title);
         if (getIntent().getExtras().getString("title").equals(DBManager.BIOFEEDBACK)){
             in = new Intent(this, GSRGraphActivity.class).putExtras(createBundle());
-
         }else if (title.equals(DBManager.EMDR)){
             in = new Intent(this, EMDRActivitySettings.class).putExtras(createBundle());
         }else if (title.equals(DBManager.FACTSHEET)){
-            in = new Intent(this, EMDRActivitySettings.class).putExtras(createBundle());
+            in = new Intent(this, FactsheetSelect.class).putExtras(createBundle());
         }else if (title.equals(DBManager.FAS)){
             in = new Intent(this, FAS.class).putExtras(createBundle());
         }else if (title.equals(DBManager.SYSDESEN)){
-            in = new Intent(this, SystematicDesensitation.class).putExtras(createBundle());
+            in = new Intent(this, ExposureInfo.class).putExtras(createBundle());
         }else{
             in = new Intent(this, RelaxationAudioActivity.class).putExtras(createBundle());
         }
