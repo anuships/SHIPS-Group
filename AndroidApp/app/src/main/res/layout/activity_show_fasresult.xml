@@ -4,37 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
     tools:context="com.example.ships.myapplication.FAS.ShowFASResult">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:textSize="17dp"
+        android:text=""
+        android:layout_below="@+id/textView36"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Result"
+        android:textSize="60dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
     <Button
+        android:id="@+id/button21"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="57dp"
+        android:layout_marginStart="57dp"
+        android:onClick="goToTreatment"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/roundedbutton"
+
+        android:text="Manage"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/button"
+        android:layout_toEndOf="@+id/button" />
+
+    <Button
+        android:layout_weight="5"
         android:id="@+id/button"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="43dp"
         android:onClick="goBack"
         android:text="Return"
         android:textColor="#FFFFFF"
         android:background="@drawable/roundedbutton"
+        android:layout_marginLeft="66dp"
+        android:layout_marginStart="66dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+/>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView37"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:text="Your fear of flying score is "
-        android:layout_above="@+id/textView"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_height="270dp"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="36dp"
+        android:textSize="17dp"
         android:text=""
-        android:textSize="30sp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
