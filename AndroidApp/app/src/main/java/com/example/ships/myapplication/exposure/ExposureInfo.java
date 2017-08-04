@@ -52,16 +52,17 @@ public class ExposureInfo extends AppCompatActivity {
     }
     public void back(View v){
         try {
+            String popMsg = "Go Back to My "+ typeOfTerm + " Term Program";
             if (typeOfTerm.equals("long")) {
-                Toast.makeText(this, typeOfTerm,
+                Toast.makeText(this, popMsg,
                         Toast.LENGTH_LONG).show();
                 startActivity(new Intent(this, MyLongTermProgram.class).putExtras(createBundle()));
             } else if(typeOfTerm.equals("all")) {
-                Toast.makeText(this, typeOfTerm,
+                Toast.makeText(this, "Go Back to "+ typeOfTerm + " Program",
                         Toast.LENGTH_LONG).show();
                 startActivity(new Intent(this, Treatments.class).putExtras(createBundle()));
             }else if(typeOfTerm.equals("short")) {
-                Toast.makeText(this, typeOfTerm,
+                Toast.makeText(this, popMsg,
                         Toast.LENGTH_LONG).show();
                 startActivity(new Intent(this, MyShortTermProgram.class).putExtras(createBundle()));
             }else {
