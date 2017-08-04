@@ -61,6 +61,6 @@ public class TherapeuticTools extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        super.onBackPressed();
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
 }

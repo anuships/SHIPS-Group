@@ -38,7 +38,7 @@ public class MyLongTermProgram extends AppCompatActivity {
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
-        b.putString("typeOfTerm",typeOfTerm);//treatment term
+        b.putString("typeOfTerm","long");//treatment term
         return b;
     }
 

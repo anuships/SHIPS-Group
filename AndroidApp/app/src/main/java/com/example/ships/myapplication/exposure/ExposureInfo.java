@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.ships.myapplication.OtherInterfaces.SystematicDesensitation;
+import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.modules.AllPrograms;
 import com.example.ships.myapplication.modules.MyLongTermProgram;
+import com.example.ships.myapplication.modules.MyShortTermProgram;
 
 public class ExposureInfo extends AppCompatActivity {
     private static String firstName;
@@ -57,8 +59,15 @@ public class ExposureInfo extends AppCompatActivity {
             } else if(typeOfTerm.equals("all")) {
                 Toast.makeText(this, typeOfTerm,
                         Toast.LENGTH_LONG).show();
-                startActivity(new Intent(this, SystematicDesensitation.class).putExtras(createBundle())
-                        .putExtras(createBundle()));
+                startActivity(new Intent(this, Treatments.class).putExtras(createBundle()));
+            }else if(typeOfTerm.equals("short")) {
+                Toast.makeText(this, typeOfTerm,
+                        Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, MyShortTermProgram.class).putExtras(createBundle()));
+            }else {
+                Toast.makeText(this, "Cannot find program type",
+                        Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, UserProfile.class).putExtras(createBundle()));
             }
         }catch (Exception e){
             Toast.makeText(this, "Sorry the APP may have some errors",

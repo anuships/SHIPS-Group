@@ -44,7 +44,6 @@ public class SuggestedModules extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         readIntent();
         setContentView(R.layout.activity_suggested_modules);
-        readIntent();
     }
 
     public void viewAllProgram(View view) {
@@ -53,19 +52,16 @@ public class SuggestedModules extends AppCompatActivity {
 
     public void goBack(View view) {
         Intent in = new Intent(this, UserProfile.class).putExtras(createBundle());
-        in.putExtras(createBundle());
         startActivity(in);
     }
 
     public void viewLongTermProgram(View view) {
         Intent in = new Intent(this, LongTermProgramList.class).putExtras(createBundle());
-        in.putExtras(createBundle());
         startActivity(in);
     }
 
     public void viewShortTermProgram(View view) {
         Intent in = new Intent(this, ShortTermProgramList.class).putExtras(createBundle());
-        in.putExtras(createBundle());
         startActivity(in);
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 
+import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.exposure.ExposureInfo;
 import com.example.ships.myapplication.modules.AllPrograms;
@@ -48,6 +49,6 @@ public class Treatments extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        super.onBackPressed();
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
 }

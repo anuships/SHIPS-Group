@@ -56,7 +56,7 @@ public class ShortTermProgramList extends AppCompatActivity {
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
-        b.putString("typeOfTerm",typeOfTerm);//treatment term
+        b.putString("typeOfTerm","short");//treatment term
         return b;
     }
 

@@ -46,7 +46,6 @@ public class ExposureDes extends AppCompatActivity {
         startActivity(new Intent(this, ExposureTherapy.class).putExtras(createBundle()));
     }
     public void back(View v) {
-            Log.d("Terms Type:", "Unknown");
             startActivity(new Intent(this, ExposureInfo.class).putExtras(createBundle()));
     }
 }

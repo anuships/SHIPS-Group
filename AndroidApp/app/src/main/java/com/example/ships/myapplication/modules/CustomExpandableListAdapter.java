@@ -91,7 +91,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                     int tid = Integer.parseInt(inner.getText().toString().substring(0,inner.getText().toString().indexOf(':')).trim());
                     int indx = Integer.parseInt(inner.getText().toString().substring(inner.getText().toString().indexOf(':')+1,inner.getText().toString().indexOf(' ')).trim());
                     String title = inner.getText().toString().substring(inner.getText().toString().indexOf(' '));
-                    Intent in = new Intent(context, ModuleDescription.class).putExtras(createBundle());
+                    Intent in = new Intent(context, ModuleDescription.class);
                     b.putInt("tid", tid);
                     b.putInt("indx", indx);
                     b.putString("title", title.trim());
@@ -101,7 +101,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                 }catch(Exception e){
                     e.printStackTrace();
                     String title = inner.getText().toString().trim();
-                    Intent in = new Intent(context, ModuleDescription.class).putExtras(createBundle());
+                    Intent in = new Intent(context, ModuleDescription.class);
                     b.putString("title", title);
                     b.putString("desc", desc.getText().toString());
                     in.putExtras(b);

@@ -42,15 +42,14 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-        TextView userDetails = (TextView) findViewById(R.id.userDetail);
         readIntent();
+        TextView userDetails = (TextView) findViewById(R.id.userDetail);
         userDetails.setText(email + "\n" + firstName + " " + lastName);
 
     }
 
     public void goToChangePassword(View view) {
         Intent in = new Intent(this, ChangePassword.class).putExtras(createBundle());
-        in.putExtras(createBundle());
         startActivity(in);
     }
 
@@ -60,13 +59,11 @@ public class UserProfile extends AppCompatActivity {
 
     public void goToSuggestedModule(View view) {
         Intent in = new Intent(this, SuggestedModules.class).putExtras(createBundle());
-        in.putExtras(createBundle());
         startActivity(in);
     }
 
     public void goToMyProgram(View view) {
         Intent in = new Intent(this, MyProgramList.class).putExtras(createBundle());
-        in.putExtras(createBundle());
         startActivity(in);
 
     }
