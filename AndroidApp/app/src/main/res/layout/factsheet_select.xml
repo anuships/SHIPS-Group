@@ -13,13 +13,14 @@
         android:textStyle="bold"
         android:layout_weight="0"
         android:text="What-if scenario" />
+
     <ListView
         android:id="@+id/listFactsheet"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:drawSelectorOnTop="false"
-        />
+        android:drawSelectorOnTop="false" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
