@@ -70,7 +70,7 @@ public class EMDRActivity extends AppCompatActivity {
     }
 
     //how long each emdr movement cycle lasts in milliseconds
-    private static final int EMDR_DURATION = 2500;
+    private static int EMDR_DURATION = 2500;
 
     //base dimensions for the screen. Immediately updated when activity starts
     private static int SCREEN_WIDTH  = 500;
@@ -97,6 +97,16 @@ public class EMDRActivity extends AppCompatActivity {
         //gets user's chosen movement type from settings activity
         Intent intent = getIntent();
         String emdr_movement_type = intent.getStringExtra("emdr_Movement_Type");
+
+        //gets user's chosen speed from settings activity
+        String emdr_speed = intent.getStringExtra("emdr_Speed");
+        if (emdr_speed.equals("Slow")) {
+            EMDR_DURATION = 2500;
+        } else if (emdr_speed.equals("Medium")) {
+            EMDR_DURATION = 1500;
+        } else if (emdr_speed.equals("Fast")) {
+            EMDR_DURATION = 500;
+        }
 
         if (emdr_movement_type.equals("Horizontal")) {
             emdrMovementType = EMDRMovementTypes.SIMPLE_HORIZONTAL;

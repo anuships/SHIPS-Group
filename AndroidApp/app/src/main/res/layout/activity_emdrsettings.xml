@@ -51,6 +51,27 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/emdr_speed_spinner_setting_layout"
+        android:layout_below="@id/emdr_movement_type_spinner_setting_layout">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emdr_speed_spinner_textview"
+            android:text="EMDR speed"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emdr_speed_spinner">
+        </Spinner>
+    </LinearLayout>
+
 
 
     <Button

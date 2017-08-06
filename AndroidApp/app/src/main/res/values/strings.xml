@@ -55,4 +55,10 @@
         <item>Circular</item>
         <item>Figure of eight</item>
     </string-array>
+
+    <string-array name="emdr_speed_array">
+        <item>Slow</item>
+        <item>Medium</item>
+        <item>Fast</item>
+    </string-array>
 </resources>
