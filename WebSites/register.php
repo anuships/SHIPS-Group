@@ -11,14 +11,11 @@
 
 <body>
 <div id="header"></div>
-<div id="content">
+<div id="content">   
+
 <form id="register" method="POST" action="registercheck.php">
     <h1 align="center">Registration</h1>
-   <?php 
-   	$test = "1";
-	echo "<p>".$test. "</p>";
    
-   ?>    
    
    <table border="0">
       <tr>

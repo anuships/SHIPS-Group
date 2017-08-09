@@ -26,6 +26,7 @@ function goToMain() {
     </div>
     
     <?php		
+
 		$host="localhost"; // Host name 
 		$a_name="ships"; // Mysql username 
 		$pw="123"; // Mysql password 
@@ -46,13 +47,19 @@ function goToMain() {
 		
 		$sql="SELECT * FROM user WHERE email='" . $email . "'";
 		
-		echo ("<p>testing 1</p>");
-		//should stop
-		echo "<p>" .$sql . "</p>";
+		//testing sql
+		$sql="INSERT INTO `anu-ships`.`user` ( `email` , `firstName` , `lastName` , `password` , `preferName`)
+		VALUES('test3@anu.edu.au','test3','anu','123','noName')";
+		$result=mysql_query($sql);
+		
 		
 		$result=mysql_query($sql);
 		$count=mysql_num_rows($result);
 		
+		
+
+		
+		//real implementation
 		$sql="INSERT INTO `anu-ships`.`user` ( `email` , `firstName` , `lastName` , `password` , `preferName`)
 		VALUES('" . $email . "','" . $firstName . "','" . $lastName . "','" . $password . "','" . $preferName . "')";
 		$result=mysql_query($sql);

@@ -1,19 +1,32 @@
 Team members:
 u5564556@anu.edu.au;
+u5855756@anu.edu.au;
+u5964628@anu.edu.au;
 u5968223@anu.edu.au;
 u5820838@anu.edu.au;
 u5717943@anu.edu.au;
-u5855756@anu.edu.au;
-u5964628@anu.edu.au;
+
 
 Observers:
-
-
-
+u5757796@anu.edu.auG Ran Cui
+u5762974@anu.edu.auG Qihao Cheng
+u5918786@anu.edu.auG Boya Na
+u5961519@anu.edu.auG Tianming Zhao
+u6089801@anu.edu.auG Yufeng Xu
+u6139315@anu.edu.auG Hao Wang
 
 
 Tutor:
+tom.worthington@tomw.net.auG
 
+
+Repeated observer list without names:
+u5757796@anu.edu.auG 
+u5762974@anu.edu.auG 
+u5918786@anu.edu.auG 
+u5961519@anu.edu.auG 
+u6089801@anu.edu.auG 
+u6139315@anu.edu.auG 
 
 
 
