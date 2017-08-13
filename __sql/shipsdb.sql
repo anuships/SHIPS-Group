@@ -16,6 +16,245 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `module_category`
+--
+
+DROP TABLE IF EXISTS `module_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `module_category` (
+  `CID` int(11) NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`CID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `module_category`
+--
+
+LOCK TABLES `module_category` WRITE;
+/*!40000 ALTER TABLE `module_category` DISABLE KEYS */;
+INSERT INTO `module_category` VALUES (1,'SELF-ASSESSMENT'),(2,'FACTSHEET'),(3,'THERAPEUTIC TOOLS'),(4,'TREATMENT');
+/*!40000 ALTER TABLE `module_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `module_result`
+--
+
+DROP TABLE IF EXISTS `module_result`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `module_result` (
+  `TID` int(11) NOT NULL,
+  `INDX` int(11) NOT NULL,
+  `result` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`TID`,`INDX`),
+  CONSTRAINT `module_result_ibfk_1` FOREIGN KEY (`TID`, `INDX`) REFERENCES `user_modules` (`TID`, `INDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `module_result`
+--
+
+LOCK TABLES `module_result` WRITE;
+/*!40000 ALTER TABLE `module_result` DISABLE KEYS */;
+/*!40000 ALTER TABLE `module_result` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `modules`
+--
+
+DROP TABLE IF EXISTS `modules`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `modules` (
+  `MID` int(11) NOT NULL AUTO_INCREMENT,
+  `CID` int(11) DEFAULT NULL,
+  `TITLE` varchar(50) DEFAULT NULL,
+  `UNITS` int(11) DEFAULT NULL,
+  `DISC` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`MID`),
+  KEY `CID` (`CID`),
+  CONSTRAINT `modules_ibfk_1` FOREIGN KEY (`CID`) REFERENCES `module_category` (`CID`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `modules`
+--
+
+LOCK TABLES `modules` WRITE;
+/*!40000 ALTER TABLE `modules` DISABLE KEYS */;
+INSERT INTO `modules` VALUES (1,1,'FAS',1,'0'),(2,2,'FACTSHEET',1,'0'),(3,3,'EMDR',1,'0'),(4,3,'Audio: Introduction',1,'0'),(5,3,'Audio: Graduated Progressive Muscle Relaxation',1,'0'),(6,3,'Audio: Passive Progressive Relaxation',1,'0'),(7,3,'Audio: Rotation of Awareness',1,'0'),(8,3,'Audio: Breath Awareness',1,'0'),(9,3,'Audio: Word Focus Meditation',1,'0'),(10,3,'Audio: Alternative Nostril Breathing Meditation',1,'0'),(11,3,'Audio: Mindfull Awareness',1,'0'),(12,3,'Audio: Mindfullness Meditation',1,'0'),(13,3,'Audio: Breathing Techniques',1,'0'),(14,3,'Audio: Quick Release Technique',1,'0'),(15,3,'Audio: Standing Relaxation',1,'0'),(16,3,'Audio: Self-Hypnosis',1,'0'),(17,3,'Biofeedback',1,'0'),(18,4,'Systematic Desensitisation',5,'0');
+/*!40000 ALTER TABLE `modules` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `status`
+--
+
+DROP TABLE IF EXISTS `status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `status` (
+  `SID` int(11) NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`SID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `status`
+--
+
+LOCK TABLES `status` WRITE;
+/*!40000 ALTER TABLE `status` DISABLE KEYS */;
+INSERT INTO `status` VALUES (1,'NOT STARTED'),(2,'IN PROGRESS'),(3,'COMPLETED'),(4,'DELETED'),(5,'NOT STARTED'),(6,'IN PROGRESS'),(7,'COMPLETED'),(8,'DELETED');
+/*!40000 ALTER TABLE `status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `status_type`
+--
+
+DROP TABLE IF EXISTS `status_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `status_type` (
+  `SID` int(11) NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`SID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `status_type`
+--
+
+LOCK TABLES `status_type` WRITE;
+/*!40000 ALTER TABLE `status_type` DISABLE KEYS */;
+INSERT INTO `status_type` VALUES (1,'NOT STARTED'),(2,'IN PROGRESS'),(3,'COMPLETED'),(4,'DELETED');
+/*!40000 ALTER TABLE `status_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `treatmentplan`
+--
+
+DROP TABLE IF EXISTS `treatmentplan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `treatmentplan` (
+  `TID` int(11) NOT NULL AUTO_INCREMENT,
+  `UID` varchar(60) NOT NULL,
+  `TCID` int(11) NOT NULL,
+  `date_added` datetime DEFAULT NULL,
+  PRIMARY KEY (`TID`),
+  KEY `UID` (`UID`),
+  KEY `TCID` (`TCID`),
+  CONSTRAINT `treatmentplan_ibfk_1` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`),
+  CONSTRAINT `treatmentplan_ibfk_2` FOREIGN KEY (`TCID`) REFERENCES `treatmentplan_category` (`TCID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `treatmentplan`
+--
+
+LOCK TABLES `treatmentplan` WRITE;
+/*!40000 ALTER TABLE `treatmentplan` DISABLE KEYS */;
+/*!40000 ALTER TABLE `treatmentplan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `treatmentplan_category`
+--
+
+DROP TABLE IF EXISTS `treatmentplan_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `treatmentplan_category` (
+  `TCID` int(11) NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`TCID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `treatmentplan_category`
+--
+
+LOCK TABLES `treatmentplan_category` WRITE;
+/*!40000 ALTER TABLE `treatmentplan_category` DISABLE KEYS */;
+INSERT INTO `treatmentplan_category` VALUES (1,'SHORT FLIGHT'),(2,'LONG FLIGHT'),(3,'MISC');
+/*!40000 ALTER TABLE `treatmentplan_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_modules`
+--
+
+DROP TABLE IF EXISTS `user_modules`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_modules` (
+  `TID` int(11) NOT NULL,
+  `INDX` int(11) NOT NULL,
+  `MID` int(11) DEFAULT NULL,
+  `SID` int(11) DEFAULT NULL,
+  `progress` int(11) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`TID`,`INDX`),
+  KEY `MID` (`MID`),
+  KEY `SID` (`SID`),
+  CONSTRAINT `user_modules_ibfk_1` FOREIGN KEY (`TID`) REFERENCES `treatmentplan` (`TID`),
+  CONSTRAINT `user_modules_ibfk_2` FOREIGN KEY (`MID`) REFERENCES `modules` (`MID`),
+  CONSTRAINT `user_modules_ibfk_3` FOREIGN KEY (`SID`) REFERENCES `status_type` (`SID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_modules`
+--
+
+LOCK TABLES `user_modules` WRITE;
+/*!40000 ALTER TABLE `user_modules` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_modules` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `UID` varchar(60) NOT NULL,
+  `USERNAME` varchar(30) DEFAULT NULL,
+  `EMAIL` varchar(60) DEFAULT NULL,
+  `PASSWORD` varchar(30) DEFAULT NULL,
+  `SALT` varchar(256) DEFAULT NULL,
+  `FIRST_NAME` varchar(30) DEFAULT NULL,
+  `LAST_NAME` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `wp_commentmeta`
 --
 
@@ -406,4 +645,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-13 14:42:42
+-- Dump completed on 2017-08-13 22:06:53
