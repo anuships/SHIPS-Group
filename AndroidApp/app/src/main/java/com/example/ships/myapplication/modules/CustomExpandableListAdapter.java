@@ -107,6 +107,12 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                     in.putExtras(b);
                     context.startActivity(in);
                 }
+                String title = inner.getText().toString().trim();
+                Intent in = new Intent(context, ModuleDescription.class);
+                b.putString("title", title);
+                b.putString("desc", desc.getText().toString());
+                in.putExtras(b);
+                context.startActivity(in);
             }
         });
         return convertView;

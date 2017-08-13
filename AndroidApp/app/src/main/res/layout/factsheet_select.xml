@@ -54,7 +54,8 @@
                 android:layout_gravity="center_horizontal"
                 android:onClick="askMore"
                 android:text="More scenarios"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:visibility="invisible"/>
         </LinearLayout>
 
     </LinearLayout>

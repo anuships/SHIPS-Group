@@ -18,7 +18,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:text="All Progam List"
+                android:text="My Program List"
                 android:textSize="24dp"
                 android:textStyle="bold"/>
         </LinearLayout>
@@ -50,23 +50,12 @@
 
                     <Button
                         android:id="@+id/manage_but"
-                        android:layout_width="100dp"
+                        android:layout_width="250dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/roundedbutton"
                         android:onClick="goToMangement"
-                        android:layout_marginRight="20dp"
                         android:text="Manage"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/add_all_but"
-                        android:layout_width="100dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/roundedbutton"
-                        android:onClick="goToMangement"
-                        android:text="Add All"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 

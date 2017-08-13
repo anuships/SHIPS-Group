@@ -37,7 +37,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="factsheet sample contents \nplease change this content in future"/>
+            android:text="More to come..."/>
         </ScrollView>
     </LinearLayout>
 
