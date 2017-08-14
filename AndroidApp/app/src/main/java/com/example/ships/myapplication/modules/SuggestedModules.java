@@ -1,13 +1,18 @@
-package com.example.ships.myapplication.OtherInterfaces;
+package com.example.ships.myapplication.modules;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
 
-public class ChangePassword extends AppCompatActivity {
+/**
+ * Created by Jyun on 2017/08/05.
+ */
+
+public class SuggestedModules extends AppCompatActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -37,14 +42,25 @@ public class ChangePassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_change_password);
+        setContentView(R.layout.activity_suggested_modules);
     }
 
-    public void cencel(View view) {
-        super.onBackPressed();
+    public void viewLongTermProgram(View view) {
+        Intent in = new Intent(this, LongTermProgramList.class).putExtras(createBundle());
+        startActivity(in);
     }
 
-    public void confirmChangePassword(View view) {
-        startActivity(new Intent(this, ConfirmeChangePW.class).putExtras(createBundle()));
+    public void viewShortTermProgram(View view) {
+        Intent in = new Intent(this, ShortTermProgramList.class).putExtras(createBundle());
+        startActivity(in);
+    }
+
+    public void viewAllProgram(View view) {
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
+    }
+
+    public void goBack(View view) {
+        Intent in = new Intent(this, UserProfile.class).putExtras(createBundle());
+        startActivity(in);
     }
 }

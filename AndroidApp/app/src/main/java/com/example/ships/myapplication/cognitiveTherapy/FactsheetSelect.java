@@ -21,12 +21,39 @@ import java.util.List;
 
 
 public class FactsheetSelect extends AppCompatActivity {
+
+        private static String firstName;
+        private static String lastName;
+        private static String email;
+        private static String uid;
+        private static String typeOfTerm;
+
+        private void readIntent(){
+            Bundle b = getIntent().getExtras();
+            firstName = b.getString("firstName");
+            lastName = b.getString("lastName");
+            email = b.getString("email");
+            uid = b.getString("uid");
+            typeOfTerm = b.getString("typeOfTerm");
+        }
+
+        private Bundle createBundle(){
+            Bundle b = new Bundle();
+            b.putString("firstName", firstName);
+            b.putString("uid", uid);
+            b.putString("lastName", lastName);
+            b.putString("email", email);
+            b.putString("typeOfTerm",typeOfTerm);//treatment term
+            return b;
+        }
+
         ContentHandler db;
         List<DetailedInfo> whatIfList;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            readIntent();
             setContentView(R.layout.factsheet_select);
             ContentHandler db = new ContentHandler(this);
             WhatIfScenario.initializeWhatIfScenario(db);
@@ -69,13 +96,13 @@ public class FactsheetSelect extends AppCompatActivity {
 
     public void back(View v)
     {
-        startActivity(new Intent(this, MyLongTermProgram.class));
+       super.onBackPressed();
     }
     public void askMore(View v)
     {
-        startActivity(new Intent(this, ThereapyFactsheets.class));
+        startActivity(new Intent(this, ThereapyFactsheets.class).putExtras(createBundle()));
     }
 
-
+//testing
 }
 

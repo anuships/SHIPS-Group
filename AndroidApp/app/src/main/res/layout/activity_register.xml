@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
     tools:context="com.example.ships.myapplication.homepageAndRegistration.Register">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="17dp"
         android:textSize="30dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
         android:text="Registration"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -21,50 +21,51 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:padding="0dp"
         android:paddingBottom="20dp"
         android:id="@+id/linearLayout"
-        android:layout_marginBottom="29dp"
-        android:layout_marginStart="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginLeft="40dp">
+        android:gravity="center">
 
-        <Button
-            android:id="@+id/back"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:layout_alignTop="@+id/manage_but"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_toLeftOf="@+id/textView"
-            android:layout_toStartOf="@+id/textView"
-            android:background="@drawable/roundedbutton"
-            android:onClick="back"
-            android:paddingBottom="0dp"
-            android:text="Back"
-            android:textColor="#FFFFFF" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/finish"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/roundedbutton"
-            android:onClick="finish"
-            android:paddingBottom="0dp"
-            android:text="Finish"
-            android:textColor="#FFFFFF" />
+            <Button
+                android:id="@+id/back"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_alignTop="@+id/manage_but"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_toLeftOf="@+id/textView"
+                android:layout_toStartOf="@+id/textView"
+                android:background="@drawable/roundedbutton"
+                android:onClick="back"
+                android:paddingBottom="0dp"
+                android:text="Back"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/finish"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/roundedbutton"
+                android:onClick="finish"
+                android:paddingBottom="0dp"
+                android:text="Finish"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <LinearLayout

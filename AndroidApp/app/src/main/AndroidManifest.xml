@@ -45,7 +45,7 @@
             android:name=".homepageAndRegistration.RegisterSuccess"
             android:exported="true" />
         <activity
-            android:name=".modules.UserProgramList"
+            android:name=".modules.MyProgramList"
             android:exported="true" />
         <activity
             android:name=".modules.LongTermProgramList"
@@ -61,7 +61,7 @@
             android:exported="true" />
         <activity android:name=".FAS.ShowFASResult" />
         <activity
-            android:name=".modules.ExpandableListDataPump$SuggestedModules"
+            android:name=".modules.SuggestedModules"
             android:exported="true" />
         <activity
             android:name=".modules.AllPrograms"
@@ -73,7 +73,7 @@
             android:name=".modules.MyShortTermProgram"
             android:exported="true" />
         <activity
-            android:name=".modules.Programs$TherapeuticTools"
+            android:name=".modules.TherapeuticTools"
             android:exported="true" />
         <activity
             android:name=".EMDR.EMDRActivitySettings"
@@ -82,7 +82,7 @@
             android:name=".exposure.ExposureInfo"
             android:exported="true" />
         <activity
-            android:name=".modules.ModuleDesc"
+            android:name=".modules.ModuleDescription"
             android:exported="true" />
 
         <activity

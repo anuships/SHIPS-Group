@@ -8,6 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:layout_margin="10dp"
     tools:context="com.example.ships.myapplication.EMDR.EMDRActivitySettings">
 
     <LinearLayout
@@ -22,7 +23,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/Settings_Title"
         android:text="@string/emdr_settings_title"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:layout_marginBottom="10dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -47,6 +51,45 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/emdr_speed_spinner_setting_layout"
+        android:layout_below="@id/emdr_movement_type_spinner_setting_layout">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emdr_speed_spinner_textview"
+            android:text="EMDR Speed"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emdr_speed_spinner">
+        </Spinner>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emdr_description_title"
+        android:text="What is EMDR?"
+        android:textStyle="italic"
+        android:textSize="20dp"
+        android:layout_below="@id/emdr_speed_spinner_setting_layout"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emdr_description_title"
+        android:id="@+id/emdr_description"
+        android:text="Voluntary eye movement has been shown to move you to a neutral state, allowing you to
+        neutralise negative feelings, reinforce positive feelings or simply relax! Select a preferred movement type
+ and speed and then click the start button. Keep your head still and follow the ball that appears on the screen with your eyes."/>
+
 
 
     <Button
@@ -60,5 +103,10 @@
         android:background="@drawable/roundedbutton"
         android:textColor="#FFFFFF"
         android:layout_gravity="center"/>
+
+
+
+
+
 
 </RelativeLayout>

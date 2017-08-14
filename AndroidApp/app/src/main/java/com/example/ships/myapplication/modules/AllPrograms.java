@@ -11,6 +11,7 @@ import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.cognitiveTherapy.FactsheetSelect;
 
 public class AllPrograms extends AppCompatActivity {
     private static String firstName;
@@ -31,42 +32,46 @@ public class AllPrograms extends AppCompatActivity {
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
+        b.putString("typeOfTerm","all");//treatment term
         return b;
     }
+
+/*    private Bundle termInfo(){
+        Bundle b = new Bundle();
+        b.putString("typeOfTerm","all");
+        return b;
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_my_program);
+        setContentView(R.layout.activity_all_program);
     }
 
     public void goToFactSheet(View view) {
-        startActivity(new Intent(this, ThereapyFactsheets.class));
+        startActivity(new Intent(this, FactsheetSelect.class).putExtras(createBundle()));
     }
 
     public void goToSelfAssessment(View view) {
-        startActivity(new Intent(this, FAS.class));
+        startActivity(new Intent(this, FAS.class).putExtras(createBundle()));
     }
 
     public void goToTherapeuticTools(View view) {
-        startActivity(new Intent(this, Programs.TherapeuticTools.class));
+        startActivity(new Intent(this, TherapeuticTools.class).putExtras(createBundle()));
     }
 
     public void goToTreatment(View view) {
-        startActivity(new Intent(this, Treatments.class));
+        startActivity(new Intent(this, Treatments.class).putExtras(createBundle()));
     }
 
     public void goBack(View view) {
-
-        Intent in = new Intent(this, ExpandableListDataPump.SuggestedModules.class);
+        Intent in = new Intent(this, UserProfile.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
     }
 
     public void goToRecords(View view) {
-        startActivity(new Intent(this, Records.class));
+        startActivity(new Intent(this, Records.class).putExtras(createBundle()));
     }
-
-
 }

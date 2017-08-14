@@ -16,15 +16,60 @@ import java.util.ArrayList;
 
 public class FAS extends AppCompatActivity {
 
+    private static String firstName;
+    private static String lastName;
+    private static String email;
+    private static String uid;
+    private static String typeOfTerm;
+
+    private void readIntent(){
+        Bundle b = getIntent().getExtras();
+        firstName = b.getString("firstName");
+        lastName = b.getString("lastName");
+        email = b.getString("email");
+        uid = b.getString("uid");
+        typeOfTerm = b.getString("typeOfTerm");
+    }
+
+    private Bundle createBundle(){
+        Bundle b = new Bundle();
+        b.putString("firstName", firstName);
+        b.putString("uid", uid);
+        b.putString("lastName", lastName);
+        b.putString("email", email);
+        b.putString("typeOfTerm",typeOfTerm);//treatment term
+        return b;
+    }
+
     static int score = 0;
+
+    public static int getAFscore() {
+        return AFscore;
+    }
+
+    public static int getIFscore() {
+        return IFscore;
+    }
+
+    public static int getGFscore() {
+        return GFscore;
+    }
+
+    static int AFscore = 0;
+    static int IFscore = 0;
+    static int GFscore = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        readIntent();
         setContentView(R.layout.activity_fas);
     }
     public void calculateScore(View v)
     {
         score = 0;
+        AFscore = 0;
+        IFscore = 0;
+        GFscore = 0;
         ArrayList<RadioGroup> choice = new ArrayList<>();
         RadioGroup r1 = (RadioGroup) findViewById(R.id.quest1);
         RadioGroup r2 = (RadioGroup) findViewById(R.id.quest2);
@@ -115,17 +160,23 @@ public class FAS extends AppCompatActivity {
                 } else if (buttonChoice.equals("overwhelming anxiety")) {
                     buttonScore = 5;
                 }
+                if (r.equals(r1) || r.equals(r2) || r.equals(r3) || r.equals(r4) || r.equals(r5) || r.equals(r12) || r.equals(r13))
+                    GFscore += buttonScore;
+                if (r.equals(r6) || r.equals(r7) || r.equals(r8) || r.equals(r9) || r.equals(r10) || r.equals(r11) || r.equals(r14) || r.equals(r15) || r.equals(r16) || r.equals(r17) || r.equals(r18) || r.equals(r20))
+                    AFscore += buttonScore;
+                if (r.equals(r22) || r.equals(r23) || r.equals(r24) || r.equals(r25) || r.equals(r27) || r.equals(r28) || r.equals(r29) || r.equals(r30) || r.equals(r31) || r.equals(r32))
+                    IFscore += buttonScore;
                 score += buttonScore;
             }
         }
         if(showResult) {
-            startActivity(new Intent(this, ShowFASResult.class));
+            startActivity(new Intent(this, ShowFASResult.class).putExtras(createBundle()));
         }
     }
 
     public void back(View v)
     {
-        startActivity(new Intent(this, AllPrograms.class));
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
 
     public static int getScore() {

@@ -1,23 +1,23 @@
 package com.example.ships.myapplication.OtherInterfaces;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.example.ships.myapplication.homepageAndRegistration.MainActivity;
-import com.example.ships.myapplication.modules.UserProgramList;
+import com.example.ships.myapplication.modules.MyProgramList;
 import com.example.ships.myapplication.modules.ExpandableListDataPump;
+import com.example.ships.myapplication.modules.SuggestedModules;
 
 public class UserProfile extends AppCompatActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
     private static String uid;
+    private static String typeOfTerm;
 
     private void readIntent(){
         Bundle b = getIntent().getExtras();
@@ -25,13 +25,16 @@ public class UserProfile extends AppCompatActivity {
         lastName = b.getString("lastName");
         email = b.getString("email");
         uid = b.getString("uid");
+        typeOfTerm = b.getString("typeOfTerm");
     }
+
     private Bundle createBundle(){
         Bundle b = new Bundle();
         b.putString("firstName", firstName);
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
+        b.putString("typeOfTerm","none");//treatment term
         return b;
     }
 
@@ -39,41 +42,37 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-        TextView userDetails = (TextView) findViewById(R.id.userDetail);
         readIntent();
+        TextView userDetails = (TextView) findViewById(R.id.userDetail);
         userDetails.setText(email + "\n" + firstName + " " + lastName);
 
     }
 
     public void goToChangePassword(View view) {
-        Intent in = new Intent(this, ChangePassword.class);
-        in.putExtras(createBundle());
+        Intent in = new Intent(this, ChangePassword.class).putExtras(createBundle());
         startActivity(in);
     }
 
     public void goToUpdateUserInformation(View view) {
-        startActivity(new Intent(this, UpdateUserDetail.class));
+        startActivity(new Intent(this, UpdateUserDetail.class).putExtras(createBundle()));
     }
 
     public void goToSuggestedModule(View view) {
-        Intent in = new Intent(this, ExpandableListDataPump.SuggestedModules.class);
-        in.putExtras(createBundle());
-
+        Intent in = new Intent(this, SuggestedModules.class).putExtras(createBundle());
         startActivity(in);
     }
 
     public void goToMyProgram(View view) {
-        Intent in = new Intent(this, UserProgramList.class);
-        in.putExtras(createBundle());
+        Intent in = new Intent(this, MyProgramList.class).putExtras(createBundle());
         startActivity(in);
 
     }
 
     public void goToRecords(View view) {
-        startActivity(new Intent(this, Records.class));
+        startActivity(new Intent(this, Records.class).putExtras(createBundle()));
     }
 
     public void logout(View view) {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class).putExtras(createBundle()));
     }
 }

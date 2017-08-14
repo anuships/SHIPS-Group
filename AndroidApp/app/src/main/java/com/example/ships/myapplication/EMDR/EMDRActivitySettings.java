@@ -17,13 +17,39 @@ import android.widget.Spinner;
 import com.example.ships.myapplication.R;
 
 public class EMDRActivitySettings extends AppCompatActivity {
+    private static String firstName;
+    private static String lastName;
+    private static String email;
+    private static String uid;
+    private static String typeOfTerm;
+
+    private void readIntent(){
+        Bundle b = getIntent().getExtras();
+        firstName = b.getString("firstName");
+        lastName = b.getString("lastName");
+        email = b.getString("email");
+        uid = b.getString("uid");
+        typeOfTerm = b.getString("typeOfTerm");
+    }
+
+    private Bundle createBundle(){
+        Bundle b = new Bundle();
+        b.putString("firstName", firstName);
+        b.putString("uid", uid);
+        b.putString("lastName", lastName);
+        b.putString("email", email);
+        b.putString("typeOfTerm",typeOfTerm);//treatment term
+        return b;
+    }
 
     //emdr movement type, to be selected by user
     String emdrMovementType = null;
+    String emdrSpeed = null;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        readIntent();
         setContentView(R.layout.activity_emdrsettings);
 
         //set and populate spinner with emdr movement types
@@ -49,6 +75,25 @@ public class EMDRActivitySettings extends AppCompatActivity {
                 }
         );
 
+        Spinner emdr_speed_spinner = (Spinner) findViewById(R.id.emdr_speed_spinner);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.emdr_speed_array, android.R.layout.simple_spinner_dropdown_item);
+        emdr_speed_spinner.setAdapter(adapter1);
+
+        emdr_speed_spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        Object item = adapterView.getItemAtPosition(i);
+                        emdrSpeed = item.toString();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                }
+        );
+
         //launch emdr activity on button click
         Button emdrStartButton = (Button) findViewById(R.id.emdrstartbutton);
         emdrStartButton.setOnClickListener(new View.OnClickListener() {
@@ -59,9 +104,10 @@ public class EMDRActivitySettings extends AppCompatActivity {
     }
 
     public void sendMessage(View view) {
-        Intent EMDRintent = new Intent(this, EMDRActivity.class);
+        Intent EMDRintent = new Intent(this, EMDRActivity.class).putExtras(createBundle());
         //tell emdr activity which movement type to run
         EMDRintent.putExtra("emdr_Movement_Type", emdrMovementType);
+        EMDRintent.putExtra("emdr_Speed", emdrSpeed);
         startActivity(EMDRintent);
     }
 }

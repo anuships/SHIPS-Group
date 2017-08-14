@@ -4,18 +4,25 @@
     android:id="@+id/future_program"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ships.myapplication.homepageAndRegistration.LoginActivity">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="20dp"
         >
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="Suggested Modules"
+                android:textSize="24dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
 
 
         <LinearLayout
@@ -29,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="vertical">
-
 
                 <Button
                     android:text="Long Term"
@@ -63,7 +69,7 @@
                     android:background="@drawable/roundedbutton"
                     android:paddingBottom="0dp"
                     android:textColor="#FFFFFF"
-                    android:onClick="viewProgram"
+                    android:onClick="viewAllProgram"
                     android:layout_gravity="center" />
             </LinearLayout>
         </LinearLayout>
@@ -74,10 +80,8 @@
             android:layout_height="40dp"
             android:id="@+id/manage_but"
             android:background="@drawable/roundedbutton"
-            android:paddingBottom="0dp"
             android:textColor="#FFFFFF"
             android:onClick="goBack"
-            android:layout_marginBottom="20dp"
             android:layout_gravity="center" />
 
 

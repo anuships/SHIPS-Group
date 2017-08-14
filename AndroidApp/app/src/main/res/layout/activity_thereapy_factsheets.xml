@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:text="Therapy Factsheets"
             android:textSize="30dp"
+            android:textStyle="bold"
             android:layout_marginLeft="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="17dp"/>
@@ -36,7 +37,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="factsheet sample contents \nplease change this content in future"/>
+            android:text="More to come..."/>
         </ScrollView>
     </LinearLayout>
 

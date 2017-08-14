@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.TextView;
 
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
@@ -40,6 +39,7 @@ public class ShortTermProgramList extends AppCompatActivity {
     private static String lastName;
     private static String email;
     private static String uid;
+    private static String typeOfTerm;
 
     private void readIntent(){
         Bundle b = getIntent().getExtras();
@@ -47,19 +47,24 @@ public class ShortTermProgramList extends AppCompatActivity {
         lastName = b.getString("lastName");
         email = b.getString("email");
         uid = b.getString("uid");
+        typeOfTerm = b.getString("typeOfTerm");
     }
+
     private Bundle createBundle(){
         Bundle b = new Bundle();
         b.putString("firstName", firstName);
         b.putString("uid", uid);
         b.putString("lastName", lastName);
         b.putString("email", email);
+        b.putString("typeOfTerm","short");//treatment term
         return b;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_program_list);
+        readIntent();
+        setContentView(R.layout.activity_all_program_list);
         expandableListView = (ExpandableListView) findViewById(R.id.programList);
         readIntent();
         //generate program title and program detail to the list
@@ -87,7 +92,7 @@ public class ShortTermProgramList extends AppCompatActivity {
 
     public void goBack(View view) {
         //go back to the previous page
-        Intent in = new Intent(this, ExpandableListDataPump.SuggestedModules.class);
+        Intent in = new Intent(this, SuggestedModules.class).putExtras(createBundle());
         in.putExtras(createBundle());
         startActivity(in);
     }
@@ -141,6 +146,6 @@ public class ShortTermProgramList extends AppCompatActivity {
         }
     }
     public void goToMangement(View view) {
-        startActivity(new Intent(this, MyShortTermProgram.class));
+        startActivity(new Intent(this, MyShortTermProgram.class).putExtras(createBundle()));
     }
 }

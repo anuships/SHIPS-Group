@@ -22,10 +22,35 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class UserProgramList extends AppCompatActivity {
+public class MyProgramList extends AppCompatActivity {
 //refer to https://goo.gl/MrPdIi
 
 //testing comment to prevent force push op
+
+    private static String firstName;
+    private static String lastName;
+    private static String email;
+    private static String uid;
+    private static String typeOfTerm;
+
+    private void readIntent(){
+        Bundle b = getIntent().getExtras();
+        firstName = b.getString("firstName");
+        lastName = b.getString("lastName");
+        email = b.getString("email");
+        uid = b.getString("uid");
+        typeOfTerm = b.getString("typeOfTerm");
+    }
+
+    private Bundle createBundle(){
+        Bundle b = new Bundle();
+        b.putString("firstName", firstName);
+        b.putString("uid", uid);
+        b.putString("lastName", lastName);
+        b.putString("email", email);
+        b.putString("typeOfTerm",typeOfTerm);//treatment term
+        return b;
+    }
 
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
@@ -34,30 +59,12 @@ public class UserProgramList extends AppCompatActivity {
     ExpandableListDataPump dataDump = new ExpandableListDataPump();
     String programTitle;
     String programDetail;
-    private static String firstName;
-    private static String lastName;
-    private static String email;
-    private static String uid;
 
-    private void readIntent(){
-        Bundle b = getIntent().getExtras();
-        firstName = b.getString("firstName");
-        lastName = b.getString("lastName");
-        email = b.getString("email");
-        uid = b.getString("uid");
-    }
-    private Bundle createBundle(){
-        Bundle b = new Bundle();
-        b.putString("firstName", firstName);
-        b.putString("uid", uid);
-        b.putString("lastName", lastName);
-        b.putString("email", email);
-        return b;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_program_list);
+        readIntent();
+        setContentView(R.layout.activity_all_program_list);
         expandableListView = (ExpandableListView) findViewById(R.id.programList);
         readIntent();
         SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
@@ -76,23 +83,25 @@ public class UserProgramList extends AppCompatActivity {
             resTID.moveToNext();
         }
 
-     //   dataDump.setData("Self Assessment", "Self Assessment is a tool that helps you to " +
-         //       "understand more about yourself on fear of flying.");
-       // dataDump.setData("EMDR", "EMDR is a kind of therapeutic tool that helps you " +
-         //       "to distract from the plane by focusing on a moving ball");
-       // dataDump.setData("Relaxation Audio Training", "Relaxation audio is kind of therapeutic tool" +
-        //        "that helps you to learn techniques to relax yourself.");
-        //dataDump.setData("Biofeedback", "Biofeedback is kind of the therapeutic tool " +
-          //      "that helps you to understand whether you become more relax or anxious. " +
-            //    "At the beginning, some data will be collected from your body and then " +
-              //  "generate a baseline in BLUE. After that a RED real time monitoring line " +
-                //"reflects your current feeling. If the red line goes up means you feel relax. " +
-                //"If the red line goes down that means you feel anxious.");
-        //dataDump.setData("Systematic Desensitisation", "Systematic Desensitisation is kind " +
-          //      "of therapy that allows you to go through some airline like scenarios. " +
-            //    "You have to apply techniques learned from the provided therapeutic tools " +
-              //  "and try to relax your self. There are 5 levels of scenarios provided in " +
-                //"this version.");
+        /*
+        dataDump.setData("Self Assessment", "Self Assessment is a tool that helps you to " +
+                "understand more about yourself on fear of flying.");
+        dataDump.setData("EMDR", "EMDR is a kind of therapeutic tool that helps you " +
+                "to distract from the plane by focusing on a moving ball");
+        dataDump.setData("Relaxation Audio Training", "Relaxation audio is kind of therapeutic tool" +
+                "that helps you to learn techniques to relax yourself.");
+        dataDump.setData("Biofeedback", "Biofeedback is kind of the therapeutic tool " +
+                "that helps you to understand whether you become more relax or anxious. " +
+                "At the beginning, some data will be collected from your body and then " +
+                "generate a baseline in BLUE. After that a RED real time monitoring line " +
+                "reflects your current feeling. If the red line goes up means you feel relax. " +
+                "If the red line goes down that means you feel anxious.");
+        dataDump.setData("Systematic Desensitisation", "Systematic Desensitisation is kind " +
+                "of therapy that allows you to go through some airline like scenarios. " +
+                "You have to apply techniques learned from the provided therapeutic tools " +
+                "and try to relax your self. There are 5 levels of scenarios provided in " +
+                "this version.");
+         */
 
 
         expandableListDetail = dataDump.getData();
@@ -141,9 +150,6 @@ public class UserProgramList extends AppCompatActivity {
                 return false;
             }
         });*/
-
-
-
     }
 
     public void onClick(View v) {
@@ -160,8 +166,8 @@ public class UserProgramList extends AppCompatActivity {
         ExpandableListView ex = (ExpandableListView) but.getParent().getParent().getParent();
         TextView title = (TextView) ex.findViewById(R.id.listTitle);
         System.out.println(title.getText().toString());
-
     }
+
     public void delFromProgram(MenuItem item){
 
     }
@@ -171,10 +177,10 @@ public class UserProgramList extends AppCompatActivity {
     }
 
     public void addToMyProgram(MenuItem item) {
-        startActivity(new Intent(this, AllPrograms.class));
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
 
     public void goToMangement(View view) {
-        startActivity(new Intent(this, AllPrograms.class));
+        startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
 }

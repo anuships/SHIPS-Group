@@ -3,6 +3,7 @@ package com.example.ships.myapplication.modules;
 /**
  * Created by Jyun on 2017/04/10.
  */
+//reference: https://goo.gl/MrPdIi
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,21 +11,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
-import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 
 public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
@@ -96,7 +91,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                     int tid = Integer.parseInt(inner.getText().toString().substring(0,inner.getText().toString().indexOf(':')).trim());
                     int indx = Integer.parseInt(inner.getText().toString().substring(inner.getText().toString().indexOf(':')+1,inner.getText().toString().indexOf(' ')).trim());
                     String title = inner.getText().toString().substring(inner.getText().toString().indexOf(' '));
-                    Intent in = new Intent(context, ModuleDesc.class);
+                    Intent in = new Intent(context, ModuleDescription.class);
                     b.putInt("tid", tid);
                     b.putInt("indx", indx);
                     b.putString("title", title.trim());
@@ -106,12 +101,18 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                 }catch(Exception e){
                     e.printStackTrace();
                     String title = inner.getText().toString().trim();
-                    Intent in = new Intent(context, ModuleDesc.class);
+                    Intent in = new Intent(context, ModuleDescription.class);
                     b.putString("title", title);
                     b.putString("desc", desc.getText().toString());
                     in.putExtras(b);
                     context.startActivity(in);
                 }
+                String title = inner.getText().toString().trim();
+                Intent in = new Intent(context, ModuleDescription.class);
+                b.putString("title", title);
+                b.putString("desc", desc.getText().toString());
+                in.putExtras(b);
+                context.startActivity(in);
             }
         });
         return convertView;
