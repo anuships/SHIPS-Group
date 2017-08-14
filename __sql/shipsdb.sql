@@ -26,7 +26,7 @@ CREATE TABLE `module_category` (
   `CID` int(11) NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`CID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `module_category` (
 
 LOCK TABLES `module_category` WRITE;
 /*!40000 ALTER TABLE `module_category` DISABLE KEYS */;
-INSERT INTO `module_category` VALUES (1,'SELF-ASSESSMENT'),(2,'FACTSHEET'),(3,'THERAPEUTIC TOOLS'),(4,'TREATMENT');
+INSERT INTO `module_category` VALUES (1,'SELF-ASSESSMENT'),(2,'FACTSHEET'),(3,'THERAPEUTIC TOOLS'),(4,'TREATMENT'),(5,'SELF-ASSESSMENT'),(6,'FACTSHEET'),(7,'THERAPEUTIC TOOLS'),(8,'TREATMENT');
 /*!40000 ALTER TABLE `module_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,7 +80,7 @@ CREATE TABLE `modules` (
   PRIMARY KEY (`MID`),
   KEY `CID` (`CID`),
   CONSTRAINT `modules_ibfk_1` FOREIGN KEY (`CID`) REFERENCES `module_category` (`CID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +89,7 @@ CREATE TABLE `modules` (
 
 LOCK TABLES `modules` WRITE;
 /*!40000 ALTER TABLE `modules` DISABLE KEYS */;
-INSERT INTO `modules` VALUES (1,1,'FAS',1,'0'),(2,2,'FACTSHEET',1,'0'),(3,3,'EMDR',1,'0'),(4,3,'Audio: Introduction',1,'0'),(5,3,'Audio: Graduated Progressive Muscle Relaxation',1,'0'),(6,3,'Audio: Passive Progressive Relaxation',1,'0'),(7,3,'Audio: Rotation of Awareness',1,'0'),(8,3,'Audio: Breath Awareness',1,'0'),(9,3,'Audio: Word Focus Meditation',1,'0'),(10,3,'Audio: Alternative Nostril Breathing Meditation',1,'0'),(11,3,'Audio: Mindfull Awareness',1,'0'),(12,3,'Audio: Mindfullness Meditation',1,'0'),(13,3,'Audio: Breathing Techniques',1,'0'),(14,3,'Audio: Quick Release Technique',1,'0'),(15,3,'Audio: Standing Relaxation',1,'0'),(16,3,'Audio: Self-Hypnosis',1,'0'),(17,3,'Biofeedback',1,'0'),(18,4,'Systematic Desensitisation',5,'0');
+INSERT INTO `modules` VALUES (1,1,'FAS',1,'0'),(2,2,'FACTSHEET',1,'0'),(3,3,'EMDR',1,'0'),(4,3,'Audio: Introduction',1,'0'),(5,3,'Audio: Graduated Progressive Muscle Relaxation',1,'0'),(6,3,'Audio: Passive Progressive Relaxation',1,'0'),(7,3,'Audio: Rotation of Awareness',1,'0'),(8,3,'Audio: Breath Awareness',1,'0'),(9,3,'Audio: Word Focus Meditation',1,'0'),(10,3,'Audio: Alternative Nostril Breathing Meditation',1,'0'),(11,3,'Audio: Mindfull Awareness',1,'0'),(12,3,'Audio: Mindfullness Meditation',1,'0'),(13,3,'Audio: Breathing Techniques',1,'0'),(14,3,'Audio: Quick Release Technique',1,'0'),(15,3,'Audio: Standing Relaxation',1,'0'),(16,3,'Audio: Self-Hypnosis',1,'0'),(17,3,'Biofeedback',1,'0'),(18,4,'Systematic Desensitisation',5,'0'),(19,1,'FAS',1,'0'),(20,2,'FACTSHEET',1,'0'),(21,3,'EMDR',1,'0'),(22,3,'Audio: Introduction',1,'0'),(23,3,'Audio: Graduated Progressive Muscle Relaxation',1,'0'),(24,3,'Audio: Passive Progressive Relaxation',1,'0'),(25,3,'Audio: Rotation of Awareness',1,'0'),(26,3,'Audio: Breath Awareness',1,'0'),(27,3,'Audio: Word Focus Meditation',1,'0'),(28,3,'Audio: Alternative Nostril Breathing Meditation',1,'0'),(29,3,'Audio: Mindfull Awareness',1,'0'),(30,3,'Audio: Mindfullness Meditation',1,'0'),(31,3,'Audio: Breathing Techniques',1,'0'),(32,3,'Audio: Quick Release Technique',1,'0'),(33,3,'Audio: Standing Relaxation',1,'0'),(34,3,'Audio: Self-Hypnosis',1,'0'),(35,3,'Biofeedback',1,'0'),(36,4,'Systematic Desensitisation',5,'0');
 /*!40000 ALTER TABLE `modules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +128,7 @@ CREATE TABLE `status_type` (
   `SID` int(11) NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`SID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +137,7 @@ CREATE TABLE `status_type` (
 
 LOCK TABLES `status_type` WRITE;
 /*!40000 ALTER TABLE `status_type` DISABLE KEYS */;
-INSERT INTO `status_type` VALUES (1,'NOT STARTED'),(2,'IN PROGRESS'),(3,'COMPLETED'),(4,'DELETED');
+INSERT INTO `status_type` VALUES (1,'NOT STARTED'),(2,'IN PROGRESS'),(3,'COMPLETED'),(4,'DELETED'),(5,'NOT STARTED'),(6,'IN PROGRESS'),(7,'COMPLETED'),(8,'DELETED');
 /*!40000 ALTER TABLE `status_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +181,7 @@ CREATE TABLE `treatmentplan_category` (
   `TCID` int(11) NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`TCID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +190,7 @@ CREATE TABLE `treatmentplan_category` (
 
 LOCK TABLES `treatmentplan_category` WRITE;
 /*!40000 ALTER TABLE `treatmentplan_category` DISABLE KEYS */;
-INSERT INTO `treatmentplan_category` VALUES (1,'SHORT FLIGHT'),(2,'LONG FLIGHT'),(3,'MISC');
+INSERT INTO `treatmentplan_category` VALUES (1,'SHORT FLIGHT'),(2,'LONG FLIGHT'),(3,'MISC'),(4,'SHORT FLIGHT'),(5,'LONG FLIGHT'),(6,'MISC');
 /*!40000 ALTER TABLE `treatmentplan_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -645,4 +645,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-13 22:06:53
+-- Dump completed on 2017-08-14 18:14:48
