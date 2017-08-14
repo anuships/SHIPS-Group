@@ -8,7 +8,7 @@ use shipsdb;
             
 	INSERT INTO module_category (TITLE) VALUES("SELF-ASSESSMENT"), ("FACTSHEET"), ("THERAPEUTIC TOOLS"), ("TREATMENT");
  
-	CREATE TABLE IF NOT EXISTS modules(MID INTEGER PRIMARY KEY AUTO_INCREMENT,CID INTEGER, TITLE VARCHAR(50), UNITS INTEGER, DISC VARCHAR(256), FOREIGN KEY(CID) REFERENCES module_category(CID))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	CREATE TABLE IF NOT EXISTS modules(MID INTEGER PRIMARY KEY AUTO_INCREMENT,CID INTEGER, TITLE VARCHAR(50), UNITS INTEGER, DISC VARCHAR(512), FOREIGN KEY(CID) REFERENCES module_category(CID))ENGINE=InnoDB DEFAULT CHARSET=utf8;
 	INSERT INTO modules (CID, TITLE, UNITS, DISC) VALUES
 		(1, "FAS", 1,"Self Assessment is a tool that helps you to understand more about yourself on fear of flying."),
 		(2, "FACTSHEET",1,"The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios."),
