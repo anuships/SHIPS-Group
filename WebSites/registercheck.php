@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,61 +18,73 @@ function goToMain() {
 <body>
 <div id="header"></div>
 <div id="content">
-	<div style="width:100px; margin:auto;">
-    	<p style="font-size:20px">Sucessful</p>
-    </div>
-    <div style="width:200px; margin:auto;">
-	    <button onclick="goToMain">Go back to Home Page</button>
-    </div>
-    
-    <?php		
 
+
+    
+    <?php
 		$host="localhost"; // Host name 
-		$a_name="ships"; // Mysql username 
-		$pw="123"; // Mysql password 
+		$a_name="root"; // Mysql username 
+		$pw=""; // Mysql password 
 		$db_name="anu-ships"; // Database name 
 		
 		
 		// Connect to server and select database.
-		$link=mysql_connect("$host", "$a_name", "$pw")or die("cannot connect"); 
-		mysql_select_db("$db_name")or die("cannot select database");		
+		$link = mysqli_connect("$host", "$a_name", "$pw")
+					or die("cannot connect"); 
+		mysqli_select_db($link,"$db_name")
+					or die("cannot select database");		
 		
 		// username and password sent from form 
 		$email = $_POST["email"];
 		$firstName=$_POST["fname"]; 
 		$lastName=$_POST["lname"]; 
 		$password = $_POST["password"];
-		$preferName=$_POST["name"]; 
+		$preferName=$_POST["name"]; 		
 		
+		$sql="SELECT * FROM userinfo WHERE email='".$email."'";
+		$result = mysqli_query($link,$sql);
 		
-		$sql="SELECT * FROM user WHERE email='" . $email . "'";
+		$rowCount = mysqli_num_rows($result);
 		
-		//testing sql
-		$sql="INSERT INTO `anu-ships`.`user` ( `email` , `firstName` , `lastName` , `password` , `preferName`)
-		VALUES('test3@anu.edu.au','test3','anu','123','noName')";
-		$result=mysql_query($sql);
-		
-		
-		$result=mysql_query($sql);
-		$count=mysql_num_rows($result);
-		
-		
-
-		
-		//real implementation
-		$sql="INSERT INTO `anu-ships`.`user` ( `email` , `firstName` , `lastName` , `password` , `preferName`)
-		VALUES('" . $email . "','" . $firstName . "','" . $lastName . "','" . $password . "','" . $preferName . "')";
-		$result=mysql_query($sql);
+		if($rowCount > 0){
+			//echo "Has result of ".$rowCount." rows";
+			$msg = "<div style='width:200px; margin:auto; align='center'>
+					    	<p style='font-size:20px'>E-mail already been used</p>
+					</div>";
+				
+			$button = "<div style='width:160px; margin:auto;'>
+							 <button onclick='goToMain()'>
+							    Go back to Home Page
+							 </button>
+					   </div>";
+			echo $msg.$button;
+		}else{
+			
+			//insert new user information
+			$sql="INSERT INTO `anu-ships`.`userinfo` ( `email` , 
+				`firstName` , `password` , `lastName` , `preferName`)
+			VALUES('".$email."','".$firstName."','".$password."',
+					'".$lastName."','".$preferName."')";
+			$result = mysqli_query($link,$sql);
 	
-		if ($link->query($sql) === TRUE) {
-			echo "New record created successfully";
-		} else {
-			echo "Error: " . $sql . "<br>" . $link->error;
-		}
 		
-		mysql_close($link); 
-		?>
-
+			if ($result === TRUE) {
+				$msg = "<div style='width:100px; margin:auto; align='center'>
+					    	<p style='font-size:20px'>Sucessful</p>
+					    </div>";
+				
+				$button = "<div style='width:160px; margin:auto;'>
+							 <button onclick='goToMain()'>
+							    Go back to Home Page
+							 </button>
+						   </div>";
+				echo $msg.$button;
+			} else {
+				echo "Error: ".$sql."<br>".mysql_error($link);
+			}
+		}
+		mysqli_close($link); 
+	?>
 </div>
 
 <div id="footer"></div>
