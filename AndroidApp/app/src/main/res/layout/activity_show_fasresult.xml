@@ -13,10 +13,13 @@
         android:layout_margin="20dp"
         android:layout_alignParentTop="true">
 
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
@@ -51,37 +54,41 @@
                 android:layout_below="@+id/textView"
                 android:text=""
                 android:textSize="17dp" />
-        </LinearLayout>
 
-            <LinearLayout
+        </LinearLayout>
+    </ScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.2"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginRight="30dp"
+                android:background="@drawable/roundedbutton"
+                android:onClick="goBack"
+                android:text="Return"
+                android:textColor="#FFFFFF"></Button>
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/roundedbutton"
-                    android:onClick="goBack"
-                    android:text="Return"
-                    android:textColor="#FFFFFF"></Button>
-
-                <Button
-                    android:id="@+id/button21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="center"
-                    android:layout_toEndOf="@+id/button"
-                    android:layout_toRightOf="@+id/button"
-                    android:background="@drawable/roundedbutton"
-                    android:onClick="goToTreatment"
-                    android:text="Manage"
-                    android:textColor="#FFFFFF" />
+            <Button
+                android:id="@+id/button21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_toEndOf="@+id/button"
+                android:layout_toRightOf="@+id/button"
+                android:background="@drawable/roundedbutton"
+                android:onClick="goToTreatment"
+                android:text="Manage"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
     </LinearLayout>
