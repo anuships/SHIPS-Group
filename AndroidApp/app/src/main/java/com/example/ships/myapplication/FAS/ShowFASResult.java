@@ -1,8 +1,13 @@
 package com.example.ships.myapplication.FAS;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.TextView;
 
@@ -52,9 +57,11 @@ public class ShowFASResult extends AppCompatActivity {
         String GFscoreComment;
 
         if (FAS.getScore() >= 82.74){
+
             scoreComment = "You are very likely suffered from fear of flying";
         } else if (FAS.getScore()>=62){
             scoreComment = "You are likely suffered from fear of flying";
+
         } else {
             scoreComment = "You are unlikely suffered from fear of flying";
         }
@@ -84,7 +91,7 @@ public class ShowFASResult extends AppCompatActivity {
         }
 
         tv.setText(
-                "1. Your total score of fear of flying is " + Integer.toString(FAS.getScore()) + ": " + "\n" + scoreComment + "\n" + "\n" +
+                "1. Your total score of fear of flying is " + Integer.toString(FAS.getScore()) + ": " + "\n" + Html.fromHtml(scoreComment) + "\n" + "\n" +
                 "2. Your total score of anticipatory flight anxiety is " + Integer.toString(FAS.getAFscore()) + ": " + "\n" + AFscoreComment + "\n" + "\n" +
                 "3. Your total score of in-flight anxiety is " + Integer.toString(FAS.getIFscore()) + ": " + "\n" + IFscoreComment + "\n" + "\n" +
                 "4. Your total score of generalized flight anxiety is " + Integer.toString(FAS.getGFscore()) + ": " + "\n"  + GFscoreComment + "\n"
