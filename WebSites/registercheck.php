@@ -23,9 +23,9 @@ function goToMain() {
     
     <?php
 		$host="localhost"; // Host name 
-		$a_name="root"; // Mysql username 
-		$pw=""; // Mysql password 
-		$db_name="anu-ships"; // Database name 
+		$a_name="ubuntu"; // Mysql username 
+		$pw="AnU#1SH@I0ps20&17"; // Mysql password 
+		$db_name="shipsdb"; // Database name 
 		
 		
 		// Connect to server and select database.
@@ -41,7 +41,9 @@ function goToMain() {
 		$password = $_POST["password"];
 		$preferName=$_POST["name"]; 		
 		
-		$sql="SELECT * FROM userinfo WHERE email='".$email."'";
+		$table = "users";
+		
+		$sql="SELECT uid FROM ".$table." WHERE email='".$email."'";
 		$result = mysqli_query($link,$sql);
 		
 		$rowCount = mysqli_num_rows($result);
@@ -58,12 +60,16 @@ function goToMain() {
 							 </button>
 					   </div>";
 			echo $msg.$button;
-		}else{
-			
+		}else{		
 			//insert new user information
-			$sql="INSERT INTO `anu-ships`.`userinfo` ( `email` , 
-				`firstName` , `password` , `lastName` , `preferName`)
-			VALUES('".$email."','".$firstName."','".$password."',
+			$sql2="select uid from users order by uid desc limit 1;";
+			$result2 = mysqli_query($link,$sqls);
+			
+			$uid = $result2 + 1;
+			
+			$sql="INSERT INTO `".$db_name."`.`".$email."` ( `uid`, `email` , 
+				`first_name` , `password` , `last_name` , `username`)
+			VALUES('".$uid.",".$email."','".$firstName."','".$password."',
 					'".$lastName."','".$preferName."')";
 			$result = mysqli_query($link,$sql);
 	
