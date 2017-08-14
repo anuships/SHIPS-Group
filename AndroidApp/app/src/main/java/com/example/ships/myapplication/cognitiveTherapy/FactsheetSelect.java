@@ -95,7 +95,7 @@ public class FactsheetSelect extends AppCompatActivity {
 
     public void back(View v)
     {
-        startActivity(new Intent(this, MyLongTermProgram.class).putExtras(createBundle()));
+       super.onBackPressed();
     }
     public void askMore(View v)
     {

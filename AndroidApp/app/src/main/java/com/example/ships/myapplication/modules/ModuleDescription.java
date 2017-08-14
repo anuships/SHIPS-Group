@@ -62,7 +62,7 @@ public class ModuleDescription extends AppCompatActivity {
             in = new Intent(this, EMDRActivitySettings.class).putExtras(createBundle());
         }else if (title.equals(DBManager.FACTSHEET)){
             in = new Intent(this, FactsheetSelect.class).putExtras(createBundle());
-        }else if (title.equals(DBManager.FAS)){
+        }else if (title.equals(DBManager.FAS) || title.contains("Self")){
             in = new Intent(this, FAS.class).putExtras(createBundle());
         }else if (title.equals(DBManager.SYSDESEN)){
             in = new Intent(this, ExposureInfo.class).putExtras(createBundle());

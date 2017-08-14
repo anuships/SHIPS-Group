@@ -15,7 +15,7 @@ public  class DBManager extends SQLiteOpenHelper{
     private static DBManager dbManager;
     public static final String FAS = "FAS";
     public static final String EMDR = "EMDR";
-    public static final String FACTSHEET = "FACTSHEET";
+    public static final String FACTSHEET = "Factsheet";
     public static final String Audio1 = "Audio: Introduction";
     public static final String Audio2 = "Audio: Graduated Progressive Muscle Relaxation";
     public static final String Audio3 = "Audio: Passive Progressive Relaxation";
