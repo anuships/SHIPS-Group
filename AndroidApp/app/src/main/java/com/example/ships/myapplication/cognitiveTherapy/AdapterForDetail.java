@@ -59,7 +59,9 @@ public class AdapterForDetail extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.row_item, parent, false);
             theRow.mFlWrapper = (FrameLayout) convertView.findViewById(R.id.fl_wrapper);
             theRow.mTvTitle = (AppCompatTextView) convertView.findViewById(R.id.tv_title);
+            theRow.mTvTitle.setTextSize(30);
             theRow.mTvDescription = (AppCompatTextView) convertView.findViewById(R.id.tv_description);
+            theRow.mTvDescription.setTextSize(30);
             theRow.mIvArrow = (ImageView) convertView.findViewById(R.id.iv_arrow);
 
             convertView.setTag(theRow);
