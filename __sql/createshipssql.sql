@@ -1,9 +1,14 @@
 use shipsdb;
 	
+    DROP TABLE IF EXISTS module_result;
+    DROP TABLE IF EXISTS user_modules;
+    DROP TABLE IF EXISTS treatmentplan;
+    DROP TABLE IF EXISTS users;
     
-	CREATE TABLE IF NOT EXISTS users(UID VARCHAR(60), USERNAME VARCHAR(30),
-                    EMAIL VARCHAR(60), PASSWORD VARCHAR(30), SALT VARCHAR(256), FIRST_NAME VARCHAR(30), LAST_NAME VARCHAR(30), PRIMARY KEY(UID))ENGINE=InnoDB DEFAULT CHARSET=utf8;
-                    
+    alter table wp_users add first_name varchar(30);
+    alter table wp_users add last_name varchar(30);
+    alter table wp_users add uuid varchar(30)  UNIQUE;
+    
 	CREATE TABLE IF NOT EXISTS module_category(CID INTEGER PRIMARY KEY AUTO_INCREMENT,TITLE VARCHAR(50))ENGINE=InnoDB DEFAULT CHARSET=utf8;
             
 	INSERT INTO module_category (TITLE) VALUES("SELF-ASSESSMENT"), ("FACTSHEET"), ("THERAPEUTIC TOOLS"), ("TREATMENT");
@@ -33,7 +38,7 @@ use shipsdb;
             CREATE TABLE IF NOT EXISTS status_type(SID INTEGER PRIMARY KEY AUTO_INCREMENT, TITLE VARCHAR(30))ENGINE=InnoDB DEFAULT CHARSET=utf8;
             INSERT INTO status_type (TITLE) VALUES("NOT STARTED"), ("IN PROGRESS"), ("COMPLETED"), ("DELETED");
             CREATE TABLE IF NOT EXISTS treatmentplan(TID INTEGER PRIMARY KEY AUTO_INCREMENT, 
-				UID VARCHAR(60) NOT NULL, TCID INTEGER NOT NULL, date_added datetime, FOREIGN KEY(UID) REFERENCES users(UID), FOREIGN KEY(TCID) REFERENCES treatmentplan_category(TCID))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+				uuid VARCHAR(30) NOT NULL, TCID INTEGER NOT NULL, date_added datetime, FOREIGN KEY(uuid) REFERENCES wp_users(uuid), FOREIGN KEY(TCID) REFERENCES treatmentplan_category(TCID))ENGINE=InnoDB DEFAULT CHARSET=utf8;
             
             
             CREATE TABLE IF NOT EXISTS user_modules(TID INTEGER NOT NULL, INDX INTEGER NOT NULL, MID INTEGER, SID INTEGER, progress INTEGER, last_updated datetime, PRIMARY KEY(TID, INDX), FOREIGN KEY(TID) REFERENCES treatmentplan(TID), FOREIGN KEY(MID) REFERENCES modules(MID), FOREIGN KEY(SID) REFERENCES status_type(SID))ENGINE=InnoDB DEFAULT CHARSET=utf8;
