@@ -67,7 +67,6 @@ public class FactsheetSelect extends AppCompatActivity {
             }
             AdapterForDetail adapter = getAdapter();
             ListView lv = (ListView) findViewById(R.id.listFactsheet);
-
             lv.setAdapter(adapter);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

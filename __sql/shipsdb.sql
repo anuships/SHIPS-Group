@@ -26,7 +26,7 @@ CREATE TABLE `module_category` (
   `CID` int(11) NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`CID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,33 +35,8 @@ CREATE TABLE `module_category` (
 
 LOCK TABLES `module_category` WRITE;
 /*!40000 ALTER TABLE `module_category` DISABLE KEYS */;
-INSERT INTO `module_category` VALUES (1,'SELF-ASSESSMENT'),(2,'FACTSHEET'),(3,'THERAPEUTIC TOOLS'),(4,'TREATMENT'),(5,'SELF-ASSESSMENT'),(6,'FACTSHEET'),(7,'THERAPEUTIC TOOLS'),(8,'TREATMENT');
+INSERT INTO `module_category` VALUES (1,'SELF-ASSESSMENT'),(2,'FACTSHEET'),(3,'THERAPEUTIC TOOLS'),(4,'TREATMENT'),(5,'SELF-ASSESSMENT'),(6,'FACTSHEET'),(7,'THERAPEUTIC TOOLS'),(8,'TREATMENT'),(9,'SELF-ASSESSMENT'),(10,'FACTSHEET'),(11,'THERAPEUTIC TOOLS'),(12,'TREATMENT'),(13,'SELF-ASSESSMENT'),(14,'FACTSHEET'),(15,'THERAPEUTIC TOOLS'),(16,'TREATMENT'),(17,'SELF-ASSESSMENT'),(18,'FACTSHEET'),(19,'THERAPEUTIC TOOLS'),(20,'TREATMENT'),(21,'SELF-ASSESSMENT'),(22,'FACTSHEET'),(23,'THERAPEUTIC TOOLS'),(24,'TREATMENT'),(25,'SELF-ASSESSMENT'),(26,'FACTSHEET'),(27,'THERAPEUTIC TOOLS'),(28,'TREATMENT'),(29,'SELF-ASSESSMENT'),(30,'FACTSHEET'),(31,'THERAPEUTIC TOOLS'),(32,'TREATMENT'),(33,'SELF-ASSESSMENT'),(34,'FACTSHEET'),(35,'THERAPEUTIC TOOLS'),(36,'TREATMENT'),(37,'SELF-ASSESSMENT'),(38,'FACTSHEET'),(39,'THERAPEUTIC TOOLS'),(40,'TREATMENT'),(41,'SELF-ASSESSMENT'),(42,'FACTSHEET'),(43,'THERAPEUTIC TOOLS'),(44,'TREATMENT'),(45,'SELF-ASSESSMENT'),(46,'FACTSHEET'),(47,'THERAPEUTIC TOOLS'),(48,'TREATMENT');
 /*!40000 ALTER TABLE `module_category` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `module_result`
---
-
-DROP TABLE IF EXISTS `module_result`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `module_result` (
-  `TID` int(11) NOT NULL,
-  `INDX` int(11) NOT NULL,
-  `result` varchar(60) DEFAULT NULL,
-  PRIMARY KEY (`TID`,`INDX`),
-  CONSTRAINT `module_result_ibfk_1` FOREIGN KEY (`TID`, `INDX`) REFERENCES `user_modules` (`TID`, `INDX`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `module_result`
---
-
-LOCK TABLES `module_result` WRITE;
-/*!40000 ALTER TABLE `module_result` DISABLE KEYS */;
-/*!40000 ALTER TABLE `module_result` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -80,7 +55,7 @@ CREATE TABLE `modules` (
   PRIMARY KEY (`MID`),
   KEY `CID` (`CID`),
   CONSTRAINT `modules_ibfk_1` FOREIGN KEY (`CID`) REFERENCES `module_category` (`CID`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=217 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +64,7 @@ CREATE TABLE `modules` (
 
 LOCK TABLES `modules` WRITE;
 /*!40000 ALTER TABLE `modules` DISABLE KEYS */;
-INSERT INTO `modules` VALUES (1,1,'FAS',1,'0'),(2,2,'FACTSHEET',1,'0'),(3,3,'EMDR',1,'0'),(4,3,'Audio: Introduction',1,'0'),(5,3,'Audio: Graduated Progressive Muscle Relaxation',1,'0'),(6,3,'Audio: Passive Progressive Relaxation',1,'0'),(7,3,'Audio: Rotation of Awareness',1,'0'),(8,3,'Audio: Breath Awareness',1,'0'),(9,3,'Audio: Word Focus Meditation',1,'0'),(10,3,'Audio: Alternative Nostril Breathing Meditation',1,'0'),(11,3,'Audio: Mindfull Awareness',1,'0'),(12,3,'Audio: Mindfullness Meditation',1,'0'),(13,3,'Audio: Breathing Techniques',1,'0'),(14,3,'Audio: Quick Release Technique',1,'0'),(15,3,'Audio: Standing Relaxation',1,'0'),(16,3,'Audio: Self-Hypnosis',1,'0'),(17,3,'Biofeedback',1,'0'),(18,4,'Systematic Desensitisation',5,'0'),(19,1,'FAS',1,'0'),(20,2,'FACTSHEET',1,'0'),(21,3,'EMDR',1,'0'),(22,3,'Audio: Introduction',1,'0'),(23,3,'Audio: Graduated Progressive Muscle Relaxation',1,'0'),(24,3,'Audio: Passive Progressive Relaxation',1,'0'),(25,3,'Audio: Rotation of Awareness',1,'0'),(26,3,'Audio: Breath Awareness',1,'0'),(27,3,'Audio: Word Focus Meditation',1,'0'),(28,3,'Audio: Alternative Nostril Breathing Meditation',1,'0'),(29,3,'Audio: Mindfull Awareness',1,'0'),(30,3,'Audio: Mindfullness Meditation',1,'0'),(31,3,'Audio: Breathing Techniques',1,'0'),(32,3,'Audio: Quick Release Technique',1,'0'),(33,3,'Audio: Standing Relaxation',1,'0'),(34,3,'Audio: Self-Hypnosis',1,'0'),(35,3,'Biofeedback',1,'0'),(36,4,'Systematic Desensitisation',5,'0');
+INSERT INTO `modules` VALUES (1,1,'FAS',1,'0'),(2,2,'FACTSHEET',1,'0'),(3,3,'EMDR',1,'0'),(4,3,'Audio: Introduction',1,'0'),(5,3,'Audio: Graduated Progressive Muscle Relaxation',1,'0'),(6,3,'Audio: Passive Progressive Relaxation',1,'0'),(7,3,'Audio: Rotation of Awareness',1,'0'),(8,3,'Audio: Breath Awareness',1,'0'),(9,3,'Audio: Word Focus Meditation',1,'0'),(10,3,'Audio: Alternative Nostril Breathing Meditation',1,'0'),(11,3,'Audio: Mindfull Awareness',1,'0'),(12,3,'Audio: Mindfullness Meditation',1,'0'),(13,3,'Audio: Breathing Techniques',1,'0'),(14,3,'Audio: Quick Release Technique',1,'0'),(15,3,'Audio: Standing Relaxation',1,'0'),(16,3,'Audio: Self-Hypnosis',1,'0'),(17,3,'Biofeedback',1,'0'),(18,4,'Systematic Desensitisation',5,'0'),(19,1,'FAS',1,'0'),(20,2,'FACTSHEET',1,'0'),(21,3,'EMDR',1,'0'),(22,3,'Audio: Introduction',1,'0'),(23,3,'Audio: Graduated Progressive Muscle Relaxation',1,'0'),(24,3,'Audio: Passive Progressive Relaxation',1,'0'),(25,3,'Audio: Rotation of Awareness',1,'0'),(26,3,'Audio: Breath Awareness',1,'0'),(27,3,'Audio: Word Focus Meditation',1,'0'),(28,3,'Audio: Alternative Nostril Breathing Meditation',1,'0'),(29,3,'Audio: Mindfull Awareness',1,'0'),(30,3,'Audio: Mindfullness Meditation',1,'0'),(31,3,'Audio: Breathing Techniques',1,'0'),(32,3,'Audio: Quick Release Technique',1,'0'),(33,3,'Audio: Standing Relaxation',1,'0'),(34,3,'Audio: Self-Hypnosis',1,'0'),(35,3,'Biofeedback',1,'0'),(36,4,'Systematic Desensitisation',5,'0'),(37,1,'FAS',1,'Self Assessment is a tool that helps you to understand more about yourself on fear of flying.'),(38,2,'FACTSHEET',1,'The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios.'),(39,3,'EMDR',1,'EMDR is a kind of therapeutic tool that helps you to distract from the plane by focusing on a moving ball'),(40,3,'Audio: Introduction',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(41,3,'Audio: Graduated Progressive Muscle Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(42,3,'Audio: Passive Progressive Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(43,3,'Audio: Rotation of Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(44,3,'Audio: Breath Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(45,3,'Audio: Word Focus Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(46,3,'Audio: Alternative Nostril Breathing Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(47,3,'Audio: Mindfull Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(48,3,'Audio: Mindfullness Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(49,3,'Audio: Breathing Techniques',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(50,3,'Audio: Quick Release Technique',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(51,3,'Audio: Standing Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(52,3,'Audio: Self-Hypnosis',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(53,3,'Biofeedback',1,'Biofeedback is kind of the therapeutic tool that helps you to understand whether you become more relax or anxious. At the beginning, some data will be collected from your body and then generate a baseline in BLUE. After that a RED real time monitoring line'),(54,4,'Systematic Desensitisation',5,'Systematic Desensitisation is kind of therapy that allows you to go through some airline like scenarios. You have to apply techniques learned from the provided therapeutic tools and try to relax your self. There are 5 levels of scenarios provided in this v'),(55,1,'FAS',1,'Self Assessment is a tool that helps you to understand more about yourself on fear of flying.'),(56,2,'FACTSHEET',1,'The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios.'),(57,3,'EMDR',1,'EMDR is a kind of therapeutic tool that helps you to distract from the plane by focusing on a moving ball'),(58,3,'Audio: Introduction',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(59,3,'Audio: Graduated Progressive Muscle Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(60,3,'Audio: Passive Progressive Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(61,3,'Audio: Rotation of Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(62,3,'Audio: Breath Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(63,3,'Audio: Word Focus Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(64,3,'Audio: Alternative Nostril Breathing Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(65,3,'Audio: Mindfull Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(66,3,'Audio: Mindfullness Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(67,3,'Audio: Breathing Techniques',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(68,3,'Audio: Quick Release Technique',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(69,3,'Audio: Standing Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(70,3,'Audio: Self-Hypnosis',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(71,3,'Biofeedback',1,'Biofeedback is kind of the therapeutic tool that helps you to understand whether you become more relax or anxious. At the beginning, some data will be collected from your body and then generate a baseline in BLUE. After that a RED real time monitoring line'),(72,4,'Systematic Desensitisation',5,'Systematic Desensitisation is kind of therapy that allows you to go through some airline like scenarios. You have to apply techniques learned from the provided therapeutic tools and try to relax your self. There are 5 levels of scenarios provided in this v'),(73,1,'FAS',1,'Self Assessment is a tool that helps you to understand more about yourself on fear of flying.'),(74,2,'FACTSHEET',1,'The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios.'),(75,3,'EMDR',1,'EMDR is a kind of therapeutic tool that helps you to distract from the plane by focusing on a moving ball'),(76,3,'Audio: Introduction',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(77,3,'Audio: Graduated Progressive Muscle Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(78,3,'Audio: Passive Progressive Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(79,3,'Audio: Rotation of Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(80,3,'Audio: Breath Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(81,3,'Audio: Word Focus Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(82,3,'Audio: Alternative Nostril Breathing Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(83,3,'Audio: Mindfull Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(84,3,'Audio: Mindfullness Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(85,3,'Audio: Breathing Techniques',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(86,3,'Audio: Quick Release Technique',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(87,3,'Audio: Standing Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(88,3,'Audio: Self-Hypnosis',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(89,3,'Biofeedback',1,'Biofeedback is kind of the therapeutic tool that helps you to understand whether you become more relax or anxious. At the beginning, some data will be collected from your body and then generate a baseline in BLUE. After that a RED real time monitoring line'),(90,4,'Systematic Desensitisation',5,'Systematic Desensitisation is kind of therapy that allows you to go through some airline like scenarios. You have to apply techniques learned from the provided therapeutic tools and try to relax your self. There are 5 levels of scenarios provided in this v'),(91,1,'FAS',1,'Self Assessment is a tool that helps you to understand more about yourself on fear of flying.'),(92,2,'FACTSHEET',1,'The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios.'),(93,3,'EMDR',1,'EMDR is a kind of therapeutic tool that helps you to distract from the plane by focusing on a moving ball'),(94,3,'Audio: Introduction',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(95,3,'Audio: Graduated Progressive Muscle Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(96,3,'Audio: Passive Progressive Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(97,3,'Audio: Rotation of Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(98,3,'Audio: Breath Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(99,3,'Audio: Word Focus Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(100,3,'Audio: Alternative Nostril Breathing Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(101,3,'Audio: Mindfull Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(102,3,'Audio: Mindfullness Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(103,3,'Audio: Breathing Techniques',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(104,3,'Audio: Quick Release Technique',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(105,3,'Audio: Standing Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(106,3,'Audio: Self-Hypnosis',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(107,3,'Biofeedback',1,'Biofeedback is kind of the therapeutic tool that helps you to understand whether you become more relax or anxious. At the beginning, some data will be collected from your body and then generate a baseline in BLUE. After that a RED real time monitoring line'),(108,4,'Systematic Desensitisation',5,'Systematic Desensitisation is kind of therapy that allows you to go through some airline like scenarios. You have to apply techniques learned from the provided therapeutic tools and try to relax your self. There are 5 levels of scenarios provided in this v'),(109,1,'FAS',1,'Self Assessment is a tool that helps you to understand more about yourself on fear of flying.'),(110,2,'FACTSHEET',1,'The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios.'),(111,3,'EMDR',1,'EMDR is a kind of therapeutic tool that helps you to distract from the plane by focusing on a moving ball'),(112,3,'Audio: Introduction',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(113,3,'Audio: Graduated Progressive Muscle Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(114,3,'Audio: Passive Progressive Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(115,3,'Audio: Rotation of Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(116,3,'Audio: Breath Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(117,3,'Audio: Word Focus Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(118,3,'Audio: Alternative Nostril Breathing Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(119,3,'Audio: Mindfull Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(120,3,'Audio: Mindfullness Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(121,3,'Audio: Breathing Techniques',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(122,3,'Audio: Quick Release Technique',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(123,3,'Audio: Standing Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(124,3,'Audio: Self-Hypnosis',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(125,3,'Biofeedback',1,'Biofeedback is kind of the therapeutic tool that helps you to understand whether you become more relax or anxious. At the beginning, some data will be collected from your body and then generate a baseline in BLUE. After that a RED real time monitoring line'),(126,4,'Systematic Desensitisation',5,'Systematic Desensitisation is kind of therapy that allows you to go through some airline like scenarios. You have to apply techniques learned from the provided therapeutic tools and try to relax your self. There are 5 levels of scenarios provided in this v'),(127,1,'FAS',1,'Self Assessment is a tool that helps you to understand more about yourself on fear of flying.'),(128,2,'FACTSHEET',1,'The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios.'),(129,3,'EMDR',1,'EMDR is a kind of therapeutic tool that helps you to distract from the plane by focusing on a moving ball'),(130,3,'Audio: Introduction',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(131,3,'Audio: Graduated Progressive Muscle Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(132,3,'Audio: Passive Progressive Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(133,3,'Audio: Rotation of Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(134,3,'Audio: Breath Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(135,3,'Audio: Word Focus Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(136,3,'Audio: Alternative Nostril Breathing Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(137,3,'Audio: Mindfull Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(138,3,'Audio: Mindfullness Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(139,3,'Audio: Breathing Techniques',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(140,3,'Audio: Quick Release Technique',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(141,3,'Audio: Standing Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(142,3,'Audio: Self-Hypnosis',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(143,3,'Biofeedback',1,'Biofeedback is kind of the therapeutic tool that helps you to understand whether you become more relax or anxious. At the beginning, some data will be collected from your body and then generate a baseline in BLUE. After that a RED real time monitoring line'),(144,4,'Systematic Desensitisation',5,'Systematic Desensitisation is kind of therapy that allows you to go through some airline like scenarios. You have to apply techniques learned from the provided therapeutic tools and try to relax your self. There are 5 levels of scenarios provided in this v'),(145,1,'FAS',1,'Self Assessment is a tool that helps you to understand more about yourself on fear of flying.'),(146,2,'FACTSHEET',1,'The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios.'),(147,3,'EMDR',1,'EMDR is a kind of therapeutic tool that helps you to distract from the plane by focusing on a moving ball'),(148,3,'Audio: Introduction',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(149,3,'Audio: Graduated Progressive Muscle Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(150,3,'Audio: Passive Progressive Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(151,3,'Audio: Rotation of Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(152,3,'Audio: Breath Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(153,3,'Audio: Word Focus Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(154,3,'Audio: Alternative Nostril Breathing Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(155,3,'Audio: Mindfull Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(156,3,'Audio: Mindfullness Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(157,3,'Audio: Breathing Techniques',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(158,3,'Audio: Quick Release Technique',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(159,3,'Audio: Standing Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(160,3,'Audio: Self-Hypnosis',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(161,3,'Biofeedback',1,'Biofeedback is kind of the therapeutic tool that helps you to understand whether you become more relax or anxious. At the beginning, some data will be collected from your body and then generate a baseline in BLUE. After that a RED real time monitoring line'),(162,4,'Systematic Desensitisation',5,'Systematic Desensitisation is kind of therapy that allows you to go through some airline like scenarios. You have to apply techniques learned from the provided therapeutic tools and try to relax your self. There are 5 levels of scenarios provided in this v'),(163,1,'FAS',1,'Self Assessment is a tool that helps you to understand more about yourself on fear of flying.'),(164,2,'FACTSHEET',1,'The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios.'),(165,3,'EMDR',1,'EMDR is a kind of therapeutic tool that helps you to distract from the plane by focusing on a moving ball'),(166,3,'Audio: Introduction',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(167,3,'Audio: Graduated Progressive Muscle Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(168,3,'Audio: Passive Progressive Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(169,3,'Audio: Rotation of Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(170,3,'Audio: Breath Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(171,3,'Audio: Word Focus Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(172,3,'Audio: Alternative Nostril Breathing Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(173,3,'Audio: Mindfull Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(174,3,'Audio: Mindfullness Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(175,3,'Audio: Breathing Techniques',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(176,3,'Audio: Quick Release Technique',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(177,3,'Audio: Standing Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(178,3,'Audio: Self-Hypnosis',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(179,3,'Biofeedback',1,'Biofeedback is kind of the therapeutic tool that helps you to understand whether you become more relax or anxious. At the beginning, some data will be collected from your body and then generate a baseline in BLUE. After that a RED real time monitoring line'),(180,4,'Systematic Desensitisation',5,'Systematic Desensitisation is kind of therapy that allows you to go through some airline like scenarios. You have to apply techniques learned from the provided therapeutic tools and try to relax your self. There are 5 levels of scenarios provided in this v'),(181,1,'FAS',1,'Self Assessment is a tool that helps you to understand more about yourself on fear of flying.'),(182,2,'FACTSHEET',1,'The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios.'),(183,3,'EMDR',1,'EMDR is a kind of therapeutic tool that helps you to distract from the plane by focusing on a moving ball'),(184,3,'Audio: Introduction',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(185,3,'Audio: Graduated Progressive Muscle Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(186,3,'Audio: Passive Progressive Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(187,3,'Audio: Rotation of Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(188,3,'Audio: Breath Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(189,3,'Audio: Word Focus Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(190,3,'Audio: Alternative Nostril Breathing Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(191,3,'Audio: Mindfull Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(192,3,'Audio: Mindfullness Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(193,3,'Audio: Breathing Techniques',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(194,3,'Audio: Quick Release Technique',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(195,3,'Audio: Standing Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(196,3,'Audio: Self-Hypnosis',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(197,3,'Biofeedback',1,'Biofeedback is kind of the therapeutic tool that helps you to understand whether you become more relax or anxious. At the beginning, some data will be collected from your body and then generate a baseline in BLUE. After that a RED real time monitoring line'),(198,4,'Systematic Desensitisation',5,'Systematic Desensitisation is kind of therapy that allows you to go through some airline like scenarios. You have to apply techniques learned from the provided therapeutic tools and try to relax your self. There are 5 levels of scenarios provided in this v'),(199,1,'FAS',1,'Self Assessment is a tool that helps you to understand more about yourself on fear of flying.'),(200,2,'FACTSHEET',1,'The factsheet contains WhatIf scenarios about airplanes, with details as to what occurs in these scenarios.'),(201,3,'EMDR',1,'EMDR is a kind of therapeutic tool that helps you to distract from the plane by focusing on a moving ball'),(202,3,'Audio: Introduction',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(203,3,'Audio: Graduated Progressive Muscle Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(204,3,'Audio: Passive Progressive Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(205,3,'Audio: Rotation of Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(206,3,'Audio: Breath Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(207,3,'Audio: Word Focus Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(208,3,'Audio: Alternative Nostril Breathing Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(209,3,'Audio: Mindfull Awareness',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(210,3,'Audio: Mindfullness Meditation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(211,3,'Audio: Breathing Techniques',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(212,3,'Audio: Quick Release Technique',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(213,3,'Audio: Standing Relaxation',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(214,3,'Audio: Self-Hypnosis',1,'Relaxation audio is kind of therapeutic tool that helps you to learn techniques to relax yourself.'),(215,3,'Biofeedback',1,'Biofeedback is kind of the therapeutic tool that helps you to understand whether you become more relax or anxious. At the beginning, some data will be collected from your body and then generate a baseline in BLUE. After that a RED real time monitoring line'),(216,4,'Systematic Desensitisation',5,'Systematic Desensitisation is kind of therapy that allows you to go through some airline like scenarios. You have to apply techniques learned from the provided therapeutic tools and try to relax your self. There are 5 levels of scenarios provided in this v');
 /*!40000 ALTER TABLE `modules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +103,7 @@ CREATE TABLE `status_type` (
   `SID` int(11) NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`SID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,37 +112,8 @@ CREATE TABLE `status_type` (
 
 LOCK TABLES `status_type` WRITE;
 /*!40000 ALTER TABLE `status_type` DISABLE KEYS */;
-INSERT INTO `status_type` VALUES (1,'NOT STARTED'),(2,'IN PROGRESS'),(3,'COMPLETED'),(4,'DELETED'),(5,'NOT STARTED'),(6,'IN PROGRESS'),(7,'COMPLETED'),(8,'DELETED');
+INSERT INTO `status_type` VALUES (1,'NOT STARTED'),(2,'IN PROGRESS'),(3,'COMPLETED'),(4,'DELETED'),(5,'NOT STARTED'),(6,'IN PROGRESS'),(7,'COMPLETED'),(8,'DELETED'),(9,'NOT STARTED'),(10,'IN PROGRESS'),(11,'COMPLETED'),(12,'DELETED'),(13,'NOT STARTED'),(14,'IN PROGRESS'),(15,'COMPLETED'),(16,'DELETED'),(17,'NOT STARTED'),(18,'IN PROGRESS'),(19,'COMPLETED'),(20,'DELETED'),(21,'NOT STARTED'),(22,'IN PROGRESS'),(23,'COMPLETED'),(24,'DELETED'),(25,'NOT STARTED'),(26,'IN PROGRESS'),(27,'COMPLETED'),(28,'DELETED'),(29,'NOT STARTED'),(30,'IN PROGRESS'),(31,'COMPLETED'),(32,'DELETED'),(33,'NOT STARTED'),(34,'IN PROGRESS'),(35,'COMPLETED'),(36,'DELETED'),(37,'NOT STARTED'),(38,'IN PROGRESS'),(39,'COMPLETED'),(40,'DELETED'),(41,'NOT STARTED'),(42,'IN PROGRESS'),(43,'COMPLETED'),(44,'DELETED'),(45,'NOT STARTED'),(46,'IN PROGRESS'),(47,'COMPLETED'),(48,'DELETED');
 /*!40000 ALTER TABLE `status_type` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `treatmentplan`
---
-
-DROP TABLE IF EXISTS `treatmentplan`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `treatmentplan` (
-  `TID` int(11) NOT NULL AUTO_INCREMENT,
-  `UID` varchar(60) NOT NULL,
-  `TCID` int(11) NOT NULL,
-  `date_added` datetime DEFAULT NULL,
-  PRIMARY KEY (`TID`),
-  KEY `UID` (`UID`),
-  KEY `TCID` (`TCID`),
-  CONSTRAINT `treatmentplan_ibfk_1` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`),
-  CONSTRAINT `treatmentplan_ibfk_2` FOREIGN KEY (`TCID`) REFERENCES `treatmentplan_category` (`TCID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `treatmentplan`
---
-
-LOCK TABLES `treatmentplan` WRITE;
-/*!40000 ALTER TABLE `treatmentplan` DISABLE KEYS */;
-/*!40000 ALTER TABLE `treatmentplan` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -181,7 +127,7 @@ CREATE TABLE `treatmentplan_category` (
   `TCID` int(11) NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`TCID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,68 +136,8 @@ CREATE TABLE `treatmentplan_category` (
 
 LOCK TABLES `treatmentplan_category` WRITE;
 /*!40000 ALTER TABLE `treatmentplan_category` DISABLE KEYS */;
-INSERT INTO `treatmentplan_category` VALUES (1,'SHORT FLIGHT'),(2,'LONG FLIGHT'),(3,'MISC'),(4,'SHORT FLIGHT'),(5,'LONG FLIGHT'),(6,'MISC');
+INSERT INTO `treatmentplan_category` VALUES (1,'SHORT FLIGHT'),(2,'LONG FLIGHT'),(3,'MISC'),(4,'SHORT FLIGHT'),(5,'LONG FLIGHT'),(6,'MISC'),(7,'SHORT FLIGHT'),(8,'LONG FLIGHT'),(9,'MISC'),(10,'SHORT FLIGHT'),(11,'LONG FLIGHT'),(12,'MISC'),(13,'SHORT FLIGHT'),(14,'LONG FLIGHT'),(15,'MISC'),(16,'SHORT FLIGHT'),(17,'LONG FLIGHT'),(18,'MISC'),(19,'SHORT FLIGHT'),(20,'LONG FLIGHT'),(21,'MISC'),(22,'SHORT FLIGHT'),(23,'LONG FLIGHT'),(24,'MISC'),(25,'SHORT FLIGHT'),(26,'LONG FLIGHT'),(27,'MISC'),(28,'SHORT FLIGHT'),(29,'LONG FLIGHT'),(30,'MISC'),(31,'SHORT FLIGHT'),(32,'LONG FLIGHT'),(33,'MISC'),(34,'SHORT FLIGHT'),(35,'LONG FLIGHT'),(36,'MISC');
 /*!40000 ALTER TABLE `treatmentplan_category` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `user_modules`
---
-
-DROP TABLE IF EXISTS `user_modules`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_modules` (
-  `TID` int(11) NOT NULL,
-  `INDX` int(11) NOT NULL,
-  `MID` int(11) DEFAULT NULL,
-  `SID` int(11) DEFAULT NULL,
-  `progress` int(11) DEFAULT NULL,
-  `last_updated` datetime DEFAULT NULL,
-  PRIMARY KEY (`TID`,`INDX`),
-  KEY `MID` (`MID`),
-  KEY `SID` (`SID`),
-  CONSTRAINT `user_modules_ibfk_1` FOREIGN KEY (`TID`) REFERENCES `treatmentplan` (`TID`),
-  CONSTRAINT `user_modules_ibfk_2` FOREIGN KEY (`MID`) REFERENCES `modules` (`MID`),
-  CONSTRAINT `user_modules_ibfk_3` FOREIGN KEY (`SID`) REFERENCES `status_type` (`SID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user_modules`
---
-
-LOCK TABLES `user_modules` WRITE;
-/*!40000 ALTER TABLE `user_modules` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_modules` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `UID` varchar(60) NOT NULL,
-  `USERNAME` varchar(30) DEFAULT NULL,
-  `EMAIL` varchar(60) DEFAULT NULL,
-  `PASSWORD` varchar(30) DEFAULT NULL,
-  `SALT` varchar(256) DEFAULT NULL,
-  `FIRST_NAME` varchar(30) DEFAULT NULL,
-  `LAST_NAME` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`UID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -609,7 +495,7 @@ DROP TABLE IF EXISTS `wp_users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `wp_users` (
-  `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `ID` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_login` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_pass` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_nicename` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -619,11 +505,15 @@ CREATE TABLE `wp_users` (
   `user_activation_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_status` int(11) NOT NULL DEFAULT '0',
   `display_name` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `first_name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `uuid` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`),
+  UNIQUE KEY `uuid` (`uuid`),
   KEY `user_login_key` (`user_login`),
   KEY `user_nicename` (`user_nicename`),
   KEY `user_email` (`user_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -632,7 +522,7 @@ CREATE TABLE `wp_users` (
 
 LOCK TABLES `wp_users` WRITE;
 /*!40000 ALTER TABLE `wp_users` DISABLE KEYS */;
-INSERT INTO `wp_users` VALUES (1,'anuships','$P$BdFJ379Yy2bw1KaRkPbbI6tBO/GAVT0','anuships','u5564556@anu.edu.au','','2017-08-03 01:35:33','',0,'anuships');
+INSERT INTO `wp_users` VALUES ('1','anuships','$P$BdFJ379Yy2bw1KaRkPbbI6tBO/GAVT0','anuships','u5564556@anu.edu.au','','2017-08-03 01:35:33','',0,'anuships',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `wp_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -645,4 +535,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-14 18:14:48
+-- Dump completed on 2017-08-15 13:19:24
