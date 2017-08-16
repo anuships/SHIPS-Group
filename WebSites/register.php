@@ -11,18 +11,16 @@
 
 <body>
 <div id="header"></div>
-<div id="content">   
+<div id="content">
 
 <form id="register" method="POST" action="registercheck.php">
     <h1 align="center">Registration</h1>
-   
-   
    <table border="0">
       <tr>
         <td align="right"><b>Email:</b></td>
         <td><input type="email" name="email" id="req" size="20" maxlength="30" /></td>
         <td id="req">*</td>
-      </tr>  
+      </tr>
       <tr>
         <td align="right"><b> password:</b></td>
         <td><input type="password" name="password" id="req" size="20" maxlength="30"></td>
@@ -49,7 +47,6 @@
         <td><input type="text" name="name" size="20" maxlength="30"></td>
       </tr>
       </table>
-      
       <p align="right" id="hints">* are required fileds </p>
        <table id="buttons">
          <tr>
@@ -57,8 +54,7 @@
             <td><button type="submit">Finish</button></td>
          </tr>
     	</table>
-      
-</form>    
+</form>
 </div>
 <div id="footer"></div>
 </body>
