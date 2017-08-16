@@ -1,14 +1,17 @@
 use shipsdb;
-	
+    SET sql_mode='';	
     DROP TABLE IF EXISTS module_result;
     DROP TABLE IF EXISTS user_modules;
     DROP TABLE IF EXISTS treatmentplan;
     DROP TABLE IF EXISTS users;
-    
-    alter table wp_users add first_name varchar(30);
-    alter table wp_users add last_name varchar(30);
-    alter table wp_users add uuid varchar(30)  UNIQUE;
-    
+ALTER TABLE wp_users ENGINE=InnoDB;    
+ALTER TABLE wp_users CHARSET=utf8;
+ALTER TABLE wp_users ADD INDEX uid (uid);
+#    ALTER TABLE wp_users ADD first_name varchar(30);
+#   alter table wp_users add last_name varchar(30);
+   	alter table wp_users drop uid;
+	alter table wp_users add uid VARCHAR(30) NOT NULL; 
+ALTER TABLE wp_users ADD INDEX uid (uid);
                     
 	CREATE TABLE IF NOT EXISTS module_category(CID INTEGER PRIMARY KEY AUTO_INCREMENT,TITLE VARCHAR(50))ENGINE=InnoDB DEFAULT CHARSET=utf8;
             
@@ -43,9 +46,7 @@ use shipsdb;
             CREATE TABLE IF NOT EXISTS status_type(SID INTEGER PRIMARY KEY AUTO_INCREMENT, TITLE VARCHAR(30))ENGINE=InnoDB DEFAULT CHARSET=utf8;
             INSERT INTO status_type (TITLE) VALUES("NOT STARTED"), ("IN PROGRESS"), ("COMPLETED"), ("DELETED");
             CREATE TABLE IF NOT EXISTS treatmentplan(TID INTEGER PRIMARY KEY AUTO_INCREMENT, 
-				uuid VARCHAR(30) NOT NULL, TCID INTEGER NOT NULL, date_added datetime, FOREIGN KEY(uuid) REFERENCES wp_users(uuid), FOREIGN KEY(TCID) REFERENCES treatmentplan_category(TCID))ENGINE=InnoDB DEFAULT CHARSET=utf8;
-            
-            
+				uid VARCHAR(30) NOT NULL, TCID INTEGER NOT NULL, date_added datetime, FOREIGN KEY(uid) REFERENCES wp_users(uid), FOREIGN KEY(TCID) REFERENCES treatmentplan_category(TCID))ENGINE=InnoDB DEFAULT CHARSET=utf8;
             CREATE TABLE IF NOT EXISTS user_modules(TID INTEGER NOT NULL, INDX INTEGER NOT NULL, MID INTEGER, SID INTEGER, progress INTEGER, last_updated datetime, PRIMARY KEY(TID, INDX), FOREIGN KEY(TID) REFERENCES treatmentplan(TID), FOREIGN KEY(MID) REFERENCES modules(MID), FOREIGN KEY(SID) REFERENCES status_type(SID))ENGINE=InnoDB DEFAULT CHARSET=utf8;
             
             CREATE TABLE IF NOT EXISTS module_result(TID INTEGER NOT NULL, INDX INTEGER NOT NULL, 
