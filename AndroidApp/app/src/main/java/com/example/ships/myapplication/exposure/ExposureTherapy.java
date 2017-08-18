@@ -2,12 +2,16 @@ package com.example.ships.myapplication.exposure;
 
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,16 +26,14 @@ import android.widget.Toast;
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
-import com.example.ships.myapplication.homepageAndRegistration.LoginActivity;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
+
+
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class ExposureTherapy extends AppCompatActivity {
     private static String firstName;
@@ -72,6 +74,7 @@ public class ExposureTherapy extends AppCompatActivity {
     String level = "1";
     Dialog dialog;
     MediaPlayer mp = new MediaPlayer();
+    Handler h;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,12 +83,11 @@ public class ExposureTherapy extends AppCompatActivity {
         try {
             SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
             mySqlDB.execSQL("CREATE TABLE if not exists SystematicDesensitization (EMAIL STRING, LEVEL STRING)");
-            Cursor resultSet = mySqlDB.rawQuery("Select * from SystematicDesensitization where email=?",new String[]{email});
-            if (resultSet.getCount() > 0){
+            Cursor resultSet = mySqlDB.rawQuery("Select * from SystematicDesensitization where email=?", new String[]{email});
+            if (resultSet.getCount() > 0) {
                 resultSet.moveToFirst();
                 level = resultSet.getString(1);
-            }
-            else{
+            } else {
                 level = "1";
                 writeLevel(level);
             }
@@ -97,13 +99,54 @@ public class ExposureTherapy extends AppCompatActivity {
         b3.setText(bText);
         String resName = "i" + level;
         ImageView v = (ImageView) findViewById(R.id.imageView1);
-        InputStream imageIS = this.getResources().openRawResource(getResources().getIdentifier(resName,"raw",this.getPackageName()));
+        InputStream imageIS = this.getResources().openRawResource(getResources().getIdentifier(resName, "raw", this.getPackageName()));
         Bitmap myImage = BitmapFactory.decodeStream(imageIS);
         v.setImageBitmap(myImage);
-        if (level.equals("5")){
+        if (level.equals("5")) {
             mp = MediaPlayer.create(this, R.raw.s1);
             mp.start();
             mp.setLooping(true);
+        }
+
+        //Testing for auto-change function
+        final long ELAPSETIME = 5000;
+        final Handler ha=new Handler();
+        ha.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                autoChange();
+
+                ha.postDelayed(this, ELAPSETIME);
+            }
+        }, ELAPSETIME);
+    }
+
+    public void autoChange(){
+//        long endTime = SystemClock.uptimeMillis();
+//        if (Math.abs(endTime - startTime) > 5000) {
+            if (!level.equals("5")) {
+                level = String.valueOf(Integer.parseInt(level) + 1);
+                String b3Text = "Level" + level;
+                Button b3 = (Button) findViewById(R.id.button3);
+                b3.setText(b3Text);
+                ImageView v4 = (ImageView) findViewById(R.id.imageView1);
+                String resName = "i" + level;
+                InputStream imageIS = this.getResources().openRawResource(getResources().getIdentifier(resName, "raw", this.getPackageName()));
+                Bitmap myImage = BitmapFactory.decodeStream(imageIS);
+                v4.setImageBitmap(myImage);
+                writeLevel(level);
+                if (level.equals("5")) {
+                    mp = MediaPlayer.create(this, R.raw.s1);
+                    mp.start();
+                    mp.setLooping(true);
+                }
+                Context context = getApplicationContext();
+                CharSequence text = "Promoting to the next level";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+//            }
         }
     }
 
@@ -180,17 +223,6 @@ public class ExposureTherapy extends AppCompatActivity {
         Button b3 = (Button) findViewById(R.id.button3);
         String bText = "Level" +  level;
         b3.setText(bText);
-        String filename = "exposure.txt";
-        try {
-            FileOutputStream output = openFileOutput(filename, MODE_PRIVATE);
-            String fileStr = "ExposureLevel:" + level;
-            output.write(fileStr.getBytes());
-            output.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
         dialog.dismiss();
         ImageView v4 = (ImageView) findViewById(R.id.imageView1);
         String resName = "i" + level;
