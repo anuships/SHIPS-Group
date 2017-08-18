@@ -1,12 +1,16 @@
 package com.example.ships.myapplication.exposure;
 
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -17,6 +21,8 @@ import android.widget.Toast;
 
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.homepageAndRegistration.DBManager;
+import com.example.ships.myapplication.homepageAndRegistration.LoginActivity;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -53,6 +59,15 @@ public class ExposureTherapy extends AppCompatActivity {
         return b;
     }
 
+
+    public void writeLevel(String level){
+        SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
+        ContentValues updatedValues = new ContentValues();
+        updatedValues.put("LEVEL", level);
+        String key = "EMAIL = ?";
+        mySqlDB.update("SystematicDesensitization", updatedValues, key, new String[] { email});
+    }
+
     boolean showImage = true;
     String level = "1";
     Dialog dialog;
@@ -63,43 +78,23 @@ public class ExposureTherapy extends AppCompatActivity {
         readIntent();
         setContentView(R.layout.activity_exposure_therapy);
         try {
-            String filename = "exposure.txt";
-            File file = new File(filename);
-            if (file.exists()){
-                FileInputStream fis = openFileInput(filename);
-                InputStreamReader isr = new InputStreamReader(fis);
-                BufferedReader bufferedReader = new BufferedReader(isr);
-                String line;
-                HashMap<String, String> fileContent = new HashMap<>();
-                while ((line = bufferedReader.readLine()) != null) {
-                    String[] strarr = line.split(":");
-                    fileContent.put(strarr[0],strarr[1]);
-                }
-                Button b3 = (Button) findViewById(R.id.button3);
-                level = fileContent.get("ExposureLevel").toString();
-                String bText = "Level" + level;
-                b3.setText(bText);
-                isr.close();
-                fis.close();
+            SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
+            mySqlDB.execSQL("CREATE TABLE if not exists SystematicDesensitization (EMAIL STRING, LEVEL STRING)");
+            Cursor resultSet = mySqlDB.rawQuery("Select * from SystematicDesensitization where email=?",new String[]{email});
+            if (resultSet.getCount() > 0){
+                resultSet.moveToFirst();
+                level = resultSet.getString(1);
             }
-            else {
-                filename = "exposure.txt";
-                try {
-                    FileOutputStream output = openFileOutput(filename, MODE_PRIVATE);
-                    output.write("ExposureLevel:1".getBytes());
-                    Button b3 = (Button) findViewById(R.id.button3);
-                    String bText = "Level" + level;
-                    b3.setText(bText);
-                    output.close();
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+            else{
+                level = "1";
+                writeLevel(level);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        Button b3 = (Button) findViewById(R.id.button3);
+        String bText = "Level" + level;
+        b3.setText(bText);
         String resName = "i" + level;
         ImageView v = (ImageView) findViewById(R.id.imageView1);
         InputStream imageIS = this.getResources().openRawResource(getResources().getIdentifier(resName,"raw",this.getPackageName()));
@@ -113,6 +108,9 @@ public class ExposureTherapy extends AppCompatActivity {
     }
 
     public void back(View v){
+        if (mp.isPlaying()) {
+            mp.stop();
+        }
         startActivity(new Intent(this, ExposureDes.class).putExtras(createBundle()));
     }
 
@@ -199,6 +197,7 @@ public class ExposureTherapy extends AppCompatActivity {
         InputStream imageIS = this.getResources().openRawResource(getResources().getIdentifier(resName,"raw",this.getPackageName()));
         Bitmap myImage = BitmapFactory.decodeStream(imageIS);
         v4.setImageBitmap(myImage);
+        writeLevel(level);
         showImage = true;
         if (level.equals("5")){
             mp = MediaPlayer.create(this, R.raw.s1);
