@@ -113,7 +113,8 @@ public class ExposureTherapy extends AppCompatActivity {
     }
 
     public void back(View v){
-        startActivity(new Intent(this, ExposureDes.class).putExtras(createBundle()));
+        super.onBackPressed();
+       // startActivity(new Intent(this, ExposureDes.class).putExtras(createBundle()));
     }
 
     public void stop(View v){

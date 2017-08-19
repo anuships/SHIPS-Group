@@ -137,7 +137,9 @@ public class GSRGraphActivity extends AppCompatActivity {
     public void clickStart(View view) {
         checkForArduinoUSB();
     }
-
+    public void clickBack(View view) {
+        super.onBackPressed();
+    }
     private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             try {

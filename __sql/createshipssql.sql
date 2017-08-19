@@ -4,14 +4,10 @@ use shipsdb;
     DROP TABLE IF EXISTS user_modules;
     DROP TABLE IF EXISTS treatmentplan;
     DROP TABLE IF EXISTS users;
-ALTER TABLE wp_users ENGINE=InnoDB;    
-ALTER TABLE wp_users CHARSET=utf8;
-ALTER TABLE wp_users ADD INDEX uid (uid);
-#    ALTER TABLE wp_users ADD first_name varchar(30);
-#   alter table wp_users add last_name varchar(30);
-   	alter table wp_users drop uid;
-	alter table wp_users add uid VARCHAR(30) NOT NULL; 
-ALTER TABLE wp_users ADD INDEX uid (uid);
+	ALTER TABLE wp_users ENGINE=InnoDB;    
+	ALTER TABLE wp_users CHARSET=utf8;
+	Alter table wp_users add uid VARCHAR(30) NOT NULL; 
+	ALTER TABLE wp_users ADD INDEX uid (uid);
                     
 	CREATE TABLE IF NOT EXISTS module_category(CID INTEGER PRIMARY KEY AUTO_INCREMENT,TITLE VARCHAR(50))ENGINE=InnoDB DEFAULT CHARSET=utf8;
             
