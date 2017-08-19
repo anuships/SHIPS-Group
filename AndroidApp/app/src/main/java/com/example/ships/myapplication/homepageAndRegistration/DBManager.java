@@ -5,6 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.UUID;
+
+import static com.example.ships.myapplication.R.id.email;
+
 /**
  * Created by Nawespet on 7/23/2017.
  */
@@ -43,6 +47,47 @@ public  class DBManager extends SQLiteOpenHelper{
         super(ct, dbName, null, dbVersion);
 
     }
+    public static String insertUser(String email, String firstName, String lastName, String pw, SQLiteDatabase db){
+        try {
+            String salt = new String(PasswordEncrypter.generateSalt());
+            String hashedPassword = new String(PasswordEncrypter.encryptPassword(pw, salt.getBytes()));
+            UUID tempID = UUID.randomUUID();
+
+            String uid = String.valueOf(tempID);
+            System.out.println(uid);
+            String insertQuery = "INSERT INTO users (UID, USERNAME, EMAIL, PASSWORD, SALT, FIRST_NAME, LAST_NAME) VALUES(?,' ',?,?,?,?,?)";
+            db.execSQL(insertQuery, new String[]{uid, email, hashedPassword, salt, firstName, lastName});
+            return uid;
+        }catch(Exception e){
+            return null;
+        }
+
+    }
+    public static String insertUser(String uid, String email, String firstName, String lastName, String pw, SQLiteDatabase db){
+        try {
+            String salt = new String(PasswordEncrypter.generateSalt());
+            String hashedPassword = new String(PasswordEncrypter.encryptPassword(pw, salt.getBytes()));
+            String insertQuery = "INSERT INTO users (UID, USERNAME, EMAIL, PASSWORD, SALT, FIRST_NAME, LAST_NAME) VALUES(?,' ',?,?,?,?,?)";
+            db.execSQL(insertQuery, new String[]{uid, email, hashedPassword, salt, firstName, lastName});
+            return uid;
+        }catch(Exception e){
+            return null;
+        }
+
+    }
+
+    public static String insertUser(String uid, String userName, String email, String firstName, String lastName, String pw, SQLiteDatabase db){
+        try {
+            String salt = new String(PasswordEncrypter.generateSalt());
+            String hashedPassword = new String(PasswordEncrypter.encryptPassword(pw, salt.getBytes()));
+            String insertQuery = "INSERT INTO users (UID, USERNAME, EMAIL, PASSWORD, SALT, FIRST_NAME, LAST_NAME) VALUES(?,?,?,?,?,?,?)";
+            db.execSQL(insertQuery, new String[]{uid, userName, email, hashedPassword, salt, firstName, lastName});
+            return uid;
+        }catch(Exception e){
+            return null;
+        }
+
+    }
     @Override
     public void onCreate(SQLiteDatabase db) {
         Cursor res =  db.rawQuery("SELECT count(*) FROM sqlite_master WHERE type='table' AND name='modules';", null);
@@ -57,7 +102,8 @@ public  class DBManager extends SQLiteOpenHelper{
             db.execSQL("INSERT INTO modules (CID, NAME, UNITS, DESC) VALUES" +
                     "(0, \"FAS\", 1,\"Self Assessment is a tool that helps you to " +
                     "understand more about yourself on fear of flying.\"), " +
-                    "(1, \"FACTSHEET\",1,\"tocome\"), " +
+                    "(1, \"Factsheet\",1,\"The factsheet contains WhatIf scenarios about " +
+                                   "airplanes, with details as to what occurs in these scenarios.\"), " +
                     "(2, \"EMDR\", 1,  \"EMDR is a kind of therapeutic tool that helps you " +
                     "to distract from the plane by focusing on a moving ball\"), " +
                     "(2, \"Audio: Introduction\", 1,\"Relaxation audio is kind of therapeutic tool" +
@@ -120,7 +166,8 @@ public  class DBManager extends SQLiteOpenHelper{
             db.execSQL("INSERT INTO modules (CID, NAME, UNITS, DESC) VALUES" +
                     "(0, \"FAS\", 1,\"Self Assessment is a tool that helps you to " +
                     "understand more about yourself on fear of flying.\"), " +
-                    "(1, \"FACTSHEET\",1,\"tocome\"), " +
+                    "(1, \"Factsheet\",1,\"The factsheet contains WhatIf scenarios about " +
+                    "airplanes, with details as to what occurs in these scenarios.\"), " +
                     "(2, \"EMDR\", 1,  \"EMDR is a kind of therapeutic tool that helps you " +
                     "to distract from the plane by focusing on a moving ball\"), " +
                     "(2, \"Audio: Introduction\", 1,\"Relaxation audio is kind of therapeutic tool" +

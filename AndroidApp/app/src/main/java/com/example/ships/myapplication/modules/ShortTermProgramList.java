@@ -64,7 +64,7 @@ public class ShortTermProgramList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_all_program_list);
+        setContentView(R.layout.activity_program_list);
         expandableListView = (ExpandableListView) findViewById(R.id.programList);
         readIntent();
         //generate program title and program detail to the list

@@ -22,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,13 +32,23 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.ships.myapplication.OtherInterfaces.FindPassword;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -49,6 +60,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private TextView errorView;
     private View mProgressView;
     private View mLoginFormView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,10 +168,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
-            cancel = true;
         }
 
         if (cancel) {
@@ -171,16 +179,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // perform the user login attempt.
             showProgress(true);
             SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
-
-            mAuthTask = new UserLoginTask(email, password, mySqlDB);
-            mAuthTask.execute((Void) null);
+            try {
+                mAuthTask = new UserLoginTask(email, password, mySqlDB);
+                mAuthTask.execute((Void) null);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }
 
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
-    }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
@@ -264,6 +271,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         b.putString("lastName", lastName);
         b.putString("email", mEmailView.getText().toString());
         in.putExtras(b);
+        System.out.println("DOING THIS");
         startActivity(in);
     }
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
@@ -300,26 +308,98 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mEmail;
+        private  String mEmail;
         private final String mPassword;
         private SQLiteDatabase mySqlDB;
         private String uid;
         private String firstName;
         private String lastName;
-        UserLoginTask(String email, String password, SQLiteDatabase sql) {
+        private boolean result;
+        UserLoginTask(String email, String password, SQLiteDatabase sql) throws Exception{
             mEmail = email;
             mPassword = password;
             mySqlDB = sql;
         }
-
+        public void changeResult(boolean b){
+            result = b;
+        }
         @Override
         protected Boolean doInBackground(Void... params) {
+                String tag_string_req = "req_login";
+            boolean result = false;
+
+            StringRequest strReq = new StringRequest(Request.Method.POST,
+                        AppConfig.URL_LOGIN, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("Login Response: " + response.toString());
+                        try {
+                            JSONObject jObj = new JSONObject(response);
+                            boolean error = jObj.getBoolean("error");
+
+                            // Check for error node in json
+                            if (!error) {
+                                String uid = jObj.getString("uid");
+                                JSONObject user = jObj.getJSONObject("user");
+                                firstName = user.getString("displayname");
+                                String userName = user.getString("user_login");
+                                mEmail = user.getString("email");
+                                if (firstName.contains(" ")) {
+                                    lastName = firstName.substring(firstName.indexOf(' ') + 1);
+                                    firstName = firstName.substring(0, firstName.indexOf(' '));
+                                }else{
+                                    lastName = " ";
+                                }
+                                String created_at = user.getString("created_at");
+                                DBManager.insertUser(uid, userName, mEmail, firstName, lastName, mPassword, mySqlDB);
+                                changeResult(true);
+                                startNewTask(firstName,  lastName, uid);
+                            } else {
+                                // Error in login. Get the error message
+                                String errorMsg = jObj.getString("error_msg");
+                                Toast.makeText(getApplicationContext(),
+                                        errorMsg, Toast.LENGTH_LONG).show();
+                                changeResult(false);
+                            }
+                        } catch (JSONException e) {
+                            // JSON error
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("Login Error: " + error.getMessage());
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_LONG).show();
+
+                    }
+                }) {
+
+                    @Override
+                    protected Map<String, String> getParams() {
+                        // Posting parameters to login url
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("email", mEmail);
+                        params.put("password", mPassword);
+
+                        return params;
+                    }
+
+                };
+
+                // Adding request to request queue
+                AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
 
             String q = "SELECT uid, first_name, last_name, password, salt FROM users WHERE email = ?";
 
             Cursor results = mySqlDB.rawQuery(q, new String[]{mEmail});
             results.moveToFirst();
-            try {
+        /*
+        try {
                 String enteredHash = new String(PasswordEncrypter.encryptPassword(mPassword, results.getString(4).getBytes()));
                 uid = results.getString(0);
                 System.out.println(uid);
@@ -330,6 +410,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 e.printStackTrace();
                 return false;
             }
+            */
+
+        return result;
         }
 
         @Override
