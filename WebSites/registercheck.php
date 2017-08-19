@@ -28,26 +28,29 @@ function goToMain() {
 		$db_name="shipsdb"; // Database name 
 **/
 		try{
-			$dbhost = 'ec2-13-55-194-140.ap-southeast-2.rds.amazonaws.com';
+			
+			//$dbhost = 'ec2-13-55-194-140.ap-southeast-2.rds.amazonaws.com';
+			$dbhost="localhost"; 
 			$dbport = '3306';
 			$dbname = 'shipsdb';
 		
 			$dsn = "mysql:host=".$dbhost.";port=".$dbport.";dbname=".$dbname;
-			$username = "ubuntu";
-			$password = "AnU#1SH@I0ps20&17";		
-			
-			$dbh = new PDO($dsn, $username, $password);
+			$username = "wordpress";
+			$password = "anu";		
+
+			//$dbh = new PDO($dsn, $username, $password);
 	
 			$link = mysqli_connect($dbhost, $username,
-					$password,$dbname, $dbport) or die("cannot connect to server database");
+					$password,$dbname, $dbport) 
+					or die("cannot connect to server database");
 			
 			// Connect to server and select database.
-			//$link = mysqli_connect("$host", "$a_name", "$pw")
-				//		or die("cannot connect"); 
-			mysqli_select_db($link,"$dbname")
-						or die("cannot select database");		
+//			$link = mysqli_connect("$dbhost", "$dbname", "$password","$port")
+//						or die("cannot connect"); 
+//			mysqli_select_db($link,"$dbname")
+//						or die("cannot select database");		
 			
-			// username and password sent from form 
+			// username and password sent from reigerster form 
 			$email = $_POST["email"];
 			$firstName=$_POST["fname"]; 
 			$lastName=$_POST["lname"]; 
@@ -56,11 +59,16 @@ function goToMain() {
 			
 			$table = "wp_users";
 			
-			$sql="SELECT uid FROM ".$table." WHERE email='".$email."'";
-			$result = mysqli_query($link,$sql);
+			$sql="SELECT ID FROM ".$table." WHERE email='".$email."'";
+			$result = mysqli_query($sql);
 			
 			$rowCount = mysqli_num_rows($result);
 			
+			//debug code
+			echo "there are ".$rowCount." rows";
+			echo "<br>sql is: ".$sql;
+			echo "<br>".$firstname."<br>".$email."<br>".$password;
+
 			if($rowCount > 0){
 				//echo "Has result of ".$rowCount." rows";
 				$msg = "<div style='width:200px; margin:auto; align='center'>
@@ -73,21 +81,29 @@ function goToMain() {
 								 </button>
 						   </div>";
 				echo $msg.$button;
-			}else{		
+			}else 
+				{		
 				//insert new user information
-				$sql2="select uid from users order by uid desc limit 1;";
-				$result2 = mysqli_query($link,$sqls);
-				
+				echo $counter;
+				$counter = $counter+1;
+				$sql2="SELECT ID FROM ".$table." ORDER BY uid desc limit 1;";
+				$result2 = mysqli_query($sqls);
 				$uid = $result2 + 1;
 				
-				$sql="INSERT INTO `".$dbname."`.`".$email."` ( `uid`, `email` , 
-					`first_name` , `password` , `last_name` , `username`)
+				echo "<br>new uid is ".$uid;
+				$counter = $counter+1;
+				
+				$sql="INSERT INTO `".$dbname."`.`".$email."` ( `uid`, `user_email` , 
+					`first_name` , `password` , `last_name` , `user_nicename`)
 				VALUES('".$uid.",".$email."','".$firstName."','".$password."',
 						'".$lastName."','".$preferName."')";
 				$result = mysqli_query($link,$sql);
 		
 			
 				if ($result === TRUE) {
+					echo $counter;
+					echo "result exsits";
+					$counter = $counter+1;
 					$msg = "<div style='width:100px; margin:auto; align='center'>
 								<p style='font-size:20px'>Sucessful</p>
 							</div>";
@@ -107,6 +123,8 @@ function goToMain() {
 		catch(Exception $e) {
 		  echo 'Message: ' .$e->getMessage();
 		}
+					
+		
 		mysqli_close($link); 
 	?>
 </div>

@@ -18,7 +18,7 @@
    <table border="0">
       <tr>
         <td align="right"><b>Email:</b></td>
-        <td><input type="email" name="email" id="req" size="20" maxlength="30" /></td>
+        <td><input type="email" name="email" id="req" size="20" maxlength="30" value="user99"/></td>
         <td id="req">*</td>
       </tr>
       <tr>
