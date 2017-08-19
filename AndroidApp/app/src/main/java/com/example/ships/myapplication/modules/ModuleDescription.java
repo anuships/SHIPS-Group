@@ -70,6 +70,7 @@ public class ModuleDescription extends AppCompatActivity {
             in = new Intent(this, RelaxationAudioActivity.class).putExtras(createBundle());
         }
         in.putExtras(getIntent().getExtras());
+        System.out.println(title);
         startActivity(in);
     }
     public void back(View v){super.onBackPressed();}

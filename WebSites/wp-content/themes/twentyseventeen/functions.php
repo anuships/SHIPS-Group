@@ -223,6 +223,12 @@ add_action( 'after_setup_theme', 'twentyseventeen_setup' );
  *
  * @global int $content_width
  */
+ function my_function_admin_bar() {
+    return true;
+}
+
+add_filter('show_admin_bar', 'my_function_admin_bar');
+
 function twentyseventeen_content_width() {
 
 	$content_width = $GLOBALS['content_width'];

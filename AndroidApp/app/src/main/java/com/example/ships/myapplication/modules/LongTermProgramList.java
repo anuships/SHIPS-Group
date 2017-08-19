@@ -64,7 +64,7 @@ public class LongTermProgramList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_all_program_list);
+        setContentView(R.layout.activity_program_list);
         expandableListView = (ExpandableListView) findViewById(R.id.programList);
         //generate program title and program detail to the list
         dataDump.setData("Self Assessment", "Self Assessment is a tool that helps you to " +
@@ -82,8 +82,8 @@ public class LongTermProgramList extends AppCompatActivity {
                 "You have to apply techniques learned from the provided therapeutic tools " +
                 "and try to relax your self. There are 5 levels of scenarios provided in " +
                 "this version.");
-        dataDump.setData("Factsheet", "The factsheet contains many information about" +
-                " airplanes to help you understand more about the flight security");
+        dataDump.setData("Factsheet", "The factsheet contains WhatIf scenarios about " +
+                        " airplanes, with details as to what occurs in these scenarios.");
 
 
         expandableListDetail = dataDump.getData();

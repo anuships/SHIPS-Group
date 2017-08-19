@@ -51,7 +51,10 @@ public class ExposureInfo extends AppCompatActivity {
         startActivity(new Intent(this, ExposureDes.class).putExtras(createBundle()));
     }
     public void back(View v){
+        super.onBackPressed();
+       /*
         try {
+
             String popMsg = "Go Back to My "+ typeOfTerm + " Term Program";
             if (typeOfTerm.equals("long")) {
                 Toast.makeText(this, popMsg,
@@ -75,6 +78,7 @@ public class ExposureInfo extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
             startActivity(new Intent(this, UserProfile.class).putExtras(createBundle()));
         }
+        */
     }
 
 }

@@ -85,34 +85,43 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                 TextView inner = (TextView) ll.findViewById(R.id.innerTitle);
                 TextView desc = (TextView) ll.findViewById(R.id.expandedListItem);
 
-                System.out.println(inner.getText().toString());
+
                 Bundle b = intent.getExtras();
                 try{
+                    System.out.println("ABOUT TO TRY");
                     int tid = Integer.parseInt(inner.getText().toString().substring(0,inner.getText().toString().indexOf(':')).trim());
                     int indx = Integer.parseInt(inner.getText().toString().substring(inner.getText().toString().indexOf(':')+1,inner.getText().toString().indexOf(' ')).trim());
                     String title = inner.getText().toString().substring(inner.getText().toString().indexOf(' '));
                     Intent in = new Intent(context, ModuleDescription.class);
+                    System.out.println("TRIED!");
                     b.putInt("tid", tid);
                     b.putInt("indx", indx);
                     b.putString("title", title.trim());
                     b.putString("desc", desc.getText().toString());
                     in.putExtras(b);
+                    System.out.println("TITLE + " + title);
                     context.startActivity(in);
                 }catch(Exception e){
                     e.printStackTrace();
+
                     String title = inner.getText().toString().trim();
+                    System.out.println("FAILED BEFORE" + title);
+
                     Intent in = new Intent(context, ModuleDescription.class);
                     b.putString("title", title);
                     b.putString("desc", desc.getText().toString());
                     in.putExtras(b);
                     context.startActivity(in);
                 }
-                String title = inner.getText().toString().trim();
-                Intent in = new Intent(context, ModuleDescription.class);
-                b.putString("title", title);
-                b.putString("desc", desc.getText().toString());
-                in.putExtras(b);
-                context.startActivity(in);
+
+                //String title = inner.getText().toString().trim();
+
+                //System.out.println("SKIPPED BEFORE :" + title);
+                //Intent in = new Intent(context, ModuleDescription.class);
+               // b.putString("title", title);
+               // b.putString("desc", desc.getText().toString());
+               // in.putExtras(b);
+               // context.startActivity(in);
             }
         });
         return convertView;
