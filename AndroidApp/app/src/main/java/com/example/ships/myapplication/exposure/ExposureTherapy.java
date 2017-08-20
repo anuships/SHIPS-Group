@@ -28,7 +28,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.felhr.usbserial.UsbSerialDevice;
@@ -52,6 +51,7 @@ public class ExposureTherapy extends AppCompatActivity {
     private static String email;
     private static String uid;
     private static String typeOfTerm;
+    final Handler ha = new Handler();
 
     private void readIntent(){
         Bundle b = getIntent().getExtras();
@@ -86,6 +86,10 @@ public class ExposureTherapy extends AppCompatActivity {
     Dialog dialog;
     MediaPlayer mp = new MediaPlayer();
     Handler h;
+    double baselineval;
+    boolean change = true;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +118,7 @@ public class ExposureTherapy extends AppCompatActivity {
         Bitmap myImage = BitmapFactory.decodeStream(imageIS);
         v.setImageBitmap(myImage);
         if (level.equals("5")) {
+            mp.setOnCompletionListener(onCompletion);
             mp = MediaPlayer.create(this, R.raw.s1);
             mp.start();
             mp.setLooping(true);
@@ -177,8 +182,7 @@ public class ExposureTherapy extends AppCompatActivity {
 
 
         //Testing for auto-change function
-        final long ELAPSETIME = 5000;
-        final Handler ha=new Handler();
+        final long ELAPSETIME = 10000;
         ha.postDelayed(new Runnable() {
 
             @Override
@@ -188,14 +192,49 @@ public class ExposureTherapy extends AppCompatActivity {
                 ha.postDelayed(this, ELAPSETIME);
             }
         }, ELAPSETIME);
-//        startService(this, GSRGraphActivity.class);
+
+        final long ELAPSETIMECHANGE = 1000;
+        Handler ha2 = new Handler();
+        ha2.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                if (baselineval - gsrVal >= 20){
+                    if (change){
+                        Button stopButton = (Button) findViewById(R.id.button2);
+                        stopButton.performClick();
+                        change = false;
+                        Context context = getApplicationContext();
+                        CharSequence text = "Please practice different relaxation skills";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                } else if (gsrVal >= baselineval) {
+                    if (!change){
+                        Button stopButton = (Button) findViewById(R.id.button2);
+                        stopButton.performClick();
+                        change = true;
+                        Context context = getApplicationContext();
+                        CharSequence text = "You can go on now";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }
+                ha.postDelayed(this, ELAPSETIMECHANGE);
+            }
+        }, ELAPSETIMECHANGE);
     }
+
+
 
     public void autoChange(){
 //        long endTime = SystemClock.uptimeMillis();
 //        if (Math.abs(endTime - startTime) > 5000) {
 
-            if (!level.equals("5")) {
+
+            if (!level.equals("5") && change) {
                 level = String.valueOf(Integer.parseInt(level) + 1);
                 String b3Text = "Level" + level;
                 Button b3 = (Button) findViewById(R.id.button3);
@@ -207,6 +246,7 @@ public class ExposureTherapy extends AppCompatActivity {
                 v4.setImageBitmap(myImage);
                 writeLevel(level);
                 if (level.equals("5")) {
+                    mp.setOnCompletionListener(onCompletion);
                     mp = MediaPlayer.create(this, R.raw.s1);
                     mp.start();
                     mp.setLooping(true);
@@ -216,14 +256,17 @@ public class ExposureTherapy extends AppCompatActivity {
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
-//            }
+           }
         }
-    }
+
 
     public void back(View v){
-        if (mp.isPlaying()) {
+        if (mp.isPlaying()){
             mp.stop();
         }
+        mp.setOnCompletionListener(onCompletion);
+        ha.removeCallbacksAndMessages(null);
+        this.finish();
         startActivity(new Intent(this, ExposureDes.class).putExtras(createBundle()));
     }
 
@@ -233,7 +276,7 @@ public class ExposureTherapy extends AppCompatActivity {
             Button b = (Button) findViewById(R.id.button2);
             b.setText("Restart");
             v2.setImageResource(0);
-            if (mp.isPlaying()) {
+            if (mp.isPlaying()){
                 mp.stop();
             }
             showImage = false;
@@ -248,9 +291,10 @@ public class ExposureTherapy extends AppCompatActivity {
             Button b = (Button) findViewById(R.id.button2);
             b.setText("Stop");
             if (level.equals("5")){
-                    mp = MediaPlayer.create(this, R.raw.s1);
-                    mp.start();
-                    mp.setLooping(true);
+                mp.setOnCompletionListener(onCompletion);
+                mp = MediaPlayer.create(this, R.raw.s1);
+                mp.start();
+                mp.setLooping(true);
             }
         }
     }
@@ -303,19 +347,28 @@ public class ExposureTherapy extends AppCompatActivity {
         writeLevel(level);
         showImage = true;
         if (level.equals("5")){
+            mp.setOnCompletionListener(onCompletion);
             mp = MediaPlayer.create(this, R.raw.s1);
             mp.start();
             mp.setLooping(true);
         }
         else {
-            if (mp.isPlaying()) {
-                mp.stop();
-            }
+            mp.setOnCompletionListener(onCompletion);
         }
     }
 
 
+    private MediaPlayer.OnCompletionListener onCompletion = new MediaPlayer.OnCompletionListener() {
 
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            if(mp.isPlaying())
+            {
+                mp.stop();
+            }
+
+        }
+    };
 
 
 
@@ -354,13 +407,25 @@ public class ExposureTherapy extends AppCompatActivity {
                         if (s.length() > 1 && s.contains("=")) {
                             if (s.contains("B")) {
                                 data = s.substring(s.indexOf('=') + 1, s.length());
-                                double val = Double.parseDouble(data);
-                                lineGraph.addBaseLine(val);
+                                baselineval = Double.parseDouble(data);
+                                lineGraph.addBaseLine(baselineval);
                                 haveBaseGSR = true;
                             }else if (s.contains("C")){
                                 data = s.substring(s.indexOf('=') + 1, s.length());
                                 gsrVal  = Double.parseDouble(data);
-
+//                                if (gsrVal - baselineval < 50){
+//                                    if (change){
+//                                        Button stopButton = (Button) findViewById(R.id.button2);
+//                                        stopButton.performClick();
+//                                        change = false;
+//                                    }
+//                                } else if (gsrVal >= baselineval) {
+//                                    if (!change){
+//                                        Button stopButton = (Button) findViewById(R.id.button2);
+//                                        stopButton.performClick();
+//                                        change = true;
+//                                    }
+//                                }
                             }else if (s.contains("R")){
                                 data = s.substring(s.indexOf('=') + 1, s.length());
                                 double val = Double.parseDouble(data);
@@ -405,12 +470,6 @@ public class ExposureTherapy extends AppCompatActivity {
         }
     }
 
-    public void clickStart(View view) {
-        checkForArduinoUSB();
-    }
-    public void clickBack(View view) {
-        super.onBackPressed();
-    }
     private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             try {
@@ -453,6 +512,7 @@ public class ExposureTherapy extends AppCompatActivity {
             }
         }
     };
+
 
 
 

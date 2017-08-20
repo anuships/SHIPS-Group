@@ -40,14 +40,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:layout_weight="1.0"></ImageView>
+                android:layout_weight="0.2"></ImageView>
 
             <LinearLayout
                 android:id="@+id/mon_chart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="0.2"
+                android:layout_weight="0.8"
                 android:background="@drawable/gsr_gradient"
                 android:orientation="vertical"></LinearLayout>
 
@@ -96,7 +96,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/roundedbutton"
                     android:onClick="goToRelaxationTraning"
-                    android:text="Relaxtion"
+                    android:text="StartGSR"
                     android:textColor="#FFFFFF" />
 
                 <Button
