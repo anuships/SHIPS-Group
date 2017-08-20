@@ -8,9 +8,28 @@ import android.view.WindowManager;
 
 import com.example.ships.myapplication.OtherInterfaces.ContactUs;
 import com.example.ships.myapplication.OtherInterfaces.FindOutMore;
+import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
+
+    //testing used information
+    private static String firstName;
+    private static String lastName;
+    private static String email;
+    private static String uid;
+    private static String typeOfTerm;
+
+    private Bundle createBundle(){
+        Bundle b = new Bundle();
+        b.putString("firstName", "SHIPS");
+        b.putString("uid", "9999999");
+        b.putString("lastName", "developer");
+        b.putString("email", "tester@anu.edu.au");
+        b.putString("typeOfTerm","none");//treatment term
+        return b;
+    }
+    //end of testing used information
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +45,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickLogin(View view) {
-        startActivity(new Intent(this, LoginActivity.class));
+        //uses for real product
+        //startActivity(new Intent(this, LoginActivity.class));
+
+        //uses for development
+        startActivity(new Intent(this, UserProfile.class).putExtras(createBundle()));
     }
     public void register(View view) {
         startActivity(new Intent(this, TermsAndConditions.class));
