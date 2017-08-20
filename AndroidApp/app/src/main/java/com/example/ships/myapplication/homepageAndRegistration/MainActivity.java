@@ -1,10 +1,12 @@
 package com.example.ships.myapplication.homepageAndRegistration;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.example.ships.myapplication.OtherInterfaces.ContactUs;
 import com.example.ships.myapplication.OtherInterfaces.FindOutMore;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static String email;
     private static String uid;
     private static String typeOfTerm;
+
 
     private Bundle createBundle(){
         Bundle b = new Bundle();
@@ -44,12 +47,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private boolean testMode = false;
     public void clickLogin(View view) {
-        //uses for real product
-        //startActivity(new Intent(this, LoginActivity.class));
+        testMode = true;//disable this if not using a test mode.
 
-        //uses for development
-        startActivity(new Intent(this, UserProfile.class).putExtras(createBundle()));
+        if (!testMode) {
+            //enable login function
+            startActivity(new Intent(this, LoginActivity.class));
+        } else {
+            //disable login function
+            Context context = getApplicationContext();
+            Toast toast = Toast.makeText(context, "Developer Mode is enabled", Toast.LENGTH_SHORT);
+            toast.show();
+            startActivity(new Intent(this, UserProfile.class).putExtras(createBundle()));
+        }
     }
     public void register(View view) {
         startActivity(new Intent(this, TermsAndConditions.class));
