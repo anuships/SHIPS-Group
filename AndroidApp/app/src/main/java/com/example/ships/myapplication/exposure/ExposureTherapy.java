@@ -1,38 +1,49 @@
 package com.example.ships.myapplication.exposure;
 
 import android.app.Dialog;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbDeviceConnection;
+import android.hardware.usb.UsbManager;
 import android.media.MediaPlayer;
-import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
+import com.felhr.usbserial.UsbSerialDevice;
+import com.felhr.usbserial.UsbSerialInterface;
 
 
 
-import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+
+
 import java.io.InputStream;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class ExposureTherapy extends AppCompatActivity {
@@ -108,6 +119,63 @@ public class ExposureTherapy extends AppCompatActivity {
             mp.setLooping(true);
         }
 
+
+
+
+
+
+        if (usbManager == null){
+            usbManager = (UsbManager) getSystemService(ExposureTherapy.USB_SERVICE);
+        }
+        lineGraph = new GSRLineGraphSD(this);
+        lineGraph.setXViewSize(30.0);
+        LinearLayout chartLyt = (LinearLayout) findViewById(R.id.mon_chart);
+        chartLyt.addView(lineGraph.getGraphView(),0);
+        filter = new IntentFilter(ACTION_USB_PERMISSION);
+        registerReceiver(broadcastReceiver, filter);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (appOn) {
+                    if (appHasFocus) {
+                        String cur = "GC";
+                        String base = "GB";
+                        String heart = "HR";
+                        if (serialPort != null) {
+                            serialPort.write(cur.getBytes());
+
+                            try {
+                                if (!haveBaseGSR) {
+                                    serialPort.write(base.getBytes());
+                                }else{
+                                    point++;
+                                    lineGraph.addPoint(point, gsrVal);
+                                }
+                                serialPort.write(heart.getBytes());
+                                Thread.sleep(200);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }else{
+                        try{
+                            Thread.sleep(1000);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }).start();
+        appHasFocus = true;
+
+
+
+
+
+
+
         //Testing for auto-change function
         final long ELAPSETIME = 5000;
         final Handler ha=new Handler();
@@ -120,11 +188,13 @@ public class ExposureTherapy extends AppCompatActivity {
                 ha.postDelayed(this, ELAPSETIME);
             }
         }, ELAPSETIME);
+//        startService(this, GSRGraphActivity.class);
     }
 
     public void autoChange(){
 //        long endTime = SystemClock.uptimeMillis();
 //        if (Math.abs(endTime - startTime) > 5000) {
+
             if (!level.equals("5")) {
                 level = String.valueOf(Integer.parseInt(level) + 1);
                 String b3Text = "Level" + level;
@@ -185,7 +255,8 @@ public class ExposureTherapy extends AppCompatActivity {
         }
     }
     public void goToRelaxationTraning(View v){
-        startActivity(new Intent(this, GSRGraphActivity.class).putExtras(createBundle()));
+        checkForArduinoUSB();
+//        startActivity(new Intent(this, GSRGraphActivity.class).putExtras(createBundle()));
     }
 
     public void selectLevel(View v){
@@ -243,6 +314,145 @@ public class ExposureTherapy extends AppCompatActivity {
         }
     }
 
+
+
+
+
+
+
+
+    UsbDevice device = null;
+    IntentFilter filter;
+    UsbDeviceConnection connection;
+    UsbManager usbManager;
+    GSRLineGraphSD lineGraph;
+    UsbSerialDevice serialPort;
+    boolean serialUp = false;
+    boolean haveBaseGSR = false;
+    boolean appOn = true;
+    boolean appHasFocus = true;
+    int count = 0;
+    int point = 0;
+    double gsrVal;
+    double hVal;
+    TextView heartRateDisplay;
+    private static final String ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION";
+    UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.UsbReadCallback() {
+        //Defining a Callback which triggers whenever data is read.
+        @Override
+        public void onReceivedData(byte[] arg0) {
+            String data;
+            try{
+                data = new String(arg0, "UTF-8");
+                if (data.contains("=")){
+                    ArrayList<String> dataPoints = new ArrayList<>();
+                    for (String dat : data.split("G")){
+                        String[] hSplit = dat.split("H");
+                        Collections.addAll(dataPoints, hSplit);
+                    }
+                    for (String s : dataPoints) {
+                        if (s.length() > 1 && s.contains("=")) {
+                            if (s.contains("B")) {
+                                data = s.substring(s.indexOf('=') + 1, s.length());
+                                double val = Double.parseDouble(data);
+                                lineGraph.addBaseLine(val);
+                                haveBaseGSR = true;
+                            }else if (s.contains("C")){
+                                data = s.substring(s.indexOf('=') + 1, s.length());
+                                gsrVal  = Double.parseDouble(data);
+
+                            }else if (s.contains("R")){
+                                data = s.substring(s.indexOf('=') + 1, s.length());
+                                double val = Double.parseDouble(data);
+                                if (heartRateDisplay != null) {
+                                    heartRateDisplay.setText(Double.toString(val));
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
+    public void checkForArduinoUSB(){
+        if (!serialUp) {
+            try {
+                if (usbManager == null) {
+                    usbManager = (UsbManager) getSystemService(ExposureTherapy.USB_SERVICE);
+                }
+                HashMap usbDevices = usbManager.getDeviceList();
+                if (!usbDevices.isEmpty()) {
+                    for (Map.Entry<String, UsbDevice> entry : usbManager.getDeviceList().entrySet()) {
+                        device = entry.getValue();
+                        int deviceVID = device.getVendorId();
+                        if (deviceVID == 6790) {
+                            PendingIntent pi = PendingIntent.getBroadcast(this, 0,
+                                    new Intent(ACTION_USB_PERMISSION), 0);
+                            usbManager.requestPermission(device, pi);
+                            break;
+                        } else {
+                            connection = null;
+                            device = null;
+                        }
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void clickStart(View view) {
+        checkForArduinoUSB();
+    }
+    public void clickBack(View view) {
+        super.onBackPressed();
+    }
+    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            try {
+                if (intent.getAction().equals(ACTION_USB_PERMISSION)) {
+                    boolean granted = intent.getExtras().getBoolean(UsbManager.EXTRA_PERMISSION_GRANTED);
+                    if (granted && !serialUp) {
+                        if (device != null){
+                            connection = usbManager.openDevice(device);
+                            serialPort = UsbSerialDevice.createUsbSerialDevice(device, connection);
+                            if (serialPort != null) {
+                                if (serialPort.open()) {
+                                    serialPort.setBaudRate(9600);
+                                    serialPort.setDataBits(UsbSerialInterface.DATA_BITS_8);
+                                    serialPort.setStopBits(UsbSerialInterface.STOP_BITS_1);
+                                    serialPort.setParity(UsbSerialInterface.PARITY_NONE);
+                                    serialPort.setFlowControl(UsbSerialInterface.FLOW_CONTROL_OFF);
+                                    serialPort.read(mCallback);
+                                    serialUp = true;
+                                } else {
+                                    System.out.println("SERIAL PORT NOT OPEN");
+                                }
+                            }else{
+                                System.out.println("SERIAL PORT NULL");
+                            }
+                        } else {
+                            System.out.println("DEVICE NULL");
+                        }
+                    } else {
+                        System.out.println("PERMISSION NOT GRANTED");
+                    }
+                } else if (intent.getAction().equals(UsbManager.ACTION_USB_DEVICE_ATTACHED)) {
+                    checkForArduinoUSB();
+                } else if (intent.getAction().equals(UsbManager.ACTION_USB_DEVICE_DETACHED)) {
+                    serialPort.close();
+                    serialUp = false;
+                }
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    };
 
 
 
