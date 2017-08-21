@@ -127,7 +127,7 @@ public class Register extends AppCompatActivity {
             comfirmpwtext.setTextColor(Color.BLACK);
             firstNametext.setTextColor(Color.BLACK);
             lastNametext.setTextColor(Color.BLACK);
-                userNametext.setTextColor(Color.RED);
+            userNametext.setTextColor(Color.RED);
             userNametext.setTextColor(Color.BLACK);
         }
         else
@@ -223,7 +223,7 @@ public class Register extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
                         // Launch login activity
                         registerSuccess(email, uid, lastName, firstName);
-                         } else {
+                    } else {
 
                         // Error occurred in registration. Get the error
                         // message
