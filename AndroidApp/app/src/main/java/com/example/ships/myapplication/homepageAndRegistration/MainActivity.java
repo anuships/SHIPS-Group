@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean testMode = false;
     public void clickLogin(View view) {
-        testMode = true;//disable this if not using a test mode.
+        //testMode = true;//disable this if not using a test mode.
 
         if (!testMode) {
             //enable login function
