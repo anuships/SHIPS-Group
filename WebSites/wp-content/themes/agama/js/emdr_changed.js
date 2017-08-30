@@ -11,7 +11,7 @@ function draw() {
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
-   ctx.translate(70,0);
+   ctx.translate(1,0);
    ctx.beginPath();
    ctx.arc(100, 400, 50, 0, 2*Math.PI);
    ctx.fillStyle = "blue";
