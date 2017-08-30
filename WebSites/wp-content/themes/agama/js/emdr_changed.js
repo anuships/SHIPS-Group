@@ -1,9 +1,7 @@
 var canvas = document.getElementById('canvas');
-alert('sees changes');
 var time = 0;
 
 function init() {
-   alert('reached init');
    window.requestAnimationFrame(draw);
 }
 
