@@ -32,6 +32,8 @@ function draw() {
    
    if (time < (15 * 80) - 20) {
       window.requestAnimationFrame(draw);
+   } else {
+      time = 0;
    }
 }
 
