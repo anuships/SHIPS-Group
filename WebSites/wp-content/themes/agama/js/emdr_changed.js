@@ -34,6 +34,7 @@ function draw() {
       window.requestAnimationFrame(draw);
    } else {
       time = 0;
+      ctx.translate(-200, 0);
    }
 }
 
