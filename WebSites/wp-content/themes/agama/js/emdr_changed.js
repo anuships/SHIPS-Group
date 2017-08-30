@@ -11,9 +11,9 @@ alert('sees changes');
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
-//   ctx.beginPath();
-//   ctx.arc(100, 75, 50, 0, 2*Math.PI);
-//   ctx.stroke();
+   ctx.beginPath();
+   ctx.arc(100, 75, 50, 0, 2*Math.PI);
+   ctx.stroke();
    
 //   window.requestAnimationFrame(draw);
 //}
