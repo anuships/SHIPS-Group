@@ -30,7 +30,9 @@ function draw() {
       ctx.stroke();
    }
    
-   window.requestAnimationFrame(draw);
+   if (time < 15 * 80) {
+      window.requestAnimationFrame(draw);
+   }
 }
 
 init();
