@@ -12,7 +12,7 @@ function draw() {
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
-   if (time < 60) {
+   if (time % 120 < 60) {
       time++;
       ctx.translate(10,0);
       ctx.beginPath();
@@ -21,7 +21,7 @@ function draw() {
       ctx.fill();
       ctx.stroke();
    } else {
-      time--;
+      time++;
       ctx.translate(-10,0);
       ctx.beginPath();
       ctx.arc(100, 400, 50, 0, 2*Math.PI);
