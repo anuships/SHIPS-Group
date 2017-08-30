@@ -35,7 +35,17 @@ class MyCDExtension_Widgets extends ClientDash_Widgets_API {
 			// inside of this class.
 			'callback'          => array( __CLASS__, 'boilerplate_widget_callback' ),
 			'settings_callback' => array( __CLASS__, 'boilerplate_widget_settings_callback' ),
+		),
+	'test_widget' => array(
+			'title'             => 'Hello Wid',
+			'description'       => 'My awesome boilerplate comes with this great widget.',
+			//
+			// __CLASS__ provides the name of the current class. This tells the widget creator that the function is
+			// inside of this class.
+			'callback'          => array( __CLASS__, 'boilerplate_widget_callback' ),
+			'settings_callback' => array( __CLASS__, 'boilerplate_widget_settings_callback' ),
 		)
+
 	);
 
 	/**

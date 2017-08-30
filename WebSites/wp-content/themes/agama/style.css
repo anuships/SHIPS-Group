@@ -3156,8 +3156,8 @@ body:not(.device-touch) .tagcloud a {
 	transition: all .3s ease-in-out;
 }
 .tagcloud a:hover {
-	border-color: #FE6663;
-	color: #FE6663;
+	border-color: #2F63EF;
+	color: ##2F63EF;
 }
 
 /* =Widgets
