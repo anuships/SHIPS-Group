@@ -12,7 +12,7 @@ function draw() {
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
-   if (time < 6) {
+   if (time < 60) {
       time++;
       ctx.translate(10,0);
       ctx.beginPath();
