@@ -1,4 +1,5 @@
 var canvas = document.getElementById('canvas');
+alert('sees changes');
 
 function init() {
    alert('reached init');
