@@ -14,7 +14,8 @@
         android:gravity="center">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="top">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,70 +28,89 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.8"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="200dp"
-                android:layout_weight="1">
-            </ImageView>
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:layout_weight="0.2"></ImageView>
 
             <LinearLayout
+                android:id="@+id/mon_chart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.8"
+                android:background="@drawable/gsr_gradient"
+                android:orientation="vertical"></LinearLayout>
+
+            <!--<TextView-->
+                <!--android:id="@+id/textView32"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_weight="0.2"-->
+                <!--android:text="Please connect to the GSR sensor" />-->
+
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <Button
                     android:id="@+id/button1"
                     android:layout_width="240dp"
                     android:layout_height="44dp"
-                    android:textColor="#FFFFFF"
                     android:layout_marginRight="5dp"
+                    android:layout_weight="1"
                     android:background="@drawable/roundedbutton"
-                    android:text="Back"
                     android:onClick="back"
-                    android:layout_weight="1" />
+                    android:text="Back"
+                    android:textColor="#FFFFFF" />
 
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="240dp"
                     android:layout_height="44dp"
-                    android:textColor="#FFFFFF"
                     android:layout_marginRight="5dp"
+                    android:layout_weight="1"
                     android:background="@drawable/roundedbutton"
-                    android:text="Stop"
                     android:onClick="stop"
-                    android:layout_weight="1" />
+                    android:text="Stop"
+                    android:textColor="#FFFFFF" />
 
                 <Button
                     android:id="@+id/button4"
                     android:layout_width="240dp"
                     android:layout_height="44dp"
-                    android:textColor="#FFFFFF"
                     android:layout_marginRight="5dp"
-                    android:layout_weight="0.9"
-                    android:text="Relaxtion"
+                    android:layout_weight="1"
                     android:background="@drawable/roundedbutton"
-                    android:onClick="goToRelaxationTraning"/>
+                    android:onClick="goToRelaxationTraning"
+                    android:text="StartGSR"
+                    android:textColor="#FFFFFF" />
 
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="240dp"
                     android:layout_height="44dp"
-                    android:textColor="#FFFFFF"
                     android:layout_weight="1"
-                    android:onClick="selectLevel"
                     android:background="@drawable/roundedbutton"
-                    android:text="Level" />
+                    android:onClick="selectLevel"
+                    android:text="Level"
+                    android:textColor="#FFFFFF" />
+
 
             </LinearLayout>
-        </LinearLayout>
-
     </LinearLayout>
 
 

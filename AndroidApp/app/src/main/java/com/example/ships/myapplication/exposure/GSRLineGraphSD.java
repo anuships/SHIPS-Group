@@ -1,4 +1,4 @@
-package com.example.ships.myapplication.GSR;
+package com.example.ships.myapplication.exposure;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -11,7 +11,7 @@ import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
-public class GSRLineGraph {
+public class GSRLineGraphSD {
     private GraphicalView graphView;
     private XYMultipleSeriesDataset dataset;
     private XYSeries series;
@@ -20,7 +20,7 @@ public class GSRLineGraph {
     private double xMin;
     private double xMax;
 
-    public GSRLineGraph(Activity activity){
+    public GSRLineGraphSD(Activity activity){
         series = new XYSeries("GSR Reading");
         XYSeriesRenderer renderer = new XYSeriesRenderer();
         renderer.setLineWidth(10);
