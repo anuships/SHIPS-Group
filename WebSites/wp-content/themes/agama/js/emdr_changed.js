@@ -1,5 +1,6 @@
 var canvas = document.getElementById('canvas');
 alert('sees changes');
+var time = 0;
 
 function init() {
    alert('reached init');
@@ -11,12 +12,23 @@ function draw() {
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
-   ctx.translate(1,0);
-   ctx.beginPath();
-   ctx.arc(100, 400, 50, 0, 2*Math.PI);
-   ctx.fillStyle = "blue";
-   ctx.fill();
-   ctx.stroke();
+   if (time < 6) {
+      time++;
+      ctx.translate(10,0);
+      ctx.beginPath();
+      ctx.arc(100, 400, 50, 0, 2*Math.PI);
+      ctx.fillStyle = "blue";
+      ctx.fill();
+      ctx.stroke();
+   } else {
+      time--;
+      ctx.translate(-10,0);
+      ctx.beginPath();
+      ctx.arc(100, 400, 50, 0, 2*Math.PI);
+      ctx.fillStyle = "blue";
+      ctx.fill();
+      ctx.stroke();
+   }
    
    window.requestAnimationFrame(draw);
 }
