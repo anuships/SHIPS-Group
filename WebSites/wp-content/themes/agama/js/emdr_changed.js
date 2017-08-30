@@ -1,5 +1,7 @@
 var canvas = document.getElementById('canvas');
 var time = 0;
+//var start_button = document.createElement("button");
+//start_button.innerHTML = "start EMDR";
 
 function init() {
    window.requestAnimationFrame(draw);
@@ -33,6 +35,6 @@ function draw() {
    }
 }
 
-init();
+//init();
 
 
