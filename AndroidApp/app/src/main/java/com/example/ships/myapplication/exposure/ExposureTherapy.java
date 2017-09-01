@@ -104,7 +104,8 @@ public class ExposureTherapy extends AppCompatActivity {
                 level = resultSet.getString(1);
             } else {
                 level = "1";
-                writeLevel(level);
+                String insertQuery = "INSERT INTO SystematicDesensitization (EMAIL, LEVEL) VALUES(?,?)";
+                mySqlDB.execSQL(insertQuery, new String[]{email, level});
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -182,7 +183,7 @@ public class ExposureTherapy extends AppCompatActivity {
 
 
         //Testing for auto-change function
-        final long ELAPSETIME = 10000;
+        final long ELAPSETIME = 20000;
         ha.postDelayed(new Runnable() {
 
             @Override
