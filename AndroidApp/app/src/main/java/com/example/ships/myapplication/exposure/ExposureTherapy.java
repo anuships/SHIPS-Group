@@ -18,6 +18,10 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -88,13 +92,22 @@ public class ExposureTherapy extends AppCompatActivity {
     Handler h;
     double baselineval;
     boolean change = true;
-
+    boolean biofeedbackHide = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
+
+
         setContentView(R.layout.activity_exposure_therapy);
+
+
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setTitle("Systematic Desensitization");
+
         try {
             SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
             mySqlDB.execSQL("CREATE TABLE if not exists SystematicDesensitization (EMAIL STRING, LEVEL STRING)");
@@ -515,6 +528,44 @@ public class ExposureTherapy extends AppCompatActivity {
     };
 
 
+
+    Menu biofeedbackMenu;
+
+    @Override
+    //Show the menu on the screen
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        biofeedbackMenu = menu;
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.systematic_desensitization_menu, menu);
+        getMenuInflater().inflate(R.menu.systematic_desensitization_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.change:
+                hide();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void hide() {
+        View v = findViewById(R.id.mon_chart);
+        MenuItem controlBiofeedback = biofeedbackMenu.findItem(R.id.change);
+        if (!biofeedbackHide){
+            v.setVisibility(View.GONE);
+            biofeedbackHide = true;
+            controlBiofeedback.setTitle("Show biofeedback");
+        } else{
+            v.setVisibility(View.VISIBLE);
+            biofeedbackHide = false;
+            controlBiofeedback.setTitle("Hide biofeedback");
+        }
+    }
 
 
 }
