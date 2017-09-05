@@ -19,12 +19,14 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -32,6 +34,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.felhr.usbserial.UsbSerialDevice;
@@ -49,7 +52,7 @@ import java.util.Map;
 import java.io.InputStream;
 
 
-public class ExposureTherapy extends AppCompatActivity {
+public class ExposureTherapy extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -100,9 +103,12 @@ public class ExposureTherapy extends AppCompatActivity {
         readIntent();
 
 
-        setContentView(R.layout.activity_exposure_therapy);
+//        setContentView(R.layout.activity_exposure_therapy);
 
-
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_exposure_therapy, null,false);
+        frameLayout.addView(activityView);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);

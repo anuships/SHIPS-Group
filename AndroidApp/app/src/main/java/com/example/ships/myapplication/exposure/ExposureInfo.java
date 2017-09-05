@@ -1,11 +1,15 @@
 package com.example.ships.myapplication.exposure;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.OtherInterfaces.SystematicDesensitation;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
@@ -14,7 +18,7 @@ import com.example.ships.myapplication.modules.AllPrograms;
 import com.example.ships.myapplication.modules.MyLongTermProgram;
 import com.example.ships.myapplication.modules.MyShortTermProgram;
 
-public class ExposureInfo extends AppCompatActivity {
+public class ExposureInfo extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -45,7 +49,11 @@ public class ExposureInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_exposure_info);
+//        setContentView(R.layout.activity_exposure_info);
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_exposure_info, null,false);
+        frameLayout.addView(activityView);
     }
     public void toDescription(View v){
         startActivity(new Intent(this, ExposureDes.class).putExtras(createBundle()));

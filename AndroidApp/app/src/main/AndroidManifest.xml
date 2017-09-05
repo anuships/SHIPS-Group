@@ -120,7 +120,15 @@
         <activity
             android:name=".cognitiveTherapy.FactsheetSelect"
             android:exported="true" />
-        <activity android:name=".OtherInterfaces.DrawerActivity"></activity>
+        <activity
+            android:name=".OtherInterfaces.DrawerActivity"
+            android:label=".OtherInterfaces.DrawerActivity">
+            <intent-filter>
+                <action android:name="OtherInterfaces.DrawerActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
