@@ -3,12 +3,10 @@ package com.example.ships.myapplication.exposure;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.example.ships.myapplication.OtherInterfaces.Treatments;
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.modules.MyLongTermProgram;
 
 public class ExposureDes extends AppCompatActivity {
     private static String firstName;

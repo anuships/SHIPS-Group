@@ -1,26 +1,24 @@
 package com.example.ships.myapplication.cognitiveTherapy;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.modules.AllPrograms;
-import com.example.ships.myapplication.modules.MyLongTermProgram;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class FactsheetSelect extends AppCompatActivity {
+public class FactsheetSelect extends DrawerActivity {
 
         private static String firstName;
         private static String lastName;
@@ -54,7 +52,13 @@ public class FactsheetSelect extends AppCompatActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             readIntent();
-            setContentView(R.layout.factsheet_select);
+//            setContentView(R.layout.factsheet_select);
+
+            FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+            LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View activityView = layoutInflater.inflate(R.layout.factsheet_select, null,false);
+            frameLayout.addView(activityView);
+
             ContentHandler db = new ContentHandler(this);
             WhatIfScenario.initializeWhatIfScenario(db);
             whatIfList = new ArrayList<>();
@@ -101,6 +105,8 @@ public class FactsheetSelect extends AppCompatActivity {
     {
         startActivity(new Intent(this, ThereapyFactsheets.class).putExtras(createBundle()));
     }
+
+
 
 //testing
 }
