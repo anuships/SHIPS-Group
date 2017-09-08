@@ -15,6 +15,7 @@ import com.example.ships.myapplication.exposure.ExposureDes;
 import com.example.ships.myapplication.exposure.ExposureTherapy;
 import com.example.ships.myapplication.homepageAndRegistration.MainActivity;
 import com.example.ships.myapplication.modules.MyProgramList;
+import com.example.ships.myapplication.userRecord.Records;
 
 public class DrawerActivity extends AppCompatActivity {
 
@@ -47,7 +48,7 @@ public class DrawerActivity extends AppCompatActivity {
 
     RelativeLayout leftRL;
     DrawerLayout drawerLayout;
-    private String[] listTitles = {"My program", "Logout"};
+    private String[] listTitles = {"My program", "User profile","Records", "Logout"};
     private ListView mDrawerList;
 
     @Override
@@ -74,11 +75,22 @@ public class DrawerActivity extends AppCompatActivity {
                             startActivity(intent);
                             break;
                         case 1:
-                            Intent intent2 = new Intent(getApplicationContext(), MainActivity.class).putExtras(createBundle());
+                            Intent intent2 = new Intent(getApplicationContext(), UserProfile.class).putExtras(createBundle());
                             intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent2);
                             break;
+                        case 2:
+                            Intent intent3 = new Intent(getApplicationContext(), Records.class).putExtras(createBundle());
+                            intent3.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent3);
+                            break;
+                        case 3:
+                            Intent intent4 = new Intent(getApplicationContext(), MainActivity.class).putExtras(createBundle());
+                            intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent4);
+                            break;
                     }
+
             }
         });
     }
