@@ -5,18 +5,22 @@ package com.example.ships.myapplication.EMDR;
  * EMDR settings activity
  */
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
 
-public class EMDRActivitySettings extends AppCompatActivity {
+public class EMDRActivitySettings extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -50,7 +54,14 @@ public class EMDRActivitySettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_emdrsettings);
+//        setContentView(R.layout.activity_emdrsettings);
+
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_emdrsettings, null,false);
+        frameLayout.addView(activityView);
+
 
         //set and populate spinner with emdr movement types
         Spinner emdr_movement_type_spinner = (Spinner) findViewById(R.id.emdr_movement_spinner);

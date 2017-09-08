@@ -1,14 +1,18 @@
 package com.example.ships.myapplication.modules;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.ships.myapplication.EMDR.EMDRActivitySettings;
 import com.example.ships.myapplication.FAS.FAS;
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.OtherInterfaces.SystematicDesensitation;
 import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.R;
@@ -18,7 +22,7 @@ import com.example.ships.myapplication.exposure.ExposureInfo;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.example.ships.myapplication.relaxationAudio.RelaxationAudioActivity;
 
-public class ModuleDescription extends AppCompatActivity {
+public class ModuleDescription extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -48,7 +52,13 @@ public class ModuleDescription extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_module_description);
+//        setContentView(R.layout.activity_module_description);
+
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_module_description, null,false);
+        frameLayout.addView(activityView);
         TextView desc = (TextView) findViewById(R.id.moduleDesText);
         desc.setText(getIntent().getExtras().getString("desc"));
     }

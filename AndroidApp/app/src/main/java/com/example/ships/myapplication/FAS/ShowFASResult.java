@@ -1,5 +1,6 @@
 package com.example.ships.myapplication.FAS;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -8,15 +9,18 @@ import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.modules.AllPrograms;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.modules.MyLongTermProgram;
 
-public class ShowFASResult extends AppCompatActivity {
+public class ShowFASResult extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -48,7 +52,14 @@ public class ShowFASResult extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_show_fasresult);
+//        setContentView(R.layout.activity_show_fasresult);
+
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_show_fasresult, null,false);
+        frameLayout.addView(activityView);
+
         tv = (TextView) findViewById(R.id.textView);
         tv2 = (TextView) findViewById(R.id.textView37);
         String scoreComment;

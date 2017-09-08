@@ -2,6 +2,7 @@ package com.example.ships.myapplication.modules;
 
 //reference: https://goo.gl/MrPdIi
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,12 +10,15 @@ import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
+import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.FrameLayout;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 
@@ -25,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Date;
 
-public class LongTermProgramList extends AppCompatActivity {
+public class LongTermProgramList extends DrawerActivity {
 
     private static String firstName;
     private static String lastName;
@@ -64,7 +68,12 @@ public class LongTermProgramList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_program_list);
+//        setContentView(R.layout.activity_program_list);
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_program_list, null,false);
+        frameLayout.addView(activityView);
         expandableListView = (ExpandableListView) findViewById(R.id.programList);
         //generate program title and program detail to the list
         dataDump.setData("Self Assessment", "Self Assessment is a tool that helps you to " +

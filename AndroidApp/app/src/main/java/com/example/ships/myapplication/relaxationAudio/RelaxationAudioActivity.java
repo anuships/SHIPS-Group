@@ -1,20 +1,24 @@
 package com.example.ships.myapplication.relaxationAudio;
 
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
 
 import java.util.concurrent.TimeUnit;
 
-public class RelaxationAudioActivity extends AppCompatActivity {
+public class RelaxationAudioActivity extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -71,7 +75,12 @@ public class RelaxationAudioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_relaxation_audio);
+//        setContentView(R.layout.activity_relaxation_audio);
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_relaxation_audio, null,false);
+        frameLayout.addView(activityView);
 
         b1 = (Button) findViewById(R.id.button);
         b2 = (Button) findViewById(R.id.button2);

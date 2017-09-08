@@ -10,7 +10,9 @@ import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,12 +21,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
 import com.felhr.usbserial.UsbSerialInterface;
 import com.felhr.usbserial.UsbSerialDevice;
 
 
-public class GSRGraphActivity extends AppCompatActivity {
+public class GSRGraphActivity extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -191,7 +194,13 @@ public class GSRGraphActivity extends AppCompatActivity {
         }
         lineGraph = new GSRLineGraph(this);
         lineGraph.setXViewSize(30.0);
-        setContentView(R.layout.activity_gsrgraph);
+//        setContentView(R.layout.activity_gsrgraph);
+
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_gsrgraph, null,false);
+        frameLayout.addView(activityView);
         heartRateDisplay = (TextView) findViewById(R.id.heartRateText);
         LinearLayout chartLyt = (LinearLayout) findViewById(R.id.chart);
         chartLyt.addView(lineGraph.getGraphView(),0);

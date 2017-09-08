@@ -1,12 +1,15 @@
 package com.example.ships.myapplication.OtherInterfaces;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.example.ships.myapplication.R;
 
-public class ThereapyFactsheets extends AppCompatActivity {
+public class ThereapyFactsheets extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -36,7 +39,12 @@ public class ThereapyFactsheets extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_thereapy_factsheets);
+//        setContentView(R.layout.activity_thereapy_factsheets);
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_thereapy_factsheets, null,false);
+        frameLayout.addView(activityView);
     }
 
     public void goBack(View view) {
