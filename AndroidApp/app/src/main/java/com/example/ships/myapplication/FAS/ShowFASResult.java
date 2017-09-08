@@ -2,6 +2,7 @@ package com.example.ships.myapplication.FAS;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,9 +17,13 @@ import android.widget.TextView;
 
 import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
+import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.example.ships.myapplication.modules.AllPrograms;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.modules.MyLongTermProgram;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ShowFASResult extends DrawerActivity {
     private static String firstName;
@@ -67,6 +72,7 @@ public class ShowFASResult extends DrawerActivity {
         String IFscoreComment;
         String GFscoreComment;
 
+        addRecords();
         if (FAS.getScore() >= 82.74){
 
             scoreComment = "You are very likely suffered from fear of flying";
@@ -138,5 +144,20 @@ public class ShowFASResult extends DrawerActivity {
     public void goToTreatment(View v)
     {
         startActivity(new Intent(this, MyLongTermProgram.class));
+    }
+
+
+    //Add user records by Jason
+    public void addRecords(){
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
+            mySqlDB.execSQL("CREATE TABLE IF NOT EXISTS userRecords(UID VARCHAR,TIME VARCHAR, MODULE VARCHAR,PRIMARY KEY (UID, TIME));");
+            String insertQuery = "INSERT INTO userRecords (uid, TIME, MODULE) VALUES(?,?,?)";
+            mySqlDB.execSQL(insertQuery, new String[]{uid, dateFormat.format(date), "Self assessment"});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

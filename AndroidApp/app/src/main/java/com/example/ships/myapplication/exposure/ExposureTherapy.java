@@ -41,9 +41,10 @@ import com.felhr.usbserial.UsbSerialDevice;
 import com.felhr.usbserial.UsbSerialInterface;
 
 
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -114,6 +115,7 @@ public class ExposureTherapy extends DrawerActivity {
         setSupportActionBar(myToolbar);
         getSupportActionBar().setTitle("Systematic Desensitization");
 
+        addRecords();
         try {
             SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
             mySqlDB.execSQL("CREATE TABLE if not exists SystematicDesensitization (EMAIL STRING, LEVEL STRING)");
@@ -573,5 +575,19 @@ public class ExposureTherapy extends DrawerActivity {
         }
     }
 
+
+    //Add user records by Jason
+    public void addRecords(){
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
+            mySqlDB.execSQL("CREATE TABLE IF NOT EXISTS userRecords(UID VARCHAR,TIME VARCHAR, MODULE VARCHAR,PRIMARY KEY (UID, TIME));");
+            String insertQuery = "INSERT INTO userRecords (uid, TIME, MODULE) VALUES(?,?,?)";
+            mySqlDB.execSQL(insertQuery, new String[]{uid, dateFormat.format(date), "Systematic desensitization"});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

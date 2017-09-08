@@ -111,7 +111,6 @@
         <activity android:name=".OtherInterfaces.FAQs" />
         <activity android:name=".OtherInterfaces.FindOutMore" />
         <activity android:name=".OtherInterfaces.FindPassword" />
-        <activity android:name=".OtherInterfaces.Records" />
         <activity android:name=".OtherInterfaces.SystematicDesensitation" />
         <activity android:name=".OtherInterfaces.Treatments" />
         <activity android:name=".OtherInterfaces.UserProfile" />
@@ -129,6 +128,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".userRecord.Records"></activity>
     </application>
 
 </manifest>

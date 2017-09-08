@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
@@ -16,13 +17,16 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.felhr.usbserial.UsbSerialInterface;
 import com.felhr.usbserial.UsbSerialDevice;
 
@@ -201,6 +205,11 @@ public class GSRGraphActivity extends DrawerActivity {
         LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View activityView = layoutInflater.inflate(R.layout.activity_gsrgraph, null,false);
         frameLayout.addView(activityView);
+
+        //add records by Jason
+        addRecords();
+
+
         heartRateDisplay = (TextView) findViewById(R.id.heartRateText);
         LinearLayout chartLyt = (LinearLayout) findViewById(R.id.chart);
         chartLyt.addView(lineGraph.getGraphView(),0);
@@ -276,5 +285,22 @@ public class GSRGraphActivity extends DrawerActivity {
             e.printStackTrace();
         }
         appHasFocus = false;
+    }
+
+
+
+
+    //Add user records by Jason
+    public void addRecords(){
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
+            mySqlDB.execSQL("CREATE TABLE IF NOT EXISTS userRecords(UID VARCHAR,TIME VARCHAR, MODULE VARCHAR,PRIMARY KEY (UID, TIME));");
+            String insertQuery = "INSERT INTO userRecords (uid, TIME, MODULE) VALUES(?,?,?)";
+            mySqlDB.execSQL(insertQuery, new String[]{uid, dateFormat.format(date), "Biofeedback"});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -2,14 +2,20 @@ package com.example.ships.myapplication.exposure;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.homepageAndRegistration.DBManager;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ExposureDes extends DrawerActivity {
     private static String firstName;
@@ -42,7 +48,6 @@ public class ExposureDes extends DrawerActivity {
         super.onCreate(savedInstanceState);
         readIntent();
 //        setContentView(R.layout.activity_exposure_des);
-
         FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
         LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View activityView = layoutInflater.inflate(R.layout.activity_exposure_des, null,false);

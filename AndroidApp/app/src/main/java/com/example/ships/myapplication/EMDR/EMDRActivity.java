@@ -9,6 +9,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Point;
 import android.graphics.drawable.shapes.OvalShape;
 import android.media.AudioManager;
@@ -38,8 +39,11 @@ import android.widget.TextView;
 
 import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static com.example.ships.myapplication.R.layout.activity_emdr;
 import static com.example.ships.myapplication.R.layout.animationemdr;
@@ -106,6 +110,10 @@ public class EMDRActivity extends DrawerActivity {
         //gets user's chosen movement type from settings activity
         Intent intent = getIntent();
         String emdr_movement_type = intent.getStringExtra("emdr_Movement_Type");
+
+
+        //Add records by Jason
+        addRecords();
 
         //gets user's chosen speed from settings activity
         String emdr_speed = intent.getStringExtra("emdr_Speed");
@@ -307,4 +315,23 @@ public class EMDRActivity extends DrawerActivity {
                 mediaPlayer = null;
             }
         }
+
+
+    //Add user records by Jason
+    public void addRecords(){
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
+            mySqlDB.execSQL("CREATE TABLE IF NOT EXISTS userRecords(UID VARCHAR,TIME VARCHAR, MODULE VARCHAR,PRIMARY KEY (UID, TIME));");
+            String insertQuery = "INSERT INTO userRecords (uid, TIME, MODULE) VALUES(?,?,?)";
+            mySqlDB.execSQL(insertQuery, new String[]{uid, dateFormat.format(date), "EMDR"});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+
+
+    }
+

@@ -1,6 +1,7 @@
 package com.example.ships.myapplication.relaxationAudio;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,10 @@ import android.widget.Toast;
 
 import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
+import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class RelaxationAudioActivity extends DrawerActivity {
@@ -81,6 +85,9 @@ public class RelaxationAudioActivity extends DrawerActivity {
         LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View activityView = layoutInflater.inflate(R.layout.activity_relaxation_audio, null,false);
         frameLayout.addView(activityView);
+
+        //add records by Jason
+        addRecords();
 
         b1 = (Button) findViewById(R.id.button);
         b2 = (Button) findViewById(R.id.button2);
@@ -198,6 +205,21 @@ public class RelaxationAudioActivity extends DrawerActivity {
             audioIndex = 1;
         }
         mediaPlayer = MediaPlayer.create(RelaxationAudioActivity.this, audioList[audioIndex]);
+    }
+
+
+    //Add user records by Jason
+    public void addRecords(){
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
+            mySqlDB.execSQL("CREATE TABLE IF NOT EXISTS userRecords(UID VARCHAR,TIME VARCHAR, MODULE VARCHAR,PRIMARY KEY (UID, TIME));");
+            String insertQuery = "INSERT INTO userRecords (uid, TIME, MODULE) VALUES(?,?,?)";
+            mySqlDB.execSQL(insertQuery, new String[]{uid, dateFormat.format(date), "Relaxation audio"});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -2,7 +2,6 @@ package com.example.ships.myapplication.OtherInterfaces;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.MainActivity;
 import com.example.ships.myapplication.modules.MyProgramList;
-import com.example.ships.myapplication.modules.ExpandableListDataPump;
 import com.example.ships.myapplication.modules.SuggestedModules;
+import com.example.ships.myapplication.userRecord.Records;
 
 public class UserProfile extends DrawerActivity {
     private static String firstName;
