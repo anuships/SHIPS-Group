@@ -25,19 +25,19 @@ function draw_selection() {
    ctx.fillRect(0, 0, canvas.width, canvas.height);
    
    ctx.beginPath();
-   ctx.rect(20, 20, 50, 50);
+   ctx.rect(20, 20, 100, 100);
    ctx.fillStyle = "blue";
    ctx.fill();
    ctx.stroke();
    
    ctx.beginPath();
-   ctx.rect(100, 20, 50, 50);
+   ctx.rect(150, 20, 100, 100);
    ctx.fillStyle = "green";
    ctx.fill();
    ctx.stroke();
    
    ctx.beginPath();
-   ctx.rect(180, 20, 50, 50);
+   ctx.rect(280, 20, 100, 100);
    ctx.fillStyle = "pink";
    ctx.fill();
    ctx.stroke();
