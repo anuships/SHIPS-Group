@@ -8,6 +8,8 @@ var ctx = canvas.getContext('2d');
 //button.addEventListener ("click", init());
 //var start_button = document.getElementById('start_button');
 
+canvas.addEventListener('click', select_colour(evt.clientX, evt.clientY), false);
+
 var inColourSelectionCanvas = true;
 
 var SQUARE_WIDTH = 100;
