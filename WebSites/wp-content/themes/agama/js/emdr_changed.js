@@ -40,14 +40,19 @@ function select_colour(x_coord, y_coord) {
    if (inColourSelectionCanvas) {
       if ((x_coord >= LEFT_BUFFER && x_coord <= LEFT_BUFFER + SQUARE_WIDTH) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
          emdr_colour = "blue";
+         draw_selection();
       } else if ((x_coord >= LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 2*SQUARE_WIDTH + SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
          emdr_colour = "green";
+         draw_selection();
       } else if ((x_coord >= LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 3*SQUARE_WIDTH + 2*SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
          emdr_colour = "pink";
+         draw_selection();
       } else if ((x_coord >= LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 4*SQUARE_WIDTH + 3*SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
          emdr_colour = "violet";
+         draw_selection();
       } else if ((x_coord >= LEFT_BUFFER + 4*SQUARE_WIDTH + 4*SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 5*SQUARE_WIDTH + 4*SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
          emdr_colour = "gray";
+         draw_selection();
       }
    }
 }
@@ -59,30 +64,50 @@ function draw_selection() {
   
    
    ctx.beginPath();
+   if (emdr_colour = "blue") {
+      ctx.lineWidth="6"
+      ctx.strokeStyle="black"
+   }
    ctx.rect(LEFT_BUFFER, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.fillStyle = "blue";
    ctx.fill();
    ctx.stroke();
    
    ctx.beginPath();
+   if (emdr_colour = "green") {
+      ctx.lineWidth="6"
+      ctx.strokeStyle="black"
+   }
    ctx.rect(LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.fillStyle = "green";
    ctx.fill();
    ctx.stroke();
    
    ctx.beginPath();
+   if (emdr_colour = "pink") {
+      ctx.lineWidth="6"
+      ctx.strokeStyle="black"
+   }
    ctx.rect(LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.fillStyle = "pink";
    ctx.fill();
    ctx.stroke();
    
    ctx.beginPath();
+   if (emdr_colour = "violet") {
+      ctx.lineWidth="6"
+      ctx.strokeStyle="black"
+   }
    ctx.rect(LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.fillStyle = "violet";
    ctx.fill();
    ctx.stroke();
    
    ctx.beginPath();
+   if (emdr_colour = "gray") {
+      ctx.lineWidth="6"
+      ctx.strokeStyle="black"
+   }
    ctx.rect(LEFT_BUFFER + 4*SQUARE_WIDTH + 4*SQUARE_SEPARATION, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.fillStyle = "gray";
    ctx.fill();
