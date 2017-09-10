@@ -11,11 +11,28 @@ var ctx = canvas.getContext('2d');
 function start_button_click() {
    var start_button = document.getElementById('start_button');
    start_button.style.visibility="hidden";
-   init();
+   draw_selection();
+   //init();
 }
 
 function init() {
    window.requestAnimationFrame(draw);
+}
+
+function draw_selection() {
+   ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
+   ctx.fillStyle = "white";
+   ctx.fillRect(0, 0, canvas.width, canvas.height);
+   
+   ctx.rect(100, 200, 150, 150);
+   ctx.fillStyle = "blue";
+   ctx.fill();
+   ctx.stroke();
+   
+   ctx.rect(400, 200, 150, 150);
+   ctx.fillStyle = "green";
+   ctx.fill();
+   ctx.stroke();
 }
 
 function draw() {
