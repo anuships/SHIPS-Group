@@ -24,11 +24,13 @@ function draw_selection() {
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
    
+   ctx.beginPath();
    ctx.rect(100, 200, 150, 150);
    ctx.fillStyle = "blue";
    ctx.fill();
    ctx.stroke();
    
+   ctx.beginPath();
    ctx.rect(400, 200, 150, 150);
    ctx.fillStyle = "green";
    ctx.fill();
