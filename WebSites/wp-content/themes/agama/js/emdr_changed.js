@@ -1,13 +1,15 @@
 var canvas = document.getElementById('canvas');
 var time = 0;
-var start_button = document.createElement("button");
-start_button.innerHTML = "start EMDR";
-var body = document.getElementsByTagName("body")[0];
-body.appendChild(start_button);
-button.addEventListener ("click", init());
+//var start_button = document.createElement("button");
+//start_button.innerHTML = "start EMDR";
+//var body = document.getElementsByTagName("body")[0];
+//body.appendChild(start_button);
+//button.addEventListener ("click", init());
+var start_button = document.getElementById('start_button');
 
 function init() {
    window.requestAnimationFrame(draw);
+   start_button.visibility="hidden";
 }
 
 function draw() {
