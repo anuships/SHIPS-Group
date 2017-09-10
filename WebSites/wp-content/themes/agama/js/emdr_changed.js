@@ -8,7 +8,13 @@ var ctx = canvas.getContext('2d');
 //button.addEventListener ("click", init());
 //var start_button = document.getElementById('start_button');
 
-canvas.addEventListener('click', select_colour(evt.clientX, evt.clientY), false);
+//from user patriques on stack overflow
+function getCursorPosition(canvas, event) {
+   var rect = canvas.getBoundingClientRect();
+   var x = event.clientX - rect.left;
+   var y = event.clientY - rect.top;
+   select_colour(x, y);
+}
 
 var inColourSelectionCanvas = true;
 
