@@ -8,7 +8,7 @@ var time = 0;
 //var start_button = document.getElementById('start_button');
 
 function start_button_click() {
-   var start_button = document.getElementById(start_button);
+   var start_button = document.getElementById('start_button');
    start_button.style.visibility="hidden";
    init();
 }
