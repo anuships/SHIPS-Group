@@ -7,8 +7,8 @@ var time = 0;
 //button.addEventListener ("click", init());
 //var start_button = document.getElementById('start_button');
 
-function start_button_click(clicked_id) {
-   var start_button = document.getElementById(clicked_id);
+function start_button_click() {
+   var start_button = document.getElementById(start_button);
    start_button.style.visibility="hidden";
    init();
 }
@@ -45,7 +45,13 @@ function draw() {
    } else {
       time = 0;
       ctx.translate(-200, 0);
+      reset_start_button();
    }
+   
+function reset_start_button() {
+   start_button.style.visibility="visible";
+}
+
 }
 
 //init();
