@@ -14,6 +14,8 @@ var SQUARE_SEPARATION = 30;
 var LEFT_BUFFER = 20;
 var TOP_BUFFER = 20;
 
+var emdr_colour = "blue";
+
 function start_button_click() {
    var start_button = document.getElementById('start_button');
    start_button.style.visibility="hidden";
@@ -80,7 +82,7 @@ function draw() {
       ctx.translate(-10,0);
       ctx.beginPath();
       ctx.arc(100, 200, 50, 0, 2*Math.PI);
-      ctx.fillStyle = "blue";
+      ctx.fillStyle = emdr_colour;
       ctx.fill();
       ctx.stroke();
    }
