@@ -1,7 +1,7 @@
 var canvas = document.getElementById('canvas');
 var time = 0;
 var ctx = canvas.getContext('2d');
-var body = document.getElementById('body');
+var emdr_description_paragraph = document.getElementById('emdr_description_paragraph');
 
 //from user patriques on stack overflow
 function getCursorPosition(canvas, event) {
@@ -135,7 +135,7 @@ function draw() {
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
-   body.hide();
+   emdr_description_paragraph.hide();
    if (time % 80 < 40) {
       time++;
       ctx.translate(10,0);
