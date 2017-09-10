@@ -49,6 +49,18 @@ function draw_selection() {
    ctx.fill();
    ctx.stroke();
    
+   ctx.beginPath();
+   ctx.rect(LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
+   ctx.fillStyle = "violet";
+   ctx.fill();
+   ctx.stroke();
+   
+   ctx.beginPath();
+   ctx.rect(LEFT_BUFFER + 4*SQUARE_WIDTH + 4*SQUARE_SEPARATION, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
+   ctx.fillStyle = "gray";
+   ctx.fill();
+   ctx.stroke();
+   
 }
 
 function draw() {
