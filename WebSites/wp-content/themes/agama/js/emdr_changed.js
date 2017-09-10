@@ -100,7 +100,7 @@ function draw() {
       ctx.translate(10,0);
       ctx.beginPath();
       ctx.arc(100, 200, 50, 0, 2*Math.PI);
-      ctx.fillStyle = "blue";
+      ctx.fillStyle = emdr_colour;
       ctx.fill();
       ctx.stroke();
    } else {
