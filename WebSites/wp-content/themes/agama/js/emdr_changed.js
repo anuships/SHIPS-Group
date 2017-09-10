@@ -63,7 +63,8 @@ function draw_selection() {
    ctx.fillRect(0, 0, canvas.width, canvas.height);
   
    ctx.font = "30px Arial";
-   ctx.fillText("Select a colour", LEFT_BUFFER, 10);
+   ctx.textAlign = "center";
+   ctx.fillText("Select a colour", canvas.width/2, 10);
    
    ctx.beginPath();
    if (emdr_colour == "blue") {
