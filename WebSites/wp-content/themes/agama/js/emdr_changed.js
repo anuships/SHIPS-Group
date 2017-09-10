@@ -21,7 +21,7 @@ var inColourSelectionCanvas = true;
 var SQUARE_WIDTH = 100;
 var SQUARE_SEPARATION = 30;
 var LEFT_BUFFER = 20;
-var TOP_BUFFER = 20;
+var TOP_BUFFER = 50;
 
 var emdr_colour = "blue";
 
@@ -62,6 +62,8 @@ function draw_selection() {
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
   
+   ctx.font = "30px Arial";
+   ctx.fillText("Select a colour", LEFT_BUFFER, 10);
    
    ctx.beginPath();
    if (emdr_colour == "blue") {
