@@ -11,8 +11,8 @@ var ctx = canvas.getContext('2d');
 function start_button_click() {
    var start_button = document.getElementById('start_button');
    start_button.style.visibility="hidden";
-   draw_selection();
-   //init();
+   //draw_selection();
+   init();
 }
 
 function init() {
@@ -80,6 +80,6 @@ function reset_start_button() {
 }
 
 
-//init();
+draw_selection();
 
 
