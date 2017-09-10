@@ -1,14 +1,9 @@
 var canvas = document.getElementById('canvas');
 var time = 0;
-//var start_button = document.createElement("button");
-//start_button.innerHTML = "start EMDR";
-//var body = document.getElementsByTagName("body")[0];
-//body.appendChild(start_button);
-//button.addEventListener ("click", init());
-//var start_button = document.getElementById('start_button');
+var start_button = document.getElementById('start_button');
+var ctx = canvas.getContext('2d');
 
 function start_button_click() {
-   var start_button = document.getElementById('start_button');
    start_button.style.visibility="hidden";
    init();
 }
@@ -18,7 +13,6 @@ function init() {
 }
 
 function draw() {
-   var ctx = canvas.getContext('2d');
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -43,14 +37,14 @@ function draw() {
    if (time < (15 * 80) - 20) {
       window.requestAnimationFrame(draw);
    } else {
-      time = 0;
-      ctx.translate(-200, 0);
-      reset_start_button();
+      reset()
    }
    
 }
-   
-function reset_start_button() {
+
+function reset() {
+   time = 0;
+   ctx.translate(-200, 0);
    start_button.style.visibility="visible";
 }
 
