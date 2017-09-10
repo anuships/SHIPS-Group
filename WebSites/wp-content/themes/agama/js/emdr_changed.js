@@ -5,10 +5,11 @@ var time = 0;
 //var body = document.getElementsByTagName("body")[0];
 //body.appendChild(start_button);
 //button.addEventListener ("click", init());
-var start_button = document.getElementById('start_button');
+//var start_button = document.getElementById('start_button');
 
 function start_button_click(clicked_id) {
-   document.getElementById(clicked_id).visibility="hidden";
+   var start_button = document.getElementById(clicked_id);
+   start_button.visibility="hidden";
    init();
 }
 
