@@ -58,6 +58,7 @@ function select_colour(x_coord, y_coord) {
 }
 
 function draw_selection() {
+   inColourSelectionCanvas = true;
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
