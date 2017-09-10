@@ -8,6 +8,7 @@ var ctx = canvas.getContext('2d');
 //button.addEventListener ("click", init());
 //var start_button = document.getElementById('start_button');
 
+var inColourSelectionCanvas = true;
 
 var SQUARE_WIDTH = 100;
 var SQUARE_SEPARATION = 30;
@@ -25,6 +26,22 @@ function start_button_click() {
 
 function init() {
    window.requestAnimationFrame(draw);
+}
+
+function select_colour(x_coord, y_coord) {
+   if (inColourSelectionCanvas) {
+      if ((x_coord >= LEFT_BUFFER && x_coord <= LEFT_BUFFER + SQUARE_WIDTH) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
+         emdr_colour = "blue";
+      } else if ((x_coord >= LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 2*SQUARE_WIDTH + SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
+         emdr_colour = "green";
+      } else if ((x_coord >= LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 3*SQUARE_WIDTH + 2*SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
+         emdr_colour = "pink";
+      } else if ((x_coord >= LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 4*SQUARE_WIDTH + 3*SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
+         emdr_colour = "violet";
+      } else if ((x_coord >= LEFT_BUFFER + 4*SQUARE_WIDTH + 4*SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 5*SQUARE_WIDTH + 4*SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
+         emdr_colour = "gray";
+      }
+   }
 }
 
 function draw_selection() {
@@ -66,6 +83,7 @@ function draw_selection() {
 }
 
 function draw() {
+   inColourSelectionCanvas = false;
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
