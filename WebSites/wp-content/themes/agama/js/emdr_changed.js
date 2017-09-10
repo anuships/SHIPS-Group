@@ -71,7 +71,7 @@ function draw_selection() {
       ctx.lineWidth="1.0";
    }
    ctx.rect(LEFT_BUFFER, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
-   ctx.fillStyle == "blue";
+   ctx.fillStyle = "blue";
    ctx.fill();
    ctx.stroke();
    ctx.lineWidth="1.0";
