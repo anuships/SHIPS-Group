@@ -8,6 +8,12 @@ var ctx = canvas.getContext('2d');
 //button.addEventListener ("click", init());
 //var start_button = document.getElementById('start_button');
 
+
+var SQUARE_WIDTH = 100;
+var SQUARE_SEPARATION = 30;
+var LEFT_BUFFER = 20;
+var TOP_BUFFER = 20;
+
 function start_button_click() {
    var start_button = document.getElementById('start_button');
    start_button.style.visibility="hidden";
@@ -23,32 +29,26 @@ function draw_selection() {
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
-   
-   var square_width = 100;
-   var square_separation = 30;
-   var left_buffer = 20;
-   var top_buffer = 20;
+  
    
    ctx.beginPath();
-   ctx.rect(left_buffer, top_buffer, square_width, square_width);
+   ctx.rect(LEFT_BUFFER, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.fillStyle = "blue";
    ctx.fill();
    ctx.stroke();
    
    ctx.beginPath();
-   ctx.rect(left_buffer + square_width + square_separation, top_buffer, square_width, square_width);
+   ctx.rect(LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.fillStyle = "green";
    ctx.fill();
    ctx.stroke();
    
    ctx.beginPath();
-   ctx.rect(left_buffer + 2*square_width + 2*square_separation, top_buffer, square_width, square_width);
+   ctx.rect(LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION, TOP_BUFFER, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.fillStyle = "pink";
    ctx.fill();
    ctx.stroke();
    
-   ctx.beginPath();
-   ctx.rect(
 }
 
 function draw() {
