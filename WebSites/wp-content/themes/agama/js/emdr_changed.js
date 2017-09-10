@@ -1,5 +1,6 @@
 var canvas = document.getElementById('canvas');
 var time = 0;
+var ctx = canvas.getContext('2d');
 //var start_button = document.createElement("button");
 //start_button.innerHTML = "start EMDR";
 //var body = document.getElementsByTagName("body")[0];
@@ -18,7 +19,6 @@ function init() {
 }
 
 function draw() {
-   var ctx = canvas.getContext('2d');
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
