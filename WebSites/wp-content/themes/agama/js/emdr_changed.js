@@ -48,11 +48,12 @@ function draw() {
       reset_start_button();
    }
    
+}
+   
 function reset_start_button() {
    start_button.style.visibility="visible";
 }
 
-}
 
 //init();
 
