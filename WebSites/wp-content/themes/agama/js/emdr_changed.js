@@ -24,23 +24,31 @@ function draw_selection() {
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
    
+   var square_width = 100;
+   var square_separation = 30;
+   var left_buffer = 20;
+   var top_buffer = 20;
+   
    ctx.beginPath();
-   ctx.rect(20, 20, 100, 100);
+   ctx.rect(left_buffer, top_buffer, square_width, square_width);
    ctx.fillStyle = "blue";
    ctx.fill();
    ctx.stroke();
    
    ctx.beginPath();
-   ctx.rect(150, 20, 100, 100);
+   ctx.rect(left_buffer + square_width + square_separation, top_buffer, square_width, square_width);
    ctx.fillStyle = "green";
    ctx.fill();
    ctx.stroke();
    
    ctx.beginPath();
-   ctx.rect(280, 20, 100, 100);
+   ctx.rect(left_buffer + 2*square_width + 2*square_separation, top_buffer, square_width, square_width);
    ctx.fillStyle = "pink";
    ctx.fill();
    ctx.stroke();
+   
+   ctx.beginPath();
+   ctx.rect(
 }
 
 function draw() {
