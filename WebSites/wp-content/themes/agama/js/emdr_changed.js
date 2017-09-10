@@ -9,7 +9,7 @@ var time = 0;
 
 function start_button_click(clicked_id) {
    var start_button = document.getElementById(clicked_id);
-   start_button.visibility="hidden";
+   start_button.style.visibility="hidden";
    init();
 }
 
