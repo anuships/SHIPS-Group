@@ -63,6 +63,7 @@ function draw_selection() {
    ctx.fillRect(0, 0, canvas.width, canvas.height);
   
    ctx.font = "30px Arial";
+   ctx.fillStyle = "red";
    ctx.textAlign = "center";
    ctx.fillText("Select a colour", canvas.width/2, 10);
    
