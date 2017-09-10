@@ -7,9 +7,13 @@ var time = 0;
 //button.addEventListener ("click", init());
 var start_button = document.getElementById('start_button');
 
+function start_button_click(clicked_id) {
+   document.getElementById(clicked_id).visibility="hidden";
+   init();
+}
+
 function init() {
    window.requestAnimationFrame(draw);
-   start_button.visibility="hidden";
 }
 
 function draw() {
