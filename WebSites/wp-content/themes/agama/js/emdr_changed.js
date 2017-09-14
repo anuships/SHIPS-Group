@@ -3,13 +3,7 @@ var time = 0;
 var ctx = canvas.getContext('2d');
 //var emdr_description_paragraph = document.getElementById('emdr_description_paragraph');
 
-//from user patriques on stack overflow
-function getCursorPosition(canvas, event) {
-   var rect = canvas.getBoundingClientRect();
-   var x = event.clientX - rect.left;
-   var y = event.clientY - rect.top;
-   select_colour(x, y);
-}
+
 
 var inColourSelectionCanvas = true;
 
@@ -32,6 +26,18 @@ function start_button_click() {
 
 function init() {
    window.requestAnimationFrame(draw);
+}
+
+//from user patriques on stack overflow
+function getCursorPosition(canvas, event) {
+   var rect = canvas.getBoundingClientRect();
+   var x = event.clientX - rect.left;
+   var y = event.clientY - rect.top;
+   if (y >= TOP_BUFFER && y <= TOP_BUFFER + SQUARE_WIDTH) {
+      select_colour(x, y);
+   } else if (y >= TOP_BUFFER_SPEED && y <= TOP_BUFFER_SPEED + SQUARE_WIDTH) {
+      select_speed(x, y);
+   }
 }
 
 function select_colour(x_coord, y_coord) {
