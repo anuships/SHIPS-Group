@@ -26,8 +26,8 @@ var emdr_speed = SLOW_SPEED;
 
 
 function start_button_click() {
-   var start_button = document.getElementById('start_button');
-   start_button.style.visibility="hidden";
+//   var start_button = document.getElementById('start_button');
+//   start_button.style.visibility="hidden";
    //draw_selection();
    init();
 }
@@ -93,8 +93,8 @@ function select_speed(x_coord, y_coord) {
 
 //user's emdr settings page
 function draw_selection() {
-   var return_to_settings_button = document.getElementById('return_to_settings_button');
-   return_to_settings_button.style.visibility="hidden";
+//   var return_to_settings_button = document.getElementById('return_to_settings_button');
+//   return_to_settings_button.style.visibility="hidden";
 
    inColourSelectionCanvas = true;
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
@@ -239,6 +239,13 @@ function draw_selection() {
 //emdr movement animation
 //redraws circle with canvas translated
 function draw() {
+   var start_button = document.getElementById('start_button');
+   start_button.style.visibility="hidden";
+   
+   var return_to_settings_button = document.getElementById('return_to_settings_button');
+   return_to_settings_button.style.visibility="hidden";
+   
+
    inColourSelectionCanvas = false;
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
