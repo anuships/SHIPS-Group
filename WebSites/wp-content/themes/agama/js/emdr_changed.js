@@ -55,6 +55,21 @@ function select_colour(x_coord, y_coord) {
    }
 }
 
+function select_speed(x_coord, y_coord) {
+   if (inColourSelectionCanvas) {
+      } if ((x_coord >= LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 2*SQUARE_WIDTH + SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER_SPEED && y_coord <= TOP_BUFFER_SPEED + SQUARE_WIDTH)) {
+         emdr_speed = 1.0;
+         draw_selection();
+      } else if ((x_coord >= LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 3*SQUARE_WIDTH + 2*SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER_SPEED && y_coord <= TOP_BUFFER_SPEED + SQUARE_WIDTH)) {
+         emdr_speed = 1.5;
+         draw_selection();
+      } else if ((x_coord >= LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 4*SQUARE_WIDTH + 3*SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER_SPEED && y_coord <= TOP_BUFFER_SPEED + SQUARE_WIDTH)) {
+         emdr_speed = 2.0;
+         draw_selection();
+      }
+   }
+}
+
 function draw_selection() {
    inColourSelectionCanvas = true;
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
@@ -66,6 +81,7 @@ function draw_selection() {
    ctx.textAlign = "center";
    ctx.fillText("Select a colour", canvas.width/2, 20);
    
+   //colour selection rectangles
    ctx.beginPath();
    if (emdr_colour == "blue") {
       ctx.lineWidth="6.0";
@@ -131,40 +147,48 @@ function draw_selection() {
    ctx.stroke();
    ctx.lineWidth="1.0";
    
+   ctx.beginPath();
    ctx.font = "24px Arial";
    ctx.fillStyle = "blue";
    ctx.textAlign = "center";
    ctx.fillText("Select a speed", canvas.width/2, TOP_BUFFER + SQUARE_WIDTH + SPEED_COLOUR_BUFFER);
    
+   //speed selection rectangles
+   ctx.beginPath();
    ctx.rect(LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.lineWidth="1.0";
    ctx.strokeStyle="black";
    ctx.stroke();
    
+   ctx.beginPath();
    ctx.rect(LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.lineWidth="1.0";
    ctx.strokeStyle="black";
    ctx.stroke();
    
+   ctx.beginPath();
    ctx.rect(LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.lineWidth="1.0";
    ctx.strokeStyle="black";
    ctx.stroke();
    
+   ctx.beginPath();
    ctx.font = "20px Arial";
    ctx.fillStyle = "green";
    ctx.textAlign = "center";
-   ctx.fillText("Slow", LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2);
+   ctx.fillText("Slow", LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2 + 5);
    
+   ctx.beginPath();
    ctx.font = "20px Arial";
    ctx.fillStyle = "blue";
    ctx.textAlign = "center";
-   ctx.fillText("Medium", LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2);
+   ctx.fillText("Medium", LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2 + 5);
    
+   ctx.beginPath();
    ctx.font = "20px Arial";
    ctx.fillStyle = "red";
    ctx.textAlign = "center";
-   ctx.fillText("Fast", LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2);
+   ctx.fillText("Fast", LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2 + 5);
    
 }
 
@@ -175,16 +199,16 @@ function draw() {
    ctx.fillRect(0, 0, canvas.width, canvas.height);
 //   emdr_description_paragraph.hide();
    if (time % 80 < 40) {
-      time++;
-      ctx.translate(10,0);
+      time = time + emdr_speed;
+      ctx.translate(10 * emdr_speed,0);
       ctx.beginPath();
       ctx.arc(100, 200, 50, 0, 2*Math.PI);
       ctx.fillStyle = emdr_colour;
       ctx.fill();
       ctx.stroke();
    } else {
-      time++;
-      ctx.translate(-10,0);
+      time = time + emdr_speed;
+      ctx.translate(-(10 * emdr_speed),0);
       ctx.beginPath();
       ctx.arc(100, 200, 50, 0, 2*Math.PI);
       ctx.fillStyle = emdr_colour;
