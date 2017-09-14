@@ -18,6 +18,7 @@ var TOP_BUFFER_SPEED = TOP_BUFFER + SQUARE_WIDTH + SPEED_COLOUR_BUFFER + 40;
 var SLOW_SPEED = 1.0;
 var MEDIUM_SPEED = 1.5;
 var FAST_SPEED = 2.0;
+var EMDR_REPETITIONS = 15;
 
 var emdr_colour = "blue";
 var emdr_speed = SLOW_SPEED;
@@ -47,6 +48,7 @@ function getCursorPosition(canvas, event) {
    }
 }
 
+//sets emdr colour based on where user clicked
 function select_colour(x_coord, y_coord) {
    if (inColourSelectionCanvas) {
       if ((x_coord >= LEFT_BUFFER && x_coord <= LEFT_BUFFER + SQUARE_WIDTH) && (y_coord >=TOP_BUFFER && y_coord <= TOP_BUFFER + SQUARE_WIDTH)) {
@@ -68,6 +70,7 @@ function select_colour(x_coord, y_coord) {
    }
 }
 
+//sets emdr speed based on where user clicked
 function select_speed(x_coord, y_coord) {
    if (inColourSelectionCanvas) {
       } if ((x_coord >= LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 2*SQUARE_WIDTH + SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER_SPEED && y_coord <= TOP_BUFFER_SPEED + SQUARE_WIDTH)) {
@@ -82,6 +85,7 @@ function select_speed(x_coord, y_coord) {
       }
    }
 
+//user's emdr settings page
 function draw_selection() {
    inColourSelectionCanvas = true;
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
@@ -94,6 +98,7 @@ function draw_selection() {
    ctx.fillText("Select a colour", canvas.width/2, 20);
    
    //colour selection rectangles
+   //bolded if selected
    ctx.beginPath();
    if (emdr_colour == "blue") {
       ctx.lineWidth="6.0";
@@ -159,6 +164,7 @@ function draw_selection() {
    ctx.stroke();
    ctx.lineWidth="1.0";
    
+   //speed selection description text
    ctx.beginPath();
    ctx.font = "24px Arial";
    ctx.fillStyle = "blue";
@@ -166,6 +172,7 @@ function draw_selection() {
    ctx.fillText("Select a speed", canvas.width/2, TOP_BUFFER + SQUARE_WIDTH + SPEED_COLOUR_BUFFER);
    
    //speed selection rectangles
+   //bolded if selected
    ctx.beginPath();
    if (emdr_speed == SLOW_SPEED) {
       ctx.lineWidth="6.0";
@@ -199,6 +206,7 @@ function draw_selection() {
    ctx.stroke();
    ctx.lineWidth="1.0";
    
+   //text for speed selections
    ctx.beginPath();
    ctx.font = "20px Arial";
    ctx.fillStyle = "green";
@@ -219,6 +227,8 @@ function draw_selection() {
    
 }
 
+//emdr movement animation
+//redraws circle with canvas translated
 function draw() {
    inColourSelectionCanvas = false;
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
@@ -243,7 +253,7 @@ function draw() {
       ctx.stroke();
    }
    
-   if (time < (15 * 120) - 30) {
+   if (time < (EMDR_REPETITIONS * 120) - 30) {
       window.requestAnimationFrame(draw);
    } else {
       time = 0;
