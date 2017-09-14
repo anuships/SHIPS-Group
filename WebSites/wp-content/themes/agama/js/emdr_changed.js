@@ -17,8 +17,11 @@ var SQUARE_WIDTH = 100;
 var SQUARE_SEPARATION = 30;
 var LEFT_BUFFER = 20;
 var TOP_BUFFER = 60;
+var SPEED_COLOUR_BUFFER = 20;
+var TOP_BUFFER_SPEED = TOP_BUFFER + SQUARE_WIDTH + SPEED_COLOUR_BUFFER + 40;
 
 var emdr_colour = "blue";
+var emdr_speed = 1;
 
 function start_button_click() {
    var start_button = document.getElementById('start_button');
@@ -127,6 +130,20 @@ function draw_selection() {
    ctx.fill();
    ctx.stroke();
    ctx.lineWidth="1.0";
+   
+   ctx.font = "24px Arial";
+   ctx.fillStyle = "blue";
+   ctx.textAlign = "center";
+   ctx.fillText("Select a speed", canvas.width/2, TOP_BUFFER + SQUARE_WIDTH + SPEED_COLOUR_BUFFER);
+   
+   ctx.rect(LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
+   ctx.stroke();
+   
+   ctx.rect(LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
+   ctx.stroke();
+   
+   ctx.rect(LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
+   ctx.stroke();
    
 }
 
