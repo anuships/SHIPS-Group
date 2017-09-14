@@ -32,6 +32,12 @@ function start_button_click() {
    init();
 }
 
+function return_to_settings_button_click() {
+//   var return_to_settings_button = document.getElementById('return_to_settings_button');
+//   return_to_settings_button.style.visibility="hidden";
+   draw_selection();
+}
+
 function init() {
    window.requestAnimationFrame(draw);
 }
@@ -87,6 +93,9 @@ function select_speed(x_coord, y_coord) {
 
 //user's emdr settings page
 function draw_selection() {
+   var return_to_settings_button = document.getElementById('return_to_settings_button');
+   return_to_settings_button.style.visibility="hidden";
+
    inColourSelectionCanvas = true;
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
@@ -257,14 +266,19 @@ function draw() {
       window.requestAnimationFrame(draw);
    } else {
       time = 0;
-      ctx.translate(-200, 0);
+      ctx.translate(-300, 0);
       reset_start_button();
+      reset_return_to_settings_button();
    }
    
 }
    
 function reset_start_button() {
    start_button.style.visibility="visible";
+}
+
+function reset_return_to_settings_button() {
+   return_to_settings_button.style.visibility="visible";
 }
 
 
