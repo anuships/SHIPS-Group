@@ -229,7 +229,7 @@ function draw() {
       time = time + emdr_speed;
       ctx.translate(10 * emdr_speed,0);
       ctx.beginPath();
-      ctx.arc(100, 200, 50, 0, 2*Math.PI);
+      ctx.arc(0, 200, 50, 0, 2*Math.PI);
       ctx.fillStyle = emdr_colour;
       ctx.fill();
       ctx.stroke();
