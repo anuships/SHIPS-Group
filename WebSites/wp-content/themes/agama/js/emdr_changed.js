@@ -151,6 +151,21 @@ function draw_selection() {
    ctx.strokeStyle="black";
    ctx.stroke();
    
+   ctx.font = "20px Arial";
+   ctx.fillStyle = "green";
+   ctx.textAlign = "center";
+   ctx.fillText("Slow", LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2);
+   
+   ctx.font = "20px Arial";
+   ctx.fillStyle = "blue";
+   ctx.textAlign = "center";
+   ctx.fillText("Medium", LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2);
+   
+   ctx.font = "20px Arial";
+   ctx.fillStyle = "red";
+   ctx.textAlign = "center";
+   ctx.fillText("Fast", LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2);
+   
 }
 
 function draw() {
