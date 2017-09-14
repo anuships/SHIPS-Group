@@ -68,7 +68,6 @@ function select_speed(x_coord, y_coord) {
          draw_selection();
       }
    }
-}
 
 function draw_selection() {
    inColourSelectionCanvas = true;
