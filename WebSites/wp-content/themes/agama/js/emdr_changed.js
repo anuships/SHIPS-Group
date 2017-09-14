@@ -17,7 +17,7 @@ var SQUARE_WIDTH = 100;
 var SQUARE_SEPARATION = 30;
 var LEFT_BUFFER = canvas.width/2 - (5*SQUARE_WIDTH/2) - 2*SQUARE_SEPARATION;
 var TOP_BUFFER = 60;
-var SPEED_COLOUR_BUFFER = 40;
+var SPEED_COLOUR_BUFFER = 60;
 var TOP_BUFFER_SPEED = TOP_BUFFER + SQUARE_WIDTH + SPEED_COLOUR_BUFFER + 40;
 
 var emdr_colour = "blue";
@@ -137,12 +137,15 @@ function draw_selection() {
    ctx.fillText("Select a speed", canvas.width/2, TOP_BUFFER + SQUARE_WIDTH + SPEED_COLOUR_BUFFER);
    
    ctx.rect(LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
+   ctx.lineWidth="1.0";
    ctx.stroke();
    
    ctx.rect(LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
+   ctx.lineWidth="1.0";
    ctx.stroke();
    
    ctx.rect(LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
+   ctx.lineWidth="1.0";
    ctx.stroke();
    
 }
