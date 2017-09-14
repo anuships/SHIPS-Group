@@ -225,7 +225,7 @@ function draw() {
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
 //   emdr_description_paragraph.hide();
-   if (time % 80 < 40) {
+   if (time % 120 < 60) {
       time = time + emdr_speed;
       ctx.translate(10 * emdr_speed,0);
       ctx.beginPath();
@@ -243,7 +243,7 @@ function draw() {
       ctx.stroke();
    }
    
-   if (time < (15 * 80) - 20) {
+   if (time < (15 * 120) - 30) {
       window.requestAnimationFrame(draw);
    } else {
       time = 0;
