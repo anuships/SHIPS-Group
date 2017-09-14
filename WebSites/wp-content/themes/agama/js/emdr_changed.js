@@ -174,9 +174,8 @@ function draw_selection() {
       ctx.lineWidth="1.0";
    }
    ctx.rect(LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
-   ctx.lineWidth="1.0";
-   ctx.strokeStyle="black";
    ctx.stroke();
+   ctx.lineWidth="1.0";
    
    ctx.beginPath();
    if (emdr_speed == MEDIUM_SPEED) {
@@ -186,9 +185,8 @@ function draw_selection() {
       ctx.lineWidth="1.0";
    }
    ctx.rect(LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
-   ctx.lineWidth="1.0";
-   ctx.strokeStyle="black";
    ctx.stroke();
+   ctx.lineWidth="1.0";
    
    ctx.beginPath();
    if (emdr_speed == FAST_SPEED) {
@@ -198,9 +196,8 @@ function draw_selection() {
       ctx.lineWidth="1.0";
    }
    ctx.rect(LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
-   ctx.lineWidth="1.0";
-   ctx.strokeStyle="black";
    ctx.stroke();
+   ctx.lineWidth="1.0";
    
    ctx.beginPath();
    ctx.font = "20px Arial";
