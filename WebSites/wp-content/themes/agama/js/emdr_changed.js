@@ -1,3 +1,5 @@
+//Lalit Prasad 2017
+
 var canvas = document.getElementById('canvas');
 var time = 0;
 var ctx = canvas.getContext('2d');
@@ -13,9 +15,14 @@ var LEFT_BUFFER = canvas.width/2 - (5*SQUARE_WIDTH/2) - 2*SQUARE_SEPARATION;
 var TOP_BUFFER = 60;
 var SPEED_COLOUR_BUFFER = 60;
 var TOP_BUFFER_SPEED = TOP_BUFFER + SQUARE_WIDTH + SPEED_COLOUR_BUFFER + 40;
+var SLOW_SPEED = 1.0;
+var MEDIUM_SPEED = 1.5;
+var FAST_SPEED = 2.0;
 
 var emdr_colour = "blue";
-var emdr_speed = 1;
+var emdr_speed = SLOW_SPEED;
+
+
 
 function start_button_click() {
    var start_button = document.getElementById('start_button');
@@ -64,13 +71,13 @@ function select_colour(x_coord, y_coord) {
 function select_speed(x_coord, y_coord) {
    if (inColourSelectionCanvas) {
       } if ((x_coord >= LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 2*SQUARE_WIDTH + SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER_SPEED && y_coord <= TOP_BUFFER_SPEED + SQUARE_WIDTH)) {
-         emdr_speed = 1.0;
+         emdr_speed = SLOW_SPEED;
          draw_selection();
       } else if ((x_coord >= LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 3*SQUARE_WIDTH + 2*SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER_SPEED && y_coord <= TOP_BUFFER_SPEED + SQUARE_WIDTH)) {
-         emdr_speed = 1.5;
+         emdr_speed = MEDIUM_SPEED;
          draw_selection();
       } else if ((x_coord >= LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION && x_coord <= LEFT_BUFFER + 4*SQUARE_WIDTH + 3*SQUARE_SEPARATION) && (y_coord >=TOP_BUFFER_SPEED && y_coord <= TOP_BUFFER_SPEED + SQUARE_WIDTH)) {
-         emdr_speed = 2.0;
+         emdr_speed = FAST_SPEED;
          draw_selection();
       }
    }
@@ -160,18 +167,36 @@ function draw_selection() {
    
    //speed selection rectangles
    ctx.beginPath();
+   if (emdr_speed == SLOW_SPEED) {
+      ctx.lineWidth="6.0";
+      ctx.strokeStyle="black";
+   } else {
+      ctx.lineWidth="1.0";
+   }
    ctx.rect(LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.lineWidth="1.0";
    ctx.strokeStyle="black";
    ctx.stroke();
    
    ctx.beginPath();
+   if (emdr_speed == MEDIUM_SPEED) {
+      ctx.lineWidth="6.0";
+      ctx.strokeStyle="black";
+   } else {
+      ctx.lineWidth="1.0";
+   }
    ctx.rect(LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.lineWidth="1.0";
    ctx.strokeStyle="black";
    ctx.stroke();
    
    ctx.beginPath();
+   if (emdr_speed == FAST_SPEED) {
+      ctx.lineWidth="6.0";
+      ctx.strokeStyle="black";
+   } else {
+      ctx.lineWidth="1.0";
+   }
    ctx.rect(LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.lineWidth="1.0";
    ctx.strokeStyle="black";
