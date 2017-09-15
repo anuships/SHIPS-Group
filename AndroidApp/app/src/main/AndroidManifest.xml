@@ -128,7 +128,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".userRecord.Records"></activity>
+        <activity android:name=".userRecord.Records" />
+        <activity android:name=".cognitiveTherapy.cognitiveDistortion"></activity>
     </application>
 
 </manifest>

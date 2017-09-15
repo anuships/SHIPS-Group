@@ -24,6 +24,4 @@ public class WhatIfScenario{
         db.addContent(new FactSheetContent(9, "9.\tWhat if the cabin pressure is lost?", "Oxygen masks are provided to cater with this situation. The altitude of aircraft is required to be kept at above sea level to reduce stress on the pressurised part of the fuselage."));
         db.addContent(new FactSheetContent(10, "10.\t What if there are thunderstorm cells seen ahead?", "The aircraft is circumnavigating on the upwind side to avoid the thunderstorm, regardless of whether that will provide the best winds. "));
     }
-
-
 }
