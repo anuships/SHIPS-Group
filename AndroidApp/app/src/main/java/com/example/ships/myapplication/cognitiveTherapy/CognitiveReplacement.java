@@ -1,27 +1,23 @@
 package com.example.ships.myapplication.cognitiveTherapy;
 
 import android.content.Context;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
-import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class cognitiveDistortion extends DrawerActivity {
+public class CognitiveReplacement extends DrawerActivity {
 
     private static String firstName;
     private static String lastName;
@@ -48,38 +44,43 @@ public class cognitiveDistortion extends DrawerActivity {
         return b;
     }
 
+    static AdapterForReplacement adapter;
+    ReplacementHandler db;
+    List<ReplacedInfo> replaceList;
 
-    DistortionHandler db;
-    List<DetailedInfo> distortionList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_cognitive_distortion);
+//        setContentView(R.layout.activity_cognitive_replacement);
         readIntent();
         FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
         LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View activityView = layoutInflater.inflate(R.layout.activity_cognitive_distortion, null,false);
+        View activityView = layoutInflater.inflate(R.layout.activity_cognitive_replacement, null,false);
         frameLayout.addView(activityView);
-        DistortionHandler db = new DistortionHandler(this);
-        CongitiveInfo.initializeCognitiveInfo(db);
-        addRecords();
-        distortionList = new ArrayList<>();
+
+        ReplacementHandler db = new ReplacementHandler(this);
+        ReplacementData.initializeReplacement(db);
+        replaceList = new ArrayList<>();
+
         for(int i = 1; i <= db.getContentsCount(); i++){
-            DetailedInfo di = new DetailedInfo();
+            ReplacedInfo di = new ReplacedInfo();
             di.concerns = db.getContent(i).concerns;
-            di.explanations = db.getContent(i).explanations;
+            di.positiveSummary = db.getContent(i).positiveSummary;
+            di.negativeSummary = db.getContent(i).negativeSummary;
             di.isExpanded = false;
-            distortionList.add(di);
+            replaceList.add(di);
         }
-        AdapterForDetail adapter = getAdapter();
-        ListView lv = (ListView) findViewById(R.id.listDistortionInfo);
+
+        Log.d("TAG",Integer.toString(db.getContentsCount()));
+        adapter = getAdapter();
+        ListView lv = (ListView) findViewById(R.id.irrationalThinking);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AdapterForDetail adapter = (AdapterForDetail) parent.getAdapter();
 
-                DetailedInfo item = (DetailedInfo) adapter.getItem(position);
+                ReplacedInfo item = (ReplacedInfo) adapter.getItem(position);
                 if(item != null){
                     if(item.isExpanded){
                         item.isExpanded = false;
@@ -92,36 +93,22 @@ public class cognitiveDistortion extends DrawerActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+
     }
 
-    private AdapterForDetail getAdapter(){
 
-        return new AdapterForDetail(this, distortionList);
-    }
-
-    public void back(View v)
-    {
+    public void back(View v){
         super.onBackPressed();
     }
-    public void solutions(View v)
+
+    public AdapterForReplacement getAdapter() {
+
+        return new AdapterForReplacement(this, replaceList);
+
+    }
+
+    public void refreshList()
     {
-        startActivity(new Intent(this, CognitiveReplacement.class).putExtras(createBundle()));
+        adapter.notifyDataSetChanged();
     }
-
-
-
-    public void addRecords(){
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date date = new Date();
-            SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
-            mySqlDB.execSQL("CREATE TABLE IF NOT EXISTS userRecords(UID VARCHAR,TIME VARCHAR, MODULE VARCHAR,PRIMARY KEY (UID, TIME));");
-            String insertQuery = "INSERT INTO userRecords (uid, TIME, MODULE) VALUES(?,?,?)";
-            mySqlDB.execSQL(insertQuery, new String[]{uid, dateFormat.format(date), "Cognitive therapy"});
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-//testing
 }

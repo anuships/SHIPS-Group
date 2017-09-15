@@ -75,6 +75,7 @@ public class FactsheetSelect extends DrawerActivity {
                 di.isExpanded = false;
                 whatIfList.add(di);
             }
+
             AdapterForDetail adapter = getAdapter();
             ListView lv = (ListView) findViewById(R.id.listFactsheet);
             lv.setAdapter(adapter);
