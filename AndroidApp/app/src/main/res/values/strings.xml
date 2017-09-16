@@ -61,4 +61,6 @@
         <item>Medium</item>
         <item>Fast</item>
     </string-array>
+    <string name="title_activity_base_drawer">BaseDrawerActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>

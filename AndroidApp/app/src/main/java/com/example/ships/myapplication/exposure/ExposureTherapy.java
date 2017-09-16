@@ -18,9 +18,15 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -28,15 +34,17 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.felhr.usbserial.UsbSerialDevice;
 import com.felhr.usbserial.UsbSerialInterface;
 
 
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,7 +53,7 @@ import java.util.Map;
 import java.io.InputStream;
 
 
-public class ExposureTherapy extends AppCompatActivity {
+public class ExposureTherapy extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -88,13 +96,26 @@ public class ExposureTherapy extends AppCompatActivity {
     Handler h;
     double baselineval;
     boolean change = true;
-
+    boolean biofeedbackHide = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_exposure_therapy);
+
+
+//        setContentView(R.layout.activity_exposure_therapy);
+
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_exposure_therapy, null,false);
+        frameLayout.addView(activityView);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setTitle("Systematic Desensitization");
+
+        addRecords();
         try {
             SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
             mySqlDB.execSQL("CREATE TABLE if not exists SystematicDesensitization (EMAIL STRING, LEVEL STRING)");
@@ -104,7 +125,8 @@ public class ExposureTherapy extends AppCompatActivity {
                 level = resultSet.getString(1);
             } else {
                 level = "1";
-                writeLevel(level);
+                String insertQuery = "INSERT INTO SystematicDesensitization (EMAIL, LEVEL) VALUES(?,?)";
+                mySqlDB.execSQL(insertQuery, new String[]{email, level});
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -182,7 +204,7 @@ public class ExposureTherapy extends AppCompatActivity {
 
 
         //Testing for auto-change function
-        final long ELAPSETIME = 10000;
+        final long ELAPSETIME = 20000;
         ha.postDelayed(new Runnable() {
 
             @Override
@@ -515,5 +537,57 @@ public class ExposureTherapy extends AppCompatActivity {
 
 
 
+    Menu biofeedbackMenu;
+
+    @Override
+    //Show the menu on the screen
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        biofeedbackMenu = menu;
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.systematic_desensitization_menu, menu);
+        getMenuInflater().inflate(R.menu.systematic_desensitization_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.change:
+                hide();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void hide() {
+        View v = findViewById(R.id.mon_chart);
+        MenuItem controlBiofeedback = biofeedbackMenu.findItem(R.id.change);
+        if (!biofeedbackHide){
+            v.setVisibility(View.GONE);
+            biofeedbackHide = true;
+            controlBiofeedback.setTitle("Show biofeedback");
+        } else{
+            v.setVisibility(View.VISIBLE);
+            biofeedbackHide = false;
+            controlBiofeedback.setTitle("Hide biofeedback");
+        }
+    }
+
+
+    //Add user records by Jason
+    public void addRecords(){
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
+            mySqlDB.execSQL("CREATE TABLE IF NOT EXISTS userRecords(UID VARCHAR,TIME VARCHAR, MODULE VARCHAR,PRIMARY KEY (UID, TIME));");
+            String insertQuery = "INSERT INTO userRecords (uid, TIME, MODULE) VALUES(?,?,?)";
+            mySqlDB.execSQL(insertQuery, new String[]{uid, dateFormat.format(date), "Systematic desensitization"});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

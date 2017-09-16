@@ -1,5 +1,6 @@
 package com.example.ships.myapplication.modules;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,13 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.PopupMenu;
+import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 
@@ -22,7 +26,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class MyProgramList extends AppCompatActivity {
+public class MyProgramList extends DrawerActivity {
 //refer to https://goo.gl/MrPdIi
 
 //testing comment to prevent force push op
@@ -64,7 +68,12 @@ public class MyProgramList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_all_program_list);
+//        setContentView(R.layout.activity_all_program_list);
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_all_program_list, null,false);
+        frameLayout.addView(activityView);
         expandableListView = (ExpandableListView) findViewById(R.id.programList);
         readIntent();
         SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();

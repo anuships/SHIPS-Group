@@ -4,17 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.modules.AllPrograms;
 
 import java.util.ArrayList;
 
-public class FAS extends AppCompatActivity {
+public class FAS extends DrawerActivity {
 
     private static String firstName;
     private static String lastName;
@@ -62,7 +65,13 @@ public class FAS extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_fas);
+//        setContentView(R.layout.activity_fas);
+
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_fas, null,false);
+        frameLayout.addView(activityView);
     }
     public void calculateScore(View v)
     {

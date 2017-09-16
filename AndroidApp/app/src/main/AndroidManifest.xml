@@ -14,7 +14,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="SHIPS"
-        android:theme="@style/HiddenTitleTheme" >
+        android:theme="@style/HiddenTitleTheme">
         <activity
             android:name=".homepageAndRegistration.MainActivity"
             android:label="SHIPS"
@@ -85,7 +85,6 @@
         <activity
             android:name=".modules.ModuleDescription"
             android:exported="true" />
-
         <activity
             android:name=".GSR.GSRGraphActivity"
             android:exported="true">
@@ -112,14 +111,26 @@
         <activity android:name=".OtherInterfaces.FAQs" />
         <activity android:name=".OtherInterfaces.FindOutMore" />
         <activity android:name=".OtherInterfaces.FindPassword" />
-        <activity android:name=".OtherInterfaces.Records" />
         <activity android:name=".OtherInterfaces.SystematicDesensitation" />
         <activity android:name=".OtherInterfaces.Treatments" />
         <activity android:name=".OtherInterfaces.UserProfile" />
         <activity android:name=".OtherInterfaces.UpdateUserDetail" />
         <activity android:name=".OtherInterfaces.Updated" />
-        <activity android:name=".cognitiveTherapy.FactsheetSelect"
-            android:exported="true"></activity>
+        <activity
+            android:name=".cognitiveTherapy.FactsheetSelect"
+            android:exported="true" />
+        <activity
+            android:name=".OtherInterfaces.DrawerActivity"
+            android:label=".OtherInterfaces.DrawerActivity">
+            <intent-filter>
+                <action android:name="OtherInterfaces.DrawerActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".userRecord.Records" />
+        <activity android:name=".cognitiveTherapy.cognitiveDistortion" />
+        <activity android:name=".cognitiveTherapy.CognitiveReplacement"></activity>
     </application>
 
 </manifest>

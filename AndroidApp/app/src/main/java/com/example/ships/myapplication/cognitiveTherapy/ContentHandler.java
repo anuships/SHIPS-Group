@@ -99,4 +99,6 @@ public class ContentHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(countQuery, null);
         return cursor.getCount();
     }
+
+
 }

@@ -7,8 +7,7 @@ use shipsdb;
 	ALTER TABLE wp_users ENGINE=InnoDB;    
 	ALTER TABLE wp_users CHARSET=utf8;
 	Alter table wp_users add uid VARCHAR(30) NOT NULL; 
-	ALTER TABLE wp_users ADD INDEX uid (uid);
-                    
+	ALTER TABLE wp_users ADD INDEX uid (uid);                 
 	CREATE TABLE IF NOT EXISTS module_category(CID INTEGER PRIMARY KEY AUTO_INCREMENT,TITLE VARCHAR(50))ENGINE=InnoDB DEFAULT CHARSET=utf8;
             
 	INSERT INTO module_category (TITLE) VALUES("SELF-ASSESSMENT"), ("FACTSHEET"), ("THERAPEUTIC TOOLS"), ("TREATMENT");

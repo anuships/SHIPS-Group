@@ -1,21 +1,21 @@
 package com.example.ships.myapplication.modules;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 
-import com.example.ships.myapplication.EMDR.EMDRActivity;
 import com.example.ships.myapplication.EMDR.EMDRActivitySettings;
 import com.example.ships.myapplication.FAS.FAS;
-import com.example.ships.myapplication.OtherInterfaces.Records;
-import com.example.ships.myapplication.OtherInterfaces.ThereapyFactsheets;
-import com.example.ships.myapplication.OtherInterfaces.Treatments;
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.cognitiveTherapy.FactsheetSelect;
+import com.example.ships.myapplication.userRecord.Records;
 
-public class MyShortTermProgram extends AppCompatActivity {
+public class MyShortTermProgram extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -45,7 +45,12 @@ public class MyShortTermProgram extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_my_short_term_program);
+//        setContentView(R.layout.activity_my_short_term_program);
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_my_short_term_program, null,false);
+        frameLayout.addView(activityView);
     }
 
     public void goToFactSheet(View view) {

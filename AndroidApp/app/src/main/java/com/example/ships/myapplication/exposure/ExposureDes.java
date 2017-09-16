@@ -1,16 +1,23 @@
 package com.example.ships.myapplication.exposure;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 
-import com.example.ships.myapplication.OtherInterfaces.Treatments;
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.modules.MyLongTermProgram;
+import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 
-public class ExposureDes extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class ExposureDes extends DrawerActivity {
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -40,7 +47,11 @@ public class ExposureDes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_exposure_des);
+//        setContentView(R.layout.activity_exposure_des);
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_exposure_des, null,false);
+        frameLayout.addView(activityView);
     }
     public void startTherapy(View v){
         startActivity(new Intent(this, ExposureTherapy.class).putExtras(createBundle()));

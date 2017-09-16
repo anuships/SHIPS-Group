@@ -1,12 +1,16 @@
 package com.example.ships.myapplication.modules;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.example.ships.myapplication.EMDR.EMDRActivitySettings;
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
+import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.relaxationAudio.RelaxationAudioActivity;
 
@@ -14,7 +18,7 @@ import com.example.ships.myapplication.relaxationAudio.RelaxationAudioActivity;
  * Created by Jyun on 2017/08/05.
  */
 
-public class TherapeuticTools extends AppCompatActivity {
+public class TherapeuticTools extends DrawerActivity {
 
     private static String firstName;
     private static String lastName;
@@ -45,7 +49,12 @@ public class TherapeuticTools extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readIntent();
-        setContentView(R.layout.activity_therapeutic_tools);
+//        setContentView(R.layout.activity_therapeutic_tools);
+        //Add drawer by Jason
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.activity_therapeutic_tools, null,false);
+        frameLayout.addView(activityView);
     }
 
     public void goToEMDR(View view) {
