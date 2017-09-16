@@ -125,19 +125,36 @@ public class LongTermProgramList extends AppCompatActivity {
         resTID.moveToFirst();
         Cursor resSID = mySqlDB.rawQuery("SELECT status.SID FROM status WHERE status.name = \"NOT STARTED\"", null);
         resSID.moveToFirst();
+        Cursor resTEID = mySqlDB.rawQuery("SELECT * FROM modules;", null);
+        resTEID.moveToFirst();
         try {
             int index = 0;
             mySqlDB.beginTransaction();
             String sqlInsertUM = "INSERT INTO user_modules (TID, INDX, SID, MID, progress, last_updated) VALUES(?,?,?,?,0,?)";
             SQLiteStatement statement = mySqlDB.compileStatement(sqlInsertUM);
             for (String s: dataDump.getData().keySet()){
+                System.out.println(s);
                 if (!s.contains("Relax")){
                     if (s.contains("Self")){
                         s = "FAS";
+                    }else if (s.contains("Fact")){
+                        s = "FACTSHEET";
                     }
+                    s = s.trim();
                     Cursor resMID = mySqlDB.rawQuery("SELECT MID FROM modules WHERE name=?;", new String[]{s});
-                    resMID.moveToFirst();
-                    statement.clearBindings();
+                    System.out.println("here3");
+                    try {
+                        resMID.moveToFirst();
+                        int i = resMID.getInt(0);
+                    }catch(Exception e){
+                        s = "Factsheet";
+                        resMID = mySqlDB.rawQuery("SELECT MID FROM modules WHERE name=?;", new String[]{s});
+                        resMID.moveToFirst();
+
+                        e.printStackTrace();
+                    }
+
+                        statement.clearBindings();
                     statement.bindLong(1,resTID.getInt(0));
                     statement.bindLong(2, index);
                     statement.bindLong(3, resSID.getInt(0));
@@ -149,7 +166,7 @@ public class LongTermProgramList extends AppCompatActivity {
             }
             mySqlDB.setTransactionSuccessful();
         } catch (Exception e) {
-            System.out.println("Exception:"+ e);
+            e.printStackTrace();
         } finally {
             mySqlDB.endTransaction();
 

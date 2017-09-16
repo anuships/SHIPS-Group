@@ -105,27 +105,35 @@ public class ShortTermProgramList extends AppCompatActivity {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         Cursor resTCat = mySqlDB.rawQuery("SELECT treatmentplan_category.TCID FROM treatmentplan_category WHERE treatmentplan_category.NAME = \"SHORT FLIGHT\"", null);
+        System.out.println("here2");
+
         resTCat.moveToFirst();
+
         String sqlInsertTP = "INSERT INTO treatmentplan (UID, TCID, date_added) VALUES(?,?,?)";
         SQLiteStatement stat = mySqlDB.compileStatement(sqlInsertTP);
         stat.bindString(1,uid);
         stat.bindLong(2,resTCat.getInt(0));
+        System.out.println("here");
         stat.bindString(3, dateFormat.format(date));
         stat.executeInsert();
         Cursor resTID = mySqlDB.rawQuery("SELECT TID FROM treatmentplan WHERE date_added=? ;", new String[]{dateFormat.format(date)});
         resTID.moveToFirst();
         Cursor resSID = mySqlDB.rawQuery("SELECT status.SID FROM status WHERE status.name = \"NOT STARTED\"", null);
+
         resSID.moveToFirst();
         try {
             int index = 0;
             mySqlDB.beginTransaction();
             String sqlInsertUM = "INSERT INTO user_modules (TID, INDX, SID, MID, progress, last_updated) VALUES(?,?,?,?,0,?)";
             SQLiteStatement statement = mySqlDB.compileStatement(sqlInsertUM);
+
             for (String s: dataDump.getData().keySet()){
+                System.out.println(s);
                 if (!s.contains("Relax")){
                     if (s.contains("Self")){
                         s = "FAS";
                     }
+
                     Cursor resMID = mySqlDB.rawQuery("SELECT MID FROM modules WHERE name=?;", new String[]{s});
                     resMID.moveToFirst();
                     statement.clearBindings();
