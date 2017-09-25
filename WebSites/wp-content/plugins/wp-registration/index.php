@@ -1,5 +1,0 @@
-<?php
-/**
- * 
- * Leave me alone!
- **/
