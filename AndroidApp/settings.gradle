@@ -1,2 +1,0 @@
-include ':app', ':usbSerialForAndroid', ':usbserial-release'
-project(':usbSerialForAndroid').projectDir = new File('app/lib/usbSerialForAndroid')
