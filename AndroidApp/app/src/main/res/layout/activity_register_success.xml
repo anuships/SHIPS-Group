@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ships.myapplication.homepageAndRegistration.RegisterSuccess">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:textSize="25dp"
+        android:text="You have successfully registered,\n welcome to SHIPS!"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="186dp"
+        android:layout_marginTop="212dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Get Started!"
+        android:textSize="30dp"
+        android:onClick="getStart"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="258dp"
+        android:layout_marginTop="85dp"
+        android:background="@drawable/roundedbutton"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

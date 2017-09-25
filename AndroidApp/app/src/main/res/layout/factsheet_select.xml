@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="0">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="20dp">
+
+
+
+
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_weight="0"
+        android:text="What-if scenario" />
+
+    <ListView
+        android:id="@+id/listFactsheet"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:drawSelectorOnTop="false" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="6.50"
+        android:layout_below="@+id/factsheet_buttons"
+        android:gravity="center"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button18"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:background="@drawable/roundedbutton"
+                android:layout_gravity="center_horizontal"
+                android:onClick="back"
+                android:textColor="#FFFFFF"
+                android:text="Back"
+                android:layout_marginRight="20dp"/>
+
+            <Button
+                android:id="@+id/button20"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:background="@drawable/roundedbutton"
+                android:layout_gravity="center_horizontal"
+                android:onClick="askMore"
+                android:text="More scenarios"
+                android:textColor="#FFFFFF"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+</RelativeLayout>
