@@ -43,7 +43,6 @@ public class UserProfile extends DrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_user_profile);
         //Add drawer by Jason
         FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
         LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -80,6 +79,8 @@ public class UserProfile extends DrawerActivity {
     }
 
     public void logout(View view) {
-        startActivity(new Intent(this, MainActivity.class).putExtras(createBundle()));
+        Intent in = new Intent(this, MainActivity.class).putExtras(createBundle());
+        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(in);
     }
 }
