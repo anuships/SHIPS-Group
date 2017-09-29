@@ -1,5 +1,5 @@
 wp-config.php
-WebSites/node_modules/*
-WebSites/node_modules/isarray/*
+WebSites/node_modules/
+WebSites/node_modules/isarray/
 
-WebSites/wp-content/*
+WebSites/wp-content/

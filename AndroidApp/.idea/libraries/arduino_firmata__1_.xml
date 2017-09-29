@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="arduino-firmata (1)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/lib/arduino-firmata (1).jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
