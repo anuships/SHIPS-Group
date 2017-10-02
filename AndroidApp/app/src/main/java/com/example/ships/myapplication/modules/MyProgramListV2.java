@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.PopupMenu;
@@ -22,14 +21,12 @@ import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class MyProgramList extends DrawerActivity {
+public class MyProgramListV2 extends DrawerActivity {
 //refer to https://goo.gl/MrPdIi
 
 //testing comment to prevent force push op
@@ -93,15 +90,16 @@ public class MyProgramList extends DrawerActivity {
             suggestedButton.setVisibility(View.VISIBLE);
         }
         for (int i = 0; i < resTID.getCount();i++){
-            Cursor resMID = mySqlDB.rawQuery("SELECT MID FROM user_modules WHERE TID=? ;", new String[]{Integer.toString(resTID.getInt(0))});
-            resMID.moveToFirst();
-            for (int j = 0; j < resMID.getCount();j++){
-                Cursor resDesName = mySqlDB.rawQuery("SELECT name, desc FROM modules WHERE MID=?", new String[]{Integer.toString(resMID.getInt(0))});
-                resDesName.moveToFirst();
-                dataDump.setData((i+1) + ":" + (j+1) +" " + resDesName.getString(0), resDesName.getString(1));
-                resMID.moveToNext();
-            }
-            resTID.moveToNext();
+  //          Cursor resMID = mySqlDB.rawQuery("SELECT MID FROM user_modules WHERE TID=? ;", new String[]{Integer.toString(resTID.getInt(0))});
+    //        resMID.moveToFirst();
+      //      for (int j = 0; j < resMID.getCount();j++){
+        //        Cursor resDesName = mySqlDB.rawQuery("SELECT name, desc FROM modules WHERE MID=?", new String[]{Integer.toString(resMID.getInt(0))});
+          //      resDesName.moveToFirst();
+                dataDump.setData((i+1) + " : ", "hi");
+            //    dataDump.setData((i+1) + ":" + (j+1) +" " + resDesName.getString(0), resDesName.getString(1));
+              //  resMID.moveToNext();
+            //}
+            //resTID.moveToNext();
         }
 
         /*
@@ -130,7 +128,7 @@ public class MyProgramList extends DrawerActivity {
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
         Collections.sort(expandableListTitle);
         System.out.println(expandableListTitle);
-        expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle,
+        expandableListAdapter = new CustomExpandableListAdapterMyProgram(this, expandableListTitle,
                 expandableListDetail, getIntent());
 
         expandableListView.setAdapter(expandableListAdapter);

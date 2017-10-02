@@ -3,24 +3,17 @@ package com.example.ships.myapplication.FAS;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
-import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.homepageAndRegistration.DBManager;
 import com.example.ships.myapplication.modules.AllPrograms;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.modules.MyLongTermProgram;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -141,11 +134,6 @@ public class ShowFASResult extends DrawerActivity {
     {
         startActivity(new Intent(this, AllPrograms.class).putExtras(createBundle()));
     }
-    public void goToTreatment(View v)
-    {
-        startActivity(new Intent(this, MyLongTermProgram.class));
-    }
-
 
     //Add user records by Jason
     public void addRecords(){

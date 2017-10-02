@@ -54,6 +54,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                              boolean isLastChild, View convertView, ViewGroup parent) {
          String expandedListText = (String) getChild(listPosition, expandedListPosition);
         String expandedTitle = (String) getChildTitle(listPosition, listPosition);
+        System.out.println("HIIIII");
         ChildHolder ch = new ChildHolder();
         if (convertView == null) {
             TextView listTitleTextView = (TextView) parent.findViewById(R.id.listTitle);

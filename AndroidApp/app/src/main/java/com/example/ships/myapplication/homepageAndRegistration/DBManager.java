@@ -4,7 +4,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 import static com.example.ships.myapplication.R.id.email;
@@ -35,6 +39,8 @@ public  class DBManager extends SQLiteOpenHelper{
     public static final String Audio13 = "Audio: Self-Hypnosis";
     public static final String BIOFEEDBACK = "Biofeedback";
     public static final String SYSDESEN = "Systematic Desensitisation";
+    public static final String LONGTERM = "LONG FLIGHT";
+    public static final String SHORTTERM = "SHORT FLIGHT";
 
     public static synchronized DBManager getInstance(Context ct){
         if (dbManager == null){
@@ -62,6 +68,51 @@ public  class DBManager extends SQLiteOpenHelper{
             return null;
         }
 
+    }
+    public static void insertTreatmentPlan(String uid, String treatmentCategory, String[] modules, SQLiteDatabase db){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        Cursor resTCat = db.rawQuery("SELECT treatmentplan_category.TCID FROM treatmentplan_category WHERE treatmentplan_category.NAME = ?;", new String[]{treatmentCategory});
+        resTCat.moveToFirst();
+        String sqlInsertTP = "INSERT INTO treatmentplan (UID, TCID, date_added) VALUES(?,?,?)";
+        SQLiteStatement stat = db.compileStatement(sqlInsertTP);
+        stat.bindString(1,uid);
+        stat.bindLong(2,resTCat.getInt(0));
+        stat.bindString(3, dateFormat.format(date));
+        stat.executeInsert();
+        Cursor resTID = db.rawQuery("SELECT TID FROM treatmentplan WHERE date_added=? ;", new String[]{dateFormat.format(date)});
+        resTID.moveToFirst();
+        Cursor resSID = db.rawQuery("SELECT status.SID FROM status WHERE status.name = \"NOT STARTED\"", null);
+        resSID.moveToFirst();
+        try {
+            int index = 0;
+            db.beginTransaction();
+            String sqlInsertUM = "INSERT INTO user_modules (TID, INDX, SID, MID, progress, last_updated) VALUES(?,?,?,?,0,?)";
+            SQLiteStatement statement = db.compileStatement(sqlInsertUM);
+            for (String s: modules){
+                if (!s.contains("Relax")){
+                    if (s.contains("Self")){
+                        s = "FAS";
+                    }
+                    Cursor resMID = db.rawQuery("SELECT MID FROM modules WHERE name=?;", new String[]{s});
+                    resMID.moveToFirst();
+                    statement.clearBindings();
+                    statement.bindLong(1,resTID.getInt(0));
+                    statement.bindLong(2, index);
+                    statement.bindLong(3, resSID.getInt(0));
+                    statement.bindLong(4, resMID.getInt(0));
+                    statement.bindString(5, dateFormat.format(date));
+                    statement.executeInsert();
+                    index++;
+                }
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            System.out.println("Exception:"+ e);
+        } finally {
+            db.endTransaction();
+
+        }
     }
     public static String insertUser(String uid, String email, String firstName, String lastName, String pw, SQLiteDatabase db){
         try {

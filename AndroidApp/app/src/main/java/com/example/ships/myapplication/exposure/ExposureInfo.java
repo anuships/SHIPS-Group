@@ -2,21 +2,13 @@ package com.example.ships.myapplication.exposure;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
-import com.example.ships.myapplication.OtherInterfaces.SystematicDesensitation;
-import com.example.ships.myapplication.OtherInterfaces.Treatments;
-import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
-import com.example.ships.myapplication.modules.AllPrograms;
-import com.example.ships.myapplication.modules.MyLongTermProgram;
-import com.example.ships.myapplication.modules.MyShortTermProgram;
 
 public class ExposureInfo extends DrawerActivity {
     private static String firstName;

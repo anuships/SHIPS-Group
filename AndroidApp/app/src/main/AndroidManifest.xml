@@ -18,7 +18,9 @@
         <activity
             android:name=".homepageAndRegistration.MainActivity"
             android:label="SHIPS"
-            android:theme="@style/HiddenTitleTheme">
+            android:theme="@style/HiddenTitleTheme"
+            android:noHistory="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -66,12 +68,6 @@
             android:exported="true" />
         <activity
             android:name=".modules.AllPrograms"
-            android:exported="true" />
-        <activity
-            android:name=".modules.MyLongTermProgram"
-            android:exported="true" />
-        <activity
-            android:name=".modules.MyShortTermProgram"
             android:exported="true" />
         <activity
             android:name=".modules.TherapeuticTools"

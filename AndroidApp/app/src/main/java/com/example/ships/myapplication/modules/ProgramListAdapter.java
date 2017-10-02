@@ -22,7 +22,6 @@ public class ProgramListAdapter extends ArrayAdapter<Programs> {
     Context context;
     public ProgramListAdapter(Context context, ArrayList<Programs> resource) {
         super(context, R.layout.programs_rows,resource);
-        // TODO Auto-generated constructor stub
         this.context = context;
         this.programsItems = resource;
     }

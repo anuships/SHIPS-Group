@@ -29,6 +29,32 @@
             android:layout_weight="1"
             android:id="@+id/programList" />
 
+        <TextView
+            android:id="@+id/space_text"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:visibility="gone"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/empty_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="It appears you haven't added a program to your account yet !. Go to Suggested Program to add a Program"
+            android:visibility="gone"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/suggested_m_but"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:background="@drawable/roundedbutton"
+            android:onClick="goToSuggestModules"
+            android:text="Suggested Programs"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            android:gravity="center"/>
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"

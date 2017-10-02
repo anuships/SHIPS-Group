@@ -2,6 +2,7 @@ package com.example.ships.myapplication.OtherInterfaces;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,6 +81,14 @@ public class UserProfile extends DrawerActivity {
     }
 
     public void logout(View view) {
-        startActivity(new Intent(this, MainActivity.class).putExtras(createBundle()));
+        Intent in  = new Intent(this, MainActivity.class);
+        in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            finishAffinity();
+        }
+        startActivity(in);
+        finish();
     }
 }
