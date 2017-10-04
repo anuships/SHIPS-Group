@@ -240,7 +240,7 @@
         android:id="@+id/checkBox"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="I have read and agreed the terms and conditions"
+        android:text="I have read and agreed to the terms and conditions"
         android:theme="@style/ColorCheckBox"
         android:textSize="20dp"
         android:layout_marginBottom="65dp"
