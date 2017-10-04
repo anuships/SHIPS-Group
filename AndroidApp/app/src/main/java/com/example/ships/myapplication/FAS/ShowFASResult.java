@@ -68,12 +68,12 @@ public class ShowFASResult extends DrawerActivity {
         addRecords();
         if (FAS.getScore() >= 82.74){
 
-            scoreComment = "You are very likely suffered from fear of flying";
+            scoreComment = "You are very likely to suffer from a fear of flying";
         } else if (FAS.getScore()>=62){
-            scoreComment = "You are likely suffered from fear of flying";
+            scoreComment = "You are likely to suffer from a fear of flying";
 
         } else {
-            scoreComment = "You are unlikely suffered from fear of flying";
+            scoreComment = "You are unlikely to suffer from a fear of flying";
         }
 
         if (FAS.getAFscore() >= 33){
@@ -109,14 +109,14 @@ public class ShowFASResult extends DrawerActivity {
 
         String suggestion;
         if (FAS.getScore()>=82.74){
-            suggestion = "Based on your score, we recommend you to choose the following modules: " + "\n" +
+            suggestion = "Based on your score, we recommend that you choose the following modules: " + "\n" +
                     "1. Systematic Desensitization" + "\n" +
                     "2. EMDR" + "\n" +
                     "3. Cognitive Therapy" + "\n" +
                     "4. Biofeedback" + "\n" +
                     "5. Relaxation Audio Training" + "\n";
         } else if (FAS.getScore() >=67){
-            suggestion = "Based on your score, we recommend you to choose the following modules: " + "\n" +
+            suggestion = "Based on your score, we recommend that you choose the following modules: " + "\n" +
                     "1. EMDR" + "\n" +
                     "2. Cognitive Therapy" + "\n" +
                     "3. Biofeedback" + "\n" +
