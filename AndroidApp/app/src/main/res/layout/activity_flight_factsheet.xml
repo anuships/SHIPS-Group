@@ -45,7 +45,7 @@
                 <ImageView
                     android:id="@+id/imageView1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200sp"
                     app:srcCompat="@drawable/airplane_2098593_960_720" />
 
                 <TextView
@@ -177,7 +177,7 @@
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120sp"
                     app:srcCompat="@drawable/screen_shot_2017_09_25_at_001650" />
 
                 <TextView
@@ -198,13 +198,13 @@
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="170sp"
                     app:srcCompat="@drawable/screen_shot_2017_09_29_at_215257" />
 
                 <ImageView
                     android:id="@+id/imageView6"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120sp"
                     app:srcCompat="@drawable/screen_shot_2017_09_29_at_214451" />
 
                 <TextView
@@ -255,7 +255,7 @@
                     android:layout_height="40dp"
                     android:background="@drawable/roundedbutton"
                     android:layout_gravity="center_horizontal"
-                    android:onClick="back"
+                    android:onClick="goBack"
                     android:textColor="#FFFFFF"
                     android:text="Back"
                     android:layout_marginRight="20dp"/>

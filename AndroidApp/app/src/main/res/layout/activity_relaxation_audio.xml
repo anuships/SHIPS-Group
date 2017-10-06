@@ -551,7 +551,7 @@
                     android:layout_height="40dp"
                     android:background="@drawable/roundedbutton"
                     android:layout_gravity="center_horizontal"
-                    android:onClick="back"
+                    android:onClick="goBack"
                     android:textColor="#FFFFFF"
                     android:text="Back"
                     android:layout_marginRight="20dp"/>

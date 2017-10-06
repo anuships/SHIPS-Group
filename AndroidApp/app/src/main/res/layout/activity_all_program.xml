@@ -59,6 +59,18 @@
                     android:layout_marginBottom="20dp"/>
 
                 <Button
+                    android:text="Flight Factsheet"
+                    android:layout_width="220dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/flight_factsheet"
+                    android:background="@drawable/roundedbutton"
+                    android:paddingBottom="0dp"
+                    android:textColor="#FFFFFF"
+                    android:onClick="goToFlightFactSheet"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"/>
+
+                <Button
                     android:text="Cognitive Therapy"
                     android:layout_width="220dp"
                     android:layout_height="40dp"

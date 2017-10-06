@@ -220,6 +220,10 @@ public class RelaxationAudioActivity extends DrawerActivity {
         mediaPlayer = MediaPlayer.create(RelaxationAudioActivity.this, audioList[audioIndex]);
     }
 
+    public void goBack(View view) {
+        //go back to the previous page
+        super.onBackPressed();
+    }
 
     //Add user records by Jason
     public void addRecords(){

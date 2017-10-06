@@ -62,6 +62,11 @@ public class Flight_Factsheet extends DrawerActivity {
         addRecords();
     }
 
+    public void goBack(View view) {
+        //go back to the previous page
+        super.onBackPressed();
+    }
+
     //Add user records by Jason
     public void addRecords(){
         try {
