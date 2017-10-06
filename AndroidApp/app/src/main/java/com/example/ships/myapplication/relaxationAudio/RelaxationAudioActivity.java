@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import static com.example.ships.myapplication.R.raw.introduction;
+import static com.example.ships.myapplication.R.raw.introduction0100;
 
 public class RelaxationAudioActivity extends DrawerActivity {
     private static String firstName;
