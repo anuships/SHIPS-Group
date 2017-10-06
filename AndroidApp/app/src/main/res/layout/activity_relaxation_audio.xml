@@ -18,16 +18,14 @@
             android:layout_height="wrap_content"
             android:textSize="30dp"
             android:textStyle="bold"
-            android:layout_weight="0"
             android:text="Relaxation Audio Training" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="0dp">
+            android:layout_centerHorizontal="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,10 +41,10 @@
                     android:tag="0"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button61"
@@ -57,10 +55,10 @@
                     android:tag="1"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button62"
@@ -71,10 +69,10 @@
                     android:tag="2"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button63"
@@ -85,24 +83,24 @@
                     android:tag="3"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button64"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="5. Graduated Progessive Muscle Relaxation - Upper Boday"
+                    android:text="5. Graduated Progessive Muscle Relaxation - Upper Body"
                     android:tag="4"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button65"
@@ -113,10 +111,10 @@
                     android:tag="5"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button66"
@@ -127,10 +125,10 @@
                     android:tag="6"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button71"
@@ -141,10 +139,10 @@
                     android:tag="7"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button72"
@@ -155,10 +153,10 @@
                     android:tag="8"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button73"
@@ -169,10 +167,10 @@
                     android:tag="9"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button74"
@@ -183,10 +181,10 @@
                     android:tag="10"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button75"
@@ -197,10 +195,10 @@
                     android:tag="11"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button76"
@@ -211,10 +209,10 @@
                     android:tag="12"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button8"
@@ -225,10 +223,10 @@
                     android:tag="13"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button9"
@@ -239,10 +237,10 @@
                     android:tag="14"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button10"
@@ -253,10 +251,10 @@
                     android:tag="15"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button11"
@@ -267,10 +265,10 @@
                     android:tag="16"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button12"
@@ -281,10 +279,10 @@
                     android:tag="17"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button13"
@@ -295,10 +293,10 @@
                     android:tag="18"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button141"
@@ -309,10 +307,10 @@
                     android:tag="19"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button142"
@@ -323,10 +321,10 @@
                     android:tag="20"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button143"
@@ -337,10 +335,10 @@
                     android:tag="21"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button144"
@@ -351,10 +349,10 @@
                     android:tag="22"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button145"
@@ -365,10 +363,10 @@
                     android:tag="23"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button15"
@@ -379,10 +377,10 @@
                     android:tag="24"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button16"
@@ -393,10 +391,10 @@
                     android:tag="25"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/button17"
@@ -407,10 +405,10 @@
                     android:tag="26"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#006BA3"
+                    android:textColor="#4E6875"
                     android:gravity="left|center_vertical"
                     android:background="@null"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
         </ScrollView>
@@ -421,18 +419,18 @@
             android:background="#006BA3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.08"
+            android:layout_weight="0.05"
             android:layout_above="@+id/linearLayout"
             android:layout_centerHorizontal="true"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:gravity="center"
             android:text="" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.07"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02"
             android:orientation="horizontal">
 
             <TextView
@@ -446,7 +444,7 @@
                 android:background="#006BA3"
                 android:text=""
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:gravity="center" />
 
             <SeekBar
@@ -468,14 +466,14 @@
                 android:background="#006BA3"
                 android:text=""
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
             android:orientation="horizontal">
 
             <Button
@@ -497,6 +495,7 @@
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_row="1"
+                android:layout_weight="1"
                 android:background="#006BA3"
                 android:text="@string/play"
                 android:textColor="@android:color/white"
@@ -533,13 +532,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="35dp"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/factsheet_buttons"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <LinearLayout

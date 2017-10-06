@@ -217,9 +217,6 @@ public class RelaxationAudioActivity extends DrawerActivity {
         String track = b5.getText().toString();
         tx3.setText(track);
         audioIndex = Integer.parseInt(v.getTag().toString());
-        if (audioIndex > 1){
-            audioIndex = 1;
-        }
         mediaPlayer = MediaPlayer.create(RelaxationAudioActivity.this, audioList[audioIndex]);
     }
 
