@@ -22,6 +22,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import static com.example.ships.myapplication.R.raw.introduction;
+
 public class RelaxationAudioActivity extends DrawerActivity {
     private static String firstName;
     private static String lastName;
@@ -59,19 +61,33 @@ public class RelaxationAudioActivity extends DrawerActivity {
     private TextView tx1, tx2, tx3;
     public static int oneTimeOnly = 0;
     int [] audioList = {
-            R.raw.introduction,
-            R.raw.graduatedprogessivemusclerelaxation,
-//            R.raw.passiveprogressiverelaxation,
-//            R.raw.rotationofawareness,
-//            R.raw.breathawarenessmeditation,
-//            R.raw.wordfocusmeditation,
-//            R.raw.alternativenostrilbreathingmeditation,
-//            R.raw.mindfulawareness,
-//            R.raw.mindfulnessmeditation,
-//            R.raw.breathingtechniques,
-//            R.raw.quickreleasetechnique,
-//            R.raw.standingrelaxation,
-//            R.raw.selfhypnosis
+            R.raw.introduction0100,
+            R.raw.graduatedprogessivemusclerelaxation0201,
+            R.raw.graduatedprogessivemusclerelaxation0202,
+            R.raw.graduatedprogessivemusclerelaxation0203,
+            R.raw.graduatedprogessivemusclerelaxation0205,
+            R.raw.graduatedprogessivemusclerelaxation0210,
+            R.raw.graduatedprogessivemusclerelaxation0212,
+            R.raw.passiveprogressiverelaxation0301,
+            R.raw.passiveprogressiverelaxation0302,
+            R.raw.passiveprogressiverelaxation0306,
+            R.raw.passiveprogressiverelaxation0314,
+            R.raw.passiveprogressiverelaxation0316,
+            R.raw.passiveprogressiverelaxation0318,
+            R.raw.rotationofawareness0400,
+            R.raw.breathawarenessmeditation0500,
+            R.raw.wordfocusmeditation0600,
+            R.raw.alternativenostrilbreathingmeditation0700,
+            R.raw.mindfulawareness0800,
+            R.raw.mindfulnessmeditation0900,
+            R.raw.breathingtechniques1001,
+            R.raw.breathingtechniques1002,
+            R.raw.breathingtechniques1003,
+            R.raw.breathingtechniques1004,
+            R.raw.breathingtechniques1005,
+            R.raw.quickreleasetechnique1100,
+            R.raw.standingrelaxation1200,
+            R.raw.selfhypnosis1300
     };
     int audioIndex = 0;
 

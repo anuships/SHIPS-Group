@@ -7,13 +7,19 @@
     tools:context="com.example.ships.myapplication.relaxationAudio.RelaxationAudioActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_weight="0"
+            android:text="Relaxation Audio Training" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -37,191 +43,374 @@
                     android:tag="0"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/button61"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2. Graduated Progessive Muscle Relaxation"
+                    android:text="2. Graduated Progessive Muscle Relaxation - Preparation"
                     android:tag="1"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
                 <Button
-                    android:id="@+id/button7"
+                    android:id="@+id/button62"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="3. Passive Progressive Relaxation"
+                    android:text="3. Graduated Progessive Muscle Relaxation - Hands"
                     android:tag="2"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button63"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="4. Graduated Progessive Muscle Relaxation - Lower Body"
+                    android:tag="3"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button64"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5. Graduated Progessive Muscle Relaxation - Upper Boday"
+                    android:tag="4"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button65"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="6. Graduated Progessive Muscle Relaxation - Head"
+                    android:tag="5"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button66"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="7. Graduated Progessive Muscle Relaxation - Whole Body"
+                    android:tag="6"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button71"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="8. Passive Progressive Relaxation - Preparation"
+                    android:tag="7"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button72"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9. Passive Progressive Relaxation - Lower Body"
+                    android:tag="8"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button73"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10. Passive Progressive Relaxation - Upper Body"
+                    android:tag="9"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button74"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="11. Passive Progressive Relaxation - Upper Back"
+                    android:tag="10"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button75"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="12. Passive Progressive Relaxation - Whole Body"
+                    android:tag="11"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button76"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="13. Passive Progressive Relaxation - Conclusion"
+                    android:tag="12"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/button8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="4. Rotation of Awareness"
-                    android:tag="3"
+                    android:text="14. Rotation of Awareness"
+                    android:tag="13"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/button9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="5. Breath Awareness Meditation"
-                    android:tag="4"
+                    android:text="15. Breath Awareness Meditation"
+                    android:tag="14"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/button10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="6. Word Focus Meditation"
-                    android:tag="5"
+                    android:text="16. Word Focus Meditation"
+                    android:tag="15"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/button11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="7. Alternative Nostril Breathing Meditation"
-                    android:tag="6"
+                    android:text="17. Alternative Nostril Breathing Meditation"
+                    android:tag="16"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/button12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="8. Mindful Awareness"
-                    android:tag="7"
+                    android:text="18. Mindful Awareness"
+                    android:tag="17"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/button13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="9. Mindfulness Meditation"
-                    android:tag="8"
+                    android:text="19. Mindfulness Meditation"
+                    android:tag="18"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
                 <Button
-                    android:id="@+id/button14"
+                    android:id="@+id/button141"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="10. Breathing Techniques"
-                    android:tag="9"
+                    android:text="20. Breathing Techniques - Preparation"
+                    android:tag="19"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button142"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="21. Breathing Techniques - 1 to 8 Count"
+                    android:tag="20"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button143"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="22. Breathing Techniques - 4 4 8 Count"
+                    android:tag="21"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button144"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="23. Breathing Techniques - 5 to 1 Count"
+                    android:tag="22"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/button145"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="24. Breathing Techniques - Lung"
+                    android:tag="23"
+                    android:onClick="selectTrack"
+                    android:textAllCaps="false"
+                    android:textColor="#006BA3"
+                    android:gravity="left|center_vertical"
+                    android:background="@null"
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/button15"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="11. Quick Release Technique"
-                    android:tag="10"
+                    android:text="25. Quick Release Technique"
+                    android:tag="24"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/button16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="12. Standing Relaxation"
-                    android:tag="11"
+                    android:text="26. Standing Relaxation"
+                    android:tag="25"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/button17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="13. Self-Hypnosis"
-                    android:tag="12"
+                    android:text="27. Self-Hypnosis"
+                    android:tag="26"
                     android:onClick="selectTrack"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#006BA3"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
                     android:background="@null"
-                    android:textSize="18sp" />
+                    android:textSize="16dp" />
 
             </LinearLayout>
         </ScrollView>
@@ -342,6 +531,47 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="35dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/factsheet_buttons"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/roundedbutton"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="back"
+                    android:textColor="#FFFFFF"
+                    android:text="Back"
+                    android:layout_marginRight="20dp"/>
+
+                <Button
+                    android:id="@+id/button14"
+                    android:layout_width="140dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/roundedbutton"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="askMore"
+                    android:text="More scenarios"
+                    android:textColor="#FFFFFF"
+                    android:visibility="invisible"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

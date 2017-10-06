@@ -116,6 +116,9 @@
             android:name=".cognitiveTherapy.FactsheetSelect"
             android:exported="true" />
         <activity
+            android:name=".cognitiveTherapy.Flight_Factsheet"
+            android:exported="true" />
+        <activity
             android:name=".OtherInterfaces.DrawerActivity"
             android:label=".OtherInterfaces.DrawerActivity">
             <intent-filter>
