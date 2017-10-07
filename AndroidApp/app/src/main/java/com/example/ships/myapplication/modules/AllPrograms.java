@@ -13,6 +13,7 @@ import com.example.ships.myapplication.OtherInterfaces.Treatments;
 import com.example.ships.myapplication.OtherInterfaces.UserProfile;
 import com.example.ships.myapplication.R;
 import com.example.ships.myapplication.cognitiveTherapy.FactsheetSelect;
+import com.example.ships.myapplication.cognitiveTherapy.Flight_Factsheet;
 import com.example.ships.myapplication.cognitiveTherapy.cognitiveDistortion;
 import com.example.ships.myapplication.userRecord.Records;
 
@@ -64,6 +65,10 @@ public class AllPrograms extends DrawerActivity {
 
     public void goToCognitiveTherapy(View view) {
         startActivity(new Intent(this, cognitiveDistortion.class).putExtras(createBundle()));
+    }
+
+    public void goToFlightFactSheet(View view) {
+        startActivity(new Intent(this, Flight_Factsheet.class).putExtras(createBundle()));
     }
 
     public void goToSelfAssessment(View view) {
