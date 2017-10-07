@@ -119,6 +119,8 @@ public class EMDRActivity extends DrawerActivity {
         //Add records by Jason
         addRecords();
 
+        final AnimatorSet animSet = new AnimatorSet();
+
         //gets user's chosen speed from settings activity
         String emdr_speed = intent.getStringExtra("emdr_Speed");
         if (emdr_speed.equals("Slow")) {
@@ -192,6 +194,8 @@ public class EMDRActivity extends DrawerActivity {
                         mediaPlayer.setVolume(1.f, 0.f);
                         n++;
                     }
+                } else {
+                    animSet.cancel();
                 }
             }
         });
@@ -204,7 +208,6 @@ public class EMDRActivity extends DrawerActivity {
         });
 
         mediaPlayer.start();
-
 
         //get dimensions of display
         Display display = getWindowManager().getDefaultDisplay();
@@ -259,7 +262,7 @@ public class EMDRActivity extends DrawerActivity {
         vertical_Bottom_To_Centre.setInterpolator(new AccelerateInterpolator());
         vertical_Centre_To_Top.setInterpolator(new DecelerateInterpolator());
 
-        final AnimatorSet animSet = new AnimatorSet();
+        //final AnimatorSet animSet = new AnimatorSet();
 
         //play animation corresponding to user selection
         if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_VERTICAL)) {
@@ -302,17 +305,26 @@ public class EMDRActivity extends DrawerActivity {
         }
 
 
-
-        //int i = 0;
         //play animation forever
         animSet.addListener(new AnimatorListenerAdapter() {
+
+            private boolean cancelled;
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+                cancelled = false;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                cancelled = true;
+            }
+
             @Override
             public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                int i = 0;
-                if (i <= EMDR_REPEATS) {
+                //super.onAnimationEnd(animation);
+                if (!cancelled) {
                     animSet.start();
-                    i++;
                 }
             }
         });
