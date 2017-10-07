@@ -112,6 +112,14 @@ public class EMDRActivitySettings extends DrawerActivity {
                 sendMessage(view);
             }
         });
+
+        //return to previous page
+        Button emdr_settings_back_button = (Button) findViewById(R.id.emdr_settings_back_button);
+        emdr_settings_back_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                finish();
+            }
+        });
     }
 
     public void sendMessage(View view) {
