@@ -83,8 +83,11 @@ public class EMDRActivity extends DrawerActivity {
     private static int SCREEN_WIDTH  = 500;
     private static int SCREEN_HEIGHT = 900;
 
+    //how long the whole emdr session lasts in milliseconds
+    private static int EMDR_TOTAL_DURATION = 15000;
+
     //used to limit emdr repetitions. Currently unused
-    private static final int EMDR_REPEATS = 20;
+    private static int EMDR_REPEATS = 20;
 
     //plays ticking audio
     private MediaPlayer mediaPlayer;
@@ -110,6 +113,7 @@ public class EMDRActivity extends DrawerActivity {
         //gets user's chosen movement type from settings activity
         Intent intent = getIntent();
         String emdr_movement_type = intent.getStringExtra("emdr_Movement_Type");
+        String emdr_total_duration = intent.getStringExtra("emdr_Total_Duration");
 
 
         //Add records by Jason
@@ -134,6 +138,20 @@ public class EMDRActivity extends DrawerActivity {
         } else if (emdr_movement_type.equals("Figure of eight")) {
             emdrMovementType = EMDRMovementTypes.FIGURE_OF_EIGHT;
         }
+
+        if (emdr_total_duration.equals("10 seconds")) {
+            EMDR_TOTAL_DURATION = 10000;
+        } else if (emdr_total_duration.equals("15 seconds")) {
+            EMDR_TOTAL_DURATION = 15000;
+        } else if (emdr_total_duration.equals("20 seconds")) {
+            EMDR_TOTAL_DURATION = 20000;
+        } else if (emdr_total_duration.equals("25 seconds")) {
+            EMDR_TOTAL_DURATION = 25000;
+        } else if (emdr_total_duration.equals("30 seconds")) {
+            EMDR_TOTAL_DURATION = 30000;
+        }
+
+        EMDR_REPEATS = (int) EMDR_TOTAL_DURATION / EMDR_DURATION;
 
         //ticking sound used in conjunction with eye movement
         mediaPlayer = MediaPlayer.create(this, R.raw.ticksound);
@@ -162,17 +180,18 @@ public class EMDRActivity extends DrawerActivity {
 
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                //if (n <= EMDR_REPEATS) {
-                if (n >= 0 && n%2==1) {
-                    handler.postDelayed(loopingRunnable, delay);
-                    //tick in right headphone
-                    mediaPlayer.setVolume(0.f, 1.f);
-                    n++;
-                } else if (n >=0 && n%2==0) {
-                    handler.postDelayed(loopingRunnable, delay);
-                    //tick in left headphone
-                    mediaPlayer.setVolume(1.f, 0.f);
-                    n++;
+                if (n <= EMDR_REPEATS) {
+                    if (n >= 0 && n % 2 == 1) {
+                        handler.postDelayed(loopingRunnable, delay);
+                        //tick in right headphone
+                        mediaPlayer.setVolume(0.f, 1.f);
+                        n++;
+                    } else if (n >= 0 && n % 2 == 0) {
+                        handler.postDelayed(loopingRunnable, delay);
+                        //tick in left headphone
+                        mediaPlayer.setVolume(1.f, 0.f);
+                        n++;
+                    }
                 }
             }
         });
@@ -283,12 +302,18 @@ public class EMDRActivity extends DrawerActivity {
         }
 
 
+
+        //int i = 0;
         //play animation forever
         animSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                animSet.start();
+                int i = 0;
+                if (i <= EMDR_REPEATS) {
+                    animSet.start();
+                    i++;
+                }
             }
         });
 

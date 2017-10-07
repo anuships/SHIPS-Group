@@ -40,7 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emdr_movement_spinner_textview"
-            android:text="@string/emdr_movement_type_selection"/>
+            android:text="@string/emdr_movement_type_selection"
+            android:layout_marginRight="20dp"/>
 
         <Spinner
             android:id="@+id/emdr_movement_spinner"
@@ -63,12 +64,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emdr_speed_spinner_textview"
-            android:text="EMDR Speed"/>
+            android:text="EMDR Speed"
+            android:layout_marginRight="20dp"/>
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emdr_speed_spinner">
+        </Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/emdr_duration_spinner_setting_layout"
+        android:layout_below="@id/emdr_speed_spinner_setting_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emdr_duration_spinner_textview"
+            android:text="EMDR Duration"
+            android:layout_marginRight="20dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emdr_duration_spinner">
         </Spinner>
     </LinearLayout>
 
@@ -79,7 +102,7 @@
         android:text="What is EMDR?"
         android:textStyle="italic"
         android:textSize="20dp"
-        android:layout_below="@id/emdr_speed_spinner_setting_layout"/>
+        android:layout_below="@id/emdr_duration_spinner_setting_layout"/>
 
     <TextView
         android:layout_width="wrap_content"
