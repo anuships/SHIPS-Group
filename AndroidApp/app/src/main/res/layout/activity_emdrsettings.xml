@@ -95,6 +95,28 @@
         </Spinner>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/emdr_shadow_spinner_setting_layout"
+        android:layout_below="@id/emdr_duration_spinner_setting_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emdr_shadow_spinner_textview"
+            android:text="Shadow"
+            android:layout_marginRight="20dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emdr_shadow_spinner">
+        </Spinner>
+    </LinearLayout>
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,7 +124,7 @@
         android:text="What is EMDR?"
         android:textStyle="italic"
         android:textSize="20dp"
-        android:layout_below="@id/emdr_duration_spinner_setting_layout"/>
+        android:layout_below="@id/emdr_shadow_spinner_setting_layout"/>
 
     <TextView
         android:layout_width="wrap_content"

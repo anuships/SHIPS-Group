@@ -50,6 +50,7 @@ public class EMDRActivitySettings extends DrawerActivity {
     String emdrMovementType = null;
     String emdrSpeed = null;
     String emdrTotalDuration = null;
+    String emdrShadow = null;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +126,26 @@ public class EMDRActivitySettings extends DrawerActivity {
                 }
         );
 
+        Spinner emdr_shadow_spinner = (Spinner) findViewById(R.id.emdr_shadow_spinner);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.emdr_shadow_array, android.R.layout.simple_spinner_dropdown_item);
+        emdr_shadow_spinner.setAdapter(adapter3);
+
+        emdr_shadow_spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        Object item = adapterView.getItemAtPosition(i);
+                        emdrShadow = item.toString();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                }
+        );
+
+
         //launch emdr activity on button click
         Button emdrStartButton = (Button) findViewById(R.id.emdrstartbutton);
         emdrStartButton.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +169,7 @@ public class EMDRActivitySettings extends DrawerActivity {
         EMDRintent.putExtra("emdr_Movement_Type", emdrMovementType);
         EMDRintent.putExtra("emdr_Speed", emdrSpeed);
         EMDRintent.putExtra("emdr_Total_Duration", emdrTotalDuration);
+        EMDRintent.putExtra("emdr_Shadow", emdrShadow);
         startActivity(EMDRintent);
     }
 }

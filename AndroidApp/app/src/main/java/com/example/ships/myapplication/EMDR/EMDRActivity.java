@@ -97,6 +97,8 @@ public class EMDRActivity extends DrawerActivity {
     //circular, horizontal etc
     public EMDRMovementTypes emdrMovementType = null;
 
+    private static Boolean SHADOW_ON = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +118,7 @@ public class EMDRActivity extends DrawerActivity {
         Intent intent = getIntent();
         String emdr_movement_type = intent.getStringExtra("emdr_Movement_Type");
         String emdr_total_duration = intent.getStringExtra("emdr_Total_Duration");
+        String emdr_shadow = intent.getStringExtra("emdr_Shadow");
 
 
         //Add records by Jason
@@ -154,6 +157,8 @@ public class EMDRActivity extends DrawerActivity {
         } else if (emdr_total_duration.equals("30 seconds")) {
             EMDR_TOTAL_DURATION = 30000;
         }
+
+        SHADOW_ON = emdr_shadow.equals("On");
 
         EMDR_REPEATS = (int) EMDR_TOTAL_DURATION / EMDR_DURATION;
 
@@ -243,6 +248,12 @@ public class EMDRActivity extends DrawerActivity {
 
 
         View emdrCircleShadowView = findViewById(R.id.emdr_circle_shadow_layout);
+        if (SHADOW_ON) {
+            emdrCircleShadowView.setVisibility(View.VISIBLE);
+
+        } else {
+            emdrCircleShadowView.setVisibility(View.INVISIBLE);
+        }
         //View emdrCircleView = findViewById(R.id.emdrcircle);
         //ImageView emdrCircleImageView = (ImageView) findViewById(R.id.emdr_circle_layout);
 
