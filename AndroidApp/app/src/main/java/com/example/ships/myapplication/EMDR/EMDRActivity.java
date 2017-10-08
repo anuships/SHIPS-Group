@@ -246,7 +246,7 @@ public class EMDRActivity extends DrawerActivity {
         //View emdrCircleView = findViewById(R.id.emdrcircle);
         //ImageView emdrCircleImageView = (ImageView) findViewById(R.id.emdr_circle_layout);
 
-        //horizontal movement (simple harmonic)
+        //horizontal movement (simple harmonic) for shadow
         ObjectAnimator horizontal_Centre_To_Right_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, ((SCREEN_WIDTH - emdrCircleDiameter)+(SCREEN_WIDTH - emdrCircleDiameter)/12));
         ObjectAnimator horizontal_Right_To_Centre_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", ((SCREEN_WIDTH - emdrCircleDiameter)+(SCREEN_WIDTH - emdrCircleDiameter)/12), (SCREEN_WIDTH - emdrCircleDiameter)/2);
         ObjectAnimator horizontal_Centre_To_Left_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, (-(SCREEN_WIDTH - emdrCircleDiameter)/12));
@@ -270,6 +270,17 @@ public class EMDRActivity extends DrawerActivity {
         horizontal_Centre_To_Left2.setInterpolator(new DecelerateInterpolator());
         horizontal_Left_To_Centre2.setInterpolator(new AccelerateInterpolator());
 
+        //repeat of horizontal movement for shadow
+        ObjectAnimator horizontal_Centre_To_Right_Shadow2 = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, ((SCREEN_WIDTH - emdrCircleDiameter)+(SCREEN_WIDTH - emdrCircleDiameter)/12));
+        ObjectAnimator horizontal_Right_To_Centre_Shadow2 = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", ((SCREEN_WIDTH - emdrCircleDiameter)+(SCREEN_WIDTH - emdrCircleDiameter)/12), (SCREEN_WIDTH - emdrCircleDiameter)/2);
+        ObjectAnimator horizontal_Centre_To_Left_Shadow2 = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, (-(SCREEN_WIDTH - emdrCircleDiameter)/12));
+        ObjectAnimator horizontal_Left_To_Centre_Shadow2 = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", (-(SCREEN_WIDTH - emdrCircleDiameter)/12), (SCREEN_WIDTH - emdrCircleDiameter)/2);
+
+        horizontal_Centre_To_Right_Shadow2.setInterpolator(new DecelerateInterpolator());
+        horizontal_Right_To_Centre_Shadow2.setInterpolator(new AccelerateInterpolator());
+        horizontal_Centre_To_Left_Shadow2.setInterpolator(new DecelerateInterpolator());
+        horizontal_Left_To_Centre_Shadow2.setInterpolator(new AccelerateInterpolator());
+
 
 
         //vertical movement
@@ -283,7 +294,7 @@ public class EMDRActivity extends DrawerActivity {
         vertical_Bottom_To_Centre.setInterpolator(new AccelerateInterpolator());
         vertical_Centre_To_Top.setInterpolator(new DecelerateInterpolator());
 
-        //vertical movement
+        //vertical movement for shadow
         ObjectAnimator vertical_Top_To_Centre_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "y", (-(SCREEN_HEIGHT - 2*emdrCircleDiameter)/15), (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2);
         ObjectAnimator vertical_Centre_To_Bottom_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "y", (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2, ((SCREEN_HEIGHT - 2*emdrCircleDiameter) + (SCREEN_HEIGHT - 2*emdrCircleDiameter)/15));
         ObjectAnimator vertical_Bottom_To_Centre_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "y", ((SCREEN_HEIGHT - 2*emdrCircleDiameter) + (SCREEN_HEIGHT - 2*emdrCircleDiameter)/15), (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2);
@@ -343,10 +354,36 @@ public class EMDRActivity extends DrawerActivity {
             horizontal_Centre_To_Left2.setDuration(EMDR_DURATION/2);
             horizontal_Left_To_Centre2.setDuration(EMDR_DURATION/2);
 
-            animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
-            animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
-            animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
-            animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
+            vertical_Top_To_Centre_Shadow.setDuration(EMDR_DURATION);
+            vertical_Centre_To_Bottom_Shadow.setDuration(EMDR_DURATION);
+            vertical_Bottom_To_Centre_Shadow.setDuration(EMDR_DURATION);
+            vertical_Centre_To_Top_Shadow.setDuration(EMDR_DURATION);
+
+            horizontal_Centre_To_Right_Shadow.setDuration(EMDR_DURATION/2);
+            horizontal_Right_To_Centre_Shadow.setDuration(EMDR_DURATION/2);
+            horizontal_Centre_To_Left_Shadow.setDuration(EMDR_DURATION/2);
+            horizontal_Left_To_Centre_Shadow.setDuration(EMDR_DURATION/2);
+
+
+            horizontal_Centre_To_Right_Shadow2.setDuration(EMDR_DURATION/2);
+            horizontal_Right_To_Centre_Shadow2.setDuration(EMDR_DURATION/2);
+            horizontal_Centre_To_Left_Shadow2.setDuration(EMDR_DURATION/2);
+            horizontal_Left_To_Centre_Shadow2.setDuration(EMDR_DURATION/2);
+
+//            animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).before(horizontal_Right_To_Centre);
+//            animSet.play(horizontal_Centre_To_Left).with(vertical_Centre_To_Bottom).before(horizontal_Left_To_Centre).after(horizontal_Right_To_Centre);
+//            animSet.play(horizontal_Centre_To_Right2).with(vertical_Bottom_To_Centre).before(horizontal_Right_To_Centre2).after(horizontal_Left_To_Centre);
+//            animSet.play(horizontal_Centre_To_Left2).with(vertical_Centre_To_Top).before(horizontal_Left_To_Centre2).after(horizontal_Right_To_Centre2);
+
+            animSet.play(horizontal_Centre_To_Right).with(horizontal_Centre_To_Right_Shadow).with(vertical_Top_To_Centre).with(vertical_Top_To_Centre_Shadow);
+            animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(horizontal_Right_To_Centre_Shadow);
+            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Centre_To_Bottom).with(vertical_Centre_To_Bottom_Shadow).with(horizontal_Centre_To_Left_Shadow);
+            animSet.play(horizontal_Left_To_Centre).with(horizontal_Left_To_Centre_Shadow).after(horizontal_Centre_To_Left);
+
+            animSet.play(horizontal_Centre_To_Right2).with(horizontal_Centre_To_Right_Shadow2).with(vertical_Bottom_To_Centre).with(vertical_Bottom_To_Centre_Shadow).after(horizontal_Left_To_Centre);
+            animSet.play(horizontal_Right_To_Centre2).after(horizontal_Centre_To_Right2).with(horizontal_Right_To_Centre_Shadow2);
+            animSet.play(horizontal_Centre_To_Left2).after(horizontal_Right_To_Centre2).with(vertical_Centre_To_Top).with(vertical_Centre_To_Top_Shadow).with(horizontal_Centre_To_Left_Shadow2);
+            animSet.play(horizontal_Left_To_Centre2).with(horizontal_Left_To_Centre_Shadow2).after(horizontal_Centre_To_Left2);
         }
 
 
