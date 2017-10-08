@@ -315,10 +315,14 @@ public class EMDRActivity extends DrawerActivity {
             animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(horizontal_Left_To_Centre_Shadow);
             animSet.setDuration(EMDR_DURATION/2);
         } else if (emdrMovementType.equals(EMDRMovementTypes.CIRCULAR)) {
-            animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
-            animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
-            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre);
-            animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
+//            animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
+//            animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom);
+//            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre);
+//            animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top);
+            animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre).with(horizontal_Centre_To_Right_Shadow).with(vertical_Top_To_Centre_Shadow);
+            animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(vertical_Centre_To_Bottom).with(horizontal_Right_To_Centre_Shadow).with(vertical_Centre_To_Bottom_Shadow);
+            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(vertical_Bottom_To_Centre).with(horizontal_Centre_To_Left_Shadow).with(vertical_Bottom_To_Centre_Shadow);
+            animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(vertical_Centre_To_Top).with(horizontal_Left_To_Centre_Shadow).with(vertical_Centre_To_Top_Shadow);
             animSet.setDuration(EMDR_DURATION/2);
 
         } else if (emdrMovementType.equals(EMDRMovementTypes.FIGURE_OF_EIGHT)) {
