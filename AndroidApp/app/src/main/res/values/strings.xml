@@ -26,7 +26,8 @@
     <string name="principle_of_flight">In physics, we define force as an interaction that can change the motion of an object. In order to make an aircraft flying, there are different forces acting on the plane like the picture shown above. They are the thrust of the engine, drag force from the resistance, the gravity force of the aircraft itself and the lifting force of the air.</string>
     <string name="lift">To make a plane rise into the air, the force needs to exceed the weight force. That force is called lift. In most cases, lift is created by the flow of air over an airfoil (Any surface designed to help lift an aircraft with the use of air current). Apparently, you can say that the lift keeps the aircraft up.\nMisconceptions: The key point for airplane to fly is not the engine. In another word, even all engines stop, an airplane can still glide down.</string>
     <string name="weight">Weight is the gravity force, a force that pulls everything towards the earth’s surface, of the airplane itself. It is an unavoidable force acting on the plane according to Newton’s law.</string>
-    <string name="drag">In Physics, everything that goes through the air will experience a resistance force, in this case, the resistance is called drag.</string>>
+    <string name="drag">In Physics, everything that goes through the air will experience a resistance force, in this case, the resistance is called drag.</string>
+    >
     <string name="thrust">Thrust is the force to make the object move. In this case, thrust from the engine is the power source of the aircraft.</string>
     <string name="how_does_aircraft_work">When a plane is flying in the constant speed, the aircraft is in equivalent, meaning it is balanced. Then the lift force is equal to the weight and the thrust is equal to the drag. If the aircraft is not balanced, meaning the aircraft will speed up, slow down or change direction.</string>
     <string name="turbulence">Turbulence is occurred when the airplane fly through one varied air current to another. This is the most common thing that scares us about flying. There are a few situations might cause turbulence. \nFirst is the convective currents, heat generated from the radioactive decay of elements deep in the interior of the Earth creates magma (molten rock) in the asthenosphere and cause air rise.\nSecond one is obstructions to wind flow and it can cause all kinds of eddies and current.\nThe last one is windshear or wind gradient, this is the difference in wind speed or direction over a relatively short distance in the atmosphere.\nIt is hyperbolic to say that turbulence is super dangerous but we can’t say that turbulence is not dangerous at all. There are four main danger of turbulence.\nFirst one is structural failure. It is true that small and general planes might get destroyed in the thunderstorms. But for commercial airplanes, they have radar on-board to spot and avoid thunderstorm. So don’t worry about this when you are flying in commercial airplanes.\nSecond one is passenger injury. ‘Fasten seat belt’ sign is necessary especially when the airplane is flying into downward-moving air. Most cases when passenger get injured are people who didn’t fasten their seat belts all the time.\nThe third danger is altitude loss near ground. Altitude changed rapidly can also be one of the dangers turbulence can get. This danger can usually caused by wake turbulence, a disturbance in the atmosphere that forms behind an aircraft as it passes through the air, and thunderstorms.\nThe last one is wind changes near the ground.</string>
@@ -56,7 +57,7 @@
     <string name="title_activity_user_profile">UserProfile</string>
     <string name="change_password"><u>Change Password</u></string>
     <string name="updated_user_information"><u>Update User Information</u></string>
-    <string name="emdr_settings_title">EMDR Settings</string>
+    <string name="emdr_settings_title">Settings</string>
     <string name="emdr_movement_type_selection">Movement Type</string>
     <string name="emdr_start_button">START EMDR</string>
     <string name="emdr_settings_button">SETTINGS</string>
@@ -88,4 +89,5 @@
     </string-array>
     <string name="title_activity_base_drawer">BaseDrawerActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_emdrguide">EMDRActivityGuide</string>
 </resources>

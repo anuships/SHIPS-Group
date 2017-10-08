@@ -21,19 +21,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Settings_Title"
-        android:text="@string/emdr_settings_title"
+        android:id="@+id/EMDR_Title"
+        android:text="EMDR"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:textSize="24dp"
         android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/EMDR_Settings_Title"
+        android:text="@string/emdr_settings_title"
+        android:layout_below="@id/EMDR_Title"
+        android:textStyle="italic"
+        android:textSize="20dp"
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/emdr_movement_type_spinner_setting_layout"
-        android:layout_below="@id/Settings_Title">
+        android:layout_below="@id/EMDR_Settings_Title">
 
 
         <TextView
@@ -121,22 +131,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/emdr_description_title"
-        android:text="What is EMDR?"
-        android:textStyle="italic"
-        android:textSize="20dp"
-        android:layout_below="@id/emdr_shadow_spinner_setting_layout"/>
+        android:text="After you have selected your preferences click the start button. Keep your head still and follow the movement of the ball that appears on screen with your eyes."
+        android:layout_below="@id/emdr_shadow_spinner_setting_layout"
+        android:layout_marginTop="20dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/emdr_description_title"
-        android:id="@+id/emdr_description"
-        android:text="Voluntary eye movement has been shown to move you to a neutral state, allowing you to neutralise negative feelings, reinforce positive feelings or simply relax! Select a preferred movement type
- and speed and then click the start button. Keep your head still and follow the ball that appears on the screen with your eyes."/>
-
-
-
-    <LinearLayout
+     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

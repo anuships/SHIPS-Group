@@ -18,9 +18,8 @@
         <activity
             android:name=".homepageAndRegistration.MainActivity"
             android:label="SHIPS"
-            android:theme="@style/HiddenTitleTheme"
-            android:noHistory="true">
-
+            android:noHistory="true"
+            android:theme="@style/HiddenTitleTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -129,7 +128,11 @@
         </activity>
         <activity android:name=".userRecord.Records" />
         <activity android:name=".cognitiveTherapy.cognitiveDistortion" />
-        <activity android:name=".cognitiveTherapy.CognitiveReplacement"></activity>
+        <activity android:name=".cognitiveTherapy.CognitiveReplacement" />
+        <activity
+            android:name=".EMDR.EMDRActivityGuide"
+            android:label="@string/title_activity_emdrguide"
+            android:theme="@style/HiddenTitleTheme"></activity>
     </application>
 
 </manifest>
