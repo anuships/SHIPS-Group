@@ -227,6 +227,7 @@ public class EMDRActivity extends DrawerActivity {
         View emdrView = findViewById(R.id.emdrlayout);
         emdrView.setVisibility(View.VISIBLE);
         View emdrCircleView = findViewById(R.id.emdr_circle_layout);
+        //View emdrCircleView = findViewById(R.id.emdrcircle);
         //ImageView emdrCircleImageView = (ImageView) findViewById(R.id.emdr_circle_layout);
 
         //horizontal movement (simple harmonic)
@@ -239,6 +240,23 @@ public class EMDRActivity extends DrawerActivity {
         horizontal_Right_To_Centre.setInterpolator(new AccelerateInterpolator());
         horizontal_Centre_To_Left.setInterpolator(new DecelerateInterpolator());
         horizontal_Left_To_Centre.setInterpolator(new AccelerateInterpolator());
+
+
+        View emdrCircleShadowView = findViewById(R.id.emdr_circle_shadow_layout);
+        //View emdrCircleView = findViewById(R.id.emdrcircle);
+        //ImageView emdrCircleImageView = (ImageView) findViewById(R.id.emdr_circle_layout);
+
+        //horizontal movement (simple harmonic)
+        ObjectAnimator horizontal_Centre_To_Right_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, ((SCREEN_WIDTH - emdrCircleDiameter)+(SCREEN_WIDTH - emdrCircleDiameter)/12));
+        ObjectAnimator horizontal_Right_To_Centre_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", ((SCREEN_WIDTH - emdrCircleDiameter)+(SCREEN_WIDTH - emdrCircleDiameter)/12), (SCREEN_WIDTH - emdrCircleDiameter)/2);
+        ObjectAnimator horizontal_Centre_To_Left_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, (-(SCREEN_WIDTH - emdrCircleDiameter)/12));
+        ObjectAnimator horizontal_Left_To_Centre_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "x", (-(SCREEN_WIDTH - emdrCircleDiameter)/12), (SCREEN_WIDTH - emdrCircleDiameter)/2);
+
+        horizontal_Centre_To_Right_Shadow.setInterpolator(new DecelerateInterpolator());
+        horizontal_Right_To_Centre_Shadow.setInterpolator(new AccelerateInterpolator());
+        horizontal_Centre_To_Left_Shadow.setInterpolator(new DecelerateInterpolator());
+        horizontal_Left_To_Centre_Shadow.setInterpolator(new AccelerateInterpolator());
+
 
 
         //repeat of horizontal movement animation. Used in figure-of-eight movement, which requires two horizontal cycles with each vertical cycle
@@ -273,8 +291,12 @@ public class EMDRActivity extends DrawerActivity {
                    animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
             animSet.setDuration(EMDR_DURATION/2);
         } else if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_HORIZONTAL)) {
-            animSet.play(horizontal_Centre_To_Right).before(horizontal_Right_To_Centre);
-            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).before(horizontal_Left_To_Centre);
+//            animSet.play(horizontal_Centre_To_Right).before(horizontal_Right_To_Centre);
+//            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).before(horizontal_Left_To_Centre);
+            animSet.play(horizontal_Centre_To_Right).with(horizontal_Centre_To_Right_Shadow);
+            animSet.play(horizontal_Right_To_Centre).after(horizontal_Centre_To_Right).with(horizontal_Right_To_Centre_Shadow);
+            animSet.play(horizontal_Centre_To_Left).after(horizontal_Right_To_Centre).with(horizontal_Centre_To_Left_Shadow);
+            animSet.play(horizontal_Left_To_Centre).after(horizontal_Centre_To_Left).with(horizontal_Left_To_Centre_Shadow);
             animSet.setDuration(EMDR_DURATION/2);
         } else if (emdrMovementType.equals(EMDRMovementTypes.CIRCULAR)) {
             animSet.play(horizontal_Centre_To_Right).with(vertical_Top_To_Centre);
