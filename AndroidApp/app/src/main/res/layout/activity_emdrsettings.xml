@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emdr_speed_spinner_textview"
-            android:text="EMDR Speed"
+            android:text="Speed"
             android:layout_marginRight="20dp"/>
 
         <Spinner
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emdr_duration_spinner_textview"
-            android:text="EMDR Duration"
+            android:text="Session length"
             android:layout_marginRight="20dp"/>
 
         <Spinner
