@@ -283,12 +283,28 @@ public class EMDRActivity extends DrawerActivity {
         vertical_Bottom_To_Centre.setInterpolator(new AccelerateInterpolator());
         vertical_Centre_To_Top.setInterpolator(new DecelerateInterpolator());
 
+        //vertical movement
+        ObjectAnimator vertical_Top_To_Centre_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "y", (-(SCREEN_HEIGHT - 2*emdrCircleDiameter)/15), (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2);
+        ObjectAnimator vertical_Centre_To_Bottom_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "y", (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2, ((SCREEN_HEIGHT - 2*emdrCircleDiameter) + (SCREEN_HEIGHT - 2*emdrCircleDiameter)/15));
+        ObjectAnimator vertical_Bottom_To_Centre_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "y", ((SCREEN_HEIGHT - 2*emdrCircleDiameter) + (SCREEN_HEIGHT - 2*emdrCircleDiameter)/15), (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2);
+        ObjectAnimator vertical_Centre_To_Top_Shadow = ObjectAnimator.ofFloat(emdrCircleShadowView, "y", (SCREEN_HEIGHT - 2*emdrCircleDiameter)/2, (-(SCREEN_HEIGHT - 2*emdrCircleDiameter)/15));
+
+        vertical_Top_To_Centre_Shadow.setInterpolator(new AccelerateInterpolator());
+        vertical_Centre_To_Bottom_Shadow.setInterpolator(new DecelerateInterpolator());
+        vertical_Bottom_To_Centre_Shadow.setInterpolator(new AccelerateInterpolator());
+        vertical_Centre_To_Top_Shadow.setInterpolator(new DecelerateInterpolator());
+
+
         //final AnimatorSet animSet = new AnimatorSet();
 
         //play animation corresponding to user selection
         if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_VERTICAL)) {
-                   animSet.play(vertical_Top_To_Centre).before(vertical_Centre_To_Bottom);
-                   animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
+//                   animSet.play(vertical_Top_To_Centre).before(vertical_Centre_To_Bottom);
+//                   animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
+            animSet.play(vertical_Top_To_Centre).with(vertical_Top_To_Centre_Shadow);
+            animSet.play(vertical_Centre_To_Bottom).after(vertical_Top_To_Centre).with(vertical_Centre_To_Bottom_Shadow);
+            animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).with(vertical_Bottom_To_Centre_Shadow);
+            animSet.play(vertical_Centre_To_Top).after(vertical_Bottom_To_Centre).with(vertical_Centre_To_Top_Shadow);
             animSet.setDuration(EMDR_DURATION/2);
         } else if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_HORIZONTAL)) {
 //            animSet.play(horizontal_Centre_To_Right).before(horizontal_Right_To_Centre);
