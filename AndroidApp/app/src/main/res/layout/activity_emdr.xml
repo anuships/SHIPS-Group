@@ -9,6 +9,7 @@ android:paddingLeft="0dp"
 android:paddingRight="0dp"
 android:paddingTop="0dp"
     android:soundEffectsEnabled="true"
+    android:background="@drawable/emdr_gradient"
 tools:context="com.example.ships.myapplication.homepageAndRegistration.LoginActivity">
 
     <LinearLayout
@@ -29,8 +30,8 @@ tools:context="com.example.ships.myapplication.homepageAndRegistration.LoginActi
         </ImageView>
 
 
-    </LinearLayout>
 
+    </LinearLayout>
 
 
     <Button

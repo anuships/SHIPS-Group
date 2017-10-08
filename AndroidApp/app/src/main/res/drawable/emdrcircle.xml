@@ -4,8 +4,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
 
-    <solid
+ <!--   <solid
         android:color="#006AB3"/>
+
+    <solid
+        android:color="#0A0AC8"/>
+-->
+    <solid
+        android:color="#0A0AF0">
+    </solid>
+
+    <corners
+        android:radius="5dp">
+    </corners>
 
     <size
         android:width="@dimen/emdr_circle_diameter"

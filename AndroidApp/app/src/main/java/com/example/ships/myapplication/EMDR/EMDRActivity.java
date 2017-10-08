@@ -10,7 +10,9 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -225,6 +227,7 @@ public class EMDRActivity extends DrawerActivity {
         View emdrView = findViewById(R.id.emdrlayout);
         emdrView.setVisibility(View.VISIBLE);
         View emdrCircleView = findViewById(R.id.emdr_circle_layout);
+        //ImageView emdrCircleImageView = (ImageView) findViewById(R.id.emdr_circle_layout);
 
         //horizontal movement (simple harmonic)
         ObjectAnimator horizontal_Centre_To_Right = ObjectAnimator.ofFloat(emdrCircleView, "x", (SCREEN_WIDTH - emdrCircleDiameter)/2, (SCREEN_WIDTH - emdrCircleDiameter));
