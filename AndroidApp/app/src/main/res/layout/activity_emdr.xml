@@ -93,7 +93,7 @@ tools:context="com.example.ships.myapplication.homepageAndRegistration.LoginActi
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/emdrcircle_shadow"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:visibility="visible">
             </ImageView>
 

@@ -231,7 +231,7 @@ public class EMDRActivity extends DrawerActivity {
         float emdrCircleDiameter = getResources().getDimension(R.dimen.emdr_circle_diameter);
         View emdrView = findViewById(R.id.emdrlayout);
         emdrView.setVisibility(View.VISIBLE);
-        View emdrCircleView = findViewById(R.id.emdr_circle_layout);
+        final View emdrCircleView = findViewById(R.id.emdr_circle_layout);
         //View emdrCircleView = findViewById(R.id.emdrcircle);
         //ImageView emdrCircleImageView = (ImageView) findViewById(R.id.emdr_circle_layout);
 
@@ -247,7 +247,7 @@ public class EMDRActivity extends DrawerActivity {
         horizontal_Left_To_Centre.setInterpolator(new AccelerateInterpolator());
 
 
-        View emdrCircleShadowView = findViewById(R.id.emdr_circle_shadow_layout);
+        final View emdrCircleShadowView = findViewById(R.id.emdr_circle_shadow_layout);
         if (SHADOW_ON) {
             emdrCircleShadowView.setVisibility(View.VISIBLE);
 
@@ -418,6 +418,13 @@ public class EMDRActivity extends DrawerActivity {
                 //super.onAnimationEnd(animation);
                 if (!cancelled) {
                     animSet.start();
+                } else {
+                    emdrCircleView.setX(SCREEN_WIDTH/2);
+                    emdrCircleView.setY(SCREEN_HEIGHT/2);
+
+                    emdrCircleShadowView.setX(SCREEN_WIDTH/2);
+                    emdrCircleShadowView.setY(SCREEN_HEIGHT/2);
+
                 }
             }
         });
