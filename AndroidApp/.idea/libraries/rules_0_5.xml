@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="rules-0.5">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/0997b3f139b67b724d2e271435e7d0c5fe6d05f6/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/0997b3f139b67b724d2e271435e7d0c5fe6d05f6/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/6a393a2b711b3320b1b7e080db09a4ff76903d97/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/6a393a2b711b3320b1b7e080db09a4ff76903d97/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

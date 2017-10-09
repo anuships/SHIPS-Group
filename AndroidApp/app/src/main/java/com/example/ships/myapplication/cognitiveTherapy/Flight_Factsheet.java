@@ -75,7 +75,7 @@ public class Flight_Factsheet extends DrawerActivity {
             SQLiteDatabase mySqlDB = DBManager.getInstance(this).getWritableDatabase();
             mySqlDB.execSQL("CREATE TABLE IF NOT EXISTS userRecords(UID VARCHAR,TIME VARCHAR, MODULE VARCHAR,PRIMARY KEY (UID, TIME));");
             String insertQuery = "INSERT INTO userRecords (uid, TIME, MODULE) VALUES(?,?,?)";
-            mySqlDB.execSQL(insertQuery, new String[]{uid, dateFormat.format(date), "Relaxation audio"});
+            mySqlDB.execSQL(insertQuery, new String[]{uid, dateFormat.format(date), "Factsheet"});
         } catch (Exception e) {
             e.printStackTrace();
         }

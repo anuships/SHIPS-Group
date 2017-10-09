@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class cognitiveDistortion extends DrawerActivity {
+public class CognitiveDistortion extends DrawerActivity {
 
     private static String firstName;
     private static String lastName;

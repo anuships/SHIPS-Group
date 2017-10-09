@@ -61,7 +61,7 @@ public class AdapterForDetail extends BaseAdapter {
             theRow.mTvTitle = (AppCompatTextView) convertView.findViewById(R.id.tv_title);
             theRow.mTvTitle.setTextSize(30);
             theRow.mTvDescription = (AppCompatTextView) convertView.findViewById(R.id.tv_description);
-            theRow.mTvDescription.setTextSize(30);
+            theRow.mTvDescription.setTextSize(20);
             theRow.mIvArrow = (ImageView) convertView.findViewById(R.id.iv_arrow);
 
             convertView.setTag(theRow);

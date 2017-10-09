@@ -272,7 +272,13 @@ public class ExposureTherapy extends DrawerActivity {
                     mp = MediaPlayer.create(this, R.raw.s1);
                     mp.start();
                     mp.setLooping(true);
+                } else {
+                    if (mp.isPlaying()){
+                        mp.stop();
+                    }
+                    mp.setOnCompletionListener(onCompletion);
                 }
+
                 Context context = getApplicationContext();
                 CharSequence text = "Promoting to the next level";
                 int duration = Toast.LENGTH_SHORT;
@@ -375,6 +381,9 @@ public class ExposureTherapy extends DrawerActivity {
             mp.setLooping(true);
         }
         else {
+            if (mp.isPlaying()){
+                mp.stop();
+            }
             mp.setOnCompletionListener(onCompletion);
         }
     }
@@ -393,6 +402,16 @@ public class ExposureTherapy extends DrawerActivity {
     };
 
 
+    @Override
+    public void onBackPressed() {
+        if (mp.isPlaying()){
+            mp.stop();
+        }
+        mp.setOnCompletionListener(onCompletion);
+        ha.removeCallbacksAndMessages(null);
+        this.finish();
+        startActivity(new Intent(this, ExposureDes.class).putExtras(createBundle()));
+    }
 
 
 

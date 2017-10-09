@@ -16,7 +16,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="All Program"
+                android:text="Cognitive Therapies"
                 android:textStyle="bold"
                 android:textSize="24dp"
                 />
@@ -35,54 +35,41 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:text="Self-Assessment"
+                    android:text="Flight factsheet"
                     android:layout_width="220dp"
                     android:layout_height="40dp"
-                    android:id="@+id/self_assessemnt"
+                    android:id="@+id/flightFactSheet"
                     android:background="@drawable/roundedbutton"
                     android:paddingBottom="0dp"
                     android:textColor="#FFFFFF"
-                    android:onClick="goToSelfAssessment"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"/>
-
-
-                <Button
-                    android:text="Cognitive Therapies"
-                    android:layout_width="220dp"
-                    android:layout_height="40dp"
-                    android:id="@+id/cogntiveTherpay"
-                    android:background="@drawable/roundedbutton"
-                    android:paddingBottom="0dp"
-                    android:textColor="#FFFFFF"
-                    android:onClick="goToCognitiveTherapy"
+                    android:onClick="goToFlightFactSheet"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"/>
 
                 <Button
-                    android:text="Therapeutic Tools"
+                    android:text="What-if scenarios"
                     android:layout_width="220dp"
                     android:layout_height="40dp"
-                    android:id="@+id/therapeutic_tools"
+                    android:id="@+id/whatIf"
                     android:background="@drawable/roundedbutton"
                     android:paddingBottom="0dp"
                     android:textColor="#FFFFFF"
-                    android:onClick="goToTherapeuticTools"
+                    android:onClick="goToWhatIf"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"/>
 
                 <Button
-
-                    android:text="Treatment"
+                    android:text="Cogntive factsheet"
                     android:layout_width="220dp"
                     android:layout_height="40dp"
-                    android:id="@+id/treatment"
+                    android:id="@+id/cogntiveFactsheet"
                     android:background="@drawable/roundedbutton"
                     android:paddingBottom="0dp"
                     android:textColor="#FFFFFF"
-                    android:onClick="goToTreatment"
+                    android:onClick="goToCogntiveFactSheet"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"/>
+
             </LinearLayout>
         </LinearLayout>
 
@@ -100,18 +87,8 @@
                 android:background="@drawable/roundedbutton"
                 android:textColor="#FFFFFF"
                 android:onClick="goBack"
-                android:layout_gravity="center"
-                android:layout_marginRight="20dp"/>
-
-            <Button
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:text="User history"
-                android:id="@+id/records"
-                android:background="@drawable/roundedbutton"
-                android:textColor="#FFFFFF"
-                android:onClick="goToRecords"
                 android:layout_gravity="center" />
+
         </LinearLayout>
 
     </LinearLayout>
