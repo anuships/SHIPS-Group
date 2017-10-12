@@ -90,40 +90,10 @@ public class MyProgramListV2 extends DrawerActivity {
             suggestedButton.setVisibility(View.VISIBLE);
         }
         for (int i = 0; i < resTID.getCount();i++){
-  //          Cursor resMID = mySqlDB.rawQuery("SELECT MID FROM user_modules WHERE TID=? ;", new String[]{Integer.toString(resTID.getInt(0))});
-    //        resMID.moveToFirst();
-      //      for (int j = 0; j < resMID.getCount();j++){
-        //        Cursor resDesName = mySqlDB.rawQuery("SELECT name, desc FROM modules WHERE MID=?", new String[]{Integer.toString(resMID.getInt(0))});
-          //      resDesName.moveToFirst();
                 dataDump.setData((i+1) + " : ", "hi");
-            //    dataDump.setData((i+1) + ":" + (j+1) +" " + resDesName.getString(0), resDesName.getString(1));
-              //  resMID.moveToNext();
-            //}
-            //resTID.moveToNext();
         }
 
-        /*
-        dataDump.setData("Self Assessment", "Self Assessment is a tool that helps you to " +
-                "understand more about yourself on fear of flying.");
-        dataDump.setData("EMDR", "EMDR is a kind of therapeutic tool that helps you " +
-                "to distract from the plane by focusing on a moving ball");
-        dataDump.setData("Relaxation Audio Training", "Relaxation audio is kind of therapeutic tool" +
-                "that helps you to learn techniques to relax yourself.");
-        dataDump.setData("Biofeedback", "Biofeedback is kind of the therapeutic tool " +
-                "that helps you to understand whether you become more relax or anxious. " +
-                "At the beginning, some data will be collected from your body and then " +
-                "generate a baseline in BLUE. After that a RED real time monitoring line " +
-                "reflects your current feeling. If the red line goes up means you feel relax. " +
-                "If the red line goes down that means you feel anxious.");
-        dataDump.setData("Systematic Desensitisation", "Systematic Desensitisation is kind " +
-                "of therapy that allows you to go through some airline like scenarios. " +
-                "You have to apply techniques learned from the provided therapeutic tools " +
-                "and try to relax your self. There are 5 levels of scenarios provided in " +
-                "this version.");
-         */
-
-
-        expandableListDetail = dataDump.getData();
+       expandableListDetail = dataDump.getData();
 
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
         Collections.sort(expandableListTitle);
@@ -132,43 +102,6 @@ public class MyProgramListV2 extends DrawerActivity {
                 expandableListDetail, getIntent());
 
         expandableListView.setAdapter(expandableListAdapter);
-/*        expandableListView.setOnGroupExpandListener(
-                new ExpandableListView.OnGroupExpandListener() {
-
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        expandableListTitle.get(groupPosition) + " List Expanded.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        expandableListView.setOnGroupCollapseListener(
-                new ExpandableListView.OnGroupCollapseListener() {
-
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        expandableListTitle.get(groupPosition) + " List Collapsed.",
-                        Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        expandableListTitle.get(groupPosition)
-                                + " -> "
-                                + expandableListDetail.get(
-                                expandableListTitle.get(groupPosition)), Toast.LENGTH_SHORT
-                ).show();
-                return false;
-            }
-        });*/
     }
 
     public void onClick(View v) {
