@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.example.ships.myapplication.EMDR.EMDRActivityGuide;
 import com.example.ships.myapplication.EMDR.EMDRActivitySettings;
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
 import com.example.ships.myapplication.OtherInterfaces.DrawerActivity;
@@ -58,7 +59,7 @@ public class TherapeuticTools extends DrawerActivity {
     }
 
     public void goToEMDR(View view) {
-        startActivity(new Intent(this, EMDRActivitySettings.class).putExtras(createBundle()));
+        startActivity(new Intent(this, EMDRActivityGuide.class).putExtras(createBundle()));
     }
 
     public void goToRelaxationTraning(View view) {

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.ships.myapplication.EMDR.EMDRActivityGuide;
 import com.example.ships.myapplication.EMDR.EMDRActivitySettings;
 import com.example.ships.myapplication.FAS.FAS;
 import com.example.ships.myapplication.GSR.GSRGraphActivity;
@@ -69,7 +70,7 @@ public class ModuleDescription extends DrawerActivity {
         if (getIntent().getExtras().getString("title").equals(DBManager.BIOFEEDBACK)){
             in = new Intent(this, GSRGraphActivity.class).putExtras(createBundle());
         }else if (title.equals(DBManager.EMDR)){
-            in = new Intent(this, EMDRActivitySettings.class).putExtras(createBundle());
+            in = new Intent(this, EMDRActivityGuide.class).putExtras(createBundle());
         }else if (title.equals(DBManager.FACTSHEET)){
             in = new Intent(this, FactsheetSelect.class).putExtras(createBundle());
         }else if (title.equals(DBManager.FAS) || title.contains("Self")){
