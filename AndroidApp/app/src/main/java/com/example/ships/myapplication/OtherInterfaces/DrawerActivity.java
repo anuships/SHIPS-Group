@@ -72,7 +72,6 @@ public class DrawerActivity extends AppCompatActivity {
 
 
         mDrawerList = (ListView) findViewById(R.id.drawer_list);
-
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list, listTitles));
 
