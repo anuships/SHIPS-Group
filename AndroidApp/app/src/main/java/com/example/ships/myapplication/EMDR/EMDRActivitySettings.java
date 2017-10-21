@@ -88,6 +88,7 @@ public class EMDRActivitySettings extends DrawerActivity {
                 }
         );
 
+        //spinner for emdr speed selection
         Spinner emdr_speed_spinner = (Spinner) findViewById(R.id.emdr_speed_spinner);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.emdr_speed_array, android.R.layout.simple_spinner_dropdown_item);
         emdr_speed_spinner.setAdapter(adapter1);
@@ -107,6 +108,7 @@ public class EMDRActivitySettings extends DrawerActivity {
                 }
         );
 
+        //spinner for length of session
         Spinner emdr_duration_spinner = (Spinner) findViewById(R.id.emdr_duration_spinner);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.emdr_duration_array, android.R.layout.simple_spinner_dropdown_item);
         emdr_duration_spinner.setAdapter(adapter2);
@@ -126,6 +128,7 @@ public class EMDRActivitySettings extends DrawerActivity {
                 }
         );
 
+        //spinner for shadow preferences
         Spinner emdr_shadow_spinner = (Spinner) findViewById(R.id.emdr_shadow_spinner);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.emdr_shadow_array, android.R.layout.simple_spinner_dropdown_item);
         emdr_shadow_spinner.setAdapter(adapter3);

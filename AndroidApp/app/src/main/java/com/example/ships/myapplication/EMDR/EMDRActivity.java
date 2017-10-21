@@ -168,6 +168,7 @@ public class EMDRActivity extends DrawerActivity {
         final Handler handler = new Handler();
 
         //found that a delay was required so the audio lined up with the emdr movement
+        //TODO: sync ticking with movement for different speeds
         final int delay = EMDR_DURATION - 150; //milliseconds
 
         //play the audio until the activity is exited
@@ -320,6 +321,7 @@ public class EMDRActivity extends DrawerActivity {
         //final AnimatorSet animSet = new AnimatorSet();
 
         //play animation corresponding to user selection
+        //commented-out code is an implementation without shadow. Left in as it may be useful later
         if (emdrMovementType.equals(EMDRMovementTypes.SIMPLE_VERTICAL)) {
 //                   animSet.play(vertical_Top_To_Centre).before(vertical_Centre_To_Bottom);
 //                   animSet.play(vertical_Bottom_To_Centre).after(vertical_Centre_To_Bottom).before(vertical_Centre_To_Top);
@@ -398,7 +400,7 @@ public class EMDRActivity extends DrawerActivity {
         }
 
 
-        //play animation forever
+        //play animation until cancelled
         animSet.addListener(new AnimatorListenerAdapter() {
 
             private boolean cancelled;

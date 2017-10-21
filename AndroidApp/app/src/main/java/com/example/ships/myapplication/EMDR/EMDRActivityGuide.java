@@ -1,3 +1,6 @@
+//Lalit Prasad 2017
+//User guide for using EMDR tool
+
 package com.example.ships.myapplication.EMDR;
 
 import android.content.Context;
@@ -44,9 +47,6 @@ public class EMDRActivityGuide extends DrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_emdrguide);
- //       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
- //       setSupportActionBar(toolbar);
 
         //Add drawer by Jason
         FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
