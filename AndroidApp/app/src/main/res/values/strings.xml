@@ -70,6 +70,10 @@
     <string name="emdr_positive_description">During the eye movement exercise, focus on a positive outcome of flying. You make your way through the airport, board a plane and sit safely in your seat. The plane lands safely at your destination</string>
     <string name="back_button_text">Back</string>
     <string name="settings_button_text">Settings</string>
+    <string name="speed_spinner_text">Speed</string>
+    <string name="duration_spinner_text">Session length</string>
+    <string name="shadow_spinner_text">Shadow</string>
+    <string name="emdr_instructions">After you have selected your preferences click the start button. Keep your head still and follow the movement of the ball that appears on screen with your eyes.</string>
 
     <string-array name="emdr_movements_array">
         <item>Horizontal</item>

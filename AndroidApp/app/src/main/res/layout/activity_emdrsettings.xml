@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/EMDR_Title"
-        android:text="EMDR"
+        android:text="@string/emdr_string"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:textSize="24dp"
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emdr_speed_spinner_textview"
-            android:text="Speed"
+            android:text="@string/speed_spinner_text"
             android:layout_marginRight="20dp"/>
 
         <Spinner
@@ -95,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emdr_duration_spinner_textview"
-            android:text="Session length"
+            android:text="@string/duration_spinner_text"
             android:layout_marginRight="20dp"/>
 
         <Spinner
@@ -116,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emdr_shadow_spinner_textview"
-            android:text="Shadow"
+            android:text="@string/shadow_spinner_text"
             android:layout_marginRight="20dp"/>
 
         <Spinner
@@ -131,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/emdr_description_title"
-        android:text="After you have selected your preferences click the start button. Keep your head still and follow the movement of the ball that appears on screen with your eyes."
+        android:text="@string/emdr_instructions"
         android:layout_below="@id/emdr_shadow_spinner_setting_layout"
         android:layout_marginTop="20dp"/>
 
@@ -148,7 +148,7 @@
             android:layout_height="40dp"
             android:layout_marginRight="20dp"
             android:id="@+id/emdr_settings_back_button"
-            android:text="Back"
+            android:text="@string/back_button_text"
             android:background="@drawable/roundedbutton"
             android:textColor="#FFFFFF"/>
 
