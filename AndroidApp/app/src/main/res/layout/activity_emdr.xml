@@ -11,53 +11,7 @@ android:paddingTop="0dp"
     android:soundEffectsEnabled="true"
     android:background="@drawable/emdr_gradient"
 tools:context="com.example.ships.myapplication.homepageAndRegistration.LoginActivity">
-
-    <!--
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/emdr_circle_layout"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:soundEffectsEnabled="true">
-
-        <ImageView
-            android:id="@+id/emdrcircle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/emdrcircle"
-            android:visibility="visible">
-
-        </ImageView>
-
-
-
-    </LinearLayout>
--->
-
-    <!--
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/emdr_circle_layout"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:soundEffectsEnabled="true">
-
-
-        <ImageView
-            android:id="@+id/emdrcircle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/emdr_circle_with_shadow"
-            android:visibility="visible">
-
-        </ImageView>
-
-    </LinearLayout>
-
-    -->
-
+    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
