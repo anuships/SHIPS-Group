@@ -61,6 +61,15 @@
     <string name="emdr_movement_type_selection">Movement Type</string>
     <string name="emdr_start_button">START EMDR</string>
     <string name="emdr_settings_button">SETTINGS</string>
+    <string name="emdr_string">EMDR</string>
+    <string name="emdr_guide_title">What is EMDR?</string>
+    <string name="emdr_description">Eye Movement Desensitisation and Reprocessing Therapy (EMDR) has been shown to move you to a neutral state, allowing you to neutralise negative feelings, reinforce positive feelings or simply relax!\nBy applying this technique to visualised flight scenarios, you may be able to reduce your discomfort associated with these situations</string>
+    <string name="emdr_negative_title">Negative neutralisation</string>
+    <string name="emdr_negative_description">While you complete the eye movement exercise, remember an uncomfortable memory you have of flying or else visualise yourself in this unpleasant flying scenario.</string>
+    <string name="emdr_positive_title">Positive reinforcement</string>
+    <string name="emdr_positive_description">During the eye movement exercise, focus on a positive outcome of flying. You make your way through the airport, board a plane and sit safely in your seat. The plane lands safely at your destination</string>
+    <string name="back_button_text">Back</string>
+    <string name="settings_button_text">Settings</string>
 
     <string-array name="emdr_movements_array">
         <item>Horizontal</item>

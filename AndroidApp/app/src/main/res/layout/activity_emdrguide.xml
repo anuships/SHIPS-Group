@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/EMDR_Title"
-        android:text="EMDR"
+        android:text="@string/emdr_string"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:textSize="24dp"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/EMDR_Guide_Title"
-        android:text="What is EMDR?"
+        android:text="@string/emdr_guide_title"
         android:layout_below="@id/EMDR_Title"
         android:textStyle="italic"
         android:textSize="20dp"
@@ -36,14 +36,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/EMDR_Guide_Title"
         android:id="@+id/emdr_description"
-        android:text="Eye Movement Desensitisation and Reprocessing Therapy (EMDR) has been shown to move you to a neutral state, allowing you to neutralise negative feelings, reinforce positive feelings or simply relax!\nBy applying this technique to visualised flight scenarios, you may be able to reduce your discomfort associated with these situations"/>
+        android:text="@string/emdr_description"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/emdr_description"
         android:id="@+id/emdr_negative_neutralisation_heading"
-        android:text="Negative neutralisation"
+        android:text="@string/emdr_negative_title"
         android:textSize="18dp"
         android:layout_marginTop="20dp">
     </TextView>
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/emdr_negative_neutralisation_heading"
         android:id="@+id/emdr_negative_neutralisation_description"
-        android:text="While you complete the eye movement exercise, remember an uncomfortable memory you have of flying or else visualise yourself in this unpleasant flying scenario.">
+        android:text="@string/emdr_negative_description">
     </TextView>
 
 
@@ -63,7 +63,7 @@
         android:layout_below="@id/emdr_negative_neutralisation_description"
         android:id="@+id/emdr_positive_reinforcement_heading"
         android:textSize="18dp"
-        android:text="Positive reinforcement"
+        android:text="@string/emdr_positive_title"
         android:layout_marginTop="20dp">
     </TextView>
 
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/emdr_positive_reinforcement_heading"
         android:id="@+id/emdr_positive_reinforcement_description"
-        android:text="During the eye movement exercise, focus on a positive outcome of flying. You make your way through the airport, board a plane and sit safely in your seat. The plane lands safely at your destination">
+        android:text="@string/emdr_positive_description">
     </TextView>
 
 
@@ -90,7 +90,7 @@
             android:layout_height="40dp"
             android:layout_marginRight="20dp"
             android:id="@+id/emdr_guide_back_button"
-            android:text="Back"
+            android:text="@string/back_button_text"
             android:background="@drawable/roundedbutton"
             android:textColor="#FFFFFF"/>
 
@@ -99,7 +99,7 @@
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:onClick="sendMessage"
-            android:text="Settings"
+            android:text="@string/settings_button_text"
             android:background="@drawable/roundedbutton"
             android:textColor="#FFFFFF"/>
 
