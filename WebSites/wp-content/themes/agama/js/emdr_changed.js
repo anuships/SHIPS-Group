@@ -19,6 +19,7 @@ var SLOW_SPEED = 1.0;
 var MEDIUM_SPEED = 1.5;
 var FAST_SPEED = 2.0;
 var EMDR_REPETITIONS = 15;
+var HORIZONTAL_DISTANCE = 120;
 
 var emdr_colour = "blue";
 var emdr_speed = SLOW_SPEED;
@@ -251,7 +252,7 @@ function draw() {
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
 //   emdr_description_paragraph.hide();
-   if (time % 120 < 60) {
+   if (time % HORIZONTAL_DISTANCE < HORIZONTAL_DISTANCE/2) {
       time = time + emdr_speed;
       ctx.translate(10 * emdr_speed,0);
       ctx.beginPath();
@@ -269,7 +270,7 @@ function draw() {
       ctx.stroke();
    }
    
-   if (time < (EMDR_REPETITIONS * 120) - 30) {
+   if (time < (EMDR_REPETITIONS * HORIZONTAL_DISTANCE) - 30) {
       window.requestAnimationFrame(draw);
    } else {
       time = 0;
