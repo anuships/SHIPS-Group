@@ -19,17 +19,18 @@ var SLOW_SPEED = 1.0;
 var MEDIUM_SPEED = 1.5;
 var FAST_SPEED = 2.0;
 var EMDR_REPETITIONS = 15;
-var HORIZONTAL_DISTANCE = 120;
+var SPEED_MULTIPLIER = 10.0;
 
 var emdr_colour = "blue";
 var emdr_speed = SLOW_SPEED;
-
-
+var emdr_beginning = true;
+var HORIZONTAL_DISTANCE = 2*((canvas.width - 100)/SPEED_MULTIPLIER);
+//var HORIZONTAL_DISTANCE = 240;
 
 function start_button_click() {
 //   var start_button = document.getElementById('start_button');
 //   start_button.style.visibility="hidden";
-   //draw_selection();
+   //draw_selection(); 
    init();
 }
 
@@ -101,12 +102,12 @@ function draw_selection() {
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
+
    ctx.font = "24px Arial";
    ctx.fillStyle = "blue";
    ctx.textAlign = "center";
    ctx.fillText("Select a colour", canvas.width/2, 20);
-   
+
    //colour selection rectangles
    //bolded if selected
    ctx.beginPath();
@@ -121,10 +122,10 @@ function draw_selection() {
    ctx.fill();
    ctx.stroke();
    ctx.lineWidth="1.0";
-   
+
    ctx.beginPath();
    if (emdr_colour == "green") {
-      ctx.lineWidth="6.0";
+     ctx.lineWidth="6.0";
       ctx.strokeStyle="black";
    } else {
       ctx.lineWidth="1.0";
@@ -134,7 +135,7 @@ function draw_selection() {
    ctx.fill();
    ctx.stroke();
    ctx.lineWidth="1.0";
-   
+
    ctx.beginPath();
    if (emdr_colour == "pink") {
       ctx.lineWidth="6.0";
@@ -147,7 +148,7 @@ function draw_selection() {
    ctx.fill();
    ctx.stroke();
    ctx.lineWidth="1.0";
-   
+
    ctx.beginPath();
    if (emdr_colour == "violet") {
       ctx.lineWidth="6.0";
@@ -160,7 +161,7 @@ function draw_selection() {
    ctx.fill();
    ctx.stroke();
    ctx.lineWidth="1.0";
-   
+
    ctx.beginPath();
    if (emdr_colour == "gray") {
       ctx.lineWidth="6.0";
@@ -173,14 +174,14 @@ function draw_selection() {
    ctx.fill();
    ctx.stroke();
    ctx.lineWidth="1.0";
-   
+
    //speed selection description text
    ctx.beginPath();
    ctx.font = "24px Arial";
    ctx.fillStyle = "blue";
    ctx.textAlign = "center";
    ctx.fillText("Select a speed", canvas.width/2, TOP_BUFFER + SQUARE_WIDTH + SPEED_COLOUR_BUFFER);
-   
+
    //speed selection rectangles
    //bolded if selected
    ctx.beginPath();
@@ -193,7 +194,7 @@ function draw_selection() {
    ctx.rect(LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.stroke();
    ctx.lineWidth="1.0";
-   
+
    ctx.beginPath();
    if (emdr_speed == MEDIUM_SPEED) {
       ctx.lineWidth="6.0";
@@ -204,7 +205,7 @@ function draw_selection() {
    ctx.rect(LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.stroke();
    ctx.lineWidth="1.0";
-   
+
    ctx.beginPath();
    if (emdr_speed == FAST_SPEED) {
       ctx.lineWidth="6.0";
@@ -215,26 +216,26 @@ function draw_selection() {
    ctx.rect(LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION, TOP_BUFFER_SPEED, SQUARE_WIDTH, SQUARE_WIDTH);
    ctx.stroke();
    ctx.lineWidth="1.0";
-   
+
    //text for speed selections
    ctx.beginPath();
    ctx.font = "20px Arial";
    ctx.fillStyle = "green";
    ctx.textAlign = "center";
    ctx.fillText("Slow", LEFT_BUFFER + SQUARE_WIDTH + SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2 + 5);
-   
+
    ctx.beginPath();
    ctx.font = "20px Arial";
    ctx.fillStyle = "blue";
    ctx.textAlign = "center";
    ctx.fillText("Medium", LEFT_BUFFER + 2*SQUARE_WIDTH + 2*SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2 + 5);
-   
+
    ctx.beginPath();
    ctx.font = "20px Arial";
    ctx.fillStyle = "red";
    ctx.textAlign = "center";
    ctx.fillText("Fast", LEFT_BUFFER + 3*SQUARE_WIDTH + 3*SQUARE_SEPARATION + SQUARE_WIDTH/2, TOP_BUFFER_SPEED + SQUARE_WIDTH/2 + 5);
-   
+
 }
 
 //emdr movement animation
@@ -242,19 +243,25 @@ function draw_selection() {
 function draw() {
    var start_button = document.getElementById('start_button');
    start_button.style.visibility="hidden";
-   
+
    var return_to_settings_button = document.getElementById('return_to_settings_button');
+
    return_to_settings_button.style.visibility="hidden";
-   
+
 
    inColourSelectionCanvas = false;
    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
    ctx.fillStyle = "white";
    ctx.fillRect(0, 0, canvas.width, canvas.height);
-//   emdr_description_paragraph.hide();
-   if (time % HORIZONTAL_DISTANCE < HORIZONTAL_DISTANCE/2) {
+
+   if (emdr_beginning) {
+      ctx.translate(canvas.width/2 - 100, 0);
+      emdr_beginning = false;
+   }
+   
+   if (((time + (HORIZONTAL_DISTANCE/4)) % HORIZONTAL_DISTANCE) < HORIZONTAL_DISTANCE/2) {
       time = time + emdr_speed;
-      ctx.translate(10 * emdr_speed,0);
+      ctx.translate(SPEED_MULTIPLIER * emdr_speed, 0);
       ctx.beginPath();
       ctx.arc(100, 200, 50, 0, 2*Math.PI);
       ctx.fillStyle = emdr_colour;
@@ -262,25 +269,26 @@ function draw() {
       ctx.stroke();
    } else {
       time = time + emdr_speed;
-      ctx.translate(-(10 * emdr_speed),0);
+      ctx.translate(-(SPEED_MULTIPLIER * emdr_speed), 0);
       ctx.beginPath();
       ctx.arc(100, 200, 50, 0, 2*Math.PI);
       ctx.fillStyle = emdr_colour;
       ctx.fill();
       ctx.stroke();
    }
-   
-   if (time < (EMDR_REPETITIONS * HORIZONTAL_DISTANCE) - 30) {
+ 
+   if (time < (EMDR_REPETITIONS * HORIZONTAL_DISTANCE)) {
       window.requestAnimationFrame(draw);
    } else {
       time = 0;
-      ctx.translate(-300, 0);
+      ctx.translate(-(canvas.width/2 - 100), 0);
       reset_start_button();
       reset_return_to_settings_button();
+      emdr_beginning = true;
    }
    
 }
-   
+
 function reset_start_button() {
    start_button.style.visibility="visible";
 }
@@ -291,5 +299,3 @@ function reset_return_to_settings_button() {
 
 
 draw_selection();
-
-
